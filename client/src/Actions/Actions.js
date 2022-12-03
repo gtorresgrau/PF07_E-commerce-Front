@@ -7,7 +7,7 @@ import {
 export function getSneakerByName(name){
     return async function(dispatch){
         try{
-            const URL = 'http://localhost:3000/sneackers/'
+            const URL = 'http://localhost:3001/sneakers'
             let getSneacker = await axios(`${URL}${name}`);
                 return dispatch({
                     type: GET_SNEACKERS,
@@ -15,7 +15,7 @@ export function getSneakerByName(name){
                 })
         }
         catch(e){
-            window.location.href = "http://localhost:3000/sneackers/";
+            window.location.href = "http://localhost:3001/sneakers";
             console.log(`There are no Sneackers with the combination of Characters entered: ${name}`)
             alert(`There are no Sneackers with the combination of Characters entered: ${name}`)
         }
