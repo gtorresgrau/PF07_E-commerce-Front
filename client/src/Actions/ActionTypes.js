@@ -1,0 +1,1 @@
+export const GET_SNEACKERS = 'GET_SNEACKERS';
