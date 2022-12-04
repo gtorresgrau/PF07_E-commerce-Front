@@ -9,6 +9,7 @@ export function getSneakerByName(name){
         try{
             const URL = 'http://localhost:3001/sneakers'
             let getSneacker = await axios(`${URL}${name}`);
+            console.log('action:',getSneacker)
                 return dispatch({
                     type: GET_SNEACKERS,
                     payload: getSneacker.data
