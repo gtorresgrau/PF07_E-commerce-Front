@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getSneakerByName } from '../Actions/index.js'
-import Style from './Styles/SearchBar.module.css'
+import S from './Styles/SearchBar.module.css'
 
 //setCurrenPage es para setear la pagina en 1 cuando haga la busqueda.
 export default function SearchBar({ setCurrenPage }) {
@@ -26,8 +26,8 @@ export default function SearchBar({ setCurrenPage }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input className={Style.input_search} name='input' onChange={handlerOnchange} type='text' placeholder="Sneaker...." value={input} autoComplete='off' />
-        <button className={Style.btn_search} type="submit">SEARCH</button>
+        <input className={S.input_search} name='input' onChange={handlerOnchange} type='text' placeholder="Sneaker...." value={input} autoComplete='off' />
+        <button className={S.btn_search} type="submit">SEARCH</button>
       </form>
     </div>
   )
