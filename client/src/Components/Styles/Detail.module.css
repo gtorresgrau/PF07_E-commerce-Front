@@ -1,0 +1,105 @@
+.containerG {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #0b2241e3;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #aa5d10;
+}
+
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+    background-color: #0b2241e3;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 0 10px #000;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-size: 110%;
+    box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #aa5d10;
+}
+
+
+.img {
+    border-radius: 5px;
+    /* box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #aa5d10; */
+    width: 350px;
+    height: 250px;
+    margin: 20px;
+}
+
+.principal {
+    color: rgb(255, 226, 226);
+    text-decoration: underline;
+    font-weight: 1000;
+    font-family: system-ui;
+    color: transparent;
+    background-image: linear-gradient(180deg, #ffe993, #aa5d10);
+    background-clip: text;
+    width: 100%;
+    margin-top: 0%;
+}
+
+.detail {
+    font-family: system-ui;
+    color: transparent;
+    background-image: linear-gradient(180deg, #ffe993, #f0e2d3);
+    background-clip: text;
+    width: 100%;
+    margin-top: 0%;
+    color: #000000;
+}
+
+.textReviews {
+    color: rgb(255, 226, 226);
+    text-decoration: underline;
+    font-weight: 1000;
+    font-family: system-ui;
+    color: transparent;
+    background-image: linear-gradient(180deg, #ffe993, #aa5d10);
+    background-clip: text;
+    width: 100%;
+    margin-top: 0%;
+}
+
+.reviews {
+    color: #000000;
+}
+
+span {
+    color: rgb(8, 8, 8);
+    text-decoration: underline;
+    font-weight: 1000;
+    font-family: system-ui;
+    color: transparent;
+    background-image: linear-gradient(180deg, #ffe993, #aa5d10);
+    background-clip: text;
+    width: 100%;
+    margin-top: 0%;
+}
+
+.btn {
+    width: 15vh;
+    height: 3rem;
+    cursor: pointer;
+    border-radius: 5%;
+    background-color: #f18519d8;
+}
+
+.btn:hover {
+    background-color: #08be3f9f;
+}
