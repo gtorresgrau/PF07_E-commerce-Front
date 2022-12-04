@@ -1,1 +1,2 @@
 export const GET_SNEACKERS = 'GET_SNEACKERS';
+export const GET_ALL_SNEACKERS = 'GET_ALL_SNEACKERS';

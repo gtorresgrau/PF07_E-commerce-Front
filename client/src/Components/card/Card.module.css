@@ -1,0 +1,55 @@
+.container {
+    width: 20rem;
+    border: 0.1rem solid white;
+}   
+
+.container:hover {
+    border: 0.1rem solid #242423;
+    width: 20rem;
+}
+
+.container:hover .price {
+    margin-top: -2.5rem;
+
+}
+
+.price {
+    background-color: #e6e6e6;;
+    margin-top: -2rem;
+    padding: 0.3rem 0.5rem;
+    position:absolute;
+    margin-left: 0.7rem;
+    font-size: 0.9rem;
+    color:#242423;;
+ 
+}
+
+.img {
+    width: 20rem;
+}
+
+.title {
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 0.2rem;
+    text-align: left;
+    margin-left: 0.7rem;
+    color: #242423;
+}
+
+.type {
+    font-size: 1rem;
+    margin-top: -0.9rem;
+    text-align: left;
+    margin-left: 0.7rem;
+    color: gray;
+}
+
+.icon {
+    text-align: right;
+    padding-top: 0.7rem;
+    position:absolute;
+    font-size: 1.4rem;
+    color: #242423;
+    width: 19rem;
+}
