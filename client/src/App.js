@@ -13,7 +13,10 @@ function App() {
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route exact path="/" component={Landing} />
-          <Route exact path="/sneaker/:id" component={SneakerDetail} />
+          {/* <Route exact path="/sneaker/:id" component={SneakerDetail} /> */}
+          <Route exact path="/sneaker/:id">
+            <SneakerDetail />
+          </Route>
           <Route path="*" component={Error404} />
         </Switch>
       </div>

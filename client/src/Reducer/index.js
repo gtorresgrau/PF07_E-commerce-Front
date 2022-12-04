@@ -1,8 +1,5 @@
 import {
   GET_SNEACKERS,
-  GET_SNEAKER_DETAIL,
-  LOADING,
-  RESET_DETAIL,
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
@@ -20,22 +17,6 @@ export default function rootReducer(state = initialState, action) {
         sneackers: action.payload,
         allSneackers: action.payload
       }
-    case LOADING:
-      return {
-        ...state,
-        loading: true
-      }
-    case GET_SNEAKER_DETAIL:
-      return {
-        ...state,
-        loading: false,
-        detail: action.payload
-      }
-    case RESET_DETAIL:
-      return {
-        ...state,
-        detail: [],
-      };
     default:
       return {
         ...state

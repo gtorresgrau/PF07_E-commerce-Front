@@ -11,6 +11,7 @@ import s from './Styles/Detail.module.css';
 function SneakerDetail() {
 
   const detail = useSelector(state => state.detail);
+  console.log(detail)
   const loading = useSelector(state => state.loading);
   const dispatch = useDispatch();
   const { id } = useParams();
