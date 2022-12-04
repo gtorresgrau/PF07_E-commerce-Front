@@ -1,8 +1,16 @@
 import axios from 'axios';
-import {
-    GET_SNEACKERS,
-} from '../Actions/ActionTypes.js';
+import { GET_SNEACKERS, GET_ALL_SNEACKERS} from '../Actions/ActionTypes.js';
 
+
+export function getAllSneackers() {
+    return async function(dispatch){
+      let sneackers = await axios.get("http://localhost:3001/sneakers");
+      dispatch({
+          type: GET_ALL_SNEACKERS,
+          payload: sneackers.data
+      })
+    }
+  }
 
 export function getSneakerByName(name){
     return async function(dispatch){
