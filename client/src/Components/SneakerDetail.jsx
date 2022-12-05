@@ -60,4 +60,4 @@ function SneakerDetail() {
   )
 }
 
-export default SneakerDetail;
+export default SneakerDetail
