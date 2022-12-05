@@ -20,7 +20,7 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
     console.log('valor:', e.target.value)
   };
 
-  console.log(setCurrentPage);
+ // console.log(setCurrentPage);
   const handleSubmit = (e) => {
     e.preventDefault();
     const sneakersFilter = sneakers.filter(e => e.title.toLowerCase().includes(input.toLowerCase())) //---> []
