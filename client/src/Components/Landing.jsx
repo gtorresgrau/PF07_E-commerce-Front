@@ -12,7 +12,7 @@ export default function Landing() {
                     <p>Henry's Sneakers is your new favorite ecommerce to do your shopping</p>
                 </div>
                 <div className={S.btn}>
-                    <Link to='/sneackers'>
+                    <Link to='/sneakers'>
                         <label htmlFor="home"><button className={S.start} ><h3>HENRY´S SNEAKERS</h3></button></label>
                     </Link>
                 </div>
