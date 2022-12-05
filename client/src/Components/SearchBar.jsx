@@ -12,7 +12,7 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
   const history = useHistory()
   const dispatch = useDispatch();
   const [input, setInput] = useState("")
-  const sneakers = useSelector(state => state.sneakers);
+  const sneakers = useSelector(state => state.allSneakers);
 
   const handlerOnchange = (e) => {
     //console.log('event:',e)
