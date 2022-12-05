@@ -7,6 +7,7 @@ import Navbar from './NavBar.jsx';
 import Paginado from './paginado.jsx'
 import { getAllSneackers, filterByBrand, sortPrice, sortAz } from '../Actions/Actions';
 import S from './Styles/Home.module.css'
+import Footer from './Footer.jsx';
 
 
 
@@ -108,7 +109,7 @@ export default function Home() {
                 }
             </div>
             <footer>
-                <div className={S.footer}><h1>Aca va un footer</h1></div>
+                <div className={S.footer}><Footer /></div>
             </footer>
         </div>
     )
