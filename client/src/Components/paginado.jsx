@@ -7,7 +7,7 @@ export default function Paginado({ sneakersPerPage, allSneakers, currentPage, se
 //console.log('paginado:','sneakersPerPage:',sneakersPerPage,'allSneakers:',allSneakers,'currentPage:',currentPage,'setCurrentPage:',setCurrentPage)
 
   const [pages, setPages] = useState([]);
-
+  
   function handleNext() {
     if (currentPage <= pages.length - 1) setCurrentPage(currentPage + 1)
   };
