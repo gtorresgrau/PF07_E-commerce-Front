@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { 
+import {
   GET_SNEAKERS,
   GET_ALL_SNEAKERS,
   LOADING, RESET_DETAIL,
   GET_SNEAKER_DETAIL,
   GET_BRAND,
-  GET_STOCK,
+  GET_PRICE,
   GET_AZ
 } from '../Actions/ActionTypes.js';
 
@@ -26,7 +26,7 @@ export function getAllSneackers() {
 }
 
 export function getSneakerByName(title) {
-  console.log('action--> name:',title)
+  console.log('action--> name:', title)
   return async function (dispatch) {
     try {
       const URL = `http://localhost:3001/sneakers?title=`
@@ -71,38 +71,38 @@ export function resetDetail() {
 
 //-------------------------------------------------------
 
-export function filterByBrand(payload){
-  return async function(dispatch){
-      if(payload === 'Brands') { var urlBack = `http://localhost:3001/brand`}
-      else{ urlBack = `http://localhost:3001/sneakers/brand/${payload}`}
-      try{                
-          let getBrand = await axios(urlBack);
-              return dispatch({
-                  type: GET_BRAND,
-                  payload: getBrand.data
-              })
-          
-          }
-          catch(e){
-              window.location.href = "http://localhost:3000/sneakers/";
-              console.log(`Something happened when filtering by brand: ${payload}`)
-              alert(`Something happened when filtering by brand: ${payload}`)
-          }
+export function filterByBrand(payload) {
+  return async function (dispatch) {
+    if (payload === 'Brands') { var urlBack = `http://localhost:3001/brand` }
+    else { urlBack = `http://localhost:3001/sneakers/brand/${payload}` }
+    try {
+      let getBrand = await axios(urlBack);
+      return dispatch({
+        type: GET_BRAND,
+        payload: getBrand.data
+      })
+
+    }
+    catch (e) {
+      window.location.href = "http://localhost:3000/sneakers/";
+      console.log(`Something happened when filtering by brand: ${payload}`)
+      alert(`Something happened when filtering by brand: ${payload}`)
+    }
   }
 };
 
 //-----------------------------------------------------------------------------------------------
 
-export function sortAz(payload){
-  return{
-      type: GET_AZ,
-      payload
+export function sortAz(payload) {
+  return {
+    type: GET_AZ,
+    payload
   }
 };
 
-export function sortStock(payload){
-  return{
-      type: GET_STOCK,
-      payload
+export function sortPrice(payload) {
+  return {
+    type: GET_PRICE,
+    payload
   }
 };

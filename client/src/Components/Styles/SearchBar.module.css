@@ -1,8 +1,9 @@
-.input_search{
+.input_search {
     border: none;
 }
 
 
-.btn_search{
+.btn_search {
     border: none;
+    cursor: pointer;
 }
