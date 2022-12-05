@@ -1,31 +1,31 @@
 import {
-  GET_SNEACKERS,
-  GET_ALL_SNEACKERS,
+  GET_SNEAKERS,
+  GET_ALL_SNEAKERS,
   GET_SNEAKER_DETAIL,
   LOADING,
   RESET_DETAIL,
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
-  sneackers: [],
-  allSneackers: [],
+  sneakers: [],
+  allSneakers: [],
   detail: [],
   loading: false,
 }
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_ALL_SNEACKERS:
+    case GET_ALL_SNEAKERS:
       return {
         ...state,
-        sneackers: action.payload,
-        allSneackers: action.payload
+        sneakers: action.payload,
+        allSneakers: action.payload
       }
-    case GET_SNEACKERS:
+    case GET_SNEAKERS:
       return {
         ...state,
-        sneackers: action.payload,
-        allSneackers: action.payload
+        sneakers: action.payload,
+        allSneakers: action.payload
       }
     case LOADING:
       return {

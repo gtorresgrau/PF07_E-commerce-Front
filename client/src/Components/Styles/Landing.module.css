@@ -8,7 +8,7 @@
     background-color: #ffffffbb;
     background-size: 75px 75px;
     background-repeat:space;
-    background-image: linear-gradient(#ffffffbb,#ffffffbb), url('../img/sneakers_vector.webp');
+    background-image: linear-gradient(#ffffffbb,#ffffffbb), url('../../Images/sneakers_vector.webp');
     height: 100vh;
 }
 

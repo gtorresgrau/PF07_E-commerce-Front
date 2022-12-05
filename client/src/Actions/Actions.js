@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { GET_SNEACKERS, GET_ALL_SNEACKERS, LOADING, RESET_DETAIL, GET_SNEAKER_DETAIL } from '../Actions/ActionTypes.js';
+import { 
+  GET_SNEAKERS,
+  GET_ALL_SNEAKERS,
+  LOADING, RESET_DETAIL,
+  GET_SNEAKER_DETAIL
+} from '../Actions/ActionTypes.js';
 
 export const loading = () => {
   return {
@@ -9,10 +14,10 @@ export const loading = () => {
 
 export function getAllSneackers() {
   return async function (dispatch) {
-    let sneackers = await axios.get("http://localhost:3001/sneakers");
+    let sneakers = await axios.get("http://localhost:3001/sneakers");
     dispatch({
-      type: GET_ALL_SNEACKERS,
-      payload: sneackers.data
+      type: GET_ALL_SNEAKERS,
+      payload: sneakers.data
     })
   }
 }
@@ -21,11 +26,11 @@ export function getSneakerByName(name) {
   return async function (dispatch) {
     try {
       const URL = 'http://localhost:3001/sneakers'
-      let getSneacker = await axios(`${URL}${name}`);
-      console.log('action:', getSneacker)
+      let getSneaker = await axios(`${URL}${name}`);
+      console.log('action:', getSneaker)
       return dispatch({
-        type: GET_SNEACKERS,
-        payload: getSneacker.data
+        type: GET_SNEAKERS,
+        payload: getSneaker.data
       })
     }
     catch (e) {
@@ -47,7 +52,7 @@ export function getSneakerDetail(id) {
       })
     }
     catch (e) {
-      window.location.href = "http://localhost:3000/countries/";
+      window.location.href = "http://localhost:3000/sneaker/";
       console.log(`Something happened when filtering by id: ${id}`)
       alert(`Something happened when filtering by id: ${id}`)
     }
