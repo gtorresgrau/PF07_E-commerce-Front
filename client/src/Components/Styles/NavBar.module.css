@@ -1,69 +1,75 @@
-.headerContainer{
+.headerContainer {
     padding: 1rem;
     margin: 1rem;
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
-    justify-content:space-around;
+
+    justify-content: space-around;
     align-items: center;
     gap: 5px;
     position: sticky;
-    top:0;
-    
+    top: 0;
+
     backdrop-filter: blur(5px);
-    background:linear-gradient(rgba(0, 0, 0, 0.678) 20%, rgba(0, 0, 0, 0.062) 70%);
+    background: linear-gradient(rgba(0, 0, 0, 0.678) 20%, rgba(0, 0, 0, 0.062) 70%);
 }
 
-.headerLogo{
+.headerLogo {
     font-size: 1.5rem;
     color: #ffffff;
     text-transform: uppercase;
     padding: 0.5rem;
-    width:fit-content;
-    align-items:center;
+    width: fit-content;
+    align-items: center;
     font-weight: bold;
     border-radius: 20px;
     max-width: 300px;
-};
+}
 
-.divCart>img{
+;
+
+.divCart>img {
     width: 20px;
     height: 20px;
 }
-.cart{
+
+.cart {
     width: 20px;
     height: 20px;
-} 
+}
 
+.links {
+    text-decoration: none;
+}
 
-.btn{
+.btn {
     border: none;
-    background-color:#00000099;
+    background-color: #00000099;
     border-radius: 25px;
     padding: 5px 10px;
     color: #ffffff;
-    text-shadow: 5px 5px 5px #000000; 
+    text-shadow: 5px 5px 5px #000000;
     cursor: pointer;
 }
 
-.singInButton{
+.singInButton {
     border: none;
-    background-color:#fcf81b99;
+    background-color: #fcf81b99;
     border-radius: 25px;
     padding: 5px 10px;
     color: #000000;
-    text-shadow: 5px 5px 5px #fcf81b; 
+    text-shadow: 5px 5px 5px #fcf81b;
     cursor: pointer;
 }
 
-.joinNowButton{
+.joinNowButton {
     border: none;
-    background-color:#fcf81b99;
+    background-color: #fcf81b99;
     border-radius: 25px;
     padding: 5px;
     color: #000000;
-    text-shadow: 5px 5px 5px #fcf81b; 
+    text-shadow: 5px 5px 5px #fcf81b;
     cursor: pointer;
 }
