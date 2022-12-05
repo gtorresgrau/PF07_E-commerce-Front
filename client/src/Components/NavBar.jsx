@@ -1,15 +1,15 @@
 import React  from 'react';
-//import { useEffect , useState} from 'react';
+import { useEffect , useState} from 'react';
 import { Link } from 'react-router-dom';
 //import SearchBar from './SearchBar';
 import icon from '../Images/cart.png'
 import S from './Styles/NavBar.module.css'
 
-export default function Navbar({setCurrentPage}) {
+export default function Navbar({setCurrentPage, currentPage}) {
 
     //const [woman, setWoman] = useState('')
     //const [men, setMen] = useState('')
-
+    
     return (
         <header className={S.headerContainer}>
             <div className={S.headerLogo}><p>Henry Sneakers</p></div>
@@ -25,7 +25,12 @@ export default function Navbar({setCurrentPage}) {
                 <option value='running'>Running</option>
                 <option value='training'>Training</option>
             </select> 
-           {/* <SearchBar setCurrentPage={setCurrentPage} />*/}
+
+            <div className={S.SearchBar}>
+                <SearchBar currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}/>
+            </div>
+
             <div className="">
                 <Link to='/blog'><button className={S.btn} >Blog</button></Link>
             </div>
