@@ -3,10 +3,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Karla', sans-serif;
-  background-image: linear-gradient(#ffffffbb,#ffffffbb), url('./Components/img/sneakers_vector.webp');
   background-color: #ffffffbb;
-  background-size: 75px 75px;
-  background-repeat: space;
+
   
  
 }
