@@ -22,13 +22,12 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         sneakers: action.payload,
-        allSneakers: action.payload
+        allSneakers: action.payload,
       }
     case GET_SNEAKERS:
       return {
         ...state,
         sneakers: action.payload,
-        allSneakers: action.payload
       }
     case LOADING:
       return {
