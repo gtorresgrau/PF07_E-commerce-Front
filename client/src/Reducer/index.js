@@ -4,6 +4,9 @@ import {
   GET_SNEAKER_DETAIL,
   LOADING,
   RESET_DETAIL,
+  GET_BRAND,
+  GET_STOCK,
+  GET_AZ
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
@@ -38,6 +41,39 @@ export default function rootReducer(state = initialState, action) {
         loading: false,
         detail: action.payload
       }
+    case GET_AZ:
+            let sort = action.payload === 'az'
+            ?state.sneakers.sort((a,b) => {
+                if(a.title>b.title)return 1;
+                if(a.title<b.title)return -1;
+                return 0})
+           :state.sneakers.sort((a,b)=>{
+                    if(a.title>b.title)return -1;
+                    if(a.title<b.title)return 1;
+                    return 0;})
+            return{
+                ...state,
+                sneakers: sort
+            }
+    case GET_STOCK:
+        let sortStock = action.payload === '+a-'
+        ?state.sneakers.sort((a,b) => {
+            if(a.stock>b.stock)return -1;
+            if(a.stock<b.stock)return 1;
+            return 0})
+       :state.sneakers.sort((a,b)=>{
+            if(a.stock>b.stock)return 1;
+            if(a.stock<b.stock)return -1;
+            return 0})
+        return{
+            ...state,
+            sneakers: sortStock
+        }
+    case GET_BRAND:
+            return{
+                ...state,
+                sneakers: action.payload,
+            }
     case RESET_DETAIL:
       return {
         ...state,

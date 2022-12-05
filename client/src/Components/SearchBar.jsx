@@ -1,24 +1,26 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getSneakerByName } from '../Actions/index.js'
+import { getSneakerByName } from '../Actions/Actions.js'
 import S from './Styles/SearchBar.module.css'
 
 //setCurrenPage es para setear la pagina en 1 cuando haga la busqueda.
-export default function SearchBar({ setCurrenPage }) {
+export default function SearchBar({ setCurrentPage }) {
+//console.log('searchbar -->','setCurrentPage:',setCurrentPage)
 
   const dispatch = useDispatch();
   const [input, setInput] = useState("")
 
   const handlerOnchange = (e) => {
-    console.log(e)
+    //console.log('event:',e)
     setInput(e.target.value)
+    console.log('valor:',e.target.value)
   };
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCurrenPage(1);
+    setCurrentPage(1);
     dispatch(getSneakerByName(input))
     setInput('')
   }
