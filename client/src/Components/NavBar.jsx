@@ -1,5 +1,5 @@
 import React  from 'react';
-import { useEffect , useState} from 'react';
+
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import icon from '../Images/cart.png'
