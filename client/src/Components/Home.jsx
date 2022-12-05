@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Navbar from './NavBar.jsx';
-import Paginado from './Paginado.jsx';
+import Paginado from './paginado.jsx';
 import { getAllSneackers, filterByBrand, sortPrice, sortAz } from '../Actions/Actions';
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';

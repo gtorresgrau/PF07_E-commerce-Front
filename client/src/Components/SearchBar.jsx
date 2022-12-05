@@ -20,7 +20,7 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
     console.log('valor:', e.target.value)
   };
 
-  console.log(setCurrentPage);
+  //console.log(setCurrentPage);
   const handleSubmit = (e) => {
     e.preventDefault();
     const sneakersFilter = sneakers.filter(e => e.title.toLowerCase().includes(input.toLowerCase())) //---> []
@@ -39,7 +39,7 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input className={S.input_search} name='input' onChange={handlerOnchange} type='text' placeholder="Sneaker...." value={input} autoComplete='off' />
+        <input className={S.input_search} name='input' onChange={handlerOnchange} type='text' placeholder="Sneaker...." value={input} />
         <button className={S.btn_search} type="submit">SEARCH</button>
       </form>
     </div>
