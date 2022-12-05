@@ -1,8 +1,5 @@
 export const GET_SNEACKERS = 'GET_SNEACKERS';
-<<<<<<< HEAD
 export const GET_SNEAKER_DETAIL = 'GET_SNEAKER_DETAIL';
 export const LOADING = 'LOADING';
 export const RESET_DETAIL = 'RESET_DETAIL';
-=======
 export const GET_ALL_SNEACKERS = 'GET_ALL_SNEACKERS';
->>>>>>> f7d9e25311035dc4ae3c301ca7460541f2b82b45

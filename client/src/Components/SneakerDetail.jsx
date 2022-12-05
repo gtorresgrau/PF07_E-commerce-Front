@@ -3,15 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
 import { getSneakerDetail, resetDetail } from '../Actions/Actions';
 import Loading from './Loading';
-import Error404 from './Error404';
 import s from './Styles/Detail.module.css';
 
 
 
 function SneakerDetail() {
 
-  const detail = useSelector(state => state.detail);
-  console.log(detail)
+  const sneaker = useSelector(state => state.detail);
   const loading = useSelector(state => state.loading);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -25,35 +23,39 @@ function SneakerDetail() {
 
   return (
     <div>
-      {loading ? <Loading /> : detail.length ? detail.map(sneaker => {
-        return (
-          <div className={s.containerG}>
-            <div className={s.container1}>
-              <Link to="/home"><button className={s.btn}>← BACK</button></Link>
+      {loading ? <Loading /> :
+        <div className={s.containerG}>
+          <div className={s.container1}>
+            <Link to="/home"><button className={s.btn}>← BACK</button></Link>
+            <br />
+            <div className={s.principal}>
+              <h2 className={s.principal}>{sneaker.brand}</h2>
+              <h2 className={s.principal}>{sneaker.title}</h2>
+              <img className={s.img} src={sneaker.image} alt="img not found" witdh="200px" height="200px" />
               <br />
-              <div className={s.detail}>
-                <h2 className={s.principal}>{sneaker.title}</h2>
-                <h2 className={s.principal}>{sneaker.brand}</h2>
-                <h4>Model: <span className={s.principal}>{sneaker.model}</span></h4>
-                <img className={s.img} src={sneaker.image} alt="img not found" witdh="300px" height="200px" />
-                <br />
-                <h3>$ <span>{sneaker.price}</span></h3>
-                <span>{sneaker.description}</span>
-                <h3>Size: <span>{sneaker.size}</span></h3>
-                <h3>Stock: <span>{sneaker.stock}</span></h3>
-                <h3>Colour: <span>{sneaker.colour}</span></h3>
-              </div>
-            </div>
-            <div className={s.container2}>
-              <h4 className={s.reviews}><h3 className={s.textReviews}>Reviews: </h3>{sneaker.reviews.length ? sneaker.reviews.map(review => {
-                return (
-                  <span>{review}</span>
-                )
-              }) : <span>Has no reviews</span>}</h4>
+              <h3>$ <span>{sneaker.price}</span></h3>
+              <h3>Size: <span>{sneaker.size}</span></h3>
+              <h3>Stock: <span>{sneaker.stock}</span></h3>
+              <h3>Colour: <span>{sneaker.colour}</span></h3>
+              <h3>Genre: <span>{sneaker.genre}</span></h3>
+              <span>{sneaker.description}</span>
             </div>
           </div>
-        )
-      }) : <Error404 />}
+          {/*    <div className={s.container2}>
+              <h4 className={s.activities}><h3 className={s.textAct}>Tourist activities: </h3>{sneaker.activities.length ? sneaker.activities.map(e => {
+                return (
+                  <ul className={s.ull}>
+                    <li>Name: <span>{e.nombre}</span></li>
+                    <li>Difficulty: <span>{e.dificultad}/5</span></li>
+                    <li>Duration: <span>{e.duracion}hs.</span></li>
+                    <li>Season: <span>{e.temporada}</span></li>
+                  </ul>
+                )
+              }) : <span>Has no activities</span>}</h4>
+            </div> */}
+        </div>
+
+      }
     </div>
   )
 }
