@@ -1,0 +1,6 @@
+.container{
+    font-family: 'Karla', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

@@ -3,7 +3,10 @@ import {
   GET_SNEAKERS,
   GET_ALL_SNEAKERS,
   LOADING, RESET_DETAIL,
-  GET_SNEAKER_DETAIL
+  GET_SNEAKER_DETAIL,
+  GET_BRAND,
+  GET_STOCK,
+  GET_AZ
 } from '../Actions/ActionTypes.js';
 
 export const loading = () => {
@@ -22,12 +25,13 @@ export function getAllSneackers() {
   }
 }
 
-export function getSneakerByName(name) {
+export function getSneakerByName(title) {
+  console.log('action--> name:',title)
   return async function (dispatch) {
     try {
-      const URL = 'http://localhost:3001/sneakers'
-      let getSneaker = await axios(`${URL}${name}`);
-      console.log('action:', getSneaker)
+      const URL = `http://localhost:3001/sneakers?title=`
+      let getSneaker = await axios(`${URL}${title}`);
+      console.log('action:', getSneaker.data)
       return dispatch({
         type: GET_SNEAKERS,
         payload: getSneaker.data
@@ -35,8 +39,8 @@ export function getSneakerByName(name) {
     }
     catch (e) {
       window.location.href = "http://localhost:3001/sneakers";
-      console.log(`There are no Sneackers with the combination of Characters entered: ${name}`)
-      alert(`There are no Sneackers with the combination of Characters entered: ${name}`)
+      console.log(`There are no Sneackers with the combination of Characters entered: ${title}`)
+      alert(`There are no Sneackers with the combination of Characters entered: ${title}`)
     }
   }
 };
@@ -63,4 +67,42 @@ export function resetDetail() {
   return {
     type: RESET_DETAIL,
   };
+};
+
+//-------------------------------------------------------
+
+export function filterByBrand(payload){
+  return async function(dispatch){
+      if(payload === 'Brands') { var urlBack = `http://localhost:3001/brand`}
+      else{ urlBack = `http://localhost:3001/sneakers/brand/${payload}`}
+      try{                
+          let getBrand = await axios(urlBack);
+              return dispatch({
+                  type: GET_BRAND,
+                  payload: getBrand.data
+              })
+          
+          }
+          catch(e){
+              window.location.href = "http://localhost:3000/sneakers/";
+              console.log(`Something happened when filtering by brand: ${payload}`)
+              alert(`Something happened when filtering by brand: ${payload}`)
+          }
+  }
+};
+
+//-----------------------------------------------------------------------------------------------
+
+export function sortAz(payload){
+  return{
+      type: GET_AZ,
+      payload
+  }
+};
+
+export function sortStock(payload){
+  return{
+      type: GET_STOCK,
+      payload
+  }
 };
