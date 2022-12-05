@@ -1,0 +1,28 @@
+.headerContainer{
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    justify-content: flex-start;
+    backdrop-filter: blur(5px);
+    background:linear-gradient(rgba(0, 0, 0, 0.678) 20%, rgba(0, 0, 0, 0.062) 70%);
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    position: sticky;
+    top:0;
+    z-index: 1;
+}
+
+.headerLogo{
+    display: flex;
+    font-size: 2rem;
+    color: rgb(247, 245, 241);
+    text-transform: uppercase;
+    padding: 1.5rem;
+    width:40 %;
+    align-items:center;
+    font-weight: bold;
+border-radius: 20px;
+max-width: 500px;
+}

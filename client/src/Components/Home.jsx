@@ -1,17 +1,21 @@
 import React, { Fragment, useState } from 'react'
-import Navbar from './NavBar'
+import NavBar from './NavBar'
 
 
-const [filterO, setFilterO] = useState('')
-const[currentPage,setCurrentPage] =useState(1)  
 
-  function Home() {
+
+ export default function Home() {
+
+
+const[currenPage,setCurrenPage] =useState(1)  
+
+
     return (
         <div>
-         <Navbar
-         setCurrentPage={setCurrentPage}
-         />
-        <div>Home</div>
+          <NavBar
+          setCurrenPage={setCurrenPage}
+          />
+         <div>Home</div>
 
         </div>
         

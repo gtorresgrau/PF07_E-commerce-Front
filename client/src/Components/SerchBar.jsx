@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getSneakerByName } from '../Actions/index.js'
+import { getSneakerByName } from '../Actions/Actions'
 import S from './Styles/SearchBar.module.css'
 
 //setCurrenPage es para setear la pagina en 1 cuando haga la busqueda.
