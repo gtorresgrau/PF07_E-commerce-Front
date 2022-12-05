@@ -1,7 +1,7 @@
 import React  from 'react';
 //import { useEffect , useState} from 'react';
 import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar';
+//import SearchBar from './SearchBar';
 import icon from '../Images/cart.png'
 import S from './Styles/NavBar.module.css'
 
@@ -25,9 +25,7 @@ export default function Navbar({setCurrentPage}) {
                 <option value='running'>Running</option>
                 <option value='training'>Training</option>
             </select> 
-            <div className={S.SearchBar}>
-                <SearchBar setCurrentPage={setCurrentPage} />
-            </div>
+           {/* <SearchBar setCurrentPage={setCurrentPage} />*/}
             <div className="">
                 <Link to='/blog'><button className={S.btn} >Blog</button></Link>
             </div>
