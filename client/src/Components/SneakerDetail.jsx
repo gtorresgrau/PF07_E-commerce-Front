@@ -7,7 +7,7 @@ import s from './Styles/Detail.module.css';
 
 
 
-function SneakerDetail() {
+export default function SneakerDetail() {
 
   const sneaker = useSelector(state => state.detail);
   const loading = useSelector(state => state.loading);
@@ -26,7 +26,7 @@ function SneakerDetail() {
       {loading ? <Loading /> :
         <div className={s.containerG}>
           <div className={s.container1}>
-            <Link to="/home"><button className={s.btn}>← BACK</button></Link>
+            <Link to="/sneakers"><button className={s.btn}>← BACK</button></Link>
             <br />
             <div className={s.principal}>
               <h2 className={s.principal}>{sneaker.brand}</h2>
@@ -58,6 +58,4 @@ function SneakerDetail() {
       }
     </div>
   )
-}
-
-export default SneakerDetail
+};
