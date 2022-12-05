@@ -54,7 +54,8 @@ export default function Home() {
             <div className={S.header}>
 
                 <div className={S.navigate}>
-                   <Navbar setCurrenPage={setCurrentPage}/>
+                   <Navbar currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}/>
                 </div>
 
                 {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}

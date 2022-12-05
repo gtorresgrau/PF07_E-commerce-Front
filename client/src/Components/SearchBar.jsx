@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import S from './Styles/SearchBar.module.css';
 
 //setCurrenPage es para setear la pagina en 1 cuando haga la busqueda.
-export default function SearchBar({ setCurrentPage }) {
+export default function SearchBar({ currentPage, setCurrentPage }) {
   //console.log('searchbar -->','setCurrentPage:',setCurrentPage)
 
   const history = useHistory()
@@ -20,7 +20,7 @@ export default function SearchBar({ setCurrentPage }) {
     console.log('valor:', e.target.value)
   };
 
-
+  console.log(setCurrentPage);
   const handleSubmit = (e) => {
     e.preventDefault();
     const sneakersFilter = sneakers.filter(e => e.title.toLowerCase().includes(input.toLowerCase())) //---> []
