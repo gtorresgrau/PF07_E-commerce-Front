@@ -4,10 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Navbar from './NavBar.jsx';
-import Paginado from './paginado.jsx';
-import SearchBar from './SearchBar.jsx';
+import Paginado from './paginado.jsx'
 import { getAllSneackers, filterByBrand, sortPrice, sortAz } from '../Actions/Actions';
-import S from './Styles/Home.module.css';
+import S from './Styles/Home.module.css'
 import Footer from './Footer.jsx';
 
 
@@ -55,9 +54,6 @@ export default function Home() {
             <div className={S.header}>
                 <div className={S.navigate}>
                    <Navbar setCurrenPage={setCurrentPage}/>
-                </div>
-                <div>
-                     <SearchBar setCurrentPage={setCurrentPage}/>
                 </div>
             <div className="carrousel"><h1>Aca va el carrousel</h1></div>
                 <Paginado
