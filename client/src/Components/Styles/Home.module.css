@@ -5,6 +5,17 @@
     justify-content: space-around;
 }
 
+.navigate{
+    width: 100%;
+}
+
+.home{
+    font-family: 'Karla', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .link {
     text-decoration: none;
 }
