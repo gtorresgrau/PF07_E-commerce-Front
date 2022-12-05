@@ -91,7 +91,7 @@ export default function Home() {
                             <select onChange={e => handlerFilterBrand(e)} defaultValue='Brands' id='filterbrands'>
                                 <option value='Brands' >All Brands</option>
                                 <option value='Puma'>Puma</option>
-                                <option value='Adiddas'>Adiddas</option>
+                                <option value='Adidas'>Adidas</option>
                                 <option value='Nike'>Nike</option>
                                 <option value='Reebook'>Reebook</option>
                                 <option value='John Foos'>John Foos</option>

@@ -29,7 +29,7 @@ export function getSneakerByName(title) {
   console.log('action--> name:', title)
   return async function (dispatch) {
     try {
-      const URL = `http://localhost:3001/sneakers?title=`
+      const URL = `http://localhost:3001/sneakerName?title=`
       let getSneaker = await axios(`${URL}${title}`);
       console.log('action:', getSneaker.data)
       return dispatch({
@@ -73,8 +73,8 @@ export function resetDetail() {
 
 export function filterByBrand(payload) {
   return async function (dispatch) {
-    if (payload === 'Brands') { var urlBack = `http://localhost:3001/brand` }
-    else { urlBack = `http://localhost:3001/sneakers/brand/${payload}` }
+    if (payload === 'Brands') { var urlBack = `http://localhost:3001/sneakers` }
+    else { urlBack = `http://localhost:3001/brand/${payload}` }
     try {
       let getBrand = await axios(urlBack);
       return dispatch({
