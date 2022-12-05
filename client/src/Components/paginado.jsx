@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import s from './paginado.module.css';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
-function Paginado({ sneakersPerPage, allSneackers, currentPage, setCurrentPage }) {
+export default function Paginado({ sneakersPerPage, allSneakers, currentPage, setCurrentPage }) {
 
   const [pages, setPages] = useState([]);
 
@@ -17,21 +17,19 @@ function Paginado({ sneakersPerPage, allSneackers, currentPage, setCurrentPage }
 
   useEffect(() => {
     let paginas = [1];
-    for (let i = 2; i <= Math.ceil(allSneackers / sneakersPerPage) + 1; i++) {
+    for (let i = 2; i <= Math.ceil(allSneakers / sneakersPerPage) + 1; i++) {
       paginas.push(i);
     }
     setPages(paginas);
-  }, [allSneackers, sneakersPerPage]);
+  }, [allSneakers, sneakersPerPage]);
 
   return (
     <div className={s.cardContainer}>
-      <button disabled={currentPage <= 1} className={currentPage <= 1 ? s.prevMax : s.prev} onClick={handlePrev}>{AiOutlineArrowLeft}</button>
+      <button disabled={currentPage <= 1} className={currentPage <= 1 ? s.prevMax : s.prev} onClick={handlePrev}><AiOutlineArrowLeft/></button>
       {pages.map((page) => (
         <input type='submit' value={page} className={currentPage === page ? s.button2 : s.button} key={page} onClick={() => setCurrentPage(page)} />
       ))}
-      <button disabled={currentPage >= pages.length} className={currentPage >= pages.length ? s.nextMax : s.next} onClick={handleNext}>{AiOutlineArrowRight}</button>
+      <button disabled={currentPage >= pages.length} className={currentPage >= pages.length ? s.nextMax : s.next} onClick={handleNext}><AiOutlineArrowRight/></button>
     </div>
   );
-}
-
-export default Paginado;
+};
