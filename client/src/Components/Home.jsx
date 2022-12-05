@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
-import SearchBar from './SearchBar.jsx'
+import Navbar from './NavBar.jsx';
 import Paginado from './paginado.jsx'
 import { getAllSneackers, filterByBrand, sortPrice, sortAz } from '../Actions/Actions';
 import S from './Styles/Home.module.css'
@@ -16,7 +16,7 @@ export default function Home() {
     const allSneakers = useSelector((state) => state.sneakers);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [sneakersPerPage] = useState(6);
+    const [sneakersPerPage] = useState(8);
     const [, setOrden] = useState(1);
 
     let indexLastSneaker = currentPage * sneakersPerPage;
@@ -52,16 +52,9 @@ export default function Home() {
         <div className={S.container}>
             <div className={S.header}>
                 <div className={S.navigate}>
-                    <h1>Aca va la navBar con todo esto</h1>
-                    <div>
-                        <Link to='/sneakers'><button className={S.btn}>NEW SNEAKER</button></Link>
-                    </div>
-                    <div>
-                        <SearchBar setCurrentPage={setCurrentPage} />
-                    </div>
-                    <br />
+                   <Navbar setCurrenPage={setCurrentPage}/>
                 </div>
-                <div className="carrousel"><h1>Aca va el carrousel</h1></div>
+            <div className="carrousel"><h1>Aca va el carrousel</h1></div>
                 <Paginado
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
@@ -102,7 +95,7 @@ export default function Home() {
                     </div>
                 </form>
             </div>
-            <div className={S.container}>
+            <div className={S.home}>
                 {actualySneakers?.map(c => {
                     return (
                         <div key={c.id}>
