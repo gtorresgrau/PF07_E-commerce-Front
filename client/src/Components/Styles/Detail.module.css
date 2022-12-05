@@ -1,25 +1,27 @@
 .containerG {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    font-family: 'Karla', sans-serif;
+    background-color: #ffffffbb;
+    background-size: 75px 75px;
+    background-repeat:space;
+    background-image: linear-gradient(#ffffffbb,#ffffffbb), url('../../Images/sneakers_vector.webp');
+    height: 100vh;
 }
 
 .container1 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: #0b2241e3;
+    background-color: #00000099;
     border-radius: 5px;
     color: rgb(255, 255, 255);
-    box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #aa5d10;
+    box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #000000bd;
 }
 
 
 .container2 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin: 2rem;
@@ -30,76 +32,49 @@
     border-radius: 5px;
     color: rgb(255, 255, 255);
     font-size: 110%;
-    box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #aa5d10;
+    box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #000000bd;
 }
 
 
 .img {
     border-radius: 5px;
-    /* box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #aa5d10; */
-    width: 350px;
-    height: 250px;
+    width: fit-content;
     margin: 20px;
 }
 
-.principal {
-    color: rgb(255, 226, 226);
-    text-decoration: underline;
-    font-weight: 1000;
-    font-family: system-ui;
-    color: transparent;
-    background-image: linear-gradient(180deg, #ffe993, #aa5d10);
-    background-clip: text;
-    width: 100%;
-    margin-top: 0%;
-}
-
-.detail {
-    font-family: system-ui;
-    color: transparent;
-    background-image: linear-gradient(180deg, #ffe993, #f0e2d3);
-    background-clip: text;
-    width: 100%;
-    margin-top: 0%;
-    color: #000000;
-}
-
-.textReviews {
-    color: rgb(255, 226, 226);
-    text-decoration: underline;
-    font-weight: 1000;
-    font-family: system-ui;
-    color: transparent;
-    background-image: linear-gradient(180deg, #ffe993, #aa5d10);
-    background-clip: text;
-    width: 100%;
-    margin-top: 0%;
-}
-
-.reviews {
-    color: #000000;
+.principal span {
+    grid-column: 1/-1;
+    margin-top: 1rem;
+    padding: 1rem;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000bd;
 }
 
 span {
-    color: rgb(8, 8, 8);
-    text-decoration: underline;
+    color: 000000;
+    text-decoration: none;
     font-weight: 1000;
     font-family: system-ui;
     color: transparent;
-    background-image: linear-gradient(180deg, #ffe993, #aa5d10);
+    background-image: linear-gradient(180deg, #ffe993, #000000bd);
     background-clip: text;
     width: 100%;
     margin-top: 0%;
 }
 
 .btn {
-    width: 15vh;
-    height: 3rem;
+    border: none;
+    background-color:#00000099;
+    border-radius: 25px;
+    padding: 5px 10px;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000; 
     cursor: pointer;
-    border-radius: 5%;
-    background-color: #f18519d8;
+    position: sticky;
 }
 
 .btn:hover {
-    background-color: #08be3f9f;
+    color: #000000;
+    text-shadow: 5px 5px 5px #000000; 
+    background-color:#ffffff99;
 }
