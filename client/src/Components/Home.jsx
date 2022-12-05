@@ -50,68 +50,70 @@ export default function Home() {
     }
 
     return (
-        <div className={S.container}>
+        <div>
             <div className={S.header}>
+
                 <div className={S.navigate}>
-                    <Navbar currentPage={currentPage}
-                        setCurrentPage={setCurrentPage} />
+                   <Navbar currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}/>
                 </div>
-                <div className="carrousel"><h1>Aca va el carrousel</h1></div>
-                <Paginado
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    allSneakers={allSneakers}
-                    sneakersPerPage={sneakersPerPage}
-                />
+
+                {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}
+                
                 <form id='Filtros' className={S.filters}>
-                    <div className={S.sort}>
-                        <div className={S.az}>
-                            <p>Sort by Name</p>
+                    <div>
+                        <span className={S.span}>Sort by Name</span>
                             <label htmlFor='az'>
                                 <input name='sortName' id='az' value='az' type='radio' className='input-radio' onChange={e => handlerFilter(e)} />A-Z</label>
                             <label htmlFor="za">
-                                <input name='sortName' id='za' value='za' type='radio' className='input-radio' onChange={e => handlerFilter(e)} />Z-A</label>
-                        </div>
-                        <div className={S.mm}>
-                            <p>Sort by Price</p>
-                            <label htmlFor='+a-'>
-                                <input name='sortPrice' id='+a-' value='+a-' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Higher price </label>
-                            <label htmlFor='-a+'>
-                                <input name='sortPrice' id='-a+' value='-a+' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Lower price </label>
-                        </div>
+                            <input name='sortName' id='za' value='za' type='radio' className='input-radio' onChange={e=>handlerFilter(e)}/>Z-A</label>
                     </div>
-                    <div className={S.select}>
-                        <div className={S.cont}>
-                            <p>Filter by brand</p>
-                            <select onChange={e => handlerFilterBrand(e)} defaultValue='Brands' id='filterbrands'>
-                                <option value='Brands' >All Brands</option>
-                                <option value='Puma'>Puma</option>
-                                <option value='Adidas'>Adidas</option>
-                                <option value='Nike'>Nike</option>
-                                <option value='Reebook'>Reebook</option>
-                                <option value='John Foos'>John Foos</option>
-                                <option value='Converse'>Converse</option>
-                                <option value='Vans'>Vans</option>
-                            </select>
-                        </div>
+                    <div >
+                        <span className={S.span}>Sort by Stock</span>
+                        <label htmlFor='+a-'>
+                        <input name='sortStock' id='+a-' value='+a-' type='radio' className='input-radio' onChange={e=>handlerFilterStock(e)}/> Mayor Stock </label>
+                        <label htmlFor='-a+'>
+                        <input name='sortStock' id='-a+' value='-a+' type='radio' className='input-radio' onChange={e=>handlerFilterStock(e)}/> Menor Stock</label>
+                    </div>
+                    <div>
+                    <span className={S.span}>Filter by Brand</span>
+                    <select onChange={e=>handlerFilterBrand(e)} defaultValue='Brands' id='filterbrands' className={S.select}>
+                        <option value='Brands'>All Brands</option>
+                        <option value='Puma'>Puma</option>
+                        <option value='Adiddas'>Adiddas</option>
+                        <option value='Nike'>Nike</option>
+                        <option value='Reebook'>Reebook</option>
+                        <option value='John Foos'>John Foos</option>
+                        <option value='Converse'>Converse</option>
+                        <option value='Vans'>Vans</option>
+                    </select>
                     </div>
                 </form>
             </div>
-            <div className={S.home}>
-                {actualySneakers?.map(c => {
+           
+            <div className={S.container}>
+                 { actualySneakers?.map( c => {
                     return (
                         <div key={c.id}>
-                            <Link to={'/sneakers/' + c.id}>
-                                <Card image={c.image} title={c.title} price={c.price} type={c.type} key={c.id} />
+                            <Link to={'/sneakers/'+ c.id} className={S.link}>
+                                <Card image={c.image} title={c.title} price={c.price} type={c.type} key={c.id}/>
                             </Link>
                         </div>
                     )
                 })
                 }
             </div>
+
+            <Paginado 
+                currentPage={currentPage} 
+                setCurrentPage={setCurrentPage}
+                allSneakers={allSneakers}
+                sneakersPerPage={sneakersPerPage}
+            />
+{/* 
             <footer>
-                <div className={S.footer}><Footer /></div>
-            </footer>
+                <div className={S.footer}><h1>Aca va un footer</h1></div>
+             </footer> */}
         </div>
     )
 };
