@@ -3,6 +3,7 @@
     flex-flow: row wrap;
     justify-content: center;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .button {

@@ -14,7 +14,7 @@
     /* backdrop-filter: blur(5px); */
     /* background: linear-gradient(rgba(0, 0, 0, 0.678) 20%, rgba(0, 0, 0, 0.062) 70%); */
     background: #242423;
-    width: 82rem;
+    width: 100%;
     z-index: 9999;
 }
 
@@ -49,6 +49,7 @@
 }
 
 .singInButton {
+    margin: 0.5rem;
     border: none;
     background-color: #fcf81b99;
     padding: 9px 17px;
@@ -57,6 +58,7 @@
 }
 
 .joinNowButton {
+    margin: 0.5rem;
     border: none;
     background-color: #fcf81b99;
     padding: 9px;

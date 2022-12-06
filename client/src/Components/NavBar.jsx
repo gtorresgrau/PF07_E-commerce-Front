@@ -2,7 +2,6 @@ import React from 'react';
 //import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import icon from '../Images/cart.png'
 import S from './Styles/NavBar.module.css'
 import { useDispatch } from 'react-redux';
 import { getAllSneackers } from '../Actions/Actions';
@@ -50,7 +49,11 @@ export default function Navbar({ setCurrentPage, currentPage }) {
 
     return (
         <header className={S.headerContainer}>
-            <Link to='/sneakers' onClick={e => handleAllSneakers(e)} className={S.links} ><div className={S.headerLogo}><img src={logo} width="250rem"/></div></Link>
+            <Link to='/sneakers' onClick={e => handleAllSneakers(e)} className={S.links} >
+                <div className={S.headerLogo}>
+                    <img src={logo} width="250rem" alt='Hsneaker'/>
+                </div>
+            </Link>
             <select name="" id="" defaultValue='Women' className={S.select} onChange={handlerFilterWomen()}>
                 <option value='Women'> Women</option>
                 <option value='sport'>Sport</option>
