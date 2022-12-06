@@ -24,7 +24,7 @@ export default function Home() {
     let indexFirstSneaker = indexLastSneaker - sneakersPerPage
 
     const actualySneakers = allSneakers.slice(indexFirstSneaker, indexLastSneaker);
-    //console.log('actualySneakers:',actualySneakers)
+    //console.log('actualySneakers:',actualySneakers);
 
 
     useEffect(() => {
