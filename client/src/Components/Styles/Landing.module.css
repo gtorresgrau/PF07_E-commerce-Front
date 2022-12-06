@@ -1,0 +1,86 @@
+.landing{
+    font-family: 'Karla', sans-serif;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: #ffffffbb;
+    background-size: 75px 75px;
+    background-repeat:space;
+    background-image: linear-gradient(#ffffffbb,#ffffffbb), url('../../Images/sneakers_vector.webp');
+    height: 100vh;
+}
+
+.welcome{
+    grid-column: 1/-1;
+    background-color: #00000099;
+    margin-top: 1rem;
+    padding: 1rem;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000;
+}
+.welcome > p{
+    color: #ffffff;
+    font-size: 1.25rem;
+}
+
+.btn{
+    font-family: 'Karla', sans-serif;
+    grid-column: 1/-1;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.start{
+    border: none;
+    background-color:#00000099;
+    border-radius: 25px;
+    padding: 5px;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000; 
+    cursor: pointer;
+}
+
+.us{
+    font-family: 'Karla', sans-serif;
+    grid-column: 1/-1;
+    color: #ffffff;
+    text-shadow: 0px 0px 10px #000000;   
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.team{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    justify-content: center;
+}
+
+.team > a{
+    font-family: 'Karla', sans-serif;
+    text-decoration: none;
+}
+
+.nos{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000000;
+    border-radius: 25% 25% 5% 5%;
+    list-style: none;
+    margin: 1rem;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background-color: #00000099;
+    width: 150px;
+}
+.nos > img{
+    width: 100px;
+    height: 100px;
+}

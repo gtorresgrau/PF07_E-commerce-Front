@@ -1,0 +1,39 @@
+.containerG {
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerimg {
+    width: 80%;
+}
+
+.containertext {
+    width: 50%;
+    padding-top: 5rem;
+    padding-right: 7rem;
+}
+
+.img {
+    height: 100vh;
+
+}
+
+.title {
+    text-align: left;
+}
+
+.btn {
+    border: none;
+    background-color: #00000099;
+    border-radius: 25px;
+    padding: 5px 10px;
+    color: #ffffff;
+    cursor: pointer;
+    position: sticky;
+}
+
+.btn:hover {
+    color: #000000;
+    text-shadow: 5px 5px 5px #000000;
+    background-color: #ffffff99;
+}

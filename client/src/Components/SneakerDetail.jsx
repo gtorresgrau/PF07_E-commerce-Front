@@ -1,0 +1,51 @@
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useParams } from 'react-router-dom';
+import { getSneakerDetail, resetDetail } from '../Actions/Actions';
+import Loading from './Loading';
+import s from './Styles/Detail.module.css';
+
+
+
+export default function SneakerDetail() {
+
+  const sneaker = useSelector(state => state.detail);
+  const loading = useSelector(state => state.loading);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getSneakerDetail(id));
+    return function cleanup() {
+      dispatch(resetDetail());
+    };
+  }, [dispatch, id])
+
+  return (
+    <div>
+      {loading ? <Loading /> :
+        <div className={s.containerG}>
+          <div className={s.containerimg}>
+            <img className={s.img} src={sneaker.image} alt="img not found" />
+          </div>
+
+          <div className={s.containertext}>
+            <div className={s.title}>
+              <h1>{sneaker.title}</h1>
+              <h2>{sneaker.brand}</h2>
+              <h2>${sneaker.price}</h2>
+              {/* <h3>Size: <span>{sneaker.size}</span></h3>
+              <h3>Stock: <span>{sneaker.stock}</span></h3>
+              <h3>Colour: <span>{sneaker.colour}</span></h3>
+              <h3>Genre: <span>{sneaker.genre}</span></h3> */}
+              <p>{sneaker.description}</p>
+              <Link to="/sneakers"><button className={s.btn}>← BACK</button></Link>
+            </div>
+          </div>
+
+        </div>
+
+      }
+    </div>
+  )
+};
