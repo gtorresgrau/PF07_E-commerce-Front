@@ -2,7 +2,8 @@
     font-family: 'Karla', sans-serif;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 50px;
 }
 
 .navigate {

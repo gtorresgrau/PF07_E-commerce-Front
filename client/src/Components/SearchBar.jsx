@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSneakerByName } from '../Actions/Actions.js';
 import { useHistory } from 'react-router-dom';
+import { getSneakerByName } from '../Actions/Actions.js';
 import S from './Styles/SearchBar.module.css';
 
 //setCurrenPage es para setear la pagina en 1 cuando haga la busqueda.
@@ -26,7 +26,8 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
     const sneakersFilter = sneakers.filter(e => e.title.toLowerCase().includes(input.toLowerCase())) //---> []
     if (!input) alert("You must enter a name");
     if (!sneakersFilter.length) {
-      history.push("/Error404")
+      alert(`There are no Sneackers with the combination of Characters entered: ${input}`)
+      history.push("/sneakers")
       //alert("There are no countries with the entered text")
       setInput('')
     } else {

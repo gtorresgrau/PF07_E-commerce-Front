@@ -1,65 +1,25 @@
 .containerG {
-    font-family: 'Karla', sans-serif;
-    background-color: #ffffffbb;
-    background-size: 75px 75px;
-    background-repeat: space;
-    background-image: linear-gradient(#ffffffbb, #ffffffbb), url('../../Images/sneakers_vector.webp');
-    height: 100vh;
-}
-
-.container1 {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: #00000099;
-    border-radius: 5px;
-    color: rgb(255, 255, 255);
-    box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #000000bd;
+    justify-content: space-between;
 }
 
-
-.container2 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem;
-    background-color: #0b2241e3;
-    padding: 1rem;
-    border-bottom: 1px solid #e5e5e5;
-    box-shadow: 0 0 10px #000;
-    border-radius: 5px;
-    color: rgb(255, 255, 255);
-    font-size: 110%;
-    box-shadow: 0 0 0.5em 0 #ffffff, 0 0 0.5em 0 #000000bd;
+.containerimg {
+    width: 80%;
 }
 
+.containertext {
+    width: 50%;
+    padding-top: 5rem;
+    padding-right: 7rem;
+}
 
 .img {
-    border-radius: 5px;
-    width: fit-content;
-    margin: 20px;
+    height: 100vh;
+
 }
 
-.principal span {
-    grid-column: 1/-1;
-    margin-top: 1rem;
-    padding: 1rem;
-    color: #ffffff;
-    text-shadow: 5px 5px 5px #000000bd;
-}
-
-span {
-    color: 000000;
-    text-decoration: none;
-    font-weight: 1000;
-    font-family: system-ui;
-    color: transparent;
-    background-image: linear-gradient(180deg, #ffe993, #000000bd);
-    background-clip: text;
-    width: 100%;
-    margin-top: 0%;
+.title {
+    text-align: left;
 }
 
 .btn {
@@ -68,7 +28,6 @@ span {
     border-radius: 25px;
     padding: 5px 10px;
     color: #ffffff;
-    text-shadow: 5px 5px 5px #000000;
     cursor: pointer;
     position: sticky;
 }
