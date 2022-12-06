@@ -2,9 +2,9 @@
     font-family: 'Karla', sans-serif;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     width: 100%;
-    /* gap: 50px; */
+    gap: 50px;
 }
 
 .navigate {
@@ -74,5 +74,4 @@
 .img {
     width: 100%;
     margin-top: 5rem;
-   
 }

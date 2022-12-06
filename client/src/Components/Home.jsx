@@ -70,17 +70,10 @@ export default function Home() {
                     <Navbar currentPage={currentPage}
                         setCurrentPage={setCurrentPage} />
                 </div>
-                <img src={header} className={S.img}/>
+                <img src={header} className={S.img} alt='frame'/>
                 {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}
-                {/* <Paginado
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    allSneakers={allSneakers}
-                    sneakersPerPage={sneakersPerPage}
-                /> */}
                 <form id='Filtros' className={S.filters}>
                     <div>
-
                         <span className={S.span}>Sort by Name</span>
                         <label htmlFor='az'>
                             <input name='sortName' id='az' value='az' type='radio' className='input-radio' onChange={e => handlerFilter(e)} />A-Z</label>
@@ -101,6 +94,8 @@ export default function Home() {
                             <option value='Puma'>Puma</option>
                             <option value='Adidas'>Adidas</option>
                             <option value='Nike'>Nike</option>
+                            <option value='Fila'>Fila</option>
+                            <option value='Reebok'>Reebok</option>
                         </select>
                     </div>
                     <div>
@@ -110,9 +105,17 @@ export default function Home() {
                             <option value='White'>White</option>
                             <option value='Black'>Black</option>
                             <option value='Red'>Red</option>
+                            <option value='Blue'>Blue</option>
+                            <option value='Pink'>Pink</option>
                         </select>
                     </div>
                 </form>
+                <Paginado
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    allSneakers={allSneakers}
+                    sneakersPerPage={sneakersPerPage}
+                />
             </div>
 
             <div className={S.container}>
