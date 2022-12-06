@@ -36,7 +36,7 @@ export default function SneakerDetail() {
               <h2>${sneaker.price}</h2>
               <h3>Size: <span className={s.stock}>{sneaker.size && sneaker.size.map((e)=>{
                     return(
-                      <div><p key={e.id}> ✔  {e}  </p></div>
+                      <div key={e}><p> ✔  {e}  </p></div>
                     )
                   })
               }</span></h3>

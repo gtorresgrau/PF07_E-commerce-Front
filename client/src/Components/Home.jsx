@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Navbar from './NavBar.jsx';
 import Paginado from './paginado.jsx';
-import { getAllSneackers, filterByBrand, sortPrice, sortAz } from '../Actions/Actions';
+import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour } from '../Actions/Actions';
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 
@@ -13,8 +13,12 @@ import Footer from './Footer.jsx';
 
 export default function Home() {
     const dispatch = useDispatch();
-    //const{id} = useParams ();
+  
     const allSneakers = useSelector((state) => state.sneakers);
+    //const state = useSelector((state)=>state)
+    //console.log('state:',state.colours)
+    //const brand = document.getElementById('filterbrands')
+    //console.log('home->brand: ',brand)
 
     const [currentPage, setCurrentPage] = useState(1);
     const [sneakersPerPage] = useState(8);
@@ -24,6 +28,7 @@ export default function Home() {
     let indexFirstSneaker = indexLastSneaker - sneakersPerPage
 
     const actualySneakers = allSneakers.slice(indexFirstSneaker, indexLastSneaker);
+ 
     //console.log('actualySneakers:',actualySneakers)
 
 
@@ -32,15 +37,16 @@ export default function Home() {
     }, [dispatch]);
 
     function handlerFilterBrand(e) {
-        setCurrentPage(1);
         e.preventDefault();
+        setCurrentPage(1);
         dispatch(filterByBrand(e.target.value))
     }
 
     function handlerFilterColours(e) {
-        setCurrentPage(1);
         e.preventDefault();
-        dispatch(filterByBrand(e.target.value))
+        setCurrentPage(1);
+        dispatch(filterByColour(e.target.value))
+        
     }
 
     function handlerFilter(e) {
