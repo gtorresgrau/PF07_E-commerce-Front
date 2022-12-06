@@ -94,10 +94,10 @@ export function filterByBrand(payload) {
 
 export function filterByColour(payload) {
   return async function (dispatch) {
-    //console.log('action->payload:',payload)
+    console.log('action->payload:',payload)
     if (payload === 'All') { var urlBack = `http://localhost:3001/sneakers` }
-    else { urlBack = `http://localhost:3001/filter?colour=${payload}` }
-    //console.log('act->urlBack: ',urlBack)
+    else { urlBack = `http://localhost:3001/filter?${payload}` }
+    console.log('act->urlBack: ',urlBack)
     try {
       let getColour = await axios(urlBack);
       return dispatch({

@@ -17,8 +17,8 @@ export default function Home() {
     const allSneakers = useSelector((state) => state.sneakers);
     //const state = useSelector((state)=>state)
     //console.log('state:',state.colours)
-    //const brand = document.getElementById('filterbrands')
-    //console.log('home->brand: ',brand)
+    const brand = document.getElementById('filterbrands')
+    //console.log('home->brand: ',brand.value)
 
     const [currentPage, setCurrentPage] = useState(1);
     const [sneakersPerPage] = useState(8);
@@ -43,10 +43,16 @@ export default function Home() {
     }
 
     function handlerFilterColours(e) {
+        console.log('home->value:', e.target.value)
+        const valor = e.target.value;
         e.preventDefault();
         setCurrentPage(1);
-        dispatch(filterByColour(e.target.value))
-        
+        if(brand.value !== 'Brands'){
+            dispatch(filterByColour(`brand=${brand.value}&colour=${valor}`))}
+
+        else{
+            dispatch(filterByColour(`colour=${valor}`))
+        }
     }
 
     function handlerFilter(e) {
@@ -109,6 +115,7 @@ export default function Home() {
                             <option value='White'>White</option>
                             <option value='Black'>Black</option>
                             <option value='Red'>Red</option>
+                            <option value='Green'>Green</option>
                         </select>
                     </div>
                 </form>

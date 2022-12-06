@@ -80,7 +80,8 @@ export default function rootReducer(state = initialState, action) {
         sneakers: action.payload,
       }
     case GET_COLOUR:
-        //console.log('reducer->payload: ',action.payload)
+        console.log('redu->state: ',state.sneakers)
+        console.log('reducer->payloadColour: ', action.payload)
         return {
           ...state,
           sneakers: action.payload,
