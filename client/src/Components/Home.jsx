@@ -37,6 +37,12 @@ export default function Home() {
         dispatch(filterByBrand(e.target.value))
     }
 
+    function handlerFilterColours(e) {
+        setCurrentPage(1);
+        e.preventDefault();
+        dispatch(filterByBrand(e.target.value))
+    }
+
     function handlerFilter(e) {
         dispatch(sortAz(e.target.value))
         setOrden(e.target.value)
@@ -88,10 +94,15 @@ export default function Home() {
                             <option value='Puma'>Puma</option>
                             <option value='Adidas'>Adidas</option>
                             <option value='Nike'>Nike</option>
-                            {/*  <option value='Reebook'>Reebook</option>
-                            <option value='John Foos'>John Foos</option>
-                            <option value='Converse'>Converse</option>
-                            <option value='Vans'>Vans</option> */}
+                        </select>
+                    </div>
+                    <div>
+                        <span className={S.span}>Filter by Colour</span>
+                        <select onChange={e => handlerFilterColours(e)} defaultValue='All' id='filterColours' className={S.select}>
+                            <option value='All'>All Colours</option>
+                            <option value='White'>White</option>
+                            <option value='Black'>Black</option>
+                            <option value='Red'>Red</option>
                         </select>
                     </div>
                 </form>

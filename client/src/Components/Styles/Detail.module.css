@@ -21,7 +21,10 @@
 .title {
     text-align: left;
 }
-
+.stock{
+    display: flex;
+    flex-direction: row;
+}
 .btn {
     border: none;
     background-color: #00000099;
