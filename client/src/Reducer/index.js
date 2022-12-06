@@ -6,13 +6,15 @@ import {
   RESET_DETAIL,
   GET_BRAND,
   GET_PRICE,
-  GET_AZ
+  GET_AZ,
+  GET_COLOUR
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
   sneakers: [],
   allSneakers: [],
   detail: [],
+  colours:[],
   loading: false,
 }
 
@@ -77,6 +79,12 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         sneakers: action.payload,
       }
+    case GET_COLOUR:
+        //console.log('reducer->payload: ',action.payload)
+        return {
+          ...state,
+          sneakers: action.payload,
+        }
     case RESET_DETAIL:
       return {
         ...state,
