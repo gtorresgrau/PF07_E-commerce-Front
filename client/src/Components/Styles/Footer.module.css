@@ -1,22 +1,19 @@
 .foot {
-  display: flex;
-  justify-content: center;
+  display: flex; 
+  justify-content: space-around;
   align-items: center;
-  flex-direction: initial;
-  text-align: center;
-  padding: 1em 0;
-  background-color: rgb(131, 127, 127);
-  width: 209vh;
-  height: 4rem;
+  background-color: #242423;
+  width: 100%;
+  height: 6rem;
   /*   box-shadow: 0 0 0.5em 0 #1eb419, 0 0 0.5em 0 #aa5d10; */
 }
 
 .links {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .spanF {
-  color: black;
+  color: white;
   text-decoration: none;
 }

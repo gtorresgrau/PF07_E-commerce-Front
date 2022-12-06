@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { getSneakerDetail, resetDetail } from '../Actions/Actions';
 import Loading from './Loading';
 import s from './Styles/Detail.module.css';
+import Navbar from './NavBar';
 
 
 
@@ -23,6 +24,7 @@ export default function SneakerDetail() {
 
   return (
     <div>
+       <Navbar/>
       {loading ? <Loading /> :
         <div className={s.containerG}>
           <div className={s.containerimg}>
