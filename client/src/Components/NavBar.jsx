@@ -36,6 +36,10 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                 <option value='training'>Training</option>
             </select>
 
+            <div className={S.SearchBar}>
+                <SearchBar currentPage={currentPage}
+                    setCurrentPage={setCurrentPage} />
+            </div>
 
             <div className="">
                 <Link to='/blog'><button className={S.btn} >Blog</button></Link>
@@ -45,10 +49,6 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             </div>
             <div className="">
                 <Link to='/account'><button className={S.btn} >Account</button></Link>
-            </div>
-            <div className={S.SearchBar}>
-                <SearchBar currentPage={currentPage}
-                    setCurrentPage={setCurrentPage} />
             </div>
             <div className="">
                 <Link to='/singIn'><button className={S.singInButton} >Sing in</button></Link>
