@@ -1,9 +1,24 @@
 .input_search {
     border: none;
+    padding: 0.4rem;
+    background-color: transparent;
+    color: white;
 }
 
-
+.input_search:focus {
+    outline: none;
+}
 .btn_search {
-    border: none;
+    border: white;
+    padding-left: 0.8rem;
+    padding-top: 0.4rem;
+    font-size: 1.3rem;
+    color: white;
+    background-color: transparent;
     cursor: pointer;
+}
+
+.form {
+    display: flex;
+    border: 1px solid rgb(145, 144, 144);
 }

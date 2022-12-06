@@ -6,11 +6,11 @@ import s from './Styles/Footer.module.css'
 
 function Footer() {
   return (
-    <footer className={s.foot}>
-      <div><span className={s.spanF}>2022 Envoy. All right reserved</span></div>
-      <Link to='/about' className={s.links}>About</Link>
+    <footer>
+      {/* <Link to='/about' className={s.links}>About</Link> */}
       <div className={s.foot}>
-        <label>Team: </label>
+      <span className={s.spanF}>2022 Envoy. All right reserved</span>
+        <label className={s.spanF}>Team:</label>
         <a href="https://github.com/Arux26" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Ariel Trangoni</ul></a>
         <a href="https://github.com/CarlosRomeroA" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Carlos Romero</ul></a>
         <a href="https://github.com/hnavas" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Hendri Navas</ul></a>

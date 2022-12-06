@@ -1,5 +1,5 @@
 .headerContainer {
-    padding: 1rem;
+    padding: 1.3rem;
     /* margin: 1rem; */
 
     display: flex;
@@ -8,24 +8,18 @@
 
     justify-content: space-around;
     align-items: center;
-    gap: 5px;
-    position: sticky;
+    position:fixed;
     top: 0;
 
-    backdrop-filter: blur(5px);
-    background: linear-gradient(rgba(0, 0, 0, 0.678) 20%, rgba(0, 0, 0, 0.062) 70%);
+    /* backdrop-filter: blur(5px); */
+    /* background: linear-gradient(rgba(0, 0, 0, 0.678) 20%, rgba(0, 0, 0, 0.062) 70%); */
+    background: #242423;
+    width: 82rem;
+    z-index: 9999;
 }
 
 .headerLogo {
-    font-size: 1.5rem;
-    color: #ffffff;
-    text-transform: uppercase;
-    padding: 0.5rem;
-    width: fit-content;
     align-items: center;
-    font-weight: bold;
-    border-radius: 20px;
-    max-width: 300px;
 }
 
 ;
@@ -36,8 +30,8 @@
 }
 
 .cart {
-    width: 20px;
-    height: 20px;
+   font-size: 1.8rem;
+   color: white;
 }
 
 .links {
@@ -57,19 +51,26 @@
 .singInButton {
     border: none;
     background-color: #fcf81b99;
-    border-radius: 25px;
-    padding: 5px 10px;
+    padding: 9px 17px;
     color: #000000;
-    text-shadow: 5px 5px 5px #fcf81b;
     cursor: pointer;
 }
 
 .joinNowButton {
     border: none;
     background-color: #fcf81b99;
-    border-radius: 25px;
-    padding: 5px;
+    padding: 9px;
     color: #000000;
-    text-shadow: 5px 5px 5px #fcf81b;
     cursor: pointer;
+}
+
+.select {
+    width: 7rem;
+    padding: 0.5rem 1.75rem 0.5rem 0.75rem;
+    background-color: transparent;
+    color: white;
+}
+
+.select:focus {
+    background-color: #242423;
 }

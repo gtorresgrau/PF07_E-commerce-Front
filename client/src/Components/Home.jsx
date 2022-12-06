@@ -8,6 +8,7 @@ import Paginado from './paginado.jsx';
 import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour } from '../Actions/Actions';
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
+import header from '../Images/header2.jpg';
 
 
 
@@ -69,14 +70,14 @@ export default function Home() {
                     <Navbar currentPage={currentPage}
                         setCurrentPage={setCurrentPage} />
                 </div>
-
+                <img src={header} className={S.img}/>
                 {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}
-                <Paginado
+                {/* <Paginado
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                     allSneakers={allSneakers}
                     sneakersPerPage={sneakersPerPage}
-                />
+                /> */}
                 <form id='Filtros' className={S.filters}>
                     <div>
 
