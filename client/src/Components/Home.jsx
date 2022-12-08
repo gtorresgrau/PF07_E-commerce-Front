@@ -128,7 +128,9 @@ export default function Home() {
                         <label htmlFor='Red'><input type="checkbox" name="colour" id="Red" value='Red'/>Red</label>
                         <label htmlFor='Blue'><input type="checkbox" name="colour" id="Blue" value='Blue'/>Blue</label>
                         <label htmlFor='Pink'><input type="checkbox" name="colour" id="Pink" value='Pink'/>Pink</label>
+                        <label htmlFor='Gray'><input type="checkbox" name="colour" id="Gray" value='Gray'/>Gray</label>
                     </div>
+
 
                 </form>
                 <Paginado
