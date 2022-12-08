@@ -18,7 +18,7 @@ export const loading = () => {
 
 export function getAllSneackers() {
   return async function (dispatch) {
-    let sneakers = await axios.get("http://localhost:3001/sneakers");
+    let sneakers = await axios.get("/sneakers");
     dispatch({
       type: GET_ALL_SNEAKERS,
       payload: sneakers.data
@@ -30,7 +30,7 @@ export function getSneakerByName(title) {
   console.log('action--> name:', title)
   return async function (dispatch) {
     try {
-      const URL = `http://localhost:3001/sneakerName?title=`
+      const URL = `/sneakerName?title=`
       let getSneaker = await axios(`${URL}${title}`);
       console.log('action:', getSneaker.data)
       return dispatch({
@@ -39,7 +39,7 @@ export function getSneakerByName(title) {
       })
     }
     catch (e) {
-      window.location.href = "http://localhost:3001/sneakers";
+      window.location.href = "/sneakers";
       console.log(`There are no Sneackers with the combination of Characters entered: ${title}`)
       alert(`There are no Sneackers with the combination of Characters entered: ${title}`)
     }
@@ -50,14 +50,14 @@ export function getSneakerDetail(id) {
   return async function (dispatch) {
     try {
       dispatch(loading())
-      const info = await axios(`http://localhost:3001/sneaker/${id}`);
+      const info = await axios(`/sneaker/${id}`);
       return dispatch({
         type: GET_SNEAKER_DETAIL,
         payload: info.data
       })
     }
     catch (e) {
-      window.location.href = "http://localhost:3000/sneaker/";
+      window.location.href = "/sneaker/";
       console.log(`Something happened when filtering by id: ${id}`)
       alert(`Something happened when filtering by id: ${id}`)
     }
@@ -74,8 +74,8 @@ export function resetDetail() {
 
 export function filterByBrand(payload) {
   return async function (dispatch) {
-    if (payload === 'Brands') { var urlBack = `http://localhost:3001/sneakers` }
-    else { urlBack = `http://localhost:3001/brand/${payload}` }
+    if (payload === 'Brands') { var urlBack = `/sneakers` }
+    else { urlBack = `/brand/${payload}` }
     try {
       let getBrand = await axios(urlBack);
       return dispatch({
@@ -85,7 +85,7 @@ export function filterByBrand(payload) {
 
     }
     catch (e) {
-      window.location.href = "http://localhost:3000/sneakers/";
+      window.location.href = "/sneakers/";
       console.log(`Something happened when filtering by brand: ${payload}`)
       alert(`Something happened when filtering by brand: ${payload}`)
     }
@@ -95,8 +95,8 @@ export function filterByBrand(payload) {
 export function filterByColour(payload) {
   return async function (dispatch) {
     //console.log('action->payload:',payload)
-    if (payload === 'All') { var urlBack = `http://localhost:3001/sneakers` }
-    else { urlBack = `http://localhost:3001/filter?colour=${payload}` }
+    if (payload === 'All') { var urlBack = `/sneakers` }
+    else { urlBack = `/filter?colour=${payload}` }
     //console.log('act->urlBack: ',urlBack)
     try {
       let getColour = await axios(urlBack);
@@ -107,7 +107,7 @@ export function filterByColour(payload) {
 
     }
     catch (e) {
-      window.location.href = "http://localhost:3000/sneakers/";
+      window.location.href = "/sneakers/";
       console.log(`Something happened when filtering by brand: ${payload}`)
       alert(`Something happened when filtering by brand: ${payload}`)
     }
