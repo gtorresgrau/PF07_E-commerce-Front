@@ -75,7 +75,7 @@ export function resetDetail() {
 export function filterByBrand(payload) {
   return async function (dispatch) {
     if (payload === 'Brands') { var urlBack = `/sneakers` }
-    else { urlBack = `/brand/${payload}` }
+    else { urlBack = `/filter?${payload}` }
     try {
       let getBrand = await axios(urlBack);
       return dispatch({
@@ -96,7 +96,7 @@ export function filterByColour(payload) {
   return async function (dispatch) {
     //console.log('action->payload:',payload)
     if (payload === 'All') { var urlBack = `/sneakers` }
-    else { urlBack = `/filter?colour=${payload}` }
+    else { urlBack = `/filter?${payload}` }
     //console.log('act->urlBack: ',urlBack)
     try {
       let getColour = await axios(urlBack);
