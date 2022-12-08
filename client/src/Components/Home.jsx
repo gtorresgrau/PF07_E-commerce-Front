@@ -10,16 +10,13 @@ import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
 
-
-
+var filter=[]
+var a=[]
 export default function Home() {
     const dispatch = useDispatch();
   
     const allSneakers = useSelector((state) => state.sneakers);
-    //const state = useSelector((state)=>state)
-    //console.log('state:',state.colours)
-    //const brand = document.getElementById('filterbrands')
-    //console.log('home->brand: ',brand)
+   
 
     const [currentPage, setCurrentPage] = useState(1);
     const [sneakersPerPage] = useState(8);
@@ -30,7 +27,7 @@ export default function Home() {
 
     const actualySneakers = allSneakers.slice(indexFirstSneaker, indexLastSneaker);
  
-    //console.log('actualySneakers:',actualySneakers)
+   
 
 
     useEffect(() => {
@@ -38,17 +35,45 @@ export default function Home() {
     }, [dispatch]);
 
     function handlerFilterBrand(e) {
-        e.preventDefault();
         setCurrentPage(1);
-        dispatch(filterByBrand(e.target.value))
+        let v=e.target.value
+        if (filter.includes(`brand=${v}&`)){
+            a=filter.filter((e)=>e!==(`brand=${v}&`))
+            filter=a
+            if(filter.length===0){
+                dispatch(getAllSneackers())
+            }else{
+                dispatch(filterByBrand(filter.join('')))
+            }
+        }else{  
+        filter.push(`brand=${v}&`)
+        dispatch(filterByBrand(filter.join('')))
+        }
     }
+      
+       
+   
 
     function handlerFilterColours(e) {
-        e.preventDefault();
-        setCurrentPage(1);
-        dispatch(filterByColour(e.target.value))
         
+        setCurrentPage(1);
+        let v=e.target.value
+        if (filter.includes(`colour=${v}&`)){
+            a=filter.filter((e)=>e!==(`colour=${v}&`))
+            filter=a
+            if(filter.length===0){
+                dispatch(getAllSneackers())
+            }else{
+                dispatch(filterByColour(filter.join('')))
+            }
+        }else{  
+        filter.push(`colour=${v}&`)
+        dispatch(filterByColour(filter.join('')))
+        }
     }
+        
+        
+    
 
     function handlerFilter(e) {
         dispatch(sortAz(e.target.value))
@@ -87,28 +112,26 @@ export default function Home() {
                         <label htmlFor='-a+'>
                             <input name='sortStock' id='-a+' value='-a+' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Lower price </label>
                     </div>
-                    <div>
-                        <span className={S.span}>Filter by Brand</span>
-                        <select onChange={e => handlerFilterBrand(e)} defaultValue='Brands' id='filterbrands' className={S.select}>
-                            <option value='Brands'>All Brands</option>
-                            <option value='Puma'>Puma</option>
-                            <option value='Adidas'>Adidas</option>
-                            <option value='Nike'>Nike</option>
-                            <option value='Fila'>Fila</option>
-                            <option value='Reebok'>Reebok</option>
-                        </select>
+                    <div onChange={e => handlerFilterBrand(e)}>
+                        <span className={S.span}></span>
+                        
+                        <label htmlFor='Puma'><input type="checkbox" name="brand" id="Puma" value='Puma'/>Puma</label>
+                        <label htmlFor='Adidas'><input type="checkbox" name="brand" id="Adidas" value='Adidas'/>Adidas</label>
+                        <label htmlFor='Nike'><input type="checkbox" name="brand" id="Nike" value='Nike'/>Nike</label>
+                        <label htmlFor='Fila'><input type="checkbox" name="brand" id="Fila" value='Fila'/>Fila</label>
+                        <label htmlFor='Reebok'><input type="checkbox" name="brand" id="Reebok" value='Reebok'/>Reebok</label>
                     </div>
-                    <div>
-                        <span className={S.span}>Filter by Colour</span>
-                        <select onChange={e => handlerFilterColours(e)} defaultValue='All' id='filterColours' className={S.select}>
-                            <option value='All'>All Colours</option>
-                            <option value='White'>White</option>
-                            <option value='Black'>Black</option>
-                            <option value='Red'>Red</option>
-                            <option value='Blue'>Blue</option>
-                            <option value='Pink'>Pink</option>
-                        </select>
+                    <div onChange={e => handlerFilterColours(e)}>
+                        <span className={S.span}></span>
+                        <label htmlFor='White'><input type="checkbox" name="colour" id="White" value='White'/>White</label>
+                        <label htmlFor='Black'><input type="checkbox" name="colour" id="Black" value='Black'/>Black</label>
+                        <label htmlFor='Red'><input type="checkbox" name="colour" id="Red" value='Red'/>Red</label>
+                        <label htmlFor='Blue'><input type="checkbox" name="colour" id="Blue" value='Blue'/>Blue</label>
+                        <label htmlFor='Pink'><input type="checkbox" name="colour" id="Pink" value='Pink'/>Pink</label>
+                        <label htmlFor='Gray'><input type="checkbox" name="colour" id="Gray" value='Gray'/>Gray</label>
                     </div>
+
+
                 </form>
                 <Paginado
                     currentPage={currentPage}
