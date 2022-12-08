@@ -6,3 +6,4 @@ export const GET_ALL_SNEAKERS = 'GET_ALL_SNEAKERS';
 export const GET_BRAND = 'GET_BRAND';
 export const GET_PRICE = 'GET_PRICE';
 export const GET_AZ = 'GET_AZ';
+export const GET_COLOUR = 'GET_COLOUR';

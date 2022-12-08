@@ -6,7 +6,8 @@ import {
   GET_SNEAKER_DETAIL,
   GET_BRAND,
   GET_PRICE,
-  GET_AZ
+  GET_AZ,
+  GET_COLOUR,
 } from '../Actions/ActionTypes.js';
 
 export const loading = () => {
@@ -80,6 +81,28 @@ export function filterByBrand(payload) {
       return dispatch({
         type: GET_BRAND,
         payload: getBrand.data
+      })
+
+    }
+    catch (e) {
+      window.location.href = "http://localhost:3000/sneakers/";
+      console.log(`Something happened when filtering by brand: ${payload}`)
+      alert(`Something happened when filtering by brand: ${payload}`)
+    }
+  }
+};
+
+export function filterByColour(payload) {
+  return async function (dispatch) {
+    //console.log('action->payload:',payload)
+    if (payload === 'All') { var urlBack = `http://localhost:3001/sneakers` }
+    else { urlBack = `http://localhost:3001/filter?colour=${payload}` }
+    //console.log('act->urlBack: ',urlBack)
+    try {
+      let getColour = await axios(urlBack);
+      return dispatch({
+        type: GET_COLOUR,
+        payload: getColour.data
       })
 
     }

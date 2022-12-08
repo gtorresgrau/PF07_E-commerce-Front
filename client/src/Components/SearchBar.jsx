@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSneackers, getSneakerByName } from '../Actions/Actions.js';
 import S from './Styles/SearchBar.module.css';
+import { FiSearch } from 'react-icons/fi';
 
 //setCurrenPage es para setear la pagina en 1 cuando haga la busqueda.
 export default function SearchBar({ currentPage, setCurrentPage }) {
@@ -38,9 +39,9 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input className={S.input_search} name='input' onChange={handlerOnchange} type='text' placeholder="Sneaker...." value={input} />
-        <button className={S.btn_search} type="submit">SEARCH</button>
+      <form className={S.form} onSubmit={handleSubmit}>
+        <button className={S.btn_search} type="submit"><FiSearch /></button>
+        <input className={S.input_search} name='input' onChange={handlerOnchange} type='text' placeholder="Sneaker...." value={input}></input>
       </form>
     </div>
   )
