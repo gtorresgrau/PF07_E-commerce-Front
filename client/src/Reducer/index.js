@@ -7,7 +7,10 @@ import {
   GET_BRAND,
   GET_PRICE,
   GET_AZ,
-  GET_COLOUR
+  GET_COLOUR,
+  GET_TYPE,
+  GET_GENRE
+
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
@@ -79,6 +82,16 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         sneakers: action.payload,
       }
+    case GET_GENRE:
+      return {
+        ...state,
+        sneakers: action.payload,
+      }
+    case GET_TYPE:
+        return {
+          ...state,
+          sneakers: action.payload,
+        }
     case GET_COLOUR:
         //console.log('reducer->payload: ',action.payload)
         return {
