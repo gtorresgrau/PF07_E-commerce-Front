@@ -8,11 +8,11 @@ import { getAllSneackers } from '../Actions/Actions';
 import logo from '../Images/logo.png';
 import { CgShoppingCart } from 'react-icons/cg';
 import { HiOutlineUser } from 'react-icons/hi';
-
+import  { useAuth0 } from "@auth0/auth0-react"
 
 export default function Navbar({ setCurrentPage, currentPage }) {
-    const dispatch = useDispatch()
-
+    const dispatch = useDispatch();
+    const { loginWithRedirect}= useAuth0();
     // const [woman, setWomen] = useState();
     // const [men, setMen] = useState();
     // const [kids, setkids] = useState();
@@ -90,7 +90,7 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                 <Link to='/shop' className={S.cart}><CgShoppingCart/></Link>
             </div>
             <div className="">
-                <Link to='/singIn'><button className={S.singInButton} >Sing in</button></Link>
+                <button  className={S.singInButton} onClick={()=>loginWithRedirect()} >Sing in</button>
             </div>
             <div className="">
                 <Link to='/join'><button className={S.joinNowButton} >Join Now</button></Link>
