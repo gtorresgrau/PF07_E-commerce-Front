@@ -13,6 +13,7 @@ import  { useAuth0 } from "@auth0/auth0-react"
 export default function Navbar({ setCurrentPage, currentPage }) {
     const dispatch = useDispatch();
     const { loginWithRedirect}= useAuth0();
+    const { logout}= useAuth0();
     // const [woman, setWomen] = useState();
     // const [men, setMen] = useState();
     // const [kids, setkids] = useState();
@@ -91,6 +92,9 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             </div>
             <div className="">
                 <button  className={S.singInButton} onClick={()=>loginWithRedirect()} >Sing in</button>
+            </div>
+            <div className="">
+                <button  className={S.singInButton} onClick={()=>logout({returnTo:window.location.origin})} > Logout</button>
             </div>
             <div className="">
                 <Link to='/join'><button className={S.joinNowButton} >Join Now</button></Link>
