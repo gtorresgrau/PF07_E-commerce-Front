@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Navbar from './NavBar.jsx';
 import Paginado from './paginado.jsx';
-import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour } from '../Actions/Actions';
+import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour, filterByGenre, filterByType } from '../Actions/Actions';
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
@@ -71,8 +71,40 @@ export default function Home() {
         dispatch(filterByColour(filter.join('')))
         }
     }
-        
-        
+
+    function handlerFilterGenre(e) {
+        setCurrentPage(1);
+        let v=e.target.value
+        if (filter.includes(`genre=${v}&`)){
+            a=filter.filter((e)=>e!==(`genre=${v}&`))
+            filter=a
+            if(filter.length===0){
+                dispatch(getAllSneackers())
+            }else{
+                dispatch(filterByGenre(filter.join('')))
+            }
+        }else{  
+        filter.push(`genre=${v}&`)
+        dispatch(filterByGenre(filter.join('')))
+        }
+    }
+
+    function handlerFilterType(e) {
+        setCurrentPage(1);
+        let v=e.target.value
+        if (filter.includes(`type=${v}&`)){
+            a=filter.filter((e)=>e!==(`type=${v}&`))
+            filter=a
+            if(filter.length===0){
+                dispatch(getAllSneackers())
+            }else{
+                dispatch(filterByType(filter.join('')))
+            }
+        }else{  
+        filter.push(`type=${v}&`)
+        dispatch(filterByType(filter.join('')))
+        }
+    }
     
 
     function handlerFilter(e) {
@@ -130,8 +162,18 @@ export default function Home() {
                         <label htmlFor='Pink'><input type="checkbox" name="colour" id="Pink" value='Pink'/>Pink</label>
                         <label htmlFor='Gray'><input type="checkbox" name="colour" id="Gray" value='Gray'/>Gray</label>
                     </div>
-
-
+                    <div onChange={e => handlerFilterGenre(e)}>
+                        <span className={S.span}></span>
+                        <label htmlFor='Men'><input type="checkbox" name="gnre" id="Men" value='Men'/>Men</label>
+                        <label htmlFor='Women'><input type="checkbox" name="genre" id="Women" value='Women'/>Women</label>
+                        <label htmlFor='Kids'><input type="checkbox" name="genre" id="Kids" value='Kids'/>Kids</label>
+                    </div>
+                    <div onChange={e => handlerFilterType(e)}>
+                        <span className={S.span}></span>
+                        <label htmlFor='Sports'><input type="checkbox" name="type" id="Sports" value='Sports'/>Sports</label>
+                        <label htmlFor='Training'><input type="checkbox" name="type" id="Training" value='Training'/>Training</label>
+                        <label htmlFor='Running'><input type="checkbox" name="type" id="Running" value='Running'/>Running</label>
+                    </div>
                 </form>
                 <Paginado
                     currentPage={currentPage}
