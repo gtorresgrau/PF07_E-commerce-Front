@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.general{
+    font-family: 'Manjari', sans-serif;
+    background-position: 0 0, 10px 10px ;
+    display: flex;
+    min-height: 110vh;
+}
+.container{
+    background-color: #69a8d174;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    padding: 5em 3em;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px 1px #212ee5;
+    text-align: center;
+}
+
+.header{
+    font-size: 1rem;
+    text-shadow: 5px 2px 5px #212ee5;
+    color: #171f97 ;
+    margin-bottom: 0.5em;
+    text-transform: capitalize;    
+}
+
+.newActivity{
+    margin-top: 3em;
+    display: grid;
+    gap: 2.5em;
+}
+
+.groups{
+    position: relative; 
+    color: #ff1500;
+    text-transform: capitalize;
+}
+
+.input{
+    font-family: 'Manjari', sans-serif;
+    width: 100%;
+    padding: 0.2em;
+    margin: 0.7em;
+    background: none;
+    font-size: 1rem;
+    color: #171f97;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #212ee5;
+}
+
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+    transform: translateY(-5px) scale(.7);
+    transform-origin: left top;
+    color: #171f97;
+}
+
+.label{
+    color: #171f97;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 1px;
+    transform: translateY(10px);
+    transition: transform .5s color .3s;
+}
+
+.btnSubmit{
+    font-family: 'Manjari', sans-serif;
+    background-color: #212ee5;
+    color: #3fa4e8;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 5px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+}
+.btnSubmit:disabled{
+    background-color: #565456;
+    width: fit-content;
+}
+
+.btnSubmit:hover:not(:disabled){
+    width: 100%;
+}
+
+.back{
+    grid-column: 1/4;
+    position: sticky;
+    top: 50px;
+    left: 50px;
+    background-color: #212ee5;
+    color: #3fa4e8;    
+    text-shadow: 5px 2px 10px #040203;
+    height: 25px;
+    width: 60px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+}
+.back:hover{
+    transition: 0.25s;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #3fa4e8;
+}
+
+.cancel{
+    font-family: 'Manjari', sans-serif;
+    background-color: #ff1500;
+    color: #3586bc;
+    border: none;
+    border-radius: 25px;
+    padding: 5px;
+    text-align: center;
+    align-content: center;
+    
+}
+.canceled .cancel:hover{
+    width: 100%;
+}
+
+.selected{
+    color: #171f97;
+    text-transform: uppercase; 
+    width: 100%;
+    display: grid;
+    flex-direction: row;
+    margin: 10px;
+    padding: 5px;
+}
+.count{
+    color: #171f97;
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+    text-align: left;
+}
+
+.footer{
+    left: 0;
+    margin: 5px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-column: 1/-1;
+}
