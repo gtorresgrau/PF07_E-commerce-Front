@@ -9,6 +9,9 @@ import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour } fro
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
+import SimpleSlider from './Carousel.jsx';
+import CarouselBrands from './CarouselBrands.jsx';
+
 
 var filter=[]
 var a=[]
@@ -92,10 +95,23 @@ export default function Home() {
                 
             <Navbar currentPage={currentPage}
                 setCurrentPage={setCurrentPage} />
+
+            <img src={header} className={S.img} alt='frame'/>
+            <CarouselBrands/>
+
+            <h1 className={S.title1}>AMPLIFY YOUR ENERGY</h1>
+            <h1 className={S.button}>SHOP NOW ->></h1>
+            <h1 className={S.title} >Men</h1>
+            <SimpleSlider/>
+
+            <h1 className={S.title} >Women</h1>
+            <SimpleSlider/>
+
+            <h1 className={S.title} >Kids</h1>
+            <SimpleSlider/>
                 
             <div>
 
-                <img src={header} className={S.img} alt='frame'/>
                 {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}
                 <form id='Filtros' className={S.filters}>
                     <div>
@@ -138,6 +154,7 @@ export default function Home() {
                     sneakersPerPage={sneakersPerPage}
                 />
             </div>
+            
 
             <div className={S.container}>
                 {actualySneakers?.map(c => {
@@ -151,6 +168,9 @@ export default function Home() {
                 })
                 }
             </div>
+
+            
+
 
             <Paginado
                 currentPage={currentPage}

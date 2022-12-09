@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
    
 }
 
@@ -66,10 +66,48 @@
 }
 
 .img {
+    object-position: 0rem;
     width: 100%;
+    object-fit: cover;
+    height: 25rem;
     margin-top: 5rem;
+    margin-bottom: 2.3rem;
 }
 
 .nav {
     position: fixed;
+}
+
+.title {
+    font-size: 3.3rem;
+    text-align: left;
+    margin-left: 4rem;
+    margin-bottom: 1rem;
+    color: #242423
+}
+
+.title1{
+    font-size: 3.3rem;
+    color: white;
+    position: absolute;
+    z-index: 555;
+    margin-top: -27rem;
+    width: 25rem;
+    text-align: left;
+    margin-left: 4rem;
+
+}
+
+.button {
+    color: #242423;
+    position: absolute;
+    z-index: 555;
+    margin-top: -18rem;
+    width: 10rem;
+    text-align: center;
+    font-size: 1.3rem;
+    margin-left: 4.2rem; 
+    background-color: white;
+    padding: 0.6rem;
+    cursor: pointer;
 }

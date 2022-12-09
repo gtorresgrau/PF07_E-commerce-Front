@@ -85,15 +85,15 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                         setCurrentPage={setCurrentPage} />
                 </div>
                 <div className={S.displayLinks}>
-                <div className="">
-                    <Link to='/account'className={S.heart}><FaRegHeart /></Link>
-                </div>
-                <div className="">
-                    <Link to='/account'className={S.user}><HiOutlineUser/></Link>
-                </div>
-                <div className={S.divCart}>
-                    <Link to='/shop' className={S.cart}><CgShoppingCart/></Link>
-                </div>
+                    <div className="">
+                        <Link to='/account'className={S.heart}><FaRegHeart /></Link>
+                    </div>
+                    <div className="">
+                        <Link to='/account'className={S.user}><HiOutlineUser/></Link>
+                    </div>
+                    <div className={S.divCart}>
+                        <Link to='/shop' className={S.cart}><CgShoppingCart/></Link>
+                    </div>
                 </div>
             </div>
 
