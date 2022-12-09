@@ -1,41 +1,68 @@
-.headerContainer {
+nav {
+    background: #242423;
+    z-index: 1;
+    display: flex;
+    align-items: center;
     padding: 1.3rem;
-    /* margin: 1rem; */
+    position: fixed;
+    left:0;
+    width:96.82%;
+}
 
+.logo {
+    margin-top: 0.25rem;
+}
+
+.display {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.displayLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 45%;
     justify-content: space-around;
-    align-items: center;
-    position:fixed;
-    top: 0;
-
-    /* backdrop-filter: blur(5px); */
-    /* background: linear-gradient(rgba(0, 0, 0, 0.678) 20%, rgba(0, 0, 0, 0.062) 70%); */
-    background: #242423;
-    width: 100%;
-    z-index: 9999;
 }
 
-.headerLogo {
+.displayRight {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-}
-
-;
-
-.divCart>img {
-    width: 20px;
-    height: 20px;
+    width: 34%;
+    justify-content: space-around
 }
 
 .cart {
-   font-size: 1.8rem;
+   font-size: 1.7rem;
+   color: white;
+}
+
+.user {
+    font-size: 1.7rem;
+   color: white;
+}
+
+.heart {
+    font-size: 1.5rem;
    color: white;
 }
 
 .links {
     text-decoration: none;
+    color: white;
+    font-size: 1.15rem;
+    display: flex;
+}
+
+.displayLinks {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
 }
 
 .btn {

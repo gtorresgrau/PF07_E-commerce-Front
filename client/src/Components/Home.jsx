@@ -89,12 +89,12 @@ export default function Home() {
 
     return (
         <div>
-            <div className={S.header}>
+                
+            <Navbar currentPage={currentPage}
+                setCurrentPage={setCurrentPage} />
+                
+            <div>
 
-                <div className={S.navigate}>
-                    <Navbar currentPage={currentPage}
-                        setCurrentPage={setCurrentPage} />
-                </div>
                 <img src={header} className={S.img} alt='frame'/>
                 {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}
                 <form id='Filtros' className={S.filters}>

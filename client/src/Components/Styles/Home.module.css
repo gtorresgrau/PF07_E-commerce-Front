@@ -1,18 +1,12 @@
 .container {
-    font-family: 'Karla', sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
-    gap: 50px;
+   
 }
 
-.navigate {
-    width: 100%;
-}
 
 .home {
-    font-family: 'Karla', sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -74,4 +68,8 @@
 .img {
     width: 100%;
     margin-top: 5rem;
+}
+
+.nav {
+    position: fixed;
 }

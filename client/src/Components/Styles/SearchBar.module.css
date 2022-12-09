@@ -3,14 +3,20 @@
     padding: 0.4rem;
     background-color: transparent;
     color: white;
+    
 }
 
 .input_search:focus {
     outline: none;
 }
+
+.imput_search:active {
+    
+}
 .btn_search {
     border: white;
     padding-left: 0.8rem;
+    padding-right: 0.4rem;
     padding-top: 0.4rem;
     font-size: 1.3rem;
     color: white;
