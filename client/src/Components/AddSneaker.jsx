@@ -8,18 +8,23 @@ import S from './Styles/AddSneaker.module.css'
 
 export default function CreateActivity(){
     const dispatch = useDispatch();
-    const countriesId = useSelector((state) => state.countries)
+    const allSneakers = useSelector((state) => state.allSneakers)
     //console.log('countid: ',countriesId)
     
     const form = document.getElementById('newActiviy')
     const btn = document.getElementById('btn')
 
     const datos = {
-        name:'', 
-        difficulty:'', 
-        duration:'', 
-        season:'',
-        countriesId:[],
+        title:'', 
+        price:'', 
+        description:'', 
+        size:'',
+        image:'',
+        stock:'',
+        brand:'',
+        genre:'',
+        colour:'',
+        type:'',
     };   
 
     const [input, setInput] = useState(datos)
@@ -32,24 +37,27 @@ export default function CreateActivity(){
     function validate(input){
         let errores = {};
         let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-        if(!input.name.trim()){ 
-            errores.name = 'Name is Required'
-        }else if(!regexName.test(input.name.trim())){
-            errores.name = 'Name only accept leters and spaces';
-        };
-        if(!input.duration) errores.duration = 'Duration is Required';
-        if(!input.difficulty) errores.difficulty = 'Difficulty is Required, only acept number from 1 to 5';
-        if(!input.season || input.season === 'Not') errores.season = 'Season is Required';
-        if(!input.countriesId.length || input.countriesId === 'Not') errores.countriesId = 'The activity must be developed in a country';
+        if(!input.title) errores.title = 'Title is Required';
+        if(!input.price) errores.price = 'Price is Required';
+        if(!input.description.length>10000) errores.description = 'Duration is to long. It has to be less than 10000 ';
+        if(!input.size) errores.size = 'Size is Required';
+        if(!input.image) errores.image = 'Image is Required';
+        if(!input.stock) errores.stock = 'Stock is Required';
+        if(!input.brand.trim()){ 
+            errores.brand = 'Brand is Required'
+        }else if(!regexName.test(input.brand.trim())){
+            errores.brand = 'Brand only accept leters and spaces';
+        };        
+        if(!input.genre) errores.genre = 'Genre is Required';
+        if(!input.colour) errores.colour = 'Colour is Required';
+        if(!input.type) errores.type = 'type is Required';
+
         return errores;
     }
 
 
     function handlerOnChange(e){
         let valor = e.target.value
-        if(e.target.name === 'name'){
-            valor = valor.charAt(0).toUpperCase()
-            + valor.slice(1)}
         setInput({
             ...input,
             [e.target.name]: valor
