@@ -14,37 +14,11 @@ export default function Navbar({ setCurrentPage, currentPage }) {
     const dispatch = useDispatch();
     const { loginWithRedirect}= useAuth0();
     const { logout}= useAuth0();
-    // const [woman, setWomen] = useState();
-    // const [men, setMen] = useState();
-    // const [kids, setkids] = useState();
 
     const handleAllSneakers = (e) => {
         e.preventDefault();
         dispatch(getAllSneackers());
         setCurrentPage(1);
-    }
-
-    function handlerFilterMen(e) {
-        // dispatch(getFilter(e.target.value))
-        // setCurrentPage(1);
-        // setWomen('')
-        // // setkids('')
-        // console.log(e.target.value)
-    }
-    function handlerFilterWomen(e) {
-        // dispatch(getFilter(e.target.value))
-        // setCurrentPage(1);
-        // setMen('')
-        // // setkids('')
-        // console.log(e.target.value)
-    }
-    function handlerFilterKids(e) {
-        //e.preventDefault()
-        // dispatch(getFilter(e.target.value))
-        // setCurrentPage(1);
-        // setMen('')
-        // setWomen('')
-        //console.log(e.target.value)
     }
 
 
@@ -55,15 +29,14 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                     <img src={logo} width="250rem" alt='Hsneaker'/>
                 </div>
             </Link>
-           
             <div className={S.SearchBar}>
                 <SearchBar currentPage={currentPage}
                     setCurrentPage={setCurrentPage} />
             </div>
-{/* 
+            {/* 
             <div className="">
                 <Link to='/blog'><button className={S.btn} >Blog</button></Link>
-            </div>
+            </div>      
             <div className="">
                 <Link to='/aboutUs'><button className={S.btn} >About us</button></Link>
             </div> */}
@@ -78,6 +51,9 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             </div>
             <div className="">
                 <button  className={S.singInButton} onClick={()=>logout({returnTo:window.location.origin})} > Logout</button>
+            </div>
+            <div className="S.btn">
+                <Link to='/addSneaker'><button>New Sneaker</button></Link>
             </div>
             <div className="">
                 <Link to='/join'><button className={S.joinNowButton} >Join Now</button></Link>
