@@ -1,17 +1,17 @@
 import React from "react";
-import {useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {useState } from "react";
+import { useDispatch} from "react-redux";
 import {Link} from 'react-router-dom';
-import { addActivity, getActivities, filterByContinent} from "../Actions/Actions.js";
+import { addSneaker } from "../Actions/Actions.js";
 import S from './Styles/AddSneaker.module.css'
 
 
 export default function CreateActivity(){
     const dispatch = useDispatch();
-    const allSneakers = useSelector((state) => state.allSneakers)
+    //const allSneakers = useSelector((state) => state.allSneakers)
     //console.log('countid: ',countriesId)
     
-    const form = document.getElementById('newActiviy')
+    const form = document.getElementById('newSneaker')
     const btn = document.getElementById('btn')
 
     const datos = {
@@ -29,10 +29,6 @@ export default function CreateActivity(){
 
     const [input, setInput] = useState(datos)
     const [errores, setErrores] = useState({});
-
-    useEffect(()=>{
-        dispatch(getActivities())
-    },[dispatch]);
 
     function validate(input){
         let errores = {};
@@ -66,132 +62,122 @@ export default function CreateActivity(){
            ...input,
            [e.target.name]: valor
         }));
+        console.log(input)
     };
-   
-    function handlerFilterContinent(e){
-        e.preventDefault();
-        dispatch(filterByContinent(e.target.value))
-      }
-    
     function handlerSelect(e){
-        if(!input.countriesId.includes(e.target.value)){
+        let valor = e.target.value
         setInput({
             ...input,
-            countriesId: [...input.countriesId, e.target.value ]
+            [e.target.name]: valor
         })
         setErrores(validate({
-            ...input,
-            countriesId: e.target.value
-         }));
-        }else{alert('The Country was already selected')}
+           ...input,
+           [e.target.name]: valor
+        }));
+        console.log(input)
     };
-
-    function handleDelete(el){
-        setInput({
-            ...input,
-            countriesId: input.countriesId.filter((country) => country !== el)
-        })
-    };
+       
 
     function handlerSubmit(e){
         e.preventDefault();
         if(Object.keys(errores).length === 0 ){
                 console.log(input)
-                dispatch(addActivity(input))
-                alert('Activity created succesfully')
+                dispatch(addSneaker(input))
+                alert('Sneaker added succesfully')
                 setInput({
-                    name: '', 
-                    difficulty:'', 
-                    duration:'', 
-                    season:'',
-                    countriesId:[],
+                    title:'', 
+                    price:'', 
+                    description:'', 
+                    size:'',
+                    image:'',
+                    stock:'',
+                    brand:'',
+                    genre:'',
+                    colour:'',
+                    type:'',
                 })
                 form.reset();
                 btn.disabled = true;     
         }else{
             btn.disabled = true;
-            alert('The activity was not created, the form contains errors.')
+            alert('The Sneaker was not created, the form contains errors.')
         }
     };
 
 return (
     <div className={S.general}>
-        <Link to='/countries'>
+        <Link to='/sneakers'>
             <button className={S.back}>Back</button>
         </Link>
     <div className={S.container}>
         <header className={S.header}>
-            <h1>Create a new Tourist Activity</h1>
+            <h1>Add a New Sneaker</h1>
             <p>Complete all required fields</p>
         </header>
-        <form onSubmit={handlerSubmit} id='newActiviy' className={S.newActiviy}>
+        <form onSubmit={handlerSubmit} id='newSneaker' className={S.newSneaker}>
             <div className={S.groups}>
-                <input type='text' className={S.input} name='name' placeholder=" " value={input.name} onChange={handlerOnChange} autoComplete='off'/>
-                <label htmlFor='name' className={S.label}>Name</label>
-                {errores.name && (<p className='errores'>{errores.name}</p>)}
+                <input type='text' className={S.input} name='title' placeholder=" " value={input.title} onChange={handlerOnChange} autoComplete='off'/>
+                <label htmlFor='title' className={S.label}>Title</label>
+                {errores.title && (<p className='errores'>{errores.title}</p>)}
             </div>
             <div className={S.groups}>
-                <input type='number' className={S.input} name='difficulty' placeholder=' ' value={input.difficulty} onChange={handlerOnChange}  autoComplete='off' min='1' max='5'/>
-                <label htmlFor='difficulty' className={S.label}>Difficulty 1-5</label>
-                {errores.difficulty && (<p className='errores'>{errores.difficulty}</p>)}
+                <input type='number' className={S.input} name='price' placeholder=' ' value={input.price} onChange={handlerOnChange}  autoComplete='off' min='1'/>
+                <label htmlFor='price' className={S.label}>Price</label>
+                {errores.price && (<p className='errores'>{errores.price}</p>)}
             </div>
             <div className={S.groups}>
-                <input type='number' className={S.input} placeholder=' ' name='duration' value={input.duration} onChange={handlerOnChange}  autoComplete='off' min='1' max='12'/>
-                <label htmlFor='duration' className={S.label}>Duration</label>
-                {errores.duration && (<p className='errores'>{errores.duration}</p>)}
+                <input type='text' className={S.input} name='description' placeholder=" " value={input.description} onChange={handlerOnChange} autoComplete='off'/>
+                <label htmlFor='description' className={S.label}>Description</label>
+                {errores.description && (<p className='errores'>{errores.description}</p>)}
             </div>
             <div className={S.groups}>
-                <select name='season'className={S.input} onChange={handlerOnChange} defaultValue='Not'>
-                        <option value="Not">Select a Season</option>
-                        <option value="SUMMER">Summer</option>
-                        <option value="FALL">Fall</option>
-                        <option value="WINTER">Winter</option>
-                        <option value="SPRING">Spring</option>
-                        <option value="ALL SEASON">All Season</option>
-                </select>
-                {errores.season && (<p className='errores'>{errores.season}</p>)}
+                <input type='number' className={S.input} placeholder=' ' name='size' value={input.size} onChange={handlerOnChange}  autoComplete='off' min='1' max='50'/>
+                <label htmlFor='size' className={S.label}>Size</label>
+                {errores.size && (<p className='errores'>{errores.size}</p>)}
             </div>
             <div className={S.groups}>
-                <label htmlFor='filterCont'></label>
-                <select className={S.input} onChange={e=>handlerFilterContinent(e)} defaultValue='world'>
-                     <option value='world' >All Continents</option>
-                     <option value='Antarctica'>Antartica</option>
-                     <option value='Africa'>Africa</option>
-                     <option value='Asia'>Asia</option>
-                     <option value='Europe'>Europe</option>
-                     <option value='Oceania'>Oceania</option>
-                     <option value='South America'>South America</option>
-                     <option value='North America'>North America</option>
-                </select>
+                <p>type</p>
+                <label htmlFor="Sport"><input type='radio' name="type" value='Sports' onChange={handlerSelect}/>Sports</label>
+                <label htmlFor="Training"><input type='radio' name="type" value='Training' onChange={handlerSelect}/>Training</label>
+                <label htmlFor="Running"><input type='radio' name="type" value='Running' onChange={handlerSelect}/>Running</label>
+                {errores.type && (<p className='errores'>{errores.type}</p>)}          
             </div>
             <div className={S.groups}>
-                    <label htmlFor='addCount'></label>
-                    <select className={S.input} onChange={handlerSelect} name='countriesId' id='countrisId' defaultValue='Select'>
-                        <option disabled value='Select'>Select a Country</option>
-                        {countriesId.map((e)=>(<option key={e.id} value={e.id}>{e.name}</option> ))}
-                    </select>
-                    {errores.countriesId && (<p className='errores'>{errores.countriesId}</p>)}
+                <p>Genre</p>
+                <label htmlFor="Men"><input type='radio' name="genre" value='Men' onChange={handlerSelect}/>Men</label>
+                <label htmlFor="Women"><input type='radio' name="genre" value='Women' onChange={handlerSelect}/>Women</label>
+                <label htmlFor="Kids"><input type='radio' name="genre" value='Kids' onChange={handlerSelect}/>Kids</label>
+                {errores.genre && (<p className='errores'>{errores.genre}</p>)}           
+            </div>
+            <div className={S.groups}>
+                <input type='text' className={S.input} name='image' placeholder=" " value={input.image} onChange={handlerOnChange} autoComplete='off'/>
+                <label htmlFor='image' className={S.label}>URL the Image</label>
+                {errores.image && (<p className='errores'>{errores.image}</p>)}
+            </div>
+            <div className={S.groups}>
+                <input type='text' className={S.input} name='stock' placeholder=" " value={input.stock} onChange={handlerOnChange} autoComplete='off'/>
+                <label htmlFor='stock' className={S.label}>Stock</label>
+                {errores.stock && (<p className='errores'>{errores.stock}</p>)}
+            </div>
+            <div className={S.groups}>
+                <input type='text' className={S.input} name='brand' placeholder=" " value={input.brand} onChange={handlerOnChange} autoComplete='off'/>
+                <label htmlFor='brand' className={S.label}>Brand</label>
+                {errores.brand && (<p className='errores'>{errores.brand}</p>)}
+            </div>
+            <div className={S.groups}>
+                <input type='text' className={S.input} name='colour' placeholder=" " value={input.colour} onChange={handlerOnChange} autoComplete='off'/>
+                <label htmlFor='colour' className={S.label}>Colour</label>
+                {errores.colour && (<p className='errores'>{errores.colour}</p>)}
             </div>
             <div className={S.submit}>
-                <button className={S.btnSubmit} type="Submit" id ='btn' disabled={!input.name || !input.duration || !input.difficulty || !input.season || !input.countriesId.length}>CREATE</button>
+                <button className={S.btnSubmit} type="Submit" id ='btn' disabled={!input.title || !input.price || !input.description || !input.size || !input.image || !input.stock || !input.brand ||!input.genre ||!input.colour || !input.type}>CREATE</button>
             </div>
-        </form>
-        <div className={S.canceled}>
-            <Link to='/countries'>
-                <button className={S.colour}>CANCEL</button>
+            <div>
+            <Link to='/sneakers'>
+                <button className={S.cancel}>CANCEL</button>
             </Link>
         </div>
-        <div className={S.selected}>
-                <label className={S.count}>Selected Colour: </label>
-                    <div className={S.footer}>
-                        { input.countriesId.map (el =>
-                            <div key={el}>
-                                <p>{el}</p> 
-                                <button className={S.cancel} onClick={()=>handleDelete(el)} key={el.id}>x</button>
-                            </div>
-                        )}
-                    </div>
-        </div>
+        </form>
     </div>
     </div>
 )

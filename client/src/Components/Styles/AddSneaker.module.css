@@ -1,37 +1,36 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 .general{
     font-family: 'Manjari', sans-serif;
-    background-position: 0 0, 10px 10px ;
     display: flex;
     min-height: 110vh;
+    margin: 1rem;
+    background-color: #ffffffe0;
+    background-size: 75px 75px;
+    background-repeat:space;
+    background-image: linear-gradient(#ffffffe0,#ffffffe0), url('../../Images/sneakers_vector.webp');
 }
 .container{
-    background-color: #69a8d174;
+    background-color: #00000099;
     margin: auto;
     width: 90%;
     max-width: 400px;
     padding: 5em 3em;
     border-radius: 10px;
-    box-shadow: 10px 10px 15px 1px #212ee5;
+    box-shadow: 10px 10px 15px 1px #3f3f41;
     text-align: center;
 }
 
 .header{
-    font-size: 1rem;
-    text-shadow: 5px 2px 5px #212ee5;
-    color: #171f97 ;
-    margin-bottom: 0.5em;
-    text-transform: capitalize;    
+    margin-top: 1rem;
+    padding: 1rem;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000;  
 }
 
-.newActivity{
-    margin-top: 3em;
-    display: grid;
-    gap: 2.5em;
+.newSneaker{
+    font-family: 'Karla', sans-serif;
+    grid-column: 1/-1;
+    padding: 1rem;
+    margin: 1rem;
 }
 
 .groups{
@@ -72,15 +71,12 @@
 }
 
 .btnSubmit{
-    font-family: 'Manjari', sans-serif;
-    background-color: #212ee5;
-    color: #3fa4e8;
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 5px;
-    margin: 10px;
+    margin: 0.5rem;
     border: none;
-    border-radius: 25px;
+    background-color: #fcf81b99;
+    padding: 9px 17px;
+    color: #000000;
+    cursor: pointer;
 }
 .btnSubmit:disabled{
     background-color: #565456;
@@ -90,29 +86,20 @@
 .btnSubmit:hover:not(:disabled){
     width: 100%;
 }
-
-.back{
-    grid-column: 1/4;
-    position: sticky;
-    top: 50px;
-    left: 50px;
-    background-color: #212ee5;
-    color: #3fa4e8;    
-    text-shadow: 5px 2px 10px #040203;
-    height: 25px;
-    width: 60px;
+.back {
     border: none;
+    background-color: #00000099;
     border-radius: 25px;
+    padding: 5px 10px;
+    color: #ffffff;
     cursor: pointer;
-    margin: auto;
-    text-align: center;
-    align-content: center;
+    position: sticky;
 }
-.back:hover{
-    transition: 0.25s;
-    cursor: pointer;
-    background-color: transparent;
-    border: 1px solid #3fa4e8;
+
+.back:hover {
+    color: #000000;
+    text-shadow: 5px 5px 5px #000000;
+    background-color: #ffffff99;
 }
 
 .cancel{
@@ -126,32 +113,13 @@
     align-content: center;
     
 }
-.canceled .cancel:hover{
+.cancel:hover{
     width: 100%;
 }
 
-.selected{
-    color: #171f97;
-    text-transform: uppercase; 
-    width: 100%;
-    display: grid;
-    flex-direction: row;
-    margin: 10px;
-    padding: 5px;
-}
 .count{
     color: #171f97;
     cursor: pointer;
-    padding: 5px;
-    margin: 5px;
     text-align: left;
 }
 
-.footer{
-    left: 0;
-    margin: 5px;
-    padding: 5px;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-column: 1/-1;
-}

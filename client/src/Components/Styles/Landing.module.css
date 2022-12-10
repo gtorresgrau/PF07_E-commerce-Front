@@ -5,10 +5,10 @@
     align-items: center;
     justify-content: center;
     align-content: center;
-    background-color: #ffffffbb;
+    background-color: #ffffffe0;
     background-size: 75px 75px;
     background-repeat:space;
-    background-image: linear-gradient(#ffffffbb,#ffffffbb), url('../../Images/sneakers_vector.webp');
+    background-image: linear-gradient(#ffffffe0,#ffffffe0), url('../../Images/sneakers_vector.webp');
     height: 100vh;
 }
 

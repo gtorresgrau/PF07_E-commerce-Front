@@ -175,3 +175,11 @@ export function sortPrice(payload) {
     payload
   }
 };
+
+//--------------------------------------------------------------------------------------------------
+export function addSneaker(payload){
+  return async function(){
+      const add = await axios.post(`http://localhost:3001/postSneakers`, payload)
+      return add;
+  }
+};

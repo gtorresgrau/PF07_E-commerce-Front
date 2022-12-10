@@ -19,20 +19,22 @@ export default function Home() {
    
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [sneakersPerPage] = useState(8);
+    const [sneakersPerPage] = useState(9);
     const [, setOrden] = useState(1);
 
     let indexLastSneaker = currentPage * sneakersPerPage;
     let indexFirstSneaker = indexLastSneaker - sneakersPerPage
 
     const actualySneakers = allSneakers.slice(indexFirstSneaker, indexLastSneaker);
- 
-   
-
 
     useEffect(() => {
         dispatch(getAllSneackers())
     }, [dispatch]);
+
+    let Colours =[];
+    allSneakers.map(e => ( Colours.push(e.colour)));
+    const data = new Set(Colours)
+    let allColours = [...data]   
 
     function handlerFilterBrand(e) {
         setCurrentPage(1);
@@ -50,9 +52,6 @@ export default function Home() {
         dispatch(filterByBrand(filter.join('')))
         }
     }
-      
-       
-   
 
     function handlerFilterColours(e) {
         
@@ -144,6 +143,11 @@ export default function Home() {
                         <label htmlFor='-a+'>
                             <input name='sortStock' id='-a+' value='-a+' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Lower price </label>
                     </div>
+                    <div className="S.btn">
+                        <Link to='/addSneaker'>
+                            <button>New Sneaker</button>
+                        </Link>
+                    </div>
                     <div onChange={e => handlerFilterBrand(e)}>
                         <span className={S.span}></span>
                         
@@ -153,7 +157,7 @@ export default function Home() {
                         <label htmlFor='Fila'><input type="checkbox" name="brand" id="Fila" value='Fila'/>Fila</label>
                         <label htmlFor='Reebok'><input type="checkbox" name="brand" id="Reebok" value='Reebok'/>Reebok</label>
                     </div>
-                    <div onChange={e => handlerFilterColours(e)}>
+                    {/* <div onChange={e => handlerFilterColours(e)}>
                         <span className={S.span}></span>
                         <label htmlFor='White'><input type="checkbox" name="colour" id="White" value='White'/>White</label>
                         <label htmlFor='Black'><input type="checkbox" name="colour" id="Black" value='Black'/>Black</label>
@@ -161,6 +165,11 @@ export default function Home() {
                         <label htmlFor='Blue'><input type="checkbox" name="colour" id="Blue" value='Blue'/>Blue</label>
                         <label htmlFor='Pink'><input type="checkbox" name="colour" id="Pink" value='Pink'/>Pink</label>
                         <label htmlFor='Gray'><input type="checkbox" name="colour" id="Gray" value='Gray'/>Gray</label>
+                    </div> */}
+                    <div onChange={e => handlerFilterColours(e)} id='filterCou'>
+                                {allColours.map(e=>(
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
+                                ))}
                     </div>
                     <div onChange={e => handlerFilterGenre(e)}>
                         <span className={S.span}></span>
