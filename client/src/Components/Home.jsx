@@ -16,6 +16,7 @@ export default function Home() {
     const dispatch = useDispatch();
   
     const allSneakers = useSelector((state) => state.sneakers);
+    const allCoul = useSelector((state) => state.allSneakers);
    
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -32,7 +33,7 @@ export default function Home() {
     }, [dispatch]);
 
     let Colours =[];
-    allSneakers.map(e => ( Colours.push(e.colour)));
+    allCoul.map(e => ( Colours.push(e.colour)));
     const data = new Set(Colours)
     let allColours = [...data]   
 

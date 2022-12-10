@@ -16,11 +16,11 @@ export default function CreateActivity(){
 
     const datos = {
         title:'', 
-        price:0, 
+        price:'', 
         description:'', 
         size:'',
         image:'',
-        stock:0,
+        stock:'',
         brand:'',
         genre:'',
         colour:'',
@@ -33,20 +33,20 @@ export default function CreateActivity(){
     function validate(input){
         let errores = {};
         let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-        if(!input.title) errores.title = 'Title is Required';
-        if(!input.price) errores.price = 'Price is Required';
-        if(!input.description.length>10000) errores.description = 'Duration is to long. It has to be less than 10000 ';
-        if(!input.size.length) errores.size = 'Size is Required';
-        if(!input.image) errores.image = 'Image is Required';
-        if(!input.stock) errores.stock = 'Stock is Required';
-        if(!input.brand.trim()){ 
+        if(!input.title)errores.title = 'Title is Required';
+        else if(!input.price) errores.price = 'Price is Required';
+        else if(!input.description.length>10000) errores.description = 'Duration is to long. It has to be less than 10000 ';
+        else if(!input.size.length) errores.size = 'Size is Required';
+        else if(!input.image) errores.image = 'Image is Required';
+        else if(!input.stock) errores.stock = 'Stock is Required';
+        else if(!input.brand.trim()){ 
             errores.brand = 'Brand is Required'
         }else if(!regexName.test(input.brand.trim())){
             errores.brand = 'Brand only accept leters and spaces';
-        };        
-        if(!input.genre) errores.genre = 'Genre is Required';
-        if(!input.colour) errores.colour = 'Colour is Required';
-        if(!input.type) errores.type = 'type is Required';
+        }        
+        else if(!input.genre) errores.genre = 'Genre is Required';
+        else if(!input.colour) errores.colour = 'Colour is Required';
+        else if(!input.type) errores.type = 'type is Required';
 
         return errores;
     }
