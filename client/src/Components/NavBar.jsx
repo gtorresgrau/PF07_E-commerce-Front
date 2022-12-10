@@ -55,24 +55,7 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                     <img src={logo} width="250rem" alt='Hsneaker'/>
                 </div>
             </Link>
-            <select name="" id="" defaultValue='Women' className={S.select} onChange={handlerFilterWomen()}>
-                <option value='Women'> Women</option>
-                <option value='sport'>Sport</option>
-                <option value='running'>Running</option>
-                <option value='training'>Training</option>
-            </select>
-            <select name="" id="" defaultValue='men' className={S.select} onChange={handlerFilterMen()}>
-                <option value='men'> Men</option>
-                <option value='sport'>Sport</option>
-                <option value='running'>Running</option>
-                <option value='training'>Training</option>
-            </select>
-            <select name="" id="" defaultValue='Kids' className={S.select} onChange={handlerFilterKids()}>
-                <option value='Kids'> Kids</option>
-                <option value='sport'>Sport</option>
-                <option value='running'>Running</option>
-                <option value='training'>Training</option>
-            </select>
+           
             <div className={S.SearchBar}>
                 <SearchBar currentPage={currentPage}
                     setCurrentPage={setCurrentPage} />
