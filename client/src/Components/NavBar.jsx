@@ -14,9 +14,6 @@ export default function Navbar({ setCurrentPage, currentPage }) {
     const dispatch = useDispatch();
     const { loginWithRedirect}= useAuth0();
     const { logout}= useAuth0();
-    // const [woman, setWomen] = useState();
-    // const [men, setMen] = useState();
-    // const [kids, setkids] = useState();
 
     const handleAllSneakers = (e) => {
         e.preventDefault();
@@ -54,6 +51,9 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             </div>
             <div className="">
                 <button  className={S.singInButton} onClick={()=>logout({returnTo:window.location.origin})} > Logout</button>
+            </div>
+            <div className="S.btn">
+                <Link to='/addSneaker'><button>New Sneaker</button></Link>
             </div>
             <div className="">
                 <Link to='/join'><button className={S.joinNowButton} >Join Now</button></Link>

@@ -121,7 +121,6 @@ export default function Home() {
     return (
         <div>
             <div className={S.header}>
-
                 <div className={S.navigate}>
                     <Navbar currentPage={currentPage}
                         setCurrentPage={setCurrentPage} />
@@ -142,11 +141,6 @@ export default function Home() {
                             <input name='sortStock' id='+a-' value='+a-' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Higher price </label>
                         <label htmlFor='-a+'>
                             <input name='sortStock' id='-a+' value='-a+' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Lower price </label>
-                    </div>
-                    <div className="S.btn">
-                        <Link to='/addSneaker'>
-                            <button>New Sneaker</button>
-                        </Link>
                     </div>
                     <div onChange={e => handlerFilterBrand(e)}>
                         <span className={S.span}></span>

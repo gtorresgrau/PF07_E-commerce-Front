@@ -179,7 +179,7 @@ export function sortPrice(payload) {
 //--------------------------------------------------------------------------------------------------
 export function addSneaker(payload){
   return async function(){
-      const add = await axios.post(`http://localhost:3001/postSneakers`, payload)
+      const add = await axios.post(`http://localhost:3001/sneakers`, payload)
       return add;
   }
 };

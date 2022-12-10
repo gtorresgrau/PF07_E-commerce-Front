@@ -16,11 +16,11 @@ export default function CreateActivity(){
 
     const datos = {
         title:'', 
-        price:'', 
+        price:0, 
         description:'', 
         size:'',
         image:'',
-        stock:'',
+        stock:0,
         brand:'',
         genre:'',
         colour:'',
@@ -36,7 +36,7 @@ export default function CreateActivity(){
         if(!input.title) errores.title = 'Title is Required';
         if(!input.price) errores.price = 'Price is Required';
         if(!input.description.length>10000) errores.description = 'Duration is to long. It has to be less than 10000 ';
-        if(!input.size) errores.size = 'Size is Required';
+        if(!input.size.length) errores.size = 'Size is Required';
         if(!input.image) errores.image = 'Image is Required';
         if(!input.stock) errores.stock = 'Stock is Required';
         if(!input.brand.trim()){ 
@@ -54,16 +54,16 @@ export default function CreateActivity(){
 
     function handlerOnChange(e){
         let valor = e.target.value
-        setInput({
+            setInput({
+                ...input,
+                [e.target.name]: valor
+            })
+            setErrores(validate({
             ...input,
             [e.target.name]: valor
-        })
-        setErrores(validate({
-           ...input,
-           [e.target.name]: valor
-        }));
-        console.log(input)
-    };
+            }));
+        }
+    
     function handlerSelect(e){
         let valor = e.target.value
         setInput({
@@ -96,6 +96,7 @@ export default function CreateActivity(){
                     colour:'',
                     type:'',
                 })
+                console.log('input:',input);
                 form.reset();
                 btn.disabled = true;     
         }else{
