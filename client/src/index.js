@@ -19,7 +19,7 @@ root.render(
  <Auth0Provider 
       domain='dev-frontpf08.us.auth0.com'
       clientId='tRlgJELqzjkbfv2YlwKylgjL8jlAPDDa'
-      redirectUri={window.location.origin }> 
+      redirectUri={"http://localhost:3000/sneakers" }> 
     <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>

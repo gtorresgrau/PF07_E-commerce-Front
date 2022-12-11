@@ -7,13 +7,20 @@ import { useDispatch } from 'react-redux';
 import { getAllSneackers } from '../Actions/Actions';
 import logo from '../Images/logo.png';
 import { CgShoppingCart } from 'react-icons/cg';
+import { LoginButton } from './Loginbutton';
+import { LogoutButton } from './Logoutbutton';
+import { UserLogin } from './UserLogin';
 import { HiOutlineUser } from 'react-icons/hi';
 import  { useAuth0 } from "@auth0/auth0-react"
 
 export default function Navbar({ setCurrentPage, currentPage }) {
     const dispatch = useDispatch();
-    const { loginWithRedirect}= useAuth0();
-    const { logout}= useAuth0();
+    //const { loginWithRedirect}= useAuth0();
+    //const { logout}= useAuth0();
+    const {
+        isAuthenticated,
+        getAccessTokenSilently,
+      } = useAuth0();
 
     const handleAllSneakers = (e) => {
         e.preventDefault();
@@ -40,24 +47,27 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             <div className="">
                 <Link to='/aboutUs'><button className={S.btn} >About us</button></Link>
             </div> */}
-            <div className="">
-                <Link to='/account'className={S.cart}><HiOutlineUser/></Link>
+            {
+
+               !isAuthenticated ? 
+            <LoginButton/>
+            : <>
+                <LogoutButton/> 
+                <UserLogin/> 
+            </>
+            }
+            
+           
+           <div className="S.btn">
+                <Link to='/addSneaker'><button className={S.singInButton}>New Sneaker</button></Link>
             </div>
             <div className={S.divCart}>
                 <Link to='/shop' className={S.cart}><CgShoppingCart/></Link>
             </div>
-            <div className="">
-                <button  className={S.singInButton} onClick={()=>loginWithRedirect()} >Sing in</button>
-            </div>
-            <div className="">
-                <button  className={S.singInButton} onClick={()=>logout({returnTo:window.location.origin})} > Logout</button>
-            </div>
-            <div className="S.btn">
-                <Link to='/addSneaker'><button>New Sneaker</button></Link>
-            </div>
-            <div className="">
-                <Link to='/join'><button className={S.joinNowButton} >Join Now</button></Link>
-            </div>
+          { // <div className="">
+             //   <Link to='/join'><button className={S.joinNowButton} >Join Now</button></Link>
+            //</div>
+          } 
         </header>
     )
 };
