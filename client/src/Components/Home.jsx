@@ -231,6 +231,9 @@ export default function Home() {
                 sneakersPerPage={sneakersPerPage}
             />
             <br />
+            <div>
+                <Link to='/addSneaker'><button className={S.btn} >ADD NEW SNEAKER</button></Link>
+            </div>
             <footer>
                 <div className={S.footer}><Footer /></div>
             </footer>

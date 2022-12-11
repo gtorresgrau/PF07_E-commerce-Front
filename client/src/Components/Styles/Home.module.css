@@ -111,3 +111,15 @@
     padding: 0.6rem;
     cursor: pointer;
 }
+
+.btn{
+    padding: 5px;
+    margin: 5px;
+    border: none;
+    background-color: #00000099;
+    border-radius: 25px;
+    padding: 5px 10px;
+    color: #ffffff;
+    cursor: pointer;
+    position: sticky;
+}
