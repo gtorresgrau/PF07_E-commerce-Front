@@ -9,10 +9,13 @@ import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour, filt
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
+
 import SimpleSlider from './Carousel.jsx';
 import CarouselBrands from './CarouselBrands.jsx';
 
+
 import Loading from './Loading.jsx';
+
 
 var filter=[]
 var a=[]
@@ -143,6 +146,7 @@ export default function Home() {
 
     return (
         <div>
+
                 
             <Navbar currentPage={currentPage}
                 setCurrentPage={setCurrentPage} />

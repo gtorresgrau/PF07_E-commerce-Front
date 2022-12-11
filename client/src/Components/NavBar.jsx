@@ -8,6 +8,7 @@ import { getAllSneackers } from '../Actions/Actions';
 import logo from '../Images/logo2.png';
 import { CgShoppingCart } from 'react-icons/cg';
 import { HiOutlineUser } from 'react-icons/hi';
+
 import { FaRegHeart } from 'react-icons/fa';
 
 import  { useAuth0 } from "@auth0/auth0-react"
@@ -50,12 +51,15 @@ export default function Navbar({ setCurrentPage, currentPage }) {
     return (
         <nav className={S.display}>
             <div className={S.displayLeft}>
-                <Link to='/sneakers' onClick={e => handleAllSneakers(e)}>
-                    <img className={S.logo} src={logo} width="250rem" alt='Hsneaker'/>
-                </Link>
-                <Link className={S.links} to='#'>MEN</Link>
-                <Link className={S.links} to='#'>WOMEN</Link>
-                <Link className={S.links} to='#'>KID</Link>
+            <Link to='/sneakers' onClick={e => handleAllSneakers(e)}>
+                <img className={S.logo} src={logo} width="250rem" alt='Hsneaker'/>
+            </Link>
+
+                
+                    <Link className={S.links} to='#'>MEN</Link>
+                    <Link className={S.links} to='#'>WOMEN</Link>
+                    <Link className={S.links} to='#'>KIDS</Link>
+                
             </div>
 
             {/* <div>
