@@ -9,8 +9,8 @@ import {
   GET_AZ,
   GET_COLOUR,
   GET_TYPE,
-  GET_GENRE
-
+  GET_GENRE,
+  ADD_SNEAKER
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
@@ -103,6 +103,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         detail: [],
       };
+    case ADD_SNEAKER:
+        return{
+            ...state,
+        }
     default:
       return {
         ...state
