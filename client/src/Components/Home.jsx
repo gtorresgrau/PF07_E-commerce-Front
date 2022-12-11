@@ -19,6 +19,7 @@ export default function Home() {
     const allCoul = useSelector((state) => state.allSneakers);
     const allTyp = useSelector((state) => state.allSneakers);
     const allBra = useSelector((state) => state.allSneakers);
+    const allGen = useSelector((state) => state.allSneakers);
    
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -48,6 +49,11 @@ export default function Home() {
     allBra.map(e => ( Brands.push(e.brand)));
     const datab = new Set(Brands)
     let allBrands = [...datab] 
+
+    let Genres =[];
+    allGen.map(e => ( Genres.push(e.genre)));
+    const datag = new Set(Genres)
+    let allGenres = [...datag] 
 
     function handlerFilterBrand(e) {
         setCurrentPage(1);
@@ -167,9 +173,9 @@ export default function Home() {
                     </div>
                     <div onChange={e => handlerFilterGenre(e)}>
                         <span className={S.span}></span>
-                        <label htmlFor='Men'><input type="checkbox" name="gnre" id="Men" value='Men'/>Men</label>
-                        <label htmlFor='Women'><input type="checkbox" name="genre" id="Women" value='Women'/>Women</label>
-                        <label htmlFor='Kids'><input type="checkbox" name="genre" id="Kids" value='Kids'/>Kids</label>
+                        {allGenres.map(e=>(
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="genre" id={e} value={e} key={e}/>{e}</label>
+                                ))}
                     </div>
                     <div onChange={e => handlerFilterType(e)}>
                         {allTypes.map(e=>(

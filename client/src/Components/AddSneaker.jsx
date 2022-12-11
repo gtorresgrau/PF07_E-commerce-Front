@@ -80,7 +80,7 @@ export default function CreateActivity(){
     };
 
     const handlerSize=(e)=>{
-        if(!input.size.includes(e.target.value)){
+        if(e.target.checked === true){    
         setInput({
             ...input,
             size: [...input.size, e.target.value ]
@@ -89,8 +89,17 @@ export default function CreateActivity(){
             ...input,
             size: e.target.value
          }));
-        }else{alert('The Size was already selected')}
-    };
+         console.log('true:',input.size)
+        }
+        if(e.target.checked === false){
+            console.log('false:',input.size)
+            setInput({
+                ...input,
+                size: input.size.filter((s) => s !== e.target.value)
+            })
+        }
+    }
+
        
 
     function handlerSubmit(e){
@@ -147,12 +156,10 @@ return (
                 {errores.description && (<p className='errores'>{errores.description}</p>)}
             </div>
             <div className={S.select}>
-                    <select name="size" id="size" onChange={(e)=>handlerSize(e)}>
+                    <label htmlFor='size' className={S.label}>Size</label>
                         {talles?.map(e => (
-                            <option type="text" name={e} id={e} value={e} key={e}/>
+                            <label htmlFor={e} key={e}><input type="checkbox" name="size" id={e} value={e} key={e} onChange={(e)=>handlerSize(e)}/>{e}</label>
                         ))}
-                    </select>
-                <label htmlFor='size' className={S.label}>Size</label>
                 {errores.size && (<p className='errores'>{errores.size}</p>)}
             </div>
             <div className={S.groups}>
@@ -175,7 +182,7 @@ return (
                 {errores.image && (<p className='errores'>{errores.image}</p>)}
             </div>
             <div className={S.groups}>
-                <input type='number' className={S.input} name='stock' placeholder=" " value={input.stock} onChange={handlerOnChange} autoComplete='off'/>
+                <input type='number' className={S.input} name='stock' placeholder=" " value={input.stock} onChange={handlerOnChange} autoComplete='off' min='1'/>
                 <label htmlFor='stock' className={S.label}>Stock</label>
                 {errores.stock && (<p className='errores'>{errores.stock}</p>)}
             </div>
