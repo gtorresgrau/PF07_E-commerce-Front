@@ -1,0 +1,12 @@
+.carousel {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 3rem;
+}
+
+.slick-prev:before,
+    .slick-next:before {
+      color: black;
+      font-size: 24px;
+    }
+
