@@ -48,7 +48,6 @@ export default function Navbar({ setCurrentPage, currentPage }) {
 
 
     return (
-        <div>
         <nav className={S.display}>
             <div className={S.displayLeft}>
                 <Link to='/sneakers' onClick={e => handleAllSneakers(e)}>
@@ -84,16 +83,16 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                 <div className={S.SearchBar}>
                     <SearchBar currentPage={currentPage}
                         setCurrentPage={setCurrentPage} />
-                    <div className={S.displayLinks}>
-                        <div className="">
-                            <Link to='/account'className={S.heart}><FaRegHeart /></Link>
-                        </div>
-                        <div className="">
-                            <Link to='/account'className={S.user}><HiOutlineUser/></Link>
-                        </div>
-                        <div className={S.divCart}>
-                            <Link to='/shop' className={S.cart}><CgShoppingCart/></Link>
-                        </div>
+                </div>
+                <div className={S.displayLinks}>
+                    <div className="">
+                        <Link to='/account'className={S.heart}><FaRegHeart /></Link>
+                    </div>
+                    <div className="">
+                        <Link to='/account'className={S.user}><HiOutlineUser/></Link>
+                    </div>
+                    <div className={S.divCart}>
+                        <Link to='/shop' className={S.cart}><CgShoppingCart/></Link>
                     </div>
                 </div>
             </div>
@@ -129,6 +128,5 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                 <Link to='/addSneaker'><button className={S.singInButton}>New Sneaker</button></Link>
             </div> */}
         </nav>   
-    </div>
     )
 };
