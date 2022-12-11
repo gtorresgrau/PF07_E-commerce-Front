@@ -17,6 +17,8 @@ export default function Home() {
   
     const allSneakers = useSelector((state) => state.sneakers);
     const allCoul = useSelector((state) => state.allSneakers);
+    const allTyp = useSelector((state) => state.allSneakers);
+    const allBra = useSelector((state) => state.allSneakers);
    
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -34,8 +36,18 @@ export default function Home() {
 
     let Colours =[];
     allCoul.map(e => ( Colours.push(e.colour)));
-    const data = new Set(Colours)
-    let allColours = [...data]   
+    const datac = new Set(Colours)
+    let allColours = [...datac]   
+
+    let Types =[];
+    allTyp.map(e => ( Types.push(e.type)));
+    const datat = new Set(Types)
+    let allTypes = [...datat]
+
+    let Brands =[];
+    allBra.map(e => ( Brands.push(e.brand)));
+    const datab = new Set(Brands)
+    let allBrands = [...datab] 
 
     function handlerFilterBrand(e) {
         setCurrentPage(1);
@@ -144,23 +156,10 @@ export default function Home() {
                             <input name='sortStock' id='-a+' value='-a+' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Lower price </label>
                     </div>
                     <div onChange={e => handlerFilterBrand(e)}>
-                        <span className={S.span}></span>
-                        
-                        <label htmlFor='Puma'><input type="checkbox" name="brand" id="Puma" value='Puma'/>Puma</label>
-                        <label htmlFor='Adidas'><input type="checkbox" name="brand" id="Adidas" value='Adidas'/>Adidas</label>
-                        <label htmlFor='Nike'><input type="checkbox" name="brand" id="Nike" value='Nike'/>Nike</label>
-                        <label htmlFor='Fila'><input type="checkbox" name="brand" id="Fila" value='Fila'/>Fila</label>
-                        <label htmlFor='Reebok'><input type="checkbox" name="brand" id="Reebok" value='Reebok'/>Reebok</label>
+                        {allBrands.map(e=>(
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
+                                ))}
                     </div>
-                    {/* <div onChange={e => handlerFilterColours(e)}>
-                        <span className={S.span}></span>
-                        <label htmlFor='White'><input type="checkbox" name="colour" id="White" value='White'/>White</label>
-                        <label htmlFor='Black'><input type="checkbox" name="colour" id="Black" value='Black'/>Black</label>
-                        <label htmlFor='Red'><input type="checkbox" name="colour" id="Red" value='Red'/>Red</label>
-                        <label htmlFor='Blue'><input type="checkbox" name="colour" id="Blue" value='Blue'/>Blue</label>
-                        <label htmlFor='Pink'><input type="checkbox" name="colour" id="Pink" value='Pink'/>Pink</label>
-                        <label htmlFor='Gray'><input type="checkbox" name="colour" id="Gray" value='Gray'/>Gray</label>
-                    </div> */}
                     <div onChange={e => handlerFilterColours(e)} id='filterCou'>
                                 {allColours.map(e=>(
                                     <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
@@ -173,10 +172,9 @@ export default function Home() {
                         <label htmlFor='Kids'><input type="checkbox" name="genre" id="Kids" value='Kids'/>Kids</label>
                     </div>
                     <div onChange={e => handlerFilterType(e)}>
-                        <span className={S.span}></span>
-                        <label htmlFor='Sports'><input type="checkbox" name="type" id="Sports" value='Sports'/>Sports</label>
-                        <label htmlFor='Training'><input type="checkbox" name="type" id="Training" value='Training'/>Training</label>
-                        <label htmlFor='Running'><input type="checkbox" name="type" id="Running" value='Running'/>Running</label>
+                        {allTypes.map(e=>(
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="type" id={e} value={e} key={e}/>{e}</label>
+                                ))}
                     </div>
                 </form>
                 <Paginado

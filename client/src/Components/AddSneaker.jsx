@@ -18,7 +18,7 @@ export default function CreateActivity(){
         title:'', 
         price:'', 
         description:'', 
-        size:'',
+        size:[],
         image:'',
         stock:'',
         brand:'',
@@ -27,6 +27,7 @@ export default function CreateActivity(){
         type:'',
     };   
 
+    const talles = ['5','10','15','20','25','30','35','36','37','38','39','40','41','42','43','44']
     const [input, setInput] = useState(datos)
     const [errores, setErrores] = useState({});
 
@@ -54,6 +55,7 @@ export default function CreateActivity(){
 
     function handlerOnChange(e){
         let valor = e.target.value
+        console.log('valor:',valor)
             setInput({
                 ...input,
                 [e.target.name]: valor
@@ -63,6 +65,17 @@ export default function CreateActivity(){
             [e.target.name]: valor
             }));
         }
+    const handlerSize=(e)=>{
+            console.log('size:',e.target.value)
+                setInput({
+                    ...input,
+                    size:[...input.size, e.target.value]
+                })
+                setErrores(validate({
+                ...input,
+                [e.target.name]: e.target.value
+                }));
+            }
     
     function handlerSelect(e){
         let valor = e.target.value
@@ -88,7 +101,7 @@ export default function CreateActivity(){
                     title:'', 
                     price:'', 
                     description:'', 
-                    size:'',
+                    size:[],
                     image:'',
                     stock:'',
                     brand:'',
@@ -96,7 +109,7 @@ export default function CreateActivity(){
                     colour:'',
                     type:'',
                 })
-                console.log('input:',input);
+                console.log('input_salida:',input);
                 form.reset();
                 btn.disabled = true;     
         }else{
@@ -131,8 +144,12 @@ return (
                 <label htmlFor='description' className={S.label}>Description</label>
                 {errores.description && (<p className='errores'>{errores.description}</p>)}
             </div>
-            <div className={S.groups}>
-                <input type='number' className={S.input} placeholder=' ' name='size' value={input.size} onChange={handlerOnChange}  autoComplete='off' min='1' max='50'/>
+            <div className={S.select}>
+                    <select name="size" id="size" onChange={(e)=>handlerSize(e)}>
+                        {talles?.map(e => (
+                            <option type="text" name={e} id={e} value={e} key={e}/>
+                        ))}
+                    </select>
                 <label htmlFor='size' className={S.label}>Size</label>
                 {errores.size && (<p className='errores'>{errores.size}</p>)}
             </div>
@@ -156,7 +173,7 @@ return (
                 {errores.image && (<p className='errores'>{errores.image}</p>)}
             </div>
             <div className={S.groups}>
-                <input type='text' className={S.input} name='stock' placeholder=" " value={input.stock} onChange={handlerOnChange} autoComplete='off'/>
+                <input type='number' className={S.input} name='stock' placeholder=" " value={input.stock} onChange={handlerOnChange} autoComplete='off'/>
                 <label htmlFor='stock' className={S.label}>Stock</label>
                 {errores.stock && (<p className='errores'>{errores.stock}</p>)}
             </div>
