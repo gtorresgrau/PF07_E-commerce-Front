@@ -15,19 +15,19 @@ export default function CreateActivity(){
     const btn = document.getElementById('btn')
 
     const datos = {
-        title:'', 
-        price:'', 
-        description:'', 
+        title:"", 
+        price:"", 
+        description:"", 
         size:[],
-        image:'',
-        stock:'',
-        brand:'',
-        genre:'',
-        colour:'',
-        type:'',
+        image:"",
+        stock:"",
+        brand:"",
+        genre:"",
+        colour:"",
+        type:"",
     };   
 
-    const talles = ['5','10','15','20','25','30','35','36','37','38','39','40','41','42','43','44']
+    const talles = ["5","10","15","20","25","30","35","36","37","38","39","40","41","42","43","44"]
     const [input, setInput] = useState(datos)
     const [errores, setErrores] = useState({});
 
@@ -100,16 +100,16 @@ export default function CreateActivity(){
                 dispatch(addSneaker(input))
                 alert('Sneaker added succesfully')
                 setInput({
-                    title:'', 
-                    price:'', 
-                    description:'', 
+                    title:"", 
+                    price:"", 
+                    description:"", 
                     size:[],
-                    image:'',
-                    stock:'',
-                    brand:'',
-                    genre:'',
-                    colour:'',
-                    type:'',
+                    image:"",
+                    stock:"",
+                    brand:"",
+                    genre:"",
+                    colour:"",
+                    type:"",
                 })
                 console.log('input_salida:',input);
                 form.reset();
