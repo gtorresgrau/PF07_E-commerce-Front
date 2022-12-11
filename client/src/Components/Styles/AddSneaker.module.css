@@ -1,0 +1,133 @@
+.general{
+    font-family: 'Manjari', sans-serif;
+    display: flex;
+    min-height: 110vh;
+    margin: 1rem;
+    background-color: #ffffffe0;
+    background-size: 75px 75px;
+    background-repeat:space;
+    background-image: linear-gradient(#ffffffe0,#ffffffe0), url('../../Images/sneakers_vector.webp');
+}
+.container{
+    background-color: #00000099;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    padding: 5em 3em;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px 1px #3f3f41;
+    text-align: center;
+}
+
+.header{
+    margin-top: 1rem;
+    padding: 1rem;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000;  
+}
+
+.newSneaker{
+    font-family: 'Karla', sans-serif;
+    grid-column: 1/-1;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.groups{
+    position: relative; 
+    color: #ff1500;
+    text-transform: capitalize;
+}
+
+.input{
+    font-family: 'Manjari', sans-serif;
+    width: 100%;
+    padding: 0.2em;
+    margin: 0.7em;
+    background: none;
+    font-size: 1rem;
+    color: #171f97;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #212ee5;
+}
+
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+    transform: translateY(-5px) scale(.7);
+    transform-origin: left top;
+    color: #171f97;
+}
+
+.label{
+    color: #171f97;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 1px;
+    transform: translateY(10px);
+    transition: transform .5s color .3s;
+}
+
+.btnSubmit{
+    margin: 0.5rem;
+    border: none;
+    background-color: #fcf81b99;
+    padding: 9px 17px;
+    color: #000000;
+    cursor: pointer;
+}
+.btnSubmit:disabled{
+    background-color: #565456;
+    width: fit-content;
+}
+
+.btnSubmit:hover:not(:disabled){
+    width: 100%;
+}
+.back {
+    border: none;
+    background-color: #00000099;
+    border-radius: 25px;
+    padding: 5px 10px;
+    color: #ffffff;
+    cursor: pointer;
+    position: sticky;
+}
+
+.back:hover {
+    color: #000000;
+    text-shadow: 5px 5px 5px #000000;
+    background-color: #ffffff99;
+}
+
+/* .cancel{
+    flex-direction: row;
+    font-family: 'Manjari', sans-serif;
+    background-color: #ff1500;
+    color: #3586bc;
+    border: none;
+    border-radius: 25px;
+    padding: 5px;
+} */
+.cancel:hover{
+    width: 100%;
+}
+
+.count{
+    color: #171f97;
+    cursor: pointer;
+    text-align: left;
+}
+
+.selected{
+    color: #171f97;
+    text-transform: uppercase; 
+    width: 100%;
+    display: grid;
+    flex-direction: row;
+    margin: 10px;
+    padding: 5px;
+}
+

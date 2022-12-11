@@ -10,6 +10,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    
 }
 
 .link {
@@ -23,7 +24,6 @@
 .select {
     width: 8rem;
     padding: 0.5rem 1.75rem 0.5rem 0.75rem;
-
 }
 
 .filters {
