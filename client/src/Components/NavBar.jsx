@@ -55,7 +55,7 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                 </Link>
                 <Link className={S.links} to='#'>MEN</Link>
                 <Link className={S.links} to='#'>WOMEN</Link>
-                <Link className={S.links} to='#'>KIDS</Link>
+                <Link className={S.links} to='#'>KID</Link>
             </div>
 
             {/* <div>
