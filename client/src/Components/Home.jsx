@@ -212,8 +212,6 @@ export default function Home() {
                     sneakersPerPage={sneakersPerPage}
                 />
             </div>
-            
-
             <div className={S.container}>
                 {!actualySneakers.length?<Loading/>:actualySneakers.map(c => {
                     return (
@@ -226,10 +224,6 @@ export default function Home() {
                 })
                 }
             </div>
-
-            
-
-
             <Paginado
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}

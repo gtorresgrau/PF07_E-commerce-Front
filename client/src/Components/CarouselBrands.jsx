@@ -9,55 +9,53 @@ export default function CarouselBrands() {
 
 return (
 
-<div class="sliderBrand">
-	<div class="slideBrand-track">
-		<div class="slideBrand">
+<div className="sliderBrand">
+	<div className="slideBrand-track">
+		<div className="slideBrand">
 			<img src={adidas}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={nike} width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={fila}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={puma}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={reebok}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={adidas}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={nike}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={fila}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={puma}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={reebok}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={adidas}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={nike}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={fila}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={puma}  width="200" alt="" />
 		</div>
-		<div class="slideBrand">
+		<div className="slideBrand">
 			<img src={reebok}  width="200" alt="" />
 		</div>
-		
-		
 	</div>
 </div>
 )

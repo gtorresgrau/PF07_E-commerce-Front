@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Card from "./Card";
 import { Link } from "react-router-dom";
 import S from './Styles/Home.module.css';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSneackers } from "../Actions/Actions";
 import "./Styles/Carousel.css";
@@ -14,7 +14,8 @@ import "./Styles/Carousel.css";
 export default function SimpleSlider() {
   const dispatch = useDispatch();
   
-  const allSneakers = useSelector((state) => state.sneakers);
+  const allSneakers = useSelector((state) => state.allSneakers);
+  //const allGen = useSelector((state) => state.allSneakers);
   
   useEffect(() => {
     dispatch(getAllSneackers())
@@ -26,6 +27,13 @@ export default function SimpleSlider() {
     slidesToShow: 4,
     slidesToScroll: 4
   };
+
+  // let Genres =[];
+  //   allGen.map(e => ( Genres.push(e.genre)));
+  //   const datag = new Set(Genres)
+  //   let allGenres = [...datag] 
+  
+    
 
   return (
     <Slider {...settings} className="carousel">
