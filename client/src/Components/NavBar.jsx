@@ -47,16 +47,13 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                 <Link to='/shop' className={S.cart}><CgShoppingCart/></Link>
             </div>
             <div className="">
-                <button  className={S.singInButton} onClick={()=>loginWithRedirect()} >Sing in</button>
+                <button  className={S.singInButton} onClick={()=>loginWithRedirect()} >Sing in / Sing Up</button>
             </div>
             <div className="">
-                <button  className={S.singInButton} onClick={()=>logout({returnTo:window.location.origin})} > Logout</button>
+                <button  className={S.singInButton} onClick={()=>logout({returnTo:'http://localhost:3000/sneakers'})} > Logout</button>
             </div>
             <div className="S.btn">
-                <Link to='/addSneaker'><button>New Sneaker</button></Link>
-            </div>
-            <div className="">
-                <Link to='/join'><button className={S.joinNowButton} >Join Now</button></Link>
+                <Link to='/addSneaker'><button className={S.singInButton}>New Sneaker</button></Link>
             </div>
         </header>
     )
