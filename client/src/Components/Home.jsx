@@ -9,6 +9,7 @@ import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour, filt
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
+import Loading from './Loading.jsx';
 
 var filter=[]
 var a=[]
@@ -190,9 +191,8 @@ export default function Home() {
                     sneakersPerPage={sneakersPerPage}
                 />
             </div>
-
             <div className={S.container}>
-                {actualySneakers?.map(c => {
+                {!actualySneakers.length?<Loading/>:actualySneakers.map(c => {
                     return (
                         <div key={c.id}>
                             <Link to={'/sneakers/' + c.id} className={S.link}>
