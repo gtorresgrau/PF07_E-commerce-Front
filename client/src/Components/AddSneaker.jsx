@@ -65,19 +65,8 @@ export default function CreateActivity(){
             [e.target.name]: valor
             }));
         }
-    const handlerSize=(e)=>{
-            console.log('size:',e.target.value)
-                setInput({
-                    ...input,
-                    size:[...input.size, e.target.value]
-                })
-                setErrores(validate({
-                ...input,
-                [e.target.name]: e.target.value
-                }));
-            }
     
-    function handlerSelect(e){
+    function handlerChecks(e){
         let valor = e.target.value
         setInput({
             ...input,
@@ -88,6 +77,19 @@ export default function CreateActivity(){
            [e.target.name]: valor
         }));
         console.log(input)
+    };
+
+    const handlerSize=(e)=>{
+        if(!input.size.includes(e.target.value)){
+        setInput({
+            ...input,
+            size: [...input.size, e.target.value ]
+        })
+        setErrores(validate({
+            ...input,
+            size: e.target.value
+         }));
+        }else{alert('The Size was already selected')}
     };
        
 
@@ -155,16 +157,16 @@ return (
             </div>
             <div className={S.groups}>
                 <p>type</p>
-                <label htmlFor="Sport"><input type='radio' name="type" value='Sports' onChange={handlerSelect}/>Sports</label>
-                <label htmlFor="Training"><input type='radio' name="type" value='Training' onChange={handlerSelect}/>Training</label>
-                <label htmlFor="Running"><input type='radio' name="type" value='Running' onChange={handlerSelect}/>Running</label>
+                <label htmlFor="Sport"><input type='radio' name="type" value='Sports' onChange={handlerChecks}/>Sports</label>
+                <label htmlFor="Training"><input type='radio' name="type" value='Training' onChange={handlerChecks}/>Training</label>
+                <label htmlFor="Running"><input type='radio' name="type" value='Running' onChange={handlerChecks}/>Running</label>
                 {errores.type && (<p className='errores'>{errores.type}</p>)}          
             </div>
             <div className={S.groups}>
                 <p>Genre</p>
-                <label htmlFor="Men"><input type='radio' name="genre" value='Men' onChange={handlerSelect}/>Men</label>
-                <label htmlFor="Women"><input type='radio' name="genre" value='Women' onChange={handlerSelect}/>Women</label>
-                <label htmlFor="Kids"><input type='radio' name="genre" value='Kids' onChange={handlerSelect}/>Kids</label>
+                <label htmlFor="Men"><input type='radio' name="genre" value='Men' onChange={handlerChecks}/>Men</label>
+                <label htmlFor="Women"><input type='radio' name="genre" value='Women' onChange={handlerChecks}/>Women</label>
+                <label htmlFor="Kids"><input type='radio' name="genre" value='Kids' onChange={handlerChecks}/>Kids</label>
                 {errores.genre && (<p className='errores'>{errores.genre}</p>)}           
             </div>
             <div className={S.groups}>
