@@ -5,7 +5,7 @@ import { getAddToCart, getSneakerDetail, resetDetail } from '../Actions/Actions'
 import Loading from './Loading';
 import s from './Styles/Detail.module.css';
 import Navbar from './NavBar';
-
+import {useLocalStorage} from '../useLocalStorage.js';
 
 
 export default function SneakerDetail() {
@@ -16,17 +16,20 @@ export default function SneakerDetail() {
   const history = useHistory();
   const { id } = useParams();
 
+  const cart = useSelector(state => state.cart)
+  const [buys, setbuys] = useLocalStorage('buys','The Cart is empty')
+
+  console.log('cart:', cart)
 
   const addToCart = (sneaker) => {
     //console.log(sneaker);
     dispatch(getAddToCart(sneaker));
     alert("successfully added");
+    setbuys(sneaker);
+    
+    console.log('buys:', buys)
     history.push("/shop");
   }
-
-
-  //const [currentPage, setCurrentPage] = useState(1);
-
 
   useEffect(() => {
     dispatch(getSneakerDetail(id));
@@ -37,12 +40,8 @@ export default function SneakerDetail() {
 
   return (
     <div>
-
       <Navbar />
-
-      {/* <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} /> */}
-      {
-        loading ? <Loading /> :
+        {loading ? <Loading /> :
           <div className={s.containerG}>
             <div className={s.containerimg}>
               <img className={s.img} src={sneaker.image} alt="img not found" />

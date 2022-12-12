@@ -2,14 +2,18 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductItem from './ProductItem';
 import { Link } from 'react-router-dom';
-import { getAddToCart, removeOneItem, resetCart } from '../Actions/Actions';
-import { removeFromCartItem } from '../Actions/Actions'
+import { getAddToCart, removeOneItem, resetCart, removeFromCartItem } from '../Actions/Actions';
+//import {useLocalStorage} from '../useLocalStorage';
 
 function ShoppingCart() {
 
   const dispatch = useDispatch();
   //const allSneakers = useSelector(state => state.sneakers);
   const cart = useSelector(state => state.cart)
+  //const [buys, setbuys] = useLocalStorage(cart,'The Cart is empty')
+
+  console.log('cart:', cart)
+ // console.log('buys:', buys)
 
   var montoTotal = 0
   for (let i = 0; i < cart.length; i++) {
@@ -41,9 +45,11 @@ function ShoppingCart() {
       <Link to="/sneakers"><button>← BACK</button></Link>
       <div>
         <h2>Cart</h2>
-        {!cart.length ? <span>Tu carrito está vacío</span> : cart.map(e => (
-          <ProductItem key={e.id} title={e.title} price={e.price} image={e.image} id={e.id} removeAll={removeAll} removeOne={removeOne} addMasProduct={addMasProduct} quantify={e.quantify} subTotal={subTotal} />
-        ))}
+        <div>
+            {!cart.length ? <span>Your Cart is empty</span> : cart.map(e => (
+              <ProductItem key={e.id} title={e.title} price={e.price} image={e.image} id={e.id} removeAll={removeAll} removeOne={removeOne} addMasProduct={addMasProduct} quantify={e.quantify} subTotal={subTotal}/>
+            ))}
+        </div>
         <br />
         <button onClick={clearCart}>Clear Cart</button>
         <h3>TOTAL: ${montoTotal},00</h3>
