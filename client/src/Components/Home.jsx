@@ -155,19 +155,11 @@ export default function Home() {
             <CarouselBrands/>
 
             <h1 className={S.title1}>AMPLIFY YOUR ENERGY</h1>
-            <h1 className={S.button}>SHOP NOW</h1>
-            <h1 className={S.title} >Men</h1>
-            <SimpleSlider/>
 
-            <h1 className={S.title} >Women</h1>
+           <Link to='/shop'><h1 className={S.button}>SHOP NOW</h1> </Link>
+            <h1 className={S.title} >Exciting Offers</h1>
             <SimpleSlider/>
-
-            <h1 className={S.title} >Kids</h1>
-            <SimpleSlider/>
-                
             <div>
-
-                {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}
                 <form id='Filtros' className={S.filters}>
                     <div>
                         <span className={S.span}>Sort by Name</span>

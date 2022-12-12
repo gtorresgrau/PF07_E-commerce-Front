@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Card from "./Card";
+import CardOffer from "./CardOffer";
 import { Link } from "react-router-dom";
 import S from './Styles/Home.module.css';
 import { useEffect } from "react";
@@ -15,6 +15,7 @@ export default function SimpleSlider() {
   const dispatch = useDispatch();
   
   const allSneakers = useSelector((state) => state.allSneakers);
+  const elementOff = allSneakers.filter(e => e.price>50)
   //const allGen = useSelector((state) => state.allSneakers);
   
   useEffect(() => {
@@ -37,11 +38,11 @@ export default function SimpleSlider() {
 
   return (
     <Slider {...settings} className="carousel">
-      {allSneakers?.map(c => {
+      {elementOff?.map(c => {
         return (
             <div key={c.id}>
                 <Link to={'/sneakers/' + c.id} className={S.link}>
-                    <Card image={c.image} title={c.title} price={c.price} type={c.type} key={c.id} />
+                    <CardOffer image={c.image} title={c.title} price={c.price} type={c.type} key={c.id} />
                 </Link>
             </div>
         )
