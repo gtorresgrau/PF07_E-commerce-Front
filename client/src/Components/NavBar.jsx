@@ -6,29 +6,24 @@ import SearchBar from './SearchBar';
 import S from './Styles/NavBar.module.css'
 import { getAllSneackers } from '../Actions/Actions';
 import { CgShoppingCart } from 'react-icons/cg';
-import { LoginButton } from './Loginbutton';
-import { LogoutButton } from './Logoutbutton';
-import { UserLogin } from './UserLogin';
-import { HiOutlineUser } from 'react-icons/hi';
-import  { useAuth0 } from "@auth0/auth0-react"
+import { FaRegHeart } from 'react-icons/fa';
+import { LoginButton } from './Loginbutton.jsx';
+import { LogoutButton } from './Logoutbutton.jsx';
+import { UserLogin } from './UserLogin.jsx';
+import { useAuth0 } from "@auth0/auth0-react"
 
 export default function Navbar({ setCurrentPage, currentPage }) {
     const dispatch = useDispatch();
-    //const { loginWithRedirect}= useAuth0();
-    //const { logout}= useAuth0();
-    const {
-        isAuthenticated,
-        getAccessTokenSilently,
-      } = useAuth0();
+    const {isAuthenticated /*, getAccessTokenSilently*/} = useAuth0();
 
-      const cart = useSelector(state => state.cart)
+    const cart = useSelector(state => state.cart)
 
-      var totalCart = 0
-      for (let i = 0; i < cart.length; i++) {
-          totalCart += cart[i].quantify
-      }
-  
-      const handleAllSneakers = (e) => {
+    var totalCart = 0
+    for (let i = 0; i < cart.length; i++) {
+        totalCart += cart[i].quantify
+    }
+
+    const handleAllSneakers = (e) => {
         e.preventDefault();
         dispatch(getAllSneackers());
         setCurrentPage(1);

@@ -155,7 +155,7 @@ export default function Home() {
             <CarouselBrands/>
 
             <h1 className={S.title1}>AMPLIFY YOUR ENERGY</h1>
-            <h1 className={S.button}>SHOP NOW</h1>
+            <Link to='/shop' className={S.cart}><h1 className={S.button}>SHOP NOW</h1></Link>
             <h1 className={S.title} >Men</h1>
             <SimpleSlider/>
 
