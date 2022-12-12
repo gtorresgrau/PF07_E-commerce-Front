@@ -146,10 +146,8 @@ export default function Home() {
 
     return (
         <div>
-
-                
-            <Navbar currentPage={currentPage}
-                setCurrentPage={setCurrentPage} />
+               
+            <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
             <img src={header} className={S.img} alt='frame'/>
             <CarouselBrands/>
@@ -177,11 +175,11 @@ export default function Home() {
                     </div>
                     <div onChange={e => handlerFilterBrand(e)}>
                         {allBrands.map(e=>(
-                                    <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="brand" id={e} value={e} key={e}/>{e}</label>
                                 ))}
                     </div>
                     <div onChange={e => handlerFilterColours(e)} id='filterCou'>
-                                {allColours.map(e=>(
+                        {allColours.map(e=>(
                                     <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
                                 ))}
                     </div>
