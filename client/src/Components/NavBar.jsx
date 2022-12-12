@@ -6,7 +6,6 @@ import SearchBar from './SearchBar';
 import S from './Styles/NavBar.module.css'
 import { getAllSneackers } from '../Actions/Actions';
 import { CgShoppingCart } from 'react-icons/cg';
-<<<<<<< HEAD
 import { LoginButton } from './Loginbutton';
 import { LogoutButton } from './Logoutbutton';
 import { UserLogin } from './UserLogin';
@@ -21,24 +20,6 @@ export default function Navbar({ setCurrentPage, currentPage }) {
         isAuthenticated,
         getAccessTokenSilently,
       } = useAuth0();
-=======
-import { FaRegHeart } from 'react-icons/fa';
-import { LoginButton } from './Loginbutton.jsx';
-import { LogoutButton } from './Logoutbutton.jsx';
-import { UserLogin } from './UserLogin.jsx';
-import { useAuth0 } from "@auth0/auth0-react"
-
-export default function Navbar({ setCurrentPage, currentPage }) {
-    const dispatch = useDispatch();
-    const {isAuthenticated /*, getAccessTokenSilently*/} = useAuth0();
-
-    const cart = useSelector(state => state.cart)
-
-    var totalCart = 0
-    for (let i = 0; i < cart.length; i++) {
-        totalCart += cart[i].quantify
-    }
->>>>>>> fdd3082b456c4a1247ad9a1873c35dc3b3e14d71
 
     const handleAllSneakers = (e) => {
         e.preventDefault();
@@ -80,7 +61,6 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                     <Link className={S.links} to='#'>WOMEN</Link>
                     <Link className={S.links} to='#'>KIDS</Link>
             </div>
-<<<<<<< HEAD
             {/* 
             <div className="">
                 <Link to='/blog'><button className={S.btn} >Blog</button></Link>
@@ -105,28 +85,7 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             <div className={S.divCart}>
                 <Link to='/shop' className={S.cart}><CgShoppingCart/></Link>
             </div>
-          { // <div className="">
-             //   <Link to='/join'><button className={S.joinNowButton} >Join Now</button></Link>
-            //</div>
-          } 
-        </header>
-=======
-            <div className={S.displayRight}>
-                <div className={S.SearchBar}>
-                    <SearchBar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-                </div>
-                <div className={S.displayLinks}>
-                    <div className="">
-                        <Link to='/account' className={S.heart}><FaRegHeart /></Link>
-                    </div>
-                    {!isAuthenticated ? <LoginButton/>: <> <LogoutButton/>  <UserLogin/> </>}
-                    <div className={S.divCart}>
-                        {!cart.length ? null : <span style={{ color: "red" }}>{totalCart}</span>}
-                        <Link to='/shop' className={S.cart}><CgShoppingCart /></Link>
-                    </div>
-                </div>
-            </div>
-        </nav>
->>>>>>> fdd3082b456c4a1247ad9a1873c35dc3b3e14d71
+            </nav>
+    
     )
 };
