@@ -6,15 +6,15 @@ import S from './Styles/NavBar.module.css'
 export const UserLogin = () => {
   const { user} = useAuth0();
 
-  
+
 
   return (
-    
+
       <div>
-        
+
         <h2 className={S.singInButton}>{user.name}</h2>
-        
+
       </div>
-    
+
   );
 };
