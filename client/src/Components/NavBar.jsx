@@ -21,7 +21,14 @@ export default function Navbar({ setCurrentPage, currentPage }) {
         getAccessTokenSilently,
       } = useAuth0();
 
-    const handleAllSneakers = (e) => {
+      const cart = useSelector(state => state.cart)
+
+      var totalCart = 0
+      for (let i = 0; i < cart.length; i++) {
+          totalCart += cart[i].quantify
+      }
+  
+      const handleAllSneakers = (e) => {
         e.preventDefault();
         dispatch(getAllSneackers());
         setCurrentPage(1);
