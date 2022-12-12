@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getAddToCart, getSneakerDetail, resetDetail } from '../Actions/Actions';
@@ -11,18 +11,38 @@ import Navbar from './NavBar';
 export default function SneakerDetail() {
 
   const sneaker = useSelector(state => state.detail);
+  const cart = useSelector(state => state.cart);
   const loading = useSelector(state => state.loading);
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
 
 
+  /* const [text, setText] = useState(
+    window.localStorage.getItem("Sneaker")
+  )
+
+  const setLocalStorage = sneaker => {
+    try {
+      setText(sneaker)
+      window.localStorage.setItem("Sneaker", JSON.stringify(sneaker))
+    } catch (e) {
+      console.log(e)
+    }
+  } */
+
   const addToCart = (sneaker) => {
     //console.log(sneaker);
+    //setLocalStorage(sneaker)
     dispatch(getAddToCart(sneaker));
     alert("successfully added");
+    /* guardarInStorage(); */
     history.push("/shop");
   }
+
+  /*  const guardarInStorage = () => {
+     localStorage.setItem("Item", JSON.stringify(sneaker))
+   } */
 
 
   //const [currentPage, setCurrentPage] = useState(1);
