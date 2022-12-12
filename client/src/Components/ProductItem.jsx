@@ -1,7 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ProductItem(props) {
+  //console.log('buys:', buys)
 
   let subTotal = props.price * props.quantify
   return (
