@@ -9,7 +9,13 @@ import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour, filt
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
+
+import SimpleSlider from './Carousel.jsx';
+import CarouselBrands from './CarouselBrands.jsx';
+
+
 import Loading from './Loading.jsx';
+
 
 var filter=[]
 var a=[]
@@ -140,12 +146,27 @@ export default function Home() {
 
     return (
         <div>
-            <div className={S.header}>
-                <div className={S.navigate}>
-                    <Navbar currentPage={currentPage}
-                        setCurrentPage={setCurrentPage} />
-                </div>
-                <img src={header} className={S.img} alt='frame'/>
+
+                
+            <Navbar currentPage={currentPage}
+                setCurrentPage={setCurrentPage} />
+
+            <img src={header} className={S.img} alt='frame'/>
+            <CarouselBrands/>
+
+            <h1 className={S.title1}>AMPLIFY YOUR ENERGY</h1>
+            <h1 className={S.button}>SHOP NOW</h1>
+            <h1 className={S.title} >Men</h1>
+            <SimpleSlider/>
+
+            <h1 className={S.title} >Women</h1>
+            <SimpleSlider/>
+
+            <h1 className={S.title} >Kids</h1>
+            <SimpleSlider/>
+                
+            <div>
+
                 {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}
                 <form id='Filtros' className={S.filters}>
                     <div>
@@ -203,7 +224,6 @@ export default function Home() {
                 })
                 }
             </div>
-
             <Paginado
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
@@ -211,6 +231,9 @@ export default function Home() {
                 sneakersPerPage={sneakersPerPage}
             />
             <br />
+            <div>
+                <Link to='/addSneaker'><button className={S.btn} >ADD NEW SNEAKER</button></Link>
+            </div>
             <footer>
                 <div className={S.footer}><Footer /></div>
             </footer>

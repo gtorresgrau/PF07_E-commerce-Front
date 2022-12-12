@@ -1,11 +1,11 @@
 .container {
-    width: 20rem;
     border: 0.1rem solid white;
+    width: 18rem;
+    margin-left: 0.8rem;
 }   
 
 .container:hover {
     border: 0.1rem solid #242423;
-    width: 20rem;
 }
 
 .container:hover .price {
@@ -24,7 +24,7 @@
 }
 
 .img {
-    width: 20rem;
+    width:100%;
 }
 
 .title {
@@ -44,10 +44,16 @@
 }
 
 .icon {
-    text-align: right;
-    padding-top: 0.7rem;
-    position:absolute;
     font-size: 1.4rem;
     color: #242423;
-    width: 19rem;
+    position: absolute;
+    margin-top: 0.9rem;
+    margin-left: 15.6rem;
+}
+
+.icon:hover {
+    color: rgb(240, 3, 3);
+    font-size: 1.6rem;
+    margin-top: 0.8rem;
+    margin-left: 15.5rem;
 }
