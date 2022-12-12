@@ -8,6 +8,9 @@ import {
   GET_PRICE,
   GET_AZ,
   GET_COLOUR,
+  GET_TYPE,
+  GET_GENRE,
+  ADD_SNEAKER,
   ADD_TO_CART,
   REMOVE_ONE_FROM_CART,
   CLEAR_CART,
@@ -84,6 +87,16 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         sneakers: action.payload,
       }
+    case GET_GENRE:
+      return {
+        ...state,
+        sneakers: action.payload,
+      }
+    case GET_TYPE:
+      return {
+        ...state,
+        sneakers: action.payload,
+      }
     case GET_COLOUR:
       //console.log('reducer->payload: ',action.payload)
       return {
@@ -95,6 +108,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         detail: [],
       };
+    case ADD_SNEAKER:
+      return {
+        ...state,
+      }
     case ADD_TO_CART:
       let newItem = action.payload
       let itemInCart = state.cart.find(item => item.id === newItem.id)

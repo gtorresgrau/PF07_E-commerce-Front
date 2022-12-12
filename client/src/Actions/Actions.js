@@ -12,6 +12,8 @@ import {
   CLEAR_CART,
   REMOVE_ONE_FROM_CART,
   REMOVE_ONE_CART,
+  GET_TYPE,
+  GET_GENRE
 } from '../Actions/ActionTypes.js';
 
 export const loading = () => {
@@ -118,6 +120,50 @@ export function filterByColour(payload) {
   }
 };
 
+export function filterByGenre(payload) {
+  return async function (dispatch) {
+    //console.log('action->payload:',payload)
+    if (payload === 'All') { var urlBack = `/sneakers` }
+    else { urlBack = `/filter?${payload}` }
+    //console.log('act->urlBack: ',urlBack)
+    try {
+      let getGenre = await axios(urlBack);
+      return dispatch({
+        type: GET_GENRE,
+        payload: getGenre.data
+      })
+
+    }
+    catch (e) {
+      window.location.href = "/sneakers/";
+      console.log(`Something happened when filtering by Genre: ${payload}`)
+      alert(`Something happened when filtering by Genre: ${payload}`)
+    }
+  }
+};
+
+export function filterByType(payload) {
+  return async function (dispatch) {
+    //console.log('action->payload:',payload)
+    if (payload === 'All') { var urlBack = `/sneakers` }
+    else { urlBack = `/filter?${payload}` }
+    //console.log('act->urlBack: ',urlBack)
+    try {
+      let getType = await axios(urlBack);
+      return dispatch({
+        type: GET_TYPE,
+        payload: getType.data
+      })
+
+    }
+    catch (e) {
+      window.location.href = "/sneakers/";
+      console.log(`Something happened when filtering by Type: ${payload}`)
+      alert(`Something happened when filtering by Type: ${payload}`)
+    }
+  }
+};
+
 //-----------------------------------------------------------------------------------------------
 
 export function sortAz(payload) {
@@ -131,6 +177,14 @@ export function sortPrice(payload) {
   return {
     type: GET_PRICE,
     payload
+  }
+};
+
+//--------------------------------------------------------------------------------------------------
+export function addSneaker(payload) {
+  return async function () {
+    const add = await axios.post(`http://localhost:3001/sneakers`, payload)
+    return add;
   }
 };
 
