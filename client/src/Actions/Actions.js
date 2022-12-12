@@ -8,6 +8,10 @@ import {
   GET_PRICE,
   GET_AZ,
   GET_COLOUR,
+  ADD_TO_CART,
+  CLEAR_CART,
+  REMOVE_ONE_FROM_CART,
+  REMOVE_ONE_CART,
   GET_TYPE,
   GET_GENRE
 } from '../Actions/ActionTypes.js';
@@ -147,7 +151,7 @@ export function filterByType(payload) {
     try {
       let getType = await axios(urlBack);
       return dispatch({
-        type:GET_TYPE,
+        type: GET_TYPE,
         payload: getType.data
       })
 
@@ -177,9 +181,43 @@ export function sortPrice(payload) {
 };
 
 //--------------------------------------------------------------------------------------------------
-export function addSneaker(payload){
-  return async function(){
-      const add = await axios.post(`http://localhost:3001/sneakers`, payload)
-      return add;
+export function addSneaker(payload) {
+  return async function () {
+    const add = await axios.post(`http://localhost:3001/sneakers`, payload)
+    return add;
   }
 };
+
+//-----------------------------cart----------------------------------------------------------------------
+
+export function getAddToCart(payload) {
+  return {
+    type: ADD_TO_CART,
+    payload
+  }
+};
+
+export function removeFromCartItem(payload) {
+  return {
+    type: REMOVE_ONE_FROM_CART,
+    payload
+  };
+};
+
+export function removeOneItem(payload) {
+  return {
+    type: REMOVE_ONE_CART,
+    payload
+  };
+
+};
+
+export function resetCart() {
+  return {
+    type: CLEAR_CART,
+  };
+};
+
+
+
+
