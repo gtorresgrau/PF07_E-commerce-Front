@@ -40,8 +40,10 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
   return (
     <div>
       <form className={S.form} onSubmit={handleSubmit}>
+
         <button className={S.btn_search} type="submit"><FiSearch /></button>
-        <input className={S.input_search} name='input' onChange={handlerOnchange} type='text' placeholder="Sneaker...." value={input}></input>
+        <input className={S.input_search} name='input' onChange={handlerOnchange} type='text' autoComplete='off' placeholder="Sneaker...." value={input}></input>
+
       </form>
     </div>
   )

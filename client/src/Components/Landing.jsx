@@ -5,7 +5,7 @@ import pedro from '../Images/Pedro.jpeg'
 import ariel from '../Images/Ariel.jpeg'
 import matias from '../Images/Matias.jpeg'
 import hendri from '../Images/Hendri.jpeg'
-import ezequiel from '../Images/Ezequiel.jpeg'
+import ezequiel from '../Images/Ezequiel.jfif'
 import carlos from '../Images/Carlos.jpg'
 import gonzalo from '../Images/Gonzalo.jpeg'
 
