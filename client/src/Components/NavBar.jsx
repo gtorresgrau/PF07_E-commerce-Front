@@ -54,14 +54,10 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             <Link to='/sneakers' onClick={e => handleAllSneakers(e)}>
                 <img className={S.logo} src={logo} width="250rem" alt='Hsneaker'/>
             </Link>
-
-                
                     <Link className={S.links} to='#'>MEN</Link>
                     <Link className={S.links} to='#'>WOMEN</Link>
                     <Link className={S.links} to='#'>KIDS</Link>
-                
             </div>
-
             {/* <div>
             <select name="" id="" defaultValue='Women' className={S.select} onChange={handlerFilterWomen()}>
                  <option value='Women'> Women</option>
