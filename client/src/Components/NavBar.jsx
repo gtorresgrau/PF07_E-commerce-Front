@@ -61,31 +61,21 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                     <Link className={S.links} to='#'>WOMEN</Link>
                     <Link className={S.links} to='#'>KIDS</Link>
             </div>
-            {/* 
-            <div className="">
-                <Link to='/blog'><button className={S.btn} >Blog</button></Link>
-            </div>      
-            <div className="">
-                <Link to='/aboutUs'><button className={S.btn} >About us</button></Link>
-            </div> */}
-            {
-
-               !isAuthenticated ? 
-            <LoginButton/>
-            : <>
-                <LogoutButton/> 
-                <UserLogin/> 
-            </>
-            }
-            
-           
-           <div className="S.btn">
-                <Link to='/addSneaker'><button className={S.singInButton}>New Sneaker</button></Link>
+            <div className={S.displayRight}>
+                <div className={S.SearchBar}>
+                    <SearchBar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                </div>
+                <div className={S.displayLinks}>
+                    <div className="">
+                        <Link to='/account' className={S.heart}><FaRegHeart /></Link>
+                    </div>
+                    {!isAuthenticated ? <LoginButton/>: <> <LogoutButton/>  <UserLogin/> </>}
+                    <div className={S.divCart}>
+                        {!cart.length ? null : <span style={{ color: "red" }}>{totalCart}</span>}
+                        <Link to='/shop' className={S.cart}><CgShoppingCart /></Link>
+                    </div>
+                </div>
             </div>
-            <div className={S.divCart}>
-                <Link to='/shop' className={S.cart}><CgShoppingCart/></Link>
-            </div>
-            </nav>
-    
+        </nav>
     )
 };
