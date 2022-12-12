@@ -1,6 +1,6 @@
 import React, {useEffect, useCallback} from "react";
 import { useParams } from "react-router-dom";
-import {fetchCToken} from '';
+import {fetchCToken} from '../utils/FetchMethod.js';
 
 const FORM_ID = 'payment-form';
 
