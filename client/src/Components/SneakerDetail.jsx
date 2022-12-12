@@ -15,6 +15,9 @@ export default function SneakerDetail() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  
+  //const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     dispatch(getSneakerDetail(id));
     return function cleanup() {
@@ -24,7 +27,7 @@ export default function SneakerDetail() {
 
   return (
     <div>
-       {/* <Navbar/> */}
+       {/* <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} /> */}
       {loading ? <Loading /> :
         <div className={s.containerG}>
           <div className={s.containerimg}>
