@@ -41,7 +41,11 @@ nav {
    font-size: 1.7rem;
    color: white;
 }
+.img{
 
+    border: none;
+    border-radius: 50%;
+}
 .user {
     font-size: 1.7rem;
    color: white;
