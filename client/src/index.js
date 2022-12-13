@@ -19,7 +19,7 @@ root.render(
   <Auth0Provider
     domain='dev-frontpf08.us.auth0.com'
     clientId='tRlgJELqzjkbfv2YlwKylgjL8jlAPDDa'
-    redirectUri={"http://localhost:3000/sneakers"}
+    redirectUri={"http://localhost:3000/sneakers"||"https://pf-07-e-commerce-front.vercel.app/sneakers/"}
     audience="https://dev-frontpf08.us.auth0.com/api/v2/"
     scope="read:current_user update:current_user_metadata"
   >
