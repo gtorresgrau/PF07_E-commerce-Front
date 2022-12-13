@@ -63,8 +63,10 @@ export default function Home() {
     let allGenres = [...datag] 
 
     function handlerFilterBrand(e) {
+        
         setCurrentPage(1);
         let v=e.target.value
+        console.log('home:', v)
         if (filter.includes(`brand=${v}&`)){
             a=filter.filter((e)=>e!==(`brand=${v}&`))
             filter=a
@@ -72,17 +74,19 @@ export default function Home() {
                 dispatch(getAllSneackers())
             }else{
                 dispatch(filterByBrand(filter.join('')))
+                console.log('filterB:',filter)
             }
         }else{  
         filter.push(`brand=${v}&`)
         dispatch(filterByBrand(filter.join('')))
+        console.log('filterB:',filter)
         }
     }
 
     function handlerFilterColours(e) {
-        
         setCurrentPage(1);
         let v=e.target.value
+        console.log(v)
         if (filter.includes(`colour=${v}&`)){
             a=filter.filter((e)=>e!==(`colour=${v}&`))
             filter=a
@@ -98,8 +102,10 @@ export default function Home() {
     }
 
     function handlerFilterGenre(e) {
+       
         setCurrentPage(1);
         let v=e.target.value
+        console.log(v)
         if (filter.includes(`genre=${v}&`)){
             a=filter.filter((e)=>e!==(`genre=${v}&`))
             filter=a
@@ -117,6 +123,7 @@ export default function Home() {
     function handlerFilterType(e) {
         setCurrentPage(1);
         let v=e.target.value
+        console.log(v)
         if (filter.includes(`type=${v}&`)){
             a=filter.filter((e)=>e!==(`type=${v}&`))
             filter=a
@@ -146,10 +153,8 @@ export default function Home() {
 
     return (
         <div>
-
-                
-            <Navbar currentPage={currentPage}
-                setCurrentPage={setCurrentPage} />
+               
+            <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
             <img src={header} className={S.img} alt='frame'/>
             <CarouselBrands/>
@@ -177,11 +182,11 @@ export default function Home() {
                     </div>
                     <div onChange={e => handlerFilterBrand(e)}>
                         {allBrands.map(e=>(
-                                    <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="brand" id={e} value={e} key={e}/>{e}</label>
                                 ))}
                     </div>
-                    <div onChange={e => handlerFilterColours(e)} id='filterCou'>
-                                {allColours.map(e=>(
+                    <div onChange={e => handlerFilterColours(e)}>
+                        {allColours.map(e=>(
                                     <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
                                 ))}
                     </div>

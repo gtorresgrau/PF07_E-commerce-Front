@@ -11,11 +11,11 @@ import { LoginButton } from './Loginbutton.jsx';
 import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
 import { useAuth0 } from '@auth0/auth0-react';
-import Profile from './User';
+//import Profile from './User';
 
 export default function Navbar({ setCurrentPage, currentPage }) {
     const dispatch = useDispatch();
-    const {isAuthenticated ,user} = useAuth0();
+    const {isAuthenticated /*,user*/} = useAuth0();
 
     const cart = useSelector(state => state.cart)
 
@@ -81,8 +81,8 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             </div>
         </nav>
     )
-    if(isAuthenticated) {
-       Profile(user);
-        console.log(Profile)
-    }
+    // if(isAuthenticated) {
+    //    Profile(user);
+    //     console.log(Profile)
+    // }
 };
