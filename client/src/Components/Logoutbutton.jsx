@@ -6,8 +6,8 @@ export const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <button className={S.singInButton} onClick={() => logout({ returnTo: "http://localhost:3000/sneakers" })}>
+    <div onClick={() => logout({ returnTo: "http://localhost:3000/sneakers" })}>
       Log out
-    </button>
+    </div>
   );
 };

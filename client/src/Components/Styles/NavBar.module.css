@@ -6,8 +6,7 @@ nav {
     justify-content: center;
     padding: 1.3rem;
     position: fixed;
-    left:0;
-    width:100%;
+    width:97%;
 }
 
 .logo {
@@ -33,7 +32,7 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 34%;
+    width: 35%;
     justify-content: space-around
 }
 
@@ -44,12 +43,14 @@ nav {
 
 .user {
     font-size: 1.7rem;
-   color: white;
+    color: white;
+    cursor: pointer;
+    margin-top: -0.1rem;
 }
 
 .heart {
     font-size: 1.5rem;
-   color: white;
+    color: white;
 }
 
 .links {
@@ -63,7 +64,8 @@ nav {
     margin-top: 0.5rem;
     display: flex;
     justify-content: space-evenly;
-    width: 40%;
+    align-items: center;
+    width: 50%;
 }
 
 .btn {
@@ -76,24 +78,6 @@ nav {
     cursor: pointer;
 }
 
-.singInButton {
-    margin: 0.5rem;
-    border: none;
-    background-color: #fcf81b99;
-    padding: 9px 17px;
-    color: #000000;
-    cursor: pointer;
-}
-
-.joinNowButton {
-    margin: 0.5rem;
-    border: none;
-    background-color: #fcf81b99;
-    padding: 9px;
-    color: #000000;
-    cursor: pointer;
-}
-
 .select {
     width: 7rem;
     padding: 0.5rem 1.75rem 0.5rem 0.75rem;
@@ -103,4 +87,14 @@ nav {
 
 .select:focus {
     background-color: #242423;
+}
+
+.userimage {
+    width: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.logButton {
+    width: 5rem;
 }
