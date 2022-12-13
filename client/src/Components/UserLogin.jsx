@@ -8,7 +8,7 @@ export const UserLogin = () => {
 
 const  img = user.picture ;
 
-  const img = user.picture ;
+  
   
   return (
 
