@@ -11,7 +11,10 @@ import { LoginButton } from './Loginbutton.jsx';
 import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
 import { useAuth0 } from '@auth0/auth0-react';
-//import Profile from './User';
+
+import Profile from './User';
+import AccountMenu from './AccountMenu';
+
 
 export default function Navbar({ setCurrentPage, currentPage }) {
     const dispatch = useDispatch();
@@ -71,11 +74,16 @@ export default function Navbar({ setCurrentPage, currentPage }) {
                         <Link to='/shop' className={S.cart}><CgShoppingCart /></Link>
             </div>
                 <div className={S.displayLinks}>
+                <AccountMenu/>
                     <div className="">
                         <Link to='/account' className={S.heart}><FaRegHeart /></Link>
                     </div>
-                    {!isAuthenticated ? <LoginButton/>: <> <LogoutButton/>  <UserLogin/> </>}
-                    
+
+                <div className={S.divCart}>
+                    {!cart.length ? null : <span style={{ color: "red" }}>{totalCart}</span>}
+                    <Link to='/shop' className={S.cart}><CgShoppingCart /></Link>
+                </div>
+
                 </div>
             </div>
         </nav>

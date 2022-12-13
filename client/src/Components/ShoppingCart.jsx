@@ -77,7 +77,7 @@ function ShoppingCart() {
         <br />
         <button onClick={clearCart}>Clear Cart</button>
         <h3>TOTAL: ${montoTotal},00</h3>
-        <button>PAGAR</button>
+        <Link to='/payment'><button>PAGAR</button></Link>
       </div>
     </div>
   )
