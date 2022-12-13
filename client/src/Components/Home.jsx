@@ -10,33 +10,63 @@ import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
 
+import SimpleSlider from './Carousel.jsx';
+import CarouselBrands from './CarouselBrands.jsx';
+
+
+import Loading from './Loading.jsx';
+
+
 var filter=[]
 var a=[]
 export default function Home() {
     const dispatch = useDispatch();
   
     const allSneakers = useSelector((state) => state.sneakers);
+    const allCoul = useSelector((state) => state.allSneakers);
+    const allTyp = useSelector((state) => state.allSneakers);
+    const allBra = useSelector((state) => state.allSneakers);
+    const allGen = useSelector((state) => state.allSneakers);
    
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [sneakersPerPage] = useState(8);
+    const [sneakersPerPage] = useState(9);
     const [, setOrden] = useState(1);
 
     let indexLastSneaker = currentPage * sneakersPerPage;
     let indexFirstSneaker = indexLastSneaker - sneakersPerPage
 
     const actualySneakers = allSneakers.slice(indexFirstSneaker, indexLastSneaker);
- 
-   
-
 
     useEffect(() => {
         dispatch(getAllSneackers())
     }, [dispatch]);
 
+    let Colours =[];
+    allCoul.map(e => ( Colours.push(e.colour)));
+    const datac = new Set(Colours)
+    let allColours = [...datac]   
+
+    let Types =[];
+    allTyp.map(e => ( Types.push(e.type)));
+    const datat = new Set(Types)
+    let allTypes = [...datat]
+
+    let Brands =[];
+    allBra.map(e => ( Brands.push(e.brand)));
+    const datab = new Set(Brands)
+    let allBrands = [...datab] 
+
+    let Genres =[];
+    allGen.map(e => ( Genres.push(e.genre)));
+    const datag = new Set(Genres)
+    let allGenres = [...datag] 
+
     function handlerFilterBrand(e) {
+        
         setCurrentPage(1);
         let v=e.target.value
+        console.log('home:', v)
         if (filter.includes(`brand=${v}&`)){
             a=filter.filter((e)=>e!==(`brand=${v}&`))
             filter=a
@@ -44,20 +74,19 @@ export default function Home() {
                 dispatch(getAllSneackers())
             }else{
                 dispatch(filterByBrand(filter.join('')))
+                console.log('filterB:',filter)
             }
         }else{  
         filter.push(`brand=${v}&`)
         dispatch(filterByBrand(filter.join('')))
+        console.log('filterB:',filter)
         }
     }
-      
-       
-   
 
     function handlerFilterColours(e) {
-        
         setCurrentPage(1);
         let v=e.target.value
+        console.log(v)
         if (filter.includes(`colour=${v}&`)){
             a=filter.filter((e)=>e!==(`colour=${v}&`))
             filter=a
@@ -73,8 +102,10 @@ export default function Home() {
     }
 
     function handlerFilterGenre(e) {
+       
         setCurrentPage(1);
         let v=e.target.value
+        console.log(v)
         if (filter.includes(`genre=${v}&`)){
             a=filter.filter((e)=>e!==(`genre=${v}&`))
             filter=a
@@ -92,6 +123,7 @@ export default function Home() {
     function handlerFilterType(e) {
         setCurrentPage(1);
         let v=e.target.value
+        console.log(v)
         if (filter.includes(`type=${v}&`)){
             a=filter.filter((e)=>e!==(`type=${v}&`))
             filter=a
@@ -121,14 +153,18 @@ export default function Home() {
 
     return (
         <div>
-            <div className={S.header}>
+               
+            <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-                <div className={S.navigate}>
-                    <Navbar currentPage={currentPage}
-                        setCurrentPage={setCurrentPage} />
-                </div>
-                <img src={header} className={S.img} alt='frame'/>
-                {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}
+            <img src={header} className={S.img} alt='frame'/>
+            <CarouselBrands/>
+
+            <h1 className={S.title1}>AMPLIFY YOUR ENERGY</h1>
+
+           <Link to='/shop'><h1 className={S.button}>SHOP NOW</h1> </Link>
+            <h1 className={S.title} >Exciting Offers</h1>
+            <SimpleSlider/>
+            <div>
                 <form id='Filtros' className={S.filters}>
                     <div>
                         <span className={S.span}>Sort by Name</span>
@@ -145,34 +181,25 @@ export default function Home() {
                             <input name='sortStock' id='-a+' value='-a+' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Lower price </label>
                     </div>
                     <div onChange={e => handlerFilterBrand(e)}>
-                        <span className={S.span}></span>
-                        
-                        <label htmlFor='Puma'><input type="checkbox" name="brand" id="Puma" value='Puma'/>Puma</label>
-                        <label htmlFor='Adidas'><input type="checkbox" name="brand" id="Adidas" value='Adidas'/>Adidas</label>
-                        <label htmlFor='Nike'><input type="checkbox" name="brand" id="Nike" value='Nike'/>Nike</label>
-                        <label htmlFor='Fila'><input type="checkbox" name="brand" id="Fila" value='Fila'/>Fila</label>
-                        <label htmlFor='Reebok'><input type="checkbox" name="brand" id="Reebok" value='Reebok'/>Reebok</label>
+                        {allBrands.map(e=>(
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="brand" id={e} value={e} key={e}/>{e}</label>
+                                ))}
                     </div>
                     <div onChange={e => handlerFilterColours(e)}>
-                        <span className={S.span}></span>
-                        <label htmlFor='White'><input type="checkbox" name="colour" id="White" value='White'/>White</label>
-                        <label htmlFor='Black'><input type="checkbox" name="colour" id="Black" value='Black'/>Black</label>
-                        <label htmlFor='Red'><input type="checkbox" name="colour" id="Red" value='Red'/>Red</label>
-                        <label htmlFor='Blue'><input type="checkbox" name="colour" id="Blue" value='Blue'/>Blue</label>
-                        <label htmlFor='Pink'><input type="checkbox" name="colour" id="Pink" value='Pink'/>Pink</label>
-                        <label htmlFor='Gray'><input type="checkbox" name="colour" id="Gray" value='Gray'/>Gray</label>
+                        {allColours.map(e=>(
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
+                                ))}
                     </div>
                     <div onChange={e => handlerFilterGenre(e)}>
                         <span className={S.span}></span>
-                        <label htmlFor='Men'><input type="checkbox" name="gnre" id="Men" value='Men'/>Men</label>
-                        <label htmlFor='Women'><input type="checkbox" name="genre" id="Women" value='Women'/>Women</label>
-                        <label htmlFor='Kids'><input type="checkbox" name="genre" id="Kids" value='Kids'/>Kids</label>
+                        {allGenres.map(e=>(
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="genre" id={e} value={e} key={e}/>{e}</label>
+                                ))}
                     </div>
                     <div onChange={e => handlerFilterType(e)}>
-                        <span className={S.span}></span>
-                        <label htmlFor='Sports'><input type="checkbox" name="type" id="Sports" value='Sports'/>Sports</label>
-                        <label htmlFor='Training'><input type="checkbox" name="type" id="Training" value='Training'/>Training</label>
-                        <label htmlFor='Running'><input type="checkbox" name="type" id="Running" value='Running'/>Running</label>
+                        {allTypes.map(e=>(
+                                    <label htmlFor={e} key={e}><input type="checkbox" name="type" id={e} value={e} key={e}/>{e}</label>
+                                ))}
                     </div>
                 </form>
                 <Paginado
@@ -182,9 +209,8 @@ export default function Home() {
                     sneakersPerPage={sneakersPerPage}
                 />
             </div>
-
             <div className={S.container}>
-                {actualySneakers?.map(c => {
+                {!actualySneakers.length?<Loading/>:actualySneakers.map(c => {
                     return (
                         <div key={c.id}>
                             <Link to={'/sneakers/' + c.id} className={S.link}>
@@ -195,7 +221,6 @@ export default function Home() {
                 })
                 }
             </div>
-
             <Paginado
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
@@ -203,6 +228,9 @@ export default function Home() {
                 sneakersPerPage={sneakersPerPage}
             />
             <br />
+            <div>
+                <Link to='/addSneaker'><button className={S.btn} >ADD NEW SNEAKER</button></Link>
+            </div>
             <footer>
                 <div className={S.footer}><Footer /></div>
             </footer>

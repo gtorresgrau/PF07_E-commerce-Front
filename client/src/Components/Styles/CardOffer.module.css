@@ -12,6 +12,14 @@
     margin-top: -2rem;
 }
 
+.container:hover .priceOffer {
+    margin-top: -2rem;
+}
+
+.container:hover .off {
+    margin-top: -4rem;
+}
+
 .price {
     background-color: #e6e6e6;
     margin-top: -1.7rem;
@@ -20,7 +28,29 @@
     margin-left: 0.7rem;
     font-size: 0.9rem;
     color:#242423;
+    text-decoration:line-through ;
 }
+
+.priceOffer {
+    background-color: #e6e6e6;
+    margin-top: -1.7rem;
+    padding: 0.3rem 0.5rem;
+    position:absolute;
+    margin-left: 3rem;
+    font-size: 0.9rem;
+    color:red;
+}    
+
+.off {
+    background-color: #e6e6e6;
+    margin-top: -3.6rem;
+    padding: 0.3rem 0.5rem;
+    position:absolute;
+    margin-left: 0.7rem;
+    font-size: 0.9rem;
+    color:#242423;
+    font-weight: bold;
+}   
 
 .img {
     width:100%;
