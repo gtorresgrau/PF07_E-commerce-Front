@@ -80,6 +80,7 @@ export function resetDetail() {
 
 export function filterByBrand(payload) {
   return async function (dispatch) {
+    console.log('actionBR->payload:',payload)
     if (payload === 'Brands') { var urlBack = `/sneakers` }
     else { urlBack = `/filter?${payload}` }
     try {
@@ -100,12 +101,13 @@ export function filterByBrand(payload) {
 
 export function filterByColour(payload) {
   return async function (dispatch) {
-    //console.log('action->payload:',payload)
+    console.log('actionCO->payload:',payload)
     if (payload === 'All') { var urlBack = `/sneakers` }
     else { urlBack = `/filter?${payload}` }
-    //console.log('act->urlBack: ',urlBack)
+    console.log('act->urlBack: ',urlBack)
     try {
       let getColour = await axios(urlBack);
+      console.log('colour:',getColour)
       return dispatch({
         type: GET_COLOUR,
         payload: getColour.data
@@ -122,17 +124,16 @@ export function filterByColour(payload) {
 
 export function filterByGenre(payload) {
   return async function (dispatch) {
-    //console.log('action->payload:',payload)
+    console.log('action->payload:',payload)
     if (payload === 'All') { var urlBack = `/sneakers` }
     else { urlBack = `/filter?${payload}` }
-    //console.log('act->urlBack: ',urlBack)
+    console.log('actGE->urlBack: ',urlBack)
     try {
       let getGenre = await axios(urlBack);
       return dispatch({
         type: GET_GENRE,
         payload: getGenre.data
       })
-
     }
     catch (e) {
       window.location.href = "/sneakers/";
@@ -144,10 +145,10 @@ export function filterByGenre(payload) {
 
 export function filterByType(payload) {
   return async function (dispatch) {
-    //console.log('action->payload:',payload)
+    console.log('actionTY->payload:',payload)
     if (payload === 'All') { var urlBack = `/sneakers` }
     else { urlBack = `/filter?${payload}` }
-    //console.log('act->urlBack: ',urlBack)
+    console.log('act->urlBack: ',urlBack)
     try {
       let getType = await axios(urlBack);
       return dispatch({

@@ -40,7 +40,11 @@ nav {
    font-size: 1.7rem;
    color: white;
 }
+.img{
 
+    border: none;
+    border-radius: 50%;
+}
 .user {
     font-size: 1.7rem;
     color: white;
@@ -77,6 +81,7 @@ nav {
     text-shadow: 5px 5px 5px #000000;
     cursor: pointer;
 }
+
 
 .select {
     width: 7rem;
