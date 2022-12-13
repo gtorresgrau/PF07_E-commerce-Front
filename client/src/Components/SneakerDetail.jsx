@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect /*, useState*/ } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getAddToCart, getSneakerDetail, resetDetail } from '../Actions/Actions';
 import Loading from './Loading';
 import s from './Styles/Detail.module.css';
 import Navbar from './NavBar';
-import { useLocalStorage } from '../useLocalStorage.js';
+//import { useLocalStorage } from '../useLocalStorage.js';
 
 
 export default function SneakerDetail() {
@@ -30,7 +30,7 @@ export default function SneakerDetail() {
       console.log(e)
     }
   } */
-  const [buys, setbuys] = useLocalStorage('buys', 'The Cart is empty')
+  //const [buys, setbuys] = useLocalStorage('buys', 'The Cart is empty')
 
   console.log('cart:', cart)
 
