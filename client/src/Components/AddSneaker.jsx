@@ -155,15 +155,16 @@ return (
                 <label htmlFor='description' className={S.label}>Description</label>
                 {errores.description && (<p className='errores'>{errores.description}</p>)}
             </div>
-            <div className={S.select}>
-                    <label htmlFor='size' className={S.label}>Size</label>
+            <div className={S.groups}>
+                    <label htmlFor='size' >Size</label>
+                    <br />
                         {talles?.map(e => (
                             <label htmlFor={e} key={e}><input type="checkbox" name="size" id={e} value={e} key={e} onChange={(e)=>handlerSize(e)}/>{e}</label>
                         ))}
                 {errores.size && (<p className='errores'>{errores.size}</p>)}
             </div>
             <div className={S.groups}>
-                <p>type</p>
+                <p >type</p>
                 <label htmlFor="Sport"><input type='radio' name="type" value='Sports' onChange={handlerChecks}/>Sports</label>
                 <label htmlFor="Training"><input type='radio' name="type" value='Training' onChange={handlerChecks}/>Training</label>
                 <label htmlFor="Running"><input type='radio' name="type" value='Running' onChange={handlerChecks}/>Running</label>

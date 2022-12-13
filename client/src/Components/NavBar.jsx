@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../Images/logo2.png';
 import SearchBar from './SearchBar';
 import S from './Styles/NavBar.module.css'
@@ -10,11 +10,12 @@ import { FaRegHeart } from 'react-icons/fa';
 import { LoginButton } from './Loginbutton.jsx';
 import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
-import { useAuth0 } from "@auth0/auth0-react"
+import { useAuth0 } from '@auth0/auth0-react';
+//import Profile from './User';
 
 export default function Navbar({ setCurrentPage, currentPage }) {
     const dispatch = useDispatch();
-    const {isAuthenticated /*, getAccessTokenSilently*/} = useAuth0();
+    const {isAuthenticated /*,user*/} = useAuth0();
 
     const cart = useSelector(state => state.cart)
 
@@ -59,25 +60,28 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             <Link to='/sneakers' onClick={e => handleAllSneakers(e)}>
                 <img className={S.logo} src={logo} width="250rem" alt='Hsneaker'/>
             </Link>
-                    <Link className={S.links} to='#'>MEN</Link>
-                    <Link className={S.links} to='#'>WOMEN</Link>
-                    <Link className={S.links} to='#'>KIDS</Link>
+            <NavLink className={S.links} to='#'>FILTERS</NavLink>
             </div>
             <div className={S.displayRight}>
                 <div className={S.SearchBar}>
                     <SearchBar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-                </div>
+            </div>
+            <div className={S.divCart}>
+                        {!cart.length ? null : <span style={{ color: "red" }}>{totalCart}</span>}
+                        <Link to='/shop' className={S.cart}><CgShoppingCart /></Link>
+            </div>
                 <div className={S.displayLinks}>
                     <div className="">
                         <Link to='/account' className={S.heart}><FaRegHeart /></Link>
                     </div>
                     {!isAuthenticated ? <LoginButton/>: <> <LogoutButton/>  <UserLogin/> </>}
-                    <div className={S.divCart}>
-                        {!cart.length ? null : <span style={{ color: "red" }}>{totalCart}</span>}
-                        <Link to='/shop' className={S.cart}><CgShoppingCart /></Link>
-                    </div>
+                    
                 </div>
             </div>
         </nav>
     )
+    // if(isAuthenticated) {
+    //    Profile(user);
+    //     console.log(Profile)
+    // }
 };

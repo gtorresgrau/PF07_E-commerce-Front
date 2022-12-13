@@ -6,7 +6,7 @@ export const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <button className={S.singInButton} onClick={() => logout({ returnTo: "http://localhost:3000/sneakers" })}>
+    <button className={S.joinNowButton} onClick={() => logout({ returnTo: "https://pf-07-e-commerce-front.vercel.app/sneakers/" || "http://localhost:3000/sneakers"})}>
       Log out
     </button>
   );

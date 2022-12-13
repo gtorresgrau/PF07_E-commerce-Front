@@ -83,22 +83,25 @@ export default function rootReducer(state = initialState, action) {
         sneakers: sortPrice
       }
     case GET_BRAND:
+      console.log('reducerB->payload: ',action.payload)
       return {
         ...state,
         sneakers: action.payload,
       }
     case GET_GENRE:
+      console.log('reducerG->payload: ',action.payload)
       return {
         ...state,
         sneakers: action.payload,
       }
     case GET_TYPE:
+      console.log('reducerT->payload: ',action.payload)
       return {
         ...state,
         sneakers: action.payload,
       }
     case GET_COLOUR:
-      //console.log('reducer->payload: ',action.payload)
+      console.log('reducerC->payload: ',action.payload)
       return {
         ...state,
         sneakers: action.payload,

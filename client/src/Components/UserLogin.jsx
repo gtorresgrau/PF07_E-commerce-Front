@@ -8,11 +8,13 @@ export const UserLogin = () => {
 
 
 
+  const img = user.picture ;
+  
   return (
 
       <div>
 
-        <h2 className={S.singInButton}>{user.name}</h2>
+          <img className={S.img} src={img} alt="user.img" />
 
       </div>
 
