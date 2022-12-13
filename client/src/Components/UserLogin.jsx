@@ -6,13 +6,13 @@ import S from './Styles/NavBar.module.css'
 export const UserLogin = () => {
   const { user} = useAuth0();
 
-
+const  img = user.picture ;
 
   return (
 
       <div>
 
-        <h2 className={S.singInButton}>{user.name}</h2>
+        <img className={S.img} src={img} alt="user.img" />
 
       </div>
 
