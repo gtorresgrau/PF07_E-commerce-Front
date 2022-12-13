@@ -41,7 +41,11 @@ nav {
    font-size: 1.7rem;
    color: white;
 }
+.img{
 
+    border: none;
+    border-radius: 50%;
+}
 .user {
     font-size: 1.7rem;
    color: white;
@@ -84,7 +88,7 @@ nav {
 
 .singInButton {
     margin: 0.5rem;
-    border: none;
+    border: none;;
     background-color: #fcf81b99;
     padding: 9px 17px;
     color: #000000;
@@ -92,10 +96,10 @@ nav {
 }
 
 .joinNowButton {
-    margin: 0.5rem;
     border: none;
+    border-radius: 25%;
     background-color: #fcf81b99;
-    padding: 9px;
+    padding: 3px;
     color: #000000;
     cursor: pointer;
 }

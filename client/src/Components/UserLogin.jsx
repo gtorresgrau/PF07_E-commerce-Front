@@ -8,11 +8,17 @@ export const UserLogin = () => {
 
 const  img = user.picture ;
 
+  const img = user.picture ;
+  
   return (
 
       <div>
 
+<<<<<<< HEAD
         <img className={S.img} src={img} alt="user.img" />
+=======
+          <img className={S.img} src={img} alt="user.img" />
+>>>>>>> 0a5fd4bff7a481812961e713953cf7b74071caf2
 
       </div>
 
