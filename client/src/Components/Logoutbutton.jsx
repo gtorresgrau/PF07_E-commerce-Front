@@ -7,7 +7,7 @@ export const LogoutButton = () => {
 
   return (
 
-    <div onClick={() => logout({ returnTo: "https://pf-07-e-commerce-front.vercel.app/sneakers/"})}>
+    <div onClick={() => logout({ returnTo: "http://localhost:3000/sneakers"})}>
       Log out
     </div>
   );
