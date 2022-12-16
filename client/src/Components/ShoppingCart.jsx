@@ -67,9 +67,9 @@ function ShoppingCart() {
 
   useEffect(() => {
     localStorage.setItem("Item", JSON.stringify(cart));
-   cart = [localStorage.getItem("Item")];
-  }, [cart])
    
+  }, [cart])
+  
   return (
     <div>
       <Link to="/sneakers"><button>← BACK</button></Link>

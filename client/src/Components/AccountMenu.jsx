@@ -8,6 +8,7 @@ import { LoginButton } from './Loginbutton.jsx';
 import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
+import {Profile} from './User';
 
 export default function AccountMenu() {
   const {isAuthenticated ,user} = useAuth0();
@@ -76,7 +77,7 @@ export default function AccountMenu() {
           }}
         >
           <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleClose}><Profile/></MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
         </Menu>
       </div>
