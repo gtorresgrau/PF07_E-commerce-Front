@@ -54,16 +54,22 @@ function ShoppingCart() {
   }
 
   useEffect(() => {
-    let data = localStorage.getItem("Item",)
-    if (data) {
+    let data = localStorage.getItem("Item")
+    let parsed = [];
+    if (!data) {
       console.log(JSON.parse(data))
-    }
-  }, [])
+      localStorage.setItem("Item", JSON.stringify([]))
+  } else {
+    parsed = JSON.parse(data)
+  }
+}
+  , [])
 
   useEffect(() => {
-    localStorage.setItem("Item", JSON.stringify(cart))
+    localStorage.setItem("Item", JSON.stringify(cart));
+   cart = [localStorage.getItem("Item")];
   }, [cart])
-
+   
   return (
     <div>
       <Link to="/sneakers"><button>← BACK</button></Link>
