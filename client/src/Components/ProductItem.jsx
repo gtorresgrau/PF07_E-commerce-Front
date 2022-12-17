@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContex } from './CardContex';
+import s from './Styles/ProductItem.module.css';
 
-function ProductItem(props) {
-  //console.log('buys:', buys)
 
-  let subTotal = props.price * props.quantify
+function ProductItem({ item }) {
+
+  const { addItemToCart, deleteItemToCart } = useContext(CartContex);
+
+  let subTotal = item.price * item.amount;
   return (
-    <div>
-      <Link to={`/sneakers/${props.id}`}><h4>{props.title}</h4></Link>
-      <h4>${props.price},00 x {props.quantify} = ${subTotal},00</h4>
-      <img src={props.image} alt="sneaker" height='100px' width='100px' />
-      <button onClick={() => props.removeAll(props.id)}>X</button>
-      <br />
-      <button disabled={props.quantify === 1} onClick={() => props.removeOne(props)}>-</button>
-      <p>{props.quantify}</p>
-      <button onClick={() => props.addMasProduct(props)}>+</button>
+    <div className={s.cartItem}>
+      <img className={s.image} src={item.image} alt={item.title} />
+      <div className={s.dataContainer}>
+        <div className={s.left}>
+          <Link className={s.link} to={`/sneakers/${item.id}`}><p >{item.title}</p></Link>
+          <div className={s.buttons}>
+            <button className={s.btn} onClick={() => addItemToCart(item)}>+</button>
+            <button className={s.btn} onClick={() => deleteItemToCart(item)}>-</button>
+            <p className={s.amount}>Amount: {item.amount}</p>
+            <p className={s.amount}>Price: ${item.price},00 x {item.amount} = ${subTotal},00</p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
