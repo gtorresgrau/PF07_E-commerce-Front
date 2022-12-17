@@ -5,15 +5,15 @@ import S from './Styles/NavBar.module.css'
 export const UserLogin = () => {
   const { user } = useAuth0();
 
-  const img = user.picture ;
-  
+  const img = user.picture;
+
   return (
 
-      <div>
+    <div>
 
-          <img className={S.userimage} src={user.picture} alt=""/>
+      <img className={S.userimage} src={img} alt="" />
 
-      </div>
+    </div>
 
   );
 };

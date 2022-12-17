@@ -11,10 +11,6 @@ import {
   GET_TYPE,
   GET_GENRE,
   ADD_SNEAKER,
-  ADD_TO_CART,
-  REMOVE_ONE_FROM_CART,
-  CLEAR_CART,
-  REMOVE_ONE_CART,
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
@@ -83,25 +79,25 @@ export default function rootReducer(state = initialState, action) {
         sneakers: sortPrice
       }
     case GET_BRAND:
-      console.log('reducerB->payload: ',action.payload)
+      console.log('reducerB->payload: ', action.payload)
       return {
         ...state,
         sneakers: action.payload,
       }
     case GET_GENRE:
-      console.log('reducerG->payload: ',action.payload)
+      console.log('reducerG->payload: ', action.payload)
       return {
         ...state,
         sneakers: action.payload,
       }
     case GET_TYPE:
-      console.log('reducerT->payload: ',action.payload)
+      console.log('reducerT->payload: ', action.payload)
       return {
         ...state,
         sneakers: action.payload,
       }
     case GET_COLOUR:
-      console.log('reducerC->payload: ',action.payload)
+      console.log('reducerC->payload: ', action.payload)
       return {
         ...state,
         sneakers: action.payload,
@@ -114,36 +110,6 @@ export default function rootReducer(state = initialState, action) {
     case ADD_SNEAKER:
       return {
         ...state,
-      }
-    case ADD_TO_CART:
-      let newItem = action.payload
-      let itemInCart = state.cart.find(item => item.id === newItem.id)
-      return itemInCart ? {
-        ...state,
-        cart: state.cart.map(e => e.id === newItem.id ? { ...e, quantify: e.quantify + 1 } : e)
-      } : {
-        ...state,
-        cart: [...state.cart, { ...newItem, quantify: 1 }]
-      }
-    case REMOVE_ONE_FROM_CART:
-      return {
-        ...state,
-        cart: state.cart.filter(e => e.id !== action.payload)
-      }
-    case REMOVE_ONE_CART:
-      let removeItem = action.payload
-      let itemInCartRemove = state.cart.find(item => item.id === removeItem.id)
-      return itemInCartRemove ? {
-        ...state,
-        cart: state.cart.map(e => e.id === removeItem.id ? { ...e, quantify: e.quantify - 1 } : e)
-      } : {
-        ...state,
-        cart: [...state.cart, { ...removeItem, quantify: 1 }]
-      }
-    case CLEAR_CART:
-      return {
-        ...state,
-        cart: []
       }
     default:
       return {
