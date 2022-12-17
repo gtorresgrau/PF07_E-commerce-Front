@@ -2,24 +2,24 @@ import { useState } from "react";
 
 
 
-export function useLocalStorage(key, initialValue){
-    const [localCart, setLocalCart] = useState(()=>{
-        try{
+export function useLocalStorage(key, initialValue) {
+    const [storedValue, setStoredValue] = useState(() => {
+        try {
             const item = window.localStorage.getItem(key);
             return item ? JSON.parse(item) : initialValue;
-        }catch(error){
+        } catch (error) {
             return initialValue
         }
     });
 
-    const setCart = value => {
-        try{
-            setLocalCart(value)
+    const setValue = value => {
+        try {
+            setStoredValue(value)
             window.localStorage.setItem(key, JSON.stringify(value))
-        }catch (error){
+        } catch (error) {
             console.log(error)
         }
     }
 
-    return [localCart, setCart]
+    return [storedValue, setValue]
 }

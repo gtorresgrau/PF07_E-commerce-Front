@@ -10,8 +10,4 @@ export const GET_COLOUR = 'GET_COLOUR';
 export const GET_TYPE = 'GET_TYPE';
 export const GET_GENRE = 'GET_GENRE';
 export const ADD_SNEAKER = 'ADD_SNEAKER';
-export const ADD_TO_CART = 'ADD_TO_CART';
-export const REMOVE_ONE_CART = 'REMOVE_ONE_CART';
-export const REMOVE_ONE_FROM_CART = 'REMOVE_ONE_FROM_CART';
-export const CLEAR_CART = 'CLEAR_CART';
 
