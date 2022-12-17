@@ -118,6 +118,27 @@ export default function AddSneaker(){
         }
     };
 
+    const [productImg,setProductImg] = useState('');
+    console.log('productImg:',productImg)
+    const handleImageUpload = (e) => {
+        const file =e.target.files[0];
+        transformFile(file)
+
+        console.log(file)
+    }
+
+    const transformFile = (file) => {
+        const reader = new FileReader();
+        if(file){
+            reader.readAsDataURL(file);
+            reader.onloadend =() =>{
+                setProductImg(reader.result);
+            };
+        }else{
+            setProductImg('');
+        }
+    };
+
 return (
     <div className={S.general}>
         <Link to='/sneakers'>
@@ -189,7 +210,8 @@ return (
             
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='image'>URL the Image</label>
-                <input type='text'  className={S.input} name='image' placeholder="Type URL" value={input.image} onChange={handlerOnChange} autoComplete='off'/>
+                <input type="file" id='btn-photo' accept='image/' onChange={handleImageUpload} />
+                {/* <input type='text'  className={S.input} name='image' placeholder="Type URL" value={input.image} onChange={handlerOnChange} autoComplete='off'/> */}
                 {errores.image && (<span className={S.spanError}>{errores.image}</span>)}
             </div>
             <div className={S.containerInput}>
@@ -216,6 +238,10 @@ return (
             </Link>
         </div>
         </form>
+        <div>
+            {productImg?<> <img id="sneaker-photo" alt='sneaker' /></>: 'Not image'
+            }
+        </div>
     </div>
     </div>
 )
