@@ -6,7 +6,7 @@ import { addSneaker } from "../Actions/Actions.js";
 import S from './Styles/AddSneaker.module.css'
 
 
-export default function CreateActivity(){
+export default function AddSneaker(){
     const dispatch = useDispatch();
     //const allSneakers = useSelector((state) => state.allSneakers)
     //console.log('countid: ',countriesId)

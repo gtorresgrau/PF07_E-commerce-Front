@@ -10,7 +10,7 @@ import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
 
 export default function AccountMenu() {
-  const {isAuthenticated ,user} = useAuth0();
+  const {isAuthenticated} = useAuth0();
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
