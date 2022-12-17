@@ -14,7 +14,7 @@ export const Profile = () => {
           audience: `https://${domain}/api/v2/`,
           scope: "read:current_user",
         });
-  
+        localStorage.setItem("token", accessToken);
         const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
         
         let metadataResponse = await fetch(userDetailsByIdUrl, {
