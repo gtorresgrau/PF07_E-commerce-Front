@@ -8,12 +8,8 @@ import {
   GET_PRICE,
   GET_AZ,
   GET_COLOUR,
-  ADD_TO_CART,
-  CLEAR_CART,
-  REMOVE_ONE_FROM_CART,
-  REMOVE_ONE_CART,
   GET_TYPE,
-  GET_GENRE
+  GET_GENRE,
 } from '../Actions/ActionTypes.js';
 
 export const loading = () => {
@@ -80,7 +76,7 @@ export function resetDetail() {
 
 export function filterByBrand(payload) {
   return async function (dispatch) {
-    console.log('actionBR->payload:',payload)
+    console.log('actionBR->payload:', payload)
     if (payload === 'Brands') { var urlBack = `/sneakers` }
     else { urlBack = `/filter?${payload}` }
     try {
@@ -101,13 +97,13 @@ export function filterByBrand(payload) {
 
 export function filterByColour(payload) {
   return async function (dispatch) {
-    console.log('actionCO->payload:',payload)
+    console.log('actionCO->payload:', payload)
     if (payload === 'All') { var urlBack = `/sneakers` }
     else { urlBack = `/filter?${payload}` }
-    console.log('act->urlBack: ',urlBack)
+    console.log('act->urlBack: ', urlBack)
     try {
       let getColour = await axios(urlBack);
-      console.log('colour:',getColour)
+      console.log('colour:', getColour)
       return dispatch({
         type: GET_COLOUR,
         payload: getColour.data
@@ -124,10 +120,10 @@ export function filterByColour(payload) {
 
 export function filterByGenre(payload) {
   return async function (dispatch) {
-    console.log('action->payload:',payload)
+    console.log('action->payload:', payload)
     if (payload === 'All') { var urlBack = `/sneakers` }
     else { urlBack = `/filter?${payload}` }
-    console.log('actGE->urlBack: ',urlBack)
+    console.log('actGE->urlBack: ', urlBack)
     try {
       let getGenre = await axios(urlBack);
       return dispatch({
@@ -145,10 +141,10 @@ export function filterByGenre(payload) {
 
 export function filterByType(payload) {
   return async function (dispatch) {
-    console.log('actionTY->payload:',payload)
+    console.log('actionTY->payload:', payload)
     if (payload === 'All') { var urlBack = `/sneakers` }
     else { urlBack = `/filter?${payload}` }
-    console.log('act->urlBack: ',urlBack)
+    console.log('act->urlBack: ', urlBack)
     try {
       let getType = await axios(urlBack);
       return dispatch({
@@ -189,35 +185,15 @@ export function addSneaker(payload) {
   }
 };
 
-//-----------------------------cart----------------------------------------------------------------------
-
-export function getAddToCart(payload) {
-  return {
-    type: ADD_TO_CART,
-    payload
+export function payment(payload) {
+  return async function () {
+    const pay = await axios.post(`http://localhost:3001/payment`, payload)
+    console.log(pay)
+    return pay;
   }
 };
 
-export function removeFromCartItem(payload) {
-  return {
-    type: REMOVE_ONE_FROM_CART,
-    payload
-  };
-};
 
-export function removeOneItem(payload) {
-  return {
-    type: REMOVE_ONE_CART,
-    payload
-  };
-
-};
-
-export function resetCart() {
-  return {
-    type: CLEAR_CART,
-  };
-};
 
 
 
