@@ -6,7 +6,7 @@ nav {
     justify-content: center;
     padding: 1.3rem;
     position: fixed;
-    width:97%;
+    width: 100%;
 }
 
 .logo {
@@ -37,14 +37,16 @@ nav {
 }
 
 .cart {
-   font-size: 1.7rem;
-   color: white;
+    font-size: 1.7rem;
+    color: white;
 }
-.img{
+
+.img {
 
     border: none;
     border-radius: 50%;
 }
+
 .user {
     font-size: 1.7rem;
     color: white;
