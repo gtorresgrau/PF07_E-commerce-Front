@@ -51,7 +51,7 @@ export default function AccountMenu() {
           <MenuItem onClick={handleClose}><LoginButton /></MenuItem>
           <MenuItem onClick={handleClose}><SignUpButton /></MenuItem>
         </Menu>
-
+         
       </div>
       
       :
@@ -65,6 +65,7 @@ export default function AccountMenu() {
           onClick={handleClick}
         >
           <UserLogin/>
+        
         </div>
 
         <Menu

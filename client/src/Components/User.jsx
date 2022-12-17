@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
 
-  useEffect(() => {
+  
     const getUserMetadata = async () => {
       const domain = "dev-frontpf08.us.auth0.com";
-  
+      const { Json}  = JSON.stringify(user,null,2)  ;
       try {
         const accessToken = await getAccessTokenSilently({
           audience: `https://${domain}/api/v2/`,
@@ -16,24 +16,25 @@ export const Profile = () => {
         });
   
         const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
-  
-        const metadataResponse = await fetch(userDetailsByIdUrl, {
+        
+        let metadataResponse = await fetch(userDetailsByIdUrl, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
   
-        const { user_metadata } = await metadataResponse.json();
-  
-        setUserMetadata(user_metadata);
+         setUserMetadata = await metadataResponse.json();
+          
+      
+        return setUserMetadata;
       } catch (e) {
         console.log(e.message);
       }
     };
-  
-    getUserMetadata();
-  }, [getAccessTokenSilently, user?.sub]);
+  console.log( user) 
+    return getUserMetadata;
+  }
 
-};
+
 
 export default Profile;
