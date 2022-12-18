@@ -6,7 +6,7 @@ import { addSneaker } from "../Actions/Actions.js";
 import S from './Styles/AddSneaker.module.css'
 
 
-export default function CreateActivity(){
+export default function AddSneaker(){
     const dispatch = useDispatch();
     //const allSneakers = useSelector((state) => state.allSneakers)
     //console.log('countid: ',countriesId)
@@ -147,7 +147,7 @@ return (
             <div className={S.containerInput}>
                     <label className={S.label}  htmlFor='size' >Size</label>
                     <select name='size' className={S.select}  onChange={(e)=>handlerSize(e)}>
-                        <option value='' selected hidden>Select sizes</option>
+                        <option value='' defaultValue hidden>Select sizes</option>
                         {talles?.map(e => (
                             <option value={e} key={e}>{e}</option>
                         ))}
@@ -169,7 +169,7 @@ return (
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='type' >Types</label>
                 <select className={S.select} onChange={handlerOnChange} name='type'>
-                    <option value='' selected hidden>Choose type</option>
+                    <option value='' defaultValue hidden>Choose type</option>
                         {types?.map(t => (
                             <option value={t} key={t} >{t}</option>
                         ))}
@@ -179,7 +179,7 @@ return (
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='type' >Genres</label>
                 <select className={S.select} name='genre' onChange={handlerOnChange}>
-                    <option value='' selected hidden>Choose genre</option>
+                    <option value='' defaultValue hidden>Choose genre</option>
                         {genres?.map(g => (
                             <option  value={g} key={g} >{g}</option>
                         ))}

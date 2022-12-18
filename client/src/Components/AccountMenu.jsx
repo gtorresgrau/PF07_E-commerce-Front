@@ -11,7 +11,7 @@ import { SignUpButton } from './SignUpButton';
 import {Profile} from './User';
 
 export default function AccountMenu() {
-  const {isAuthenticated ,user} = useAuth0();
+  const {isAuthenticated} = useAuth0();
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
