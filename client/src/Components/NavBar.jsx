@@ -40,7 +40,7 @@ export default function Navbar({ setCurrentPage, currentPage }) {
         <div className={S.displayLinks}>
           <AccountMenu />
           <div className="">
-            <Link to='/account' className={S.heart}><FaRegHeart /></Link>
+            <Link to='/favorites' className={S.heart}><FaRegHeart /></Link>
           </div>
         </div>
       </div>

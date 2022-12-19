@@ -7,13 +7,15 @@ import { CartContex } from "./CardContex";
 
 export default function Card(props) {
 
-  const { addItemToCart } = useContext(CartContex)
-
+  const { addItemToCart } = useContext(CartContex);
+  const { addItemToFav } = useContext(FavContax);
+  
   return (
     <div>
       <div className={S.container}>
+        
+        <div className={S.icon} onClick={() => addItemToFav(props)}><FaRegHeart /></div>
         <Link to={'/sneakers/' + props.id}>
-          <div className={S.icon}><FaRegHeart /></div>
           <img src={props.image} alt="imagen no encontrada" className={S.img} />
           <div className={S.price}>${props.price}</div>
           <p className={S.title}>{props.title}</p>
