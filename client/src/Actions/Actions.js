@@ -181,21 +181,23 @@ export function sortPrice(payload) {
 //--------------------------------------------------------------------------------------------------
 export function addSneaker(payload) {
   return async function () {
-    const add = await axios.post(`http://localhost:3001/sneakers`, payload)
+    const add = await axios.post(`/sneakers`, payload)
     return add;
   }
 };
 
 export const uploadImage = async(image) => {
   try {
-      console.log('actions:',image) 
-      const img = await axios.post('http://localhost:3001/upload', {
-        image: image
+      console.log('actionsIma:',image) 
+      const img = await axios.post('/upload',{
+        image:image
       })
-      console.log('img:',img.data)
-  } catch (error) {
-      console.error(error)
-  }
+       const uploadedResponse = img.data.secure_url;
+       return uploadedResponse
+      } catch (error) {
+        console.error('actionE:',error)
+    }
+  
 }
 
 
@@ -203,8 +205,8 @@ export const uploadImage = async(image) => {
 
 export function payment(payload) {
   return async function () {
-    const pay = await axios.post(`http://localhost:3001/payment`, payload)
-    console.log(pay)
+    const pay = await axios.post(`/payment`, payload)
+    console.log(pay.data)
     return pay;
   }
 };

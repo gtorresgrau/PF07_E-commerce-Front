@@ -8,8 +8,6 @@ import S from './Styles/AddSneaker.module.css'
 
 export default function AddSneaker(){
     const dispatch = useDispatch();
-    //const allSneakers = useSelector((state) => state.allSneakers)
-    //console.log('countid: ',countriesId)
     
     const form = document.getElementById('newSneaker')
     const btn = document.getElementById('btn')
@@ -109,11 +107,16 @@ export default function AddSneaker(){
             setProductImg('');
         }
     };
+
+    function handleImageBtn(e){
+        e.preventDefault();
+        uploadImage(productImg).then(url=> input.image = url );
+        console.log('btn:',input)
+    };
        
 
     function handlerSubmit(e){
         e.preventDefault();
-        uploadImage(productImg);
 
         if(Object.keys(errores).length === 0 ){
                 console.log(input)
@@ -124,7 +127,7 @@ export default function AddSneaker(){
                     price:"", 
                     description:"", 
                     size:[],
-                    image:productImg,
+                    image:"",
                     stock:"",
                     brand:"",
                     genre:"",
@@ -211,9 +214,9 @@ return (
             </div>
             
             <div className={S.containerInput}>
-                <label className={S.label}  htmlFor='image'>URL the Image</label>
-                <input type="file" id='btn-photo' accept='image/' onChange={handleImageUpload} />
-                <input type='text'  className={S.input} name='image' placeholder="Type URL" value={input.image} onChange={handlerOnChange} autoComplete='off'/>
+                <label className={S.label}  htmlFor='image'>Image</label>
+                <input type="file" id='btn-photo' onChange={handleImageUpload} name='image'/>
+                <button type="button" onClick={handleImageBtn}>SAVE</button>
                 {errores.image && (<span className={S.spanError}>{errores.image}</span>)}
             </div>
             <div className={S.containerInput}>
