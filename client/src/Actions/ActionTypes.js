@@ -10,4 +10,5 @@ export const GET_COLOUR = 'GET_COLOUR';
 export const GET_TYPE = 'GET_TYPE';
 export const GET_GENRE = 'GET_GENRE';
 export const ADD_SNEAKER = 'ADD_SNEAKER';
+export const IMG_URL = 'IMG_URL';
 

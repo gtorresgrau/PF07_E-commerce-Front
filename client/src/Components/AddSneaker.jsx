@@ -2,14 +2,12 @@ import React from "react";
 import {useState } from "react";
 import { useDispatch} from "react-redux";
 import {Link} from 'react-router-dom';
-import { addSneaker } from "../Actions/Actions.js";
+import { addSneaker, uploadImage } from "../Actions/Actions.js";
 import S from './Styles/AddSneaker.module.css'
 
 
 export default function AddSneaker(){
     const dispatch = useDispatch();
-    //const allSneakers = useSelector((state) => state.allSneakers)
-    //console.log('countid: ',countriesId)
     
     const form = document.getElementById('newSneaker')
     const btn = document.getElementById('btn')
@@ -89,10 +87,37 @@ export default function AddSneaker(){
           size: input.size.filter(s => s !== e)
         })
     }
+
+    const [productImg,setProductImg] = useState('');
+
+    const handleImageUpload = (e) => {
+        e.preventDefault();
+        const file =e.target.files[0];
+        transformFile(file)
+    }
+
+    const transformFile = (file) => {
+        const reader = new FileReader();
+        if(file){
+            reader.readAsDataURL(file);
+            reader.onloadend =() =>{
+                setProductImg(reader.result);
+            };
+        }else{
+            setProductImg('');
+        }
+    };
+
+    function handleImageBtn(e){
+        e.preventDefault();
+        uploadImage(productImg).then(url=> input.image = url );
+        console.log('btn:',input)
+    };
        
 
     function handlerSubmit(e){
         e.preventDefault();
+
         if(Object.keys(errores).length === 0 ){
                 console.log(input)
                 dispatch(addSneaker(input))
@@ -117,6 +142,7 @@ export default function AddSneaker(){
             alert('The Sneaker was not created, the form contains errors.')
         }
     };
+
 
 return (
     <div className={S.general}>
@@ -188,8 +214,9 @@ return (
             </div>
             
             <div className={S.containerInput}>
-                <label className={S.label}  htmlFor='image'>URL the Image</label>
-                <input type='text'  className={S.input} name='image' placeholder="Type URL" value={input.image} onChange={handlerOnChange} autoComplete='off'/>
+                <label className={S.label}  htmlFor='image'>Image</label>
+                <input type="file" id='btn-photo' onChange={handleImageUpload} name='image'/>
+                <button type="button" onClick={handleImageBtn}>SAVE</button>
                 {errores.image && (<span className={S.spanError}>{errores.image}</span>)}
             </div>
             <div className={S.containerInput}>
@@ -216,6 +243,10 @@ return (
             </Link>
         </div>
         </form>
+        <br/>
+        <div>
+            {productImg?<img src={productImg} id="sneaker-photo" alt='sneaker' className={S.product}/>:'IMAGE PREVIEW'}
+        </div>
     </div>
     </div>
 )
