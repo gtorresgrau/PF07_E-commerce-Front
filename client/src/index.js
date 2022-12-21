@@ -9,17 +9,17 @@ import { Provider } from "react-redux";
 import store from './Store/index.js';
 import { Auth0Provider } from "@auth0/auth0-react";
 
-//axios.defaults.baseURL='http://localhost:3001';
+axios.defaults.baseURL='http://localhost:3001';
 //https://pf07e-commerce-back-production.up.railway.app/
 
-axios.defaults.baseURL = 'https://pf07e-commerce-back-production.up.railway.app/';
+//axios.defaults.baseURL = 'https://pf07e-commerce-back-production.up.railway.app/';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Auth0Provider
     domain='dev-frontpf08.us.auth0.com'
     clientId='tRlgJELqzjkbfv2YlwKylgjL8jlAPDDa'
-    redirectUri={"https://pf-07-e-commerce-front.vercel.app/sneakers/"||"http://localhost:3000/sneakers"}
+    redirectUri={"http://localhost:3000/sneakers"}
     audience="https://dev-frontpf08.us.auth0.com/api/v2/"
     scope="read:current_user update:current_user_metadata"
   >
