@@ -8,7 +8,7 @@ function ProductItem({ item }) {
 
   const { addItemToCart, deleteItemToCart } = useContext(CartContex);
 
-  let subTotal = item.price * item.amount;
+  let subTotal = item.price * item.quantity;
   return (
     <div className={s.cartItem}>
       <img className={s.image} src={item.image} alt={item.title} />
@@ -18,8 +18,8 @@ function ProductItem({ item }) {
           <div className={s.buttons}>
             <button className={s.btn} onClick={() => addItemToCart(item)}>+</button>
             <button className={s.btn} onClick={() => deleteItemToCart(item)}>-</button>
-            <p className={s.amount}>Amount: {item.amount}</p>
-            <p className={s.amount}>Price: ${item.price},00 x {item.amount} = ${subTotal},00</p>
+            <p className={s.quantity}>Quantity: {item.quantity}</p>
+            <p className={s.quantity}>Price: ${item.price} x {item.quantity} = ${subTotal}</p>
           </div>
         </div>
       </div>

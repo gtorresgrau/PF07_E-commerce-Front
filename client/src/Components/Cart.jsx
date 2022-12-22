@@ -1,10 +1,10 @@
+import axios from 'axios';
 import React, { useState, useContext } from 'react'
 import { useEffect } from 'react';
 import { CartContex } from './CardContex';
 import ProductItem from './ProductItem';
 //import { useDispatch } from 'react-redux';
 import s from './Styles/Cart.module.css'
-//import { payment } from '../Actions/Actions'
 
 function Cart() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -16,7 +16,7 @@ function Cart() {
 
   useEffect(() => {
     setProductsLength(
-      cartItems.reduce((previous, current) => previous + current.amount, 0)
+      cartItems.reduce((previous, current) => previous + current.quantity, 0)
     )
   }, [cartItems])
 
@@ -24,7 +24,14 @@ function Cart() {
      dispatch(payment(e))
    } */
 
-  const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0)
+  function handlePayment(){
+    console.log('cart: estoy aca')
+    axios.post('/payment', cartItems)
+          .then((res)=> window.location.href = res.data.response.body.init_point)
+          .catch((error)=>console.log('errorC',error))}
+  
+
+  const total = cartItems.reduce((previous, current) => previous + current.quantity * current.price, 0)
 
   return (
     <div /* className={s.cartContainer} */>
@@ -78,7 +85,9 @@ function Cart() {
             </div>
           )}
           <h2 className={s.total}>Total: ${total}</h2>
-          <button className={s.buy} /* onClick={(e) => mercadoPago(e)} */>Buy</button>
+          {console.log('cartItems:',cartItems)}
+          <button className={s.buy} 
+            onClick={handlePayment}>BUY</button>
         </div>
       )}
     </div>
