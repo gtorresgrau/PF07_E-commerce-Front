@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import ('dotenv').config();
+
 
 const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -37,23 +37,23 @@ const Profile = () => {
   return (
     isAuthenticated &&(
     <div>
-      <div className="row align-items-center profile-header">
-        <div className="col-md-2 mb-3">
+      <div className="">
+        <div className="">
           <img
             src={picture}
             alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
+            className=""
           />
         </div>
-        <div className="col-md text-center text-md-left">
+        <div className="">
           <h2>{name}</h2>
-          <p className="lead text-muted">{email}</p>
+          <p className="">{email}</p>
         </div>
       </div>
-      <div className="row">
+      <div className="">
         <h3>User Metadata</h3>
         {userMetadata? (
-            <pre className="col-12 text-light bg-dark p-4">
+            <pre className="">
                 {JSON.stringify(userMetadata, null, 2)}
         </pre>):("No user metadata defined")}
       </div>
