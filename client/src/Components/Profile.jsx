@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import S from '../Components/Styles/Profile.module.css'
 
 
 const Profile = () => {
@@ -38,6 +40,9 @@ const Profile = () => {
     isAuthenticated &&(
     <div>
       <div className="">
+        <Link to='/sneakers'>
+            <button className={S.back}>Back</button>
+        </Link>
         <div className="">
           <img
             src={picture}

@@ -8,6 +8,7 @@ import { LoginButton } from './Loginbutton.jsx';
 import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
+import { Link } from 'react-router-dom';
 
 export default function AccountMenu() {
   const { isAuthenticated} = useAuth0();
@@ -20,10 +21,6 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const handleProfile =() =>{
-
-  }
 
   return (
     <div>
@@ -80,7 +77,7 @@ export default function AccountMenu() {
           }}
         >
           <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
-          <MenuItem onClick={handleProfile}>Profile</MenuItem>
+          <Link to='/Profile' ><MenuItem>Profile</MenuItem></Link>
           <MenuItem onClick={handleClose}>My account</MenuItem>
         </Menu>
       </div>
