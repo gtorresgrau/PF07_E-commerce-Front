@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 export const FavContax = createContext();
 
 
-export default function FavContainer (props){
+export  const FavContainer = (props) => {
 
     var heart = JSON.parse(localStorage.getItem("favorites")) || [];
 

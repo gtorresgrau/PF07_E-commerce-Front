@@ -3,6 +3,8 @@ import S from './Styles/Card.module.css';
 import { FaRegHeart } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { CartContex } from "./CardContex";
+import { FavContax } from "./FavContainer";
+
 
 
 export default function Card(props) {
