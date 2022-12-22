@@ -10,7 +10,7 @@ import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
 
 export default function AccountMenu() {
-  const {isAuthenticated} = useAuth0();
+  const { isAuthenticated} = useAuth0();
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -20,6 +20,10 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleProfile =() =>{
+
+  }
 
   return (
     <div>
@@ -76,7 +80,7 @@ export default function AccountMenu() {
           }}
         >
           <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleProfile}>Profile</MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
         </Menu>
       </div>
