@@ -22,11 +22,11 @@ export const CartProvider = ({ children }) => {
     if (inCart) {
       setCartItems(cartItems.map((productInCart) => {
         if (productInCart.id === product.id) {
-          return { ...inCart, amount: inCart.amount + 1 };
+          return { ...inCart, quantity: inCart.quantity + 1 };
         } else return productInCart
       }));
     } else {
-      setCartItems([...cartItems, { ...product, amount: 1 }])
+      setCartItems([...cartItems, { ...product, quantity: 1 }])
     }
   };
   const deleteItemToCart = (product) => {
@@ -40,7 +40,7 @@ export const CartProvider = ({ children }) => {
       setCartItems(
         cartItems.map((productInCart) => {
           if (productInCart.id === product.id) {
-            return { ...inCart, amount: inCart.amount - 1 }
+            return { ...inCart, quantity: inCart.quantity - 1 }
           } else return productInCart
         }));
     }

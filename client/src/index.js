@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from './Store/index.js';
-import { Auth0Provider } from "@auth0/auth0-react";
+import Auth0ProviderWithHistory from './auth/auth0-provider-with-history.js'
 
 //axios.defaults.baseURL='http://localhost:3001';
 //https://pf07e-commerce-back-production.up.railway.app/
@@ -25,14 +25,13 @@ root.render(
   >
     <Provider store={store}>
       <BrowserRouter>
-
-        <App />
-
-      </BrowserRouter>
+        <Auth0ProviderWithHistory>
+          <App />
+        </Auth0ProviderWithHistory>
+      </BrowserRouter>,
     </Provider>
   </Auth0Provider>,
 );
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

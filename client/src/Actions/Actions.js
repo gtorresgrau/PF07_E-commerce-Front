@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
   GET_SNEAKERS,
   GET_ALL_SNEAKERS,
-  LOADING, RESET_DETAIL,
+  LOADING, 
+  RESET_DETAIL,
   GET_SNEAKER_DETAIL,
   GET_BRAND,
   GET_PRICE,
@@ -180,18 +181,27 @@ export function sortPrice(payload) {
 //--------------------------------------------------------------------------------------------------
 export function addSneaker(payload) {
   return async function () {
-    const add = await axios.post(`http://localhost:3001/sneakers`, payload)
+    const add = await axios.post(`/sneakers`, payload)
     return add;
   }
 };
 
-export function payment(payload) {
-  return async function () {
-    const pay = await axios.post(`http://localhost:3001/payment`, payload)
-    console.log(pay)
-    return pay;
-  }
-};
+export const uploadImage = async(image) => {
+  try {
+      console.log('actionsIma:',image) 
+      const img = await axios.post('/upload',{
+        image:image
+      })
+       const uploadedResponse = img.data.secure_url;
+       return uploadedResponse
+      } catch (error) {
+        console.error('actionE:',error)
+    }
+  
+}
+
+
+//--------------------------------------------------------------------------------
 
 
 

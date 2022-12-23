@@ -11,6 +11,7 @@ import {
   GET_TYPE,
   GET_GENRE,
   ADD_SNEAKER,
+  IMG_URL,
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
@@ -20,6 +21,7 @@ export const initialState = {
   colours: [],
   loading: false,
   cart: [],
+  image:'',
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -110,6 +112,11 @@ export default function rootReducer(state = initialState, action) {
     case ADD_SNEAKER:
       return {
         ...state,
+      }
+    case IMG_URL:
+      console.log('reducerimg:', action.payload)
+      return{
+        image: action.payload,
       }
     default:
       return {
