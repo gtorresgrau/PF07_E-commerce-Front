@@ -26,7 +26,7 @@ const Profile = () => {
         });
   
         const { user_metadata } = await metadataResponse.json();
-  
+  console.log(metadataResponse);
         setUserMetadata(user_metadata);
       } catch (e) {
         console.log(e.message);
