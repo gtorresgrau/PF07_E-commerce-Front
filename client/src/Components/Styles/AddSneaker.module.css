@@ -9,14 +9,47 @@
     background-image: linear-gradient(#ffffffe0,#ffffffe0), url('../../Images/sneakers_vector.webp');
 }
 .container{
-    background-color: #00000099;
-    margin: auto;
-    width: 90%;
-    max-width: 400px;
-    padding: 5em 3em;
-    border-radius: 10px;
-    box-shadow: 10px 10px 15px 1px #3f3f41;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 800px;
+    width: 500px;
+    background-color: rgba(1, 1, 1, 0.427);
+    border-radius: 5px;
+    margin: 0 auto;
+}
+.label {
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    margin-bottom: 3px;
+    color: aliceblue;
+}
+  
+.input, .select {
+    padding: 3px;
+    display: inline-block;
+    width: 400px;
+    background-color: rgb(252, 246, 246);
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: black;
+}
+.select {
+    width: 408px;
+    border-radius: 5px;
+    background-color: rgb(252, 246, 246);
+    color: gray;
+    cursor: pointer;
+}
+  
+.containerInput {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    margin: 1px;
 }
 
 .header{
@@ -26,48 +59,19 @@
     text-shadow: 5px 5px 5px #000000;  
 }
 
+.spanError {
+  background-color: red;
+  color: black;
+  margin: 0 2 px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
 .newSneaker{
     font-family: 'Karla', sans-serif;
     grid-column: 1/-1;
     padding: 1rem;
     margin: 1rem;
-}
-
-.groups{
-    position: relative; 
-    color: #ff1500;
-    text-transform: capitalize;
-}
-
-.input{
-    font-family: 'Manjari', sans-serif;
-    width: 100%;
-    padding: 0.2em;
-    margin: 0.7em;
-    background: none;
-    font-size: 1rem;
-    color: #171f97;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #212ee5;
-}
-
-
-.input:focus + .label,
-.input:not(:placeholder-shown) + .label {
-    transform: translateY(-5px) scale(.7);
-    transform-origin: left top;
-    color: #171f97;
-}
-
-.label{
-    color: #171f97;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 1px;
-    transform: translateY(10px);
-    transition: transform .5s color .3s;
 }
 
 .btnSubmit{
@@ -102,32 +106,57 @@
     background-color: #ffffff99;
 }
 
-/* .cancel{
+.cancel{
     flex-direction: row;
     font-family: 'Manjari', sans-serif;
-    background-color: #ff1500;
-    color: #3586bc;
+    background-color: #f7f6f6;
+    color: #000000;
     border: none;
-    border-radius: 25px;
+    border-radius: 3px;
     padding: 5px;
-} */
+}
 .cancel:hover{
-    width: 100%;
-}
-
-.count{
-    color: #171f97;
+    width: 20%;
+    background-color: rgb(148, 5, 5);
+    color: rgb(250, 245, 245);
     cursor: pointer;
-    text-align: left;
 }
 
-.selected{
-    color: #171f97;
-    text-transform: uppercase; 
-    width: 100%;
-    display: grid;
+.containerSelected ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    max-width: auto;
+}
+
+.option {
+    display: inline-flex;
     flex-direction: row;
-    margin: 10px;
-    padding: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 5px;
+}
+  
+  
+.li {
+    float: center;
+    font-size: 13px;
 }
 
+.button {
+    border: none;
+    width: 16px;
+    height: 16px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #c43b3b;
+    font-size: 8px;
+    cursor: pointer;
+}
+
+.product{
+    width: 100%;
+    max-height: 200px;
+    
+}
