@@ -6,7 +6,7 @@ import s from './Styles/ProductItem.module.css';
 
 function ProductItem({ item }) {
 
-  const { addItemToCart, deleteItemToCart } = useContext(CartContex);
+  const { addItemToCart, deleteItemToCart, deleteAll, cartItems } = useContext(CartContex);
 
   let subTotal = item.price * item.quantity;
   return (
@@ -18,8 +18,9 @@ function ProductItem({ item }) {
           <div className={s.buttons}>
             <button className={s.btn} onClick={() => addItemToCart(item)}>+</button>
             <button className={s.btn} onClick={() => deleteItemToCart(item)}>-</button>
-            <p className={s.quantity}>Quantity: {item.quantity}</p>
-            <p className={s.quantity}>Price: ${item.price} x {item.quantity} = ${subTotal}</p>
+            <button className={s.btn} onClick={() => deleteAll(item)}>X</button>
+            <p className={s.amount}>Quantity: {item.quantity}</p>
+            <p className={s.amount}>Price: ${item.price},00 x {item.quantity} = ${subTotal},00</p>
           </div>
         </div>
       </div>
