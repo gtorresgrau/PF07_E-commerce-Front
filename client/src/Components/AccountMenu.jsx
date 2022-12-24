@@ -8,10 +8,14 @@ import { LoginButton } from './Loginbutton.jsx';
 import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
+<<<<<<< HEAD
 //import Profile from './User';
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> b743071337f4b4448a89be17c98adf2134bbee29
 
 export default function AccountMenu() {
-  const {isAuthenticated} = useAuth0();
+  const { isAuthenticated} = useAuth0();
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -78,7 +82,11 @@ export default function AccountMenu() {
           }}
         >
           <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
+<<<<<<< HEAD
           <MenuItem onClick={handleClose}>profile</MenuItem>
+=======
+          <Link to='/Profile' ><MenuItem>Profile</MenuItem></Link>
+>>>>>>> b743071337f4b4448a89be17c98adf2134bbee29
           <MenuItem onClick={handleClose}>My account</MenuItem>
         </Menu>
       </div>

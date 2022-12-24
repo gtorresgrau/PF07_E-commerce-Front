@@ -203,16 +203,6 @@ export const uploadImage = async(image) => {
 
 //--------------------------------------------------------------------------------
 
-export function payment(payload) {
-  return async function () {
-    const pay = await axios.post(`/payment`, payload)
-    console.log(pay.data)
-    return pay;
-  }
-};
-
-
-
 
 
 
