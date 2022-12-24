@@ -3,20 +3,20 @@ import S from './Styles/Card.module.css';
 import { FaRegHeart } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { CartContex } from "./CardContex";
-import { FavContax } from "./FavContainer";
+import { FavContainer} from "./FavContainer";
 
 
 
 export default function Card(props) {
 
   const { addItemToCart } = useContext(CartContex);
-  const { addItemToFav } = useContext(FavContax);
+  
   
   return (
     <div>
       <div className={S.container}>
         
-        <div className={S.icon} onClick={() => addItemToFav(props)}><FaRegHeart /></div>
+        <div className={S.icon} onClick={ FavContainer(props)}><FaRegHeart /></div>
         <Link to={'/sneakers/' + props.id}>
           <img src={props.image} alt="imagen no encontrada" className={S.img} />
           <div className={S.price}>${props.price}</div>

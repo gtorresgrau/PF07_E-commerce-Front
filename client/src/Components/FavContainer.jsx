@@ -1,20 +1,34 @@
 import React, { useEffect, useState, createContext  } from "react";
-import Navbar from "./NavBar";
+//import Navbar from "./NavBar";
 import Card from "./Card";
 import Footer from "./Footer";
 import { Link, useParams } from 'react-router-dom';
 import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-export const FavContax = createContext();
 
 
 export  const FavContainer = (props) => {
 
     var heart = JSON.parse(localStorage.getItem("favorites")) || [];
-
+    
+    
     const [favorites, setFavorites] = useState(heart);
     const [selected, setSelected] = useState(false);
-  
+    
+    const alertNoFav = () => {
+      Swal.fire({
+        title: "Dont have any fav",
+        text: "You can add fav and see it here",
+        icon: "info",
+        confirmButtonText: "Ok",
+      }).then(() => history.push("/sneakers"));
+    };
+    if (heart.length === 0) {
+      alertNoFav();
+    }
+
     const addFavorites = (props) => {
       if (!selected) {
         setFavorites([...favorites, props]);
@@ -48,6 +62,7 @@ export  const FavContainer = (props) => {
 
     return(
       <>
+     
        <div>
        {heart.map((props) => (
           <Card image={props.image} title={props.title} price={props.price} type={props.type} key={props.id} id={props.id}  />
