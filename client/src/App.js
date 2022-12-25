@@ -7,10 +7,10 @@ import SneakerDetail from './Components/SneakerDetail.jsx';
 import AddSneaker from './Components/AddSneaker.jsx';
 import './App.css';
 import { CartProvider } from './Components/CardContex.jsx';
-import ProtectedRoute from './auth/protected-route.js';
+import ProtectedRoute from './Auth/protected-route.js';
 import Profile from './Components/Profile.jsx';
 import dashboard from './Components/Dashboard.jsx';
-
+import  {FavContainer} from './Components/FavContainer.jsx';
 
 
 export default function App() {
@@ -23,6 +23,7 @@ export default function App() {
         <ProtectedRoute exact path="/addSneaker" component={AddSneaker}/>
         <ProtectedRoute exact path="/profile" component={Profile}/>
         <ProtectedRoute exact path="/admin" component={dashboard}/>
+        <Route exact path="/favorites" component={FavContainer}/>
         <Route path="*" component={Error404} />
       </Switch>
     </div>

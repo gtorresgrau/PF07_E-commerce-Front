@@ -1,11 +1,11 @@
-import React, { useEffect, useState, createContext  } from "react";
+import React, { useEffect, useState  } from "react";
 //import Navbar from "./NavBar";
 import Card from "./Card";
 import Footer from "./Footer";
 import { Link, useParams } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+
 
 
 
@@ -18,6 +18,7 @@ export  const FavContainer = (props) => {
     const [selected, setSelected] = useState(false);
     
     const alertNoFav = () => {
+      let history= useHistory;
       Swal.fire({
         title: "Dont have any fav",
         text: "You can add fav and see it here",

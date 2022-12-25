@@ -8,11 +8,9 @@ import { LoginButton } from './Loginbutton.jsx';
 import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
-<<<<<<< HEAD
-//import Profile from './User';
-=======
+
 import { Link } from 'react-router-dom';
->>>>>>> b743071337f4b4448a89be17c98adf2134bbee29
+//import Profile from './User';
 
 export default function AccountMenu() {
   const { isAuthenticated} = useAuth0();
@@ -82,7 +80,7 @@ export default function AccountMenu() {
           }}
         >
           <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
-          <MenuItem onClick={handleClose}>profile</MenuItem>
+          <Link to='/profile' ><MenuItem>Profile</MenuItem></Link>
           <MenuItem onClick={handleClose}>My account</MenuItem>
         </Menu>
       </div>
