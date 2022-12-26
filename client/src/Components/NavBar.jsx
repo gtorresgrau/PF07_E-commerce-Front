@@ -5,12 +5,13 @@ import logo from '../Images/logo2.png';
 import SearchBar from './SearchBar';
 import S from './Styles/NavBar.module.css'
 import { getAllSneackers } from '../Actions/Actions';
-import { FaRegHeart } from 'react-icons/fa';
+
 
 
 
 import AccountMenu from './AccountMenu';
 import Cart from './Cart';
+import Fav from './FavContainer';
 
 
 export default function Navbar({ setCurrentPage, currentPage }) {
@@ -39,9 +40,12 @@ export default function Navbar({ setCurrentPage, currentPage }) {
         </div>
         <div className={S.displayLinks}>
           <AccountMenu />
-          <div className="">
-            <Link to='/favorites' className={S.heart}><FaRegHeart /></Link>
+          
+
+        <div className="">
+          <Fav />
           </div>
+        
         </div>
       </div>
     </nav>

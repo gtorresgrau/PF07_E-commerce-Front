@@ -32,8 +32,8 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 35%;
-    justify-content: space-around
+    width: 50%;
+    justify-content: space-evenly 
 }
 
 .cart {

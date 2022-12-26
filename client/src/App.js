@@ -10,20 +10,19 @@ import { CartProvider } from './Components/CardContex.jsx';
 import ProtectedRoute from './Auth/protected-route.js';
 import Profile from './Components/Profile.jsx';
 import dashboard from './Components/Dashboard.jsx';
-import  {FavContainer} from './Components/FavContainer.jsx';
 
+import  {FavProvider} from './Components/FavContainerContext.jsx';
 
 export default function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/sneakers/:id"><CartProvider><SneakerDetail /></CartProvider></Route>
-        <Route exact path="/sneakers"><CartProvider><Home /></CartProvider></Route>
+        <Route exact path="/sneakers/:id"><FavProvider ><CartProvider><SneakerDetail /></CartProvider></FavProvider></Route>
+        <Route exact path="/sneakers"><FavProvider><CartProvider><Home /></CartProvider></FavProvider></Route>
         <Route exact path="/" component={Landing} />
         <ProtectedRoute exact path="/addSneaker" component={AddSneaker}/>
         <ProtectedRoute exact path="/profile" component={Profile}/>
         <ProtectedRoute exact path="/admin" component={dashboard}/>
-        <Route exact path="/favorites" component={FavContainer}/>
         <Route path="*" component={Error404} />
       </Switch>
     </div>
