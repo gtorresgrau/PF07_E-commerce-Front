@@ -29,8 +29,10 @@
     "react-slick": "^0.29.0",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.6.16",
     "web-vitals": "^2.1.4",
     "webpack-dev-middleware": "^6.0.1"
   },

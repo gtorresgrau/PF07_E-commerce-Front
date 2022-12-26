@@ -1,19 +1,23 @@
 import React, { useContext } from "react";
 import S from './Styles/Card.module.css';
-import { FaRegHeart } from 'react-icons/fa';
+import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { CartContex } from "./CardContex";
 
+import { FavContainerContext } from './FavContainerContext';
+
 
 export default function Card(props) {
-
-  const { addItemToCart } = useContext(CartContex)
-
+  const { addItemToCart } = useContext(CartContex);
+  
+  const { addItemToFav } = useContext(FavContainerContext);
+  
   return (
     <div>
       <div className={S.container}>
+        
+      <div className={S.icon} onClick={() => addItemToFav(props)}><FaRegHeart /></div>
         <Link to={'/sneakers/' + props.id}>
-          <div className={S.icon}><FaRegHeart /></div>
           <img src={props.image} alt="imagen no encontrada" className={S.img} />
           <div className={S.price}>${props.price}</div>
           <p className={S.title}>{props.title}</p>

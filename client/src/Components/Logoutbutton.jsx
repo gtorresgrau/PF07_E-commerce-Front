@@ -6,8 +6,8 @@ export const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    
-    <button  onClick={() => logout({ returnTo: "http://localhost:3000/sneakers"||"https://pf-07-e-commerce-front-e03qnrsav-gtorresgrau.vercel.app/" })}>
+
+    <div onClick={() => logout({ returnTo: "http://localhost:3000/sneakers"})}>
       Log out
     </button>
   );

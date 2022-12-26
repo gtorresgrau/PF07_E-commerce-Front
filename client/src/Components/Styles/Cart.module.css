@@ -43,7 +43,7 @@ svg {
 .cart {
   position: absolute;
   margin-top: 25px;
-  margin-left: -100px;
+  margin-left: -400px;
   border-radius: 30px;
   width: 400px;
   background-color: #222222;
