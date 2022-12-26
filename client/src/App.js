@@ -7,7 +7,7 @@ import SneakerDetail from './Components/SneakerDetail.jsx';
 import AddSneaker from './Components/AddSneaker.jsx';
 import './App.css';
 import { CartProvider } from './Components/CardContex.jsx';
-import ProtectedRoute from './Auth/protected-route.js';
+import ProtectedRoute from './auth/protected-route.js';
 import Profile from './Components/Profile.jsx';
 import dashboard from './Components/Dashboard.jsx';
 
