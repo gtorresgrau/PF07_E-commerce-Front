@@ -21,7 +21,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
       scope="read:current_user update:current_user_metadata"
       onRedirectCallback={onRedirectCallback}
     >
-      {children}
+      {children} 
     </Auth0Provider>
   );
 };
