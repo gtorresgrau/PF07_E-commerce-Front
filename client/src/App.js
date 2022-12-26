@@ -7,18 +7,18 @@ import SneakerDetail from './Components/SneakerDetail.jsx';
 import AddSneaker from './Components/AddSneaker.jsx';
 import './App.css';
 import { CartProvider } from './Components/CardContex.jsx';
-import ProtectedRoute from './auth/protected-route.js';
+import ProtectedRoute from './Auth/protected-route.js';
 import Profile from './Components/Profile.jsx';
 import dashboard from './Components/Dashboard.jsx';
 
-
+import  {FavProvider} from './Components/FavContainerContext.jsx';
 
 export default function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/sneakers/:id"><CartProvider><SneakerDetail /></CartProvider></Route>
-        <Route exact path="/sneakers"><CartProvider><Home /></CartProvider></Route>
+        <Route exact path="/sneakers/:id"><FavProvider ><CartProvider><SneakerDetail /></CartProvider></FavProvider></Route>
+        <Route exact path="/sneakers"><FavProvider><CartProvider><Home /></CartProvider></FavProvider></Route>
         <Route exact path="/" component={Landing} />
         <ProtectedRoute exact path="/addSneaker" component={AddSneaker}/>
         <ProtectedRoute exact path="/profile" component={Profile}/>
