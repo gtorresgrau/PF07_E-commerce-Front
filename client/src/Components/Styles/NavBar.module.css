@@ -83,6 +83,12 @@ nav {
     text-shadow: 5px 5px 5px #000000;
     cursor: pointer;
 }
+.img{
+
+    border: none;
+    border-radius: 50%;
+}
+
 
 
 .select {
