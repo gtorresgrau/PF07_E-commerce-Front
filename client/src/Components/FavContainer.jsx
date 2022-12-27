@@ -24,8 +24,8 @@ return (
       <div onClick={() => { setCartOpen(!cartOpen) }} className={s.buttonCartContainer}>
         <div className={s.buttonCart}>
           {!cartOpen ? (
-            <div className={s.fa} ><FaHeart  /></div>
-          ) : (
+            <div className={s.fa} ><FaHeart  /></div>)
+           : (
             <svg
               
               width="20"

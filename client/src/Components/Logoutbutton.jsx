@@ -9,6 +9,6 @@ export const LogoutButton = () => {
 
     <div onClick={() => logout({ returnTo: "http://localhost:3000/sneakers"})}>
       Log out
-    </button>
+    </div>
   );
 };

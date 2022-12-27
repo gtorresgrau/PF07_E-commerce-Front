@@ -51,8 +51,9 @@
     margin-left: -220px;
     border-radius: 30px;
     width: 400px;
-    background-color: #222222;
-    color: white;
+    background-color: white;
+    color: black;
+    border-style:solid;
   }
   
   .cartVacio {
