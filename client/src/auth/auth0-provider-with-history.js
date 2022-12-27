@@ -14,23 +14,12 @@ const Auth0ProviderWithHistory = ({ children }) => {
 
   return (
     <Auth0Provider
-<<<<<<< HEAD
       domain={domain}
       clientId={clientId}
     redirectUri={"http://localhost:3000/sneakers"}
       onRedirectCallback={onRedirectCallback}
     >
       {children}
-=======
-        domain={domain}
-        clientId={clientId}
-        redirectUri={"http://localhost:3000/sneakers"}
-        audience={audience}
-        scope="read:current_user update:current_user_metadata"
-        onRedirectCallback={onRedirectCallback}
-        >
-          {children}
->>>>>>> devBranch
     </Auth0Provider>
   );
 };
