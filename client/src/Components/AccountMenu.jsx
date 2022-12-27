@@ -8,9 +8,7 @@ import { LoginButton } from './Loginbutton.jsx';
 import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
-
 import { Link } from 'react-router-dom';
-//import Profile from './User';
 
 export default function AccountMenu() {
   const { isAuthenticated} = useAuth0();
