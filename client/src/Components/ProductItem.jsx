@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContex } from './CardContex';
 import s from './Styles/ProductItem.module.css';
-
+import { FavContainerContext } from './FavContainerContext';
 
 function ProductItem({ item }) {
 
+  const { addItemToFav } = useContext(FavContainerContext);
   const { addItemToCart, deleteItemToCart, deleteAll, cartItems } = useContext(CartContex);
 
   let subTotal = item.price * item.quantity;
@@ -19,6 +20,9 @@ function ProductItem({ item }) {
             <button className={s.btn} onClick={() => addItemToCart(item)}>+</button>
             <button className={s.btn} onClick={() => deleteItemToCart(item)}>-</button>
             <button className={s.btn} onClick={() => deleteAll(item)}>X</button>
+            <button className={s.addToCart} onClick={() => {
+              addItemToFav(item)
+              deleteAll(item)} }>Favorites</button>
             <p className={s.amount}>Quantity: {item.quantity}</p>
             <p className={s.amount}>Price: ${item.price},00 x {item.quantity} = ${subTotal},00</p>
           </div>
