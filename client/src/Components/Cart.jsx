@@ -26,8 +26,8 @@ function Cart() {
    
   function handlePayment(){
     console.log('cart: estoy aca')
-    axios.get('http://localhost:3001/payment', cartItems)
-          .then((res)=> window.location.href = res.data.init_point)
+    axios.post('http://localhost:3001/payment', cartItems)
+          .then((res)=> window.location.href = res.data.response.body.init_point)
           .catch((error)=>console.log('errorC',error))}
   
 
