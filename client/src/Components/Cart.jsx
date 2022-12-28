@@ -23,11 +23,11 @@ function Cart() {
   /*  const mercadoPago = (e) => {
      dispatch(payment(e))
    } */
-
+   
   function handlePayment(){
     console.log('cart: estoy aca')
-    axios.post('http://localhost3001/payment', cartItems)
-          .then((res)=> window.location.href = res.data.response.body.init_point)
+    axios.get('http://localhost:3001/payment', cartItems)
+          .then((res)=> window.location.href = res.data.init_point)
           .catch((error)=>console.log('errorC',error))}
   
 
