@@ -32,10 +32,8 @@ export const CartProvider = ({ children }) => {
   const deleteItemToCart = (product) => {
     const inCart = cartItems.find((productInCart) => productInCart.id === product.id);
 
-    if (inCart.amount === 1) {
-      setCartItems(
-        cartItems.filter(productInCart => productInCart.id !== product.id)
-      );
+    if (inCart.quantity === 1) {
+      return null
     } else {
       setCartItems(
         cartItems.map((productInCart) => {
@@ -46,8 +44,14 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const deleteAll = (product) => {
+    setCartItems(
+      cartItems.filter(productInCart => productInCart.id !== product.id)
+    );
+  }
+
   return (
-    <CartContex.Provider value={{ cartItems, addItemToCart, deleteItemToCart }}>
+    <CartContex.Provider value={{ cartItems, addItemToCart, deleteItemToCart, deleteAll }}>
       {children}
     </CartContex.Provider>
   )

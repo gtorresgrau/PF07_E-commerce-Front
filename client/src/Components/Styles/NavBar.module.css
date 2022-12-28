@@ -32,8 +32,8 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 35%;
-    justify-content: space-around
+    width: 50%;
+    justify-content: space-evenly 
 }
 
 .cart {
@@ -83,6 +83,12 @@ nav {
     text-shadow: 5px 5px 5px #000000;
     cursor: pointer;
 }
+.img{
+
+    border: none;
+    border-radius: 50%;
+}
+
 
 
 .select {

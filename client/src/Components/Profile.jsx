@@ -26,7 +26,7 @@ const Profile = () => {
         });
   
         const { user_metadata } = await metadataResponse.json();
-  
+  console.log(userDetailsByIdUrl);
         setUserMetadata(user_metadata);
       } catch (e) {
         console.log(e.message);
@@ -57,9 +57,9 @@ const Profile = () => {
       </div>
       <div className="">
         <h3>User Metadata</h3>
-        {userMetadata? (
+        {user? (
             <pre className="">
-                {JSON.stringify(userMetadata, null, 2)}
+                {JSON.stringify(user, null, 2)}
         </pre>):("No user metadata defined")}
       </div>
     </div>
