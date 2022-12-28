@@ -6,19 +6,23 @@ import Error404 from './Components/Error404';
 import SneakerDetail from './Components/SneakerDetail.jsx';
 import AddSneaker from './Components/AddSneaker.jsx';
 import './App.css';
-import ShoppingCart from './Components/ShoppingCart.jsx';
+import { CartProvider } from './Components/CardContex.jsx';
+import ProtectedRoute from './auth/protected-route.js';
+import Profile from './Components/Profile.jsx';
+import dashboard from './Components/Dashboard.jsx';
 
+import  {FavProvider} from './Components/FavContainerContext.jsx';
 
 export default function App() {
   return (
     <div className="App">
       <Switch>
-        {/* <Route exact path="/sneakers/:id" component={SneakerDetail} /> */}
-        <Route exact path="/sneakers/:id"><SneakerDetail /></Route>
-        <Route exact path="/sneakers" component={Home} />
+        <Route exact path="/sneakers/:id"><FavProvider ><CartProvider><SneakerDetail /></CartProvider></FavProvider></Route>
+        <Route exact path="/sneakers"><FavProvider><CartProvider><Home /></CartProvider></FavProvider></Route>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/addSneaker" component={AddSneaker} />
-        <Route exact path="/shop" component={ShoppingCart} />
+        <ProtectedRoute exact path="/addSneaker" component={AddSneaker}/>
+        <ProtectedRoute exact path="/profile" component={Profile}/>
+        <ProtectedRoute exact path="/admin" component={dashboard}/>
         <Route path="*" component={Error404} />
       </Switch>
     </div>

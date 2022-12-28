@@ -2,7 +2,7 @@
     border: 0.1rem solid white;
     width: 18rem;
     margin-left: 0.8rem;
-}
+}   
 
 .container:hover {
     border: 0.1rem solid #242423;
@@ -12,18 +12,48 @@
     margin-top: -2rem;
 }
 
+.container:hover .priceOffer {
+    margin-top: -2rem;
+}
+
+.container:hover .off {
+    margin-top: -4rem;
+}
+
 .price {
     background-color: #e6e6e6;
     margin-top: -1.7rem;
     padding: 0.3rem 0.5rem;
-    position: absolute;
+    position:absolute;
     margin-left: 0.7rem;
     font-size: 0.9rem;
-    color: #242423;
+    color:#242423;
+    text-decoration:line-through ;
 }
 
+.priceOffer {
+    background-color: #e6e6e6;
+    margin-top: -1.7rem;
+    padding: 0.3rem 0.5rem;
+    position:absolute;
+    margin-left: 3rem;
+    font-size: 0.9rem;
+    color:red;
+}    
+
+.off {
+    background-color: #e6e6e6;
+    margin-top: -3.6rem;
+    padding: 0.3rem 0.5rem;
+    position:absolute;
+    margin-left: 0.7rem;
+    font-size: 0.9rem;
+    color:#242423;
+    font-weight: bold;
+}   
+
 .img {
-    width: 100%;
+    width:100%;
 }
 
 .title {
@@ -55,18 +85,4 @@
     font-size: 1.6rem;
     margin-top: 0.8rem;
     margin-left: 15.5rem;
-}
-
-.addToCart {
-    cursor: pointer;
-    margin-bottom: 10px;
-    height: 20px;
-    width: 100px;
-    background-color: orange;
-    border-radius: 50px;
-    border: none;
-}
-
-.addToCart:hover {
-    background-color: rgba(18, 214, 18, 0.863);
 }

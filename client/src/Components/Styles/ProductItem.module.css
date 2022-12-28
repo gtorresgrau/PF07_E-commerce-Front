@@ -1,0 +1,91 @@
+.cartItem {
+  height: 100px;
+  background-color: rgb(220, 220, 238);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  padding-left: 10px;
+  gap: 5px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+}
+
+.image {
+  height: 65px;
+  border-radius: 5px;
+}
+
+.dataContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 0;
+}
+
+.left {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.link {
+  color: green;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: -10px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #222222;
+}
+
+.btn {
+  margin-top: 8px;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 20px;
+  height: 40px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.amount {
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+}
+.addToCart {
+  cursor: pointer;
+  margin-bottom: 10px;
+  height: 20px;
+  width: 100px;
+  background-color: orange;
+  border-radius: 50px;
+  border: none;
+}
+.addToCart1 {
+  cursor: pointer;
+  margin-bottom: 10px;
+  height: 20px;
+  width: 50px;
+  background-color: orange;
+  border-radius: 50px;
+  border: none;
+}

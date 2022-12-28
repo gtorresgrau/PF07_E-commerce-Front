@@ -17,17 +17,17 @@ import CarouselBrands from './CarouselBrands.jsx';
 import Loading from './Loading.jsx';
 
 
-var filter=[]
-var a=[]
+var filter = []
+var a = []
 export default function Home() {
     const dispatch = useDispatch();
-  
+
     const allSneakers = useSelector((state) => state.sneakers);
     const allCoul = useSelector((state) => state.allSneakers);
     const allTyp = useSelector((state) => state.allSneakers);
     const allBra = useSelector((state) => state.allSneakers);
     const allGen = useSelector((state) => state.allSneakers);
-   
+
 
     const [currentPage, setCurrentPage] = useState(1);
     const [sneakersPerPage] = useState(9);
@@ -42,95 +42,102 @@ export default function Home() {
         dispatch(getAllSneackers())
     }, [dispatch]);
 
-    let Colours =[];
-    allCoul.map(e => ( Colours.push(e.colour)));
+    let Colours = [];
+    allCoul.map(e => (Colours.push(e.colour)));
     const datac = new Set(Colours)
-    let allColours = [...datac]   
+    let allColours = [...datac]
 
-    let Types =[];
-    allTyp.map(e => ( Types.push(e.type)));
+    let Types = [];
+    allTyp.map(e => (Types.push(e.type)));
     const datat = new Set(Types)
     let allTypes = [...datat]
 
-    let Brands =[];
-    allBra.map(e => ( Brands.push(e.brand)));
+    let Brands = [];
+    allBra.map(e => (Brands.push(e.brand)));
     const datab = new Set(Brands)
-    let allBrands = [...datab] 
+    let allBrands = [...datab]
 
-    let Genres =[];
-    allGen.map(e => ( Genres.push(e.genre)));
+    let Genres = [];
+    allGen.map(e => (Genres.push(e.genre)));
     const datag = new Set(Genres)
-    let allGenres = [...datag] 
+    let allGenres = [...datag]
 
     function handlerFilterBrand(e) {
+
         setCurrentPage(1);
-        let v=e.target.value
-        if (filter.includes(`brand=${v}&`)){
-            a=filter.filter((e)=>e!==(`brand=${v}&`))
-            filter=a
-            if(filter.length===0){
+        let v = e.target.value
+        console.log('home:', v)
+        if (filter.includes(`brand=${v}&`)) {
+            a = filter.filter((e) => e !== (`brand=${v}&`))
+            filter = a
+            if (filter.length === 0) {
                 dispatch(getAllSneackers())
-            }else{
+            } else {
                 dispatch(filterByBrand(filter.join('')))
+                console.log('filterB:', filter)
             }
-        }else{  
-        filter.push(`brand=${v}&`)
-        dispatch(filterByBrand(filter.join('')))
+        } else {
+            filter.push(`brand=${v}&`)
+            dispatch(filterByBrand(filter.join('')))
+            console.log('filterB:', filter)
         }
     }
 
     function handlerFilterColours(e) {
-        
         setCurrentPage(1);
-        let v=e.target.value
-        if (filter.includes(`colour=${v}&`)){
-            a=filter.filter((e)=>e!==(`colour=${v}&`))
-            filter=a
-            if(filter.length===0){
+        let v = e.target.value
+        console.log(v)
+        if (filter.includes(`colour=${v}&`)) {
+            a = filter.filter((e) => e !== (`colour=${v}&`))
+            filter = a
+            if (filter.length === 0) {
                 dispatch(getAllSneackers())
-            }else{
+            } else {
                 dispatch(filterByColour(filter.join('')))
             }
-        }else{  
-        filter.push(`colour=${v}&`)
-        dispatch(filterByColour(filter.join('')))
+        } else {
+            filter.push(`colour=${v}&`)
+            dispatch(filterByColour(filter.join('')))
         }
     }
 
     function handlerFilterGenre(e) {
+
         setCurrentPage(1);
-        let v=e.target.value
-        if (filter.includes(`genre=${v}&`)){
-            a=filter.filter((e)=>e!==(`genre=${v}&`))
-            filter=a
-            if(filter.length===0){
+        let v = e.target.value
+        console.log(v)
+        if (filter.includes(`genre=${v}&`)) {
+            a = filter.filter((e) => e !== (`genre=${v}&`))
+            filter = a
+            if (filter.length === 0) {
                 dispatch(getAllSneackers())
-            }else{
+            } else {
                 dispatch(filterByGenre(filter.join('')))
             }
-        }else{  
-        filter.push(`genre=${v}&`)
-        dispatch(filterByGenre(filter.join('')))
+        } else {
+            filter.push(`genre=${v}&`)
+            dispatch(filterByGenre(filter.join('')))
         }
     }
 
     function handlerFilterType(e) {
         setCurrentPage(1);
-        let v=e.target.value
-        if (filter.includes(`type=${v}&`)){
-            a=filter.filter((e)=>e!==(`type=${v}&`))
-            filter=a
-            if(filter.length===0){
+        let v = e.target.value
+        console.log(v)
+        if (filter.includes(`type=${v}&`)) {
+            a = filter.filter((e) => e !== (`type=${v}&`))
+            filter = a
+            if (filter.length === 0) {
                 dispatch(getAllSneackers())
-            }else{
+            } else {
                 dispatch(filterByType(filter.join('')))
             }
-        }else{  
-        filter.push(`type=${v}&`)
-        dispatch(filterByType(filter.join('')))
+        } else {
+            filter.push(`type=${v}&`)
+            dispatch(filterByType(filter.join('')))
         }
     }
-    
+
 
     function handlerFilter(e) {
         dispatch(sortAz(e.target.value))
@@ -147,27 +154,17 @@ export default function Home() {
     return (
         <div>
 
-                
-            <Navbar currentPage={currentPage}
-                setCurrentPage={setCurrentPage} />
+            <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-            <img src={header} className={S.img} alt='frame'/>
-            <CarouselBrands/>
+            <img src={header} className={S.img} alt='frame' />
+            <CarouselBrands />
 
             <h1 className={S.title1}>AMPLIFY YOUR ENERGY</h1>
-            <Link to='/shop' className={S.cart}><h1 className={S.button}>SHOP NOW</h1></Link>
-            <h1 className={S.title} >Men</h1>
-            <SimpleSlider/>
 
-            <h1 className={S.title} >Women</h1>
-            <SimpleSlider/>
-
-            <h1 className={S.title} >Kids</h1>
-            <SimpleSlider/>
-                
+            <Link to='/shop'><h1 className={S.button}>SHOP NOW</h1> </Link>
+            <h1 className={S.title} >Exciting Offers</h1>
+            <SimpleSlider />
             <div>
-
-                {/* <div className="carrousel"><h1>Aca va el carrousel</h1></div> */}
                 <form id='Filtros' className={S.filters}>
                     <div>
                         <span className={S.span}>Sort by Name</span>
@@ -184,25 +181,25 @@ export default function Home() {
                             <input name='sortStock' id='-a+' value='-a+' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Lower price </label>
                     </div>
                     <div onChange={e => handlerFilterBrand(e)}>
-                        {allBrands.map(e=>(
-                                    <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
-                                ))}
+                        {allBrands.map(e => (
+                            <label htmlFor={e} key={e}><input type="checkbox" name="brand" id={e} value={e} key={e} />{e}</label>
+                        ))}
                     </div>
-                    <div onChange={e => handlerFilterColours(e)} id='filterCou'>
-                                {allColours.map(e=>(
-                                    <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e}/>{e}</label>
-                                ))}
+                    <div onChange={e => handlerFilterColours(e)}>
+                        {allColours.map(e => (
+                            <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e} />{e}</label>
+                        ))}
                     </div>
                     <div onChange={e => handlerFilterGenre(e)}>
                         <span className={S.span}></span>
-                        {allGenres.map(e=>(
-                                    <label htmlFor={e} key={e}><input type="checkbox" name="genre" id={e} value={e} key={e}/>{e}</label>
-                                ))}
+                        {allGenres.map(e => (
+                            <label htmlFor={e} key={e}><input type="checkbox" name="genre" id={e} value={e} key={e} />{e}</label>
+                        ))}
                     </div>
                     <div onChange={e => handlerFilterType(e)}>
-                        {allTypes.map(e=>(
-                                    <label htmlFor={e} key={e}><input type="checkbox" name="type" id={e} value={e} key={e}/>{e}</label>
-                                ))}
+                        {allTypes.map(e => (
+                            <label htmlFor={e} key={e}><input type="checkbox" name="type" id={e} value={e} key={e} />{e}</label>
+                        ))}
                     </div>
                 </form>
                 <Paginado
@@ -213,12 +210,10 @@ export default function Home() {
                 />
             </div>
             <div className={S.container}>
-                {!actualySneakers.length?<Loading/>:actualySneakers.map(c => {
+                {!actualySneakers.length ? <Loading /> : actualySneakers.map(c => {
                     return (
                         <div key={c.id}>
-                            <Link to={'/sneakers/' + c.id} className={S.link}>
-                                <Card image={c.image} title={c.title} price={c.price} type={c.type} key={c.id} />
-                            </Link>
+                            <Card image={c.image} title={c.title} price={c.price} type={c.type} key={c.id} id={c.id} />
                         </div>
                     )
                 })
