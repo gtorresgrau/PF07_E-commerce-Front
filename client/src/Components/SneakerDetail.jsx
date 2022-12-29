@@ -8,7 +8,7 @@ import Navbar from './NavBar';
 import Reviews from './Reviews';
 import { CartContex } from "./CardContex.jsx";
 import RatingStar from './RatingStar';
-
+import { FavContainerContext } from './FavContainerContext';
 
 export default function SneakerDetail() {
 
@@ -16,7 +16,7 @@ export default function SneakerDetail() {
   const sneaker = useSelector(state => state.detail);
   const loading = useSelector(state => state.loading);
   const dispatch = useDispatch();
-
+  const { addItemToFav } = useContext(FavContainerContext);
   const { id } = useParams();
 
   useEffect(() => {
@@ -53,6 +53,7 @@ export default function SneakerDetail() {
               <p>{sneaker.description}</p>
               <Link to="/sneakers"><button className={s.btn}>← BACK</button></Link>
               <button className={s.btn} onClick={() => addItemToCart(sneaker)}>Add To Cart</button>
+              <button className={s.btn} onClick={() => addItemToFav(sneaker)}>Add To Fav</button>
             </div>
             <div>
               <RatingStar/>
