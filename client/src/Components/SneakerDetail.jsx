@@ -7,6 +7,7 @@ import s from './Styles/Detail.module.css';
 import Navbar from './NavBar';
 import Reviews from './Reviews';
 import { CartContex } from "./CardContex.jsx";
+import RatingStar from './RatingStar';
 
 
 export default function SneakerDetail() {
@@ -37,6 +38,7 @@ export default function SneakerDetail() {
           <div className={s.containertext}>
             <div className={s.title}>
               <h1>{sneaker.title}</h1>
+              <h3>{sneaker.rating}</h3>
               <h2>{sneaker.brand}</h2>
               <h2>${sneaker.price}</h2>
               <h3>Size: <span className={s.stock}>{sneaker.size && sneaker.size.map((e) => {
@@ -53,7 +55,13 @@ export default function SneakerDetail() {
               <button className={s.btn} onClick={() => addItemToCart(sneaker)}>Add To Cart</button>
             </div>
             <div>
-              <Reviews/>
+              <RatingStar/>
+              <Reviews />
+              <input 
+                type="submit" 
+                value='SUBMIT RATING' 
+                className={s.btn} 
+            />
             </div>
           </div>
         </div>

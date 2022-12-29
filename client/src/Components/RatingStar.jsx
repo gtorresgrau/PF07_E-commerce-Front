@@ -5,7 +5,6 @@ import S from './Styles/RatingStar.module.css'
 const RatingStar = () =>{
     const [rating, setRating]=useState(null);
     const [hover, setHover]=useState(null);
-    const [text, setText]=useState(null);
 
     return (
         <div>
@@ -32,14 +31,6 @@ const RatingStar = () =>{
                     )
                 })}
             </div>
-            <div>
-                <textarea className={S.textArea} placeholder="Enter a review..." />
-            </div>
-            <input 
-                type="submit" 
-                value='SUBMIT RATING' 
-                className={S.btn} 
-                disabled={rating === null || text === null}/>
         </div>
     )
 };

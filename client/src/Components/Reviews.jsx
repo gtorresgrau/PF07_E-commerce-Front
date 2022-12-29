@@ -1,11 +1,16 @@
-import React from "react";
-import {FaStar} from 'react-icons/fa';
-import RatingStar from "./RatingStar";
+import React, { useState } from "react";
+import S from './Styles/RatingStar.module.css'
 
 const Reviews = () =>{
-    return <>
-            <RatingStar />
-        </>
+    
+    const [text, setText]=useState(null);
+
+    return (
+            <div>
+                <textarea className={S.textArea} placeholder="Enter a review..." />
+            </div>
+
+    )
 };
 
 export default Reviews;
