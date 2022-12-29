@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
 import { getSneakerDetail, resetDetail } from '../Actions/Actions';
 import Loading from './Loading';
 import s from './Styles/Detail.module.css';
 import Navbar from './NavBar';
+import Reviews from './Reviews';
+import { CartContex } from "./CardContex.jsx";
 
 
 export default function SneakerDetail() {
 
+  const { addItemToCart } = useContext(CartContex);
   const sneaker = useSelector(state => state.detail);
   const loading = useSelector(state => state.loading);
   const dispatch = useDispatch();
@@ -46,8 +49,11 @@ export default function SneakerDetail() {
               <h3>Colour: <span>{sneaker.colour}</span></h3>
               <h3>Genre: <span>{sneaker.genre}</span></h3>
               <p>{sneaker.description}</p>
-              {/* <button onClick={() => addToCart(sneaker)} value={storedValue}>Add Cart</button> */}
               <Link to="/sneakers"><button className={s.btn}>← BACK</button></Link>
+              <button className={s.btn} onClick={() => addItemToCart(sneaker)}>Add To Cart</button>
+            </div>
+            <div>
+              <Reviews/>
             </div>
           </div>
         </div>
