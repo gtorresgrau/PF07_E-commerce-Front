@@ -1,11 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
-import { getSneakerDetail, resetDetail } from '../Actions/Actions';
+import { getSneakerDetail, resetDetail, postReview } from '../Actions/Actions';
 import Loading from './Loading';
 import s from './Styles/Detail.module.css';
 import Navbar from './NavBar';
-import Reviews from './Reviews';
 import { CartContex } from "./CardContex.jsx";
 import RatingStar from './RatingStar';
 import { FavContainerContext } from './FavContainerContext';
@@ -57,12 +56,6 @@ export default function SneakerDetail() {
             </div>
             <div>
               <RatingStar/>
-              <Reviews />
-              <input 
-                type="submit" 
-                value='SUBMIT RATING' 
-                className={s.btn} 
-            />
             </div>
           </div>
         </div>
