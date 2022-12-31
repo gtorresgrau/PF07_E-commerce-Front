@@ -6,12 +6,13 @@ export const UserLogin = () => {
   const { user } = useAuth0();
 
   const img = user.picture;
+  console.log('user', user)
 
   return (
 
     <div>
 
-      <img className={S.userimage} src={img} alt="" />
+      <img className={S.userimage} src={img} alt={user.name} />
 
     </div>
 
