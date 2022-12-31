@@ -10,6 +10,7 @@ import { CartProvider } from './Components/CardContex.jsx';
 import ProtectedRoute from './Auth/protected-route.js';
 import Profile from './Components/Profile.jsx';
 import dashboard from './Components/Dashboard.jsx';
+import UserForm from  './Components/LoginForm.jsx'
 
 import  {FavProvider} from './Components/FavContainerContext.jsx';
 
@@ -22,6 +23,7 @@ export default function App() {
         <Route exact path="/" component={Landing} />
         <ProtectedRoute exact path="/addSneaker" component={AddSneaker}/>
         <ProtectedRoute exact path="/profile" component={Profile}/>
+        <ProtectedRoute exact path="/userform" component={UserForm}/>
         <ProtectedRoute exact path="/admin" component={dashboard}/>
         <Route path="*" component={Error404} />
       </Switch>
