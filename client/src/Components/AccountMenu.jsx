@@ -79,7 +79,8 @@ export default function AccountMenu() {
         >
           <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
           <Link to='/profile' ><MenuItem>Profile</MenuItem></Link>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
+          <Link to='/userform' ><MenuItem>Complete Profile</MenuItem></Link>
+          
         </Menu>
       </div>
     
