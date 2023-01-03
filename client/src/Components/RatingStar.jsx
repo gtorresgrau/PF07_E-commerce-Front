@@ -9,34 +9,26 @@ const RatingStar = ({sneaker}) =>{
     
     const { user } = useAuth0();
     const dispatch = useDispatch();
-    const [rating, setRating]=useState(0);
+    const [stars, setStars]=useState(0);
     const [text, setText]=useState('');
     const [hover, setHover]=useState(null);
+    const [usuario, setUsuario] = useState("user");
+    
 
-   // const form = document.getElementById('newReview');
-   // const btn = document.getElementById('btn');
-
-    const startReview = {
-        stars:rating,
+    const input = {
+        stars:stars,
         text:text,
         sneakerId: sneaker.id,
-        userId: 'user.nickname',
+        userId: usuario,
     };
 
-    console.log('startReview:',startReview)
+    console.log('startReview:',input)
 
-    const [input, setInput]=useState(startReview);
-
-    const handlerSubmit =(e)=>{
+   const handlerSubmit=(e)=>{
         e.preventDefault();
-        setInput({
-            stars:rating, 
-            text:text, 
-            sneakerId: sneaker.id,
-            userId: 'user.nickname',
-        })
-        console.log('input:',input)
+        setUsuario(user.nickname);
         dispatch(postReview(input))
+        alert(`Submiting Review succesfully`)
     };
 
     return (
@@ -45,19 +37,19 @@ const RatingStar = ({sneaker}) =>{
             <div className={S.ratingValue} >
                 {[...Array(5)].map((star, i)=>{
                     const ratingValue= i + 1;
-                    console.log('rating:',rating);
+                    console.log('stars:',stars);
                     return (
                         <label key={i} >
                             <input 
                                 className={S.input}
-                                type="checkbox" 
-                                name="rating" 
-                                value={rating} 
-                                onClick={()=>setRating(ratingValue)} 
+                                type="radio" 
+                                name="stars" 
+                                value={stars} 
+                                onClick={()=>setStars(ratingValue)} 
                             />
                             <FaStar 
                                 className={S.star}
-                                color={ratingValue <= (hover || rating) ? '#ffff00' : '#808080' }
+                                color={ratingValue <= (hover || stars) ? '#ffff00' : '#808080' }
                                 onMouseEnter={()=>setHover(ratingValue)}
                                 onMouseLeave={()=>setHover(null)}
                             />
@@ -66,10 +58,13 @@ const RatingStar = ({sneaker}) =>{
                 })}
             </div>
             <div>
-                <textarea className={S.textArea} placeholder="Enter a review..." onChange={(e)=>setText(e.target.value)} value={text}/>
+                <textarea className={S.textArea} name='text' placeholder="Enter a review..." onChange={(e)=>setText(e.target.value)} value={text}/>
             </div>
-            <input type="submit" value='SUBMIT RATING' className={S.btn} id='btn' disabled={!rating} />
+            <div>
+                <input type="submit" value='SUBMIT RATING' className={S.btn} id='btn' disabled={!stars} />
+            </div>
         </form>
+            
         </div>
     )
 };
