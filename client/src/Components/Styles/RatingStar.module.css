@@ -1,0 +1,43 @@
+.ratingValue{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.input{
+    display: none;
+}
+
+.star{
+    width: 50px;
+    height: 50px;
+    size: 50px;
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+
+.textArea{
+    width: 600px;
+    height: 100px;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.btn {
+    border: none;
+    background-color: #00000099;
+    border-radius: 25px;
+    padding: 5px 10px;
+    color: #ffffff;
+    cursor: pointer;
+    position: sticky;
+}
+
+.btn:hover {
+    color: #000000;
+    text-shadow: 5px 5px 5px #ffff00;
+    background-color: #ffff00;
+}
