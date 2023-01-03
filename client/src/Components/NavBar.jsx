@@ -35,17 +35,18 @@ export default function Navbar({ setCurrentPage, currentPage }) {
         <div className={S.SearchBar}>
           <SearchBar currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </div>
-        <div>
-          <Cart />
-        </div>
         <div className={S.displayLinks}>
-          <AccountMenu />
-          
-
-        <div className="">
-          <Fav />
+          <div className={S.cart}>
+            <Cart />
           </div>
-        
+           
+          <div className={S.heart}>
+            <Fav />
+          </div>
+
+          <div className={S.heart}>
+            <AccountMenu />
+          </div> 
         </div>
       </div>
     </nav>
