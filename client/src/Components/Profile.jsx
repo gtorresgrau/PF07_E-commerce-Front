@@ -17,16 +17,20 @@ const Profile = () => {
         const accessToken = await getAccessTokenSilently({
           audience: `https://${domain}/api/v2/`,
           scope: "read:current_user",
+          
         });
+        console.log(accessToken)
         const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+        console.log(userDetailsByIdUrl )
         const metadataResponse = await fetch(userDetailsByIdUrl, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
+          
         });
   
         const { user_metadata } = await metadataResponse.json();
-  console.log(userDetailsByIdUrl);
+  console.log(user_metadata);
         setUserMetadata(user_metadata);
       } catch (e) {
         console.log(e.message);
