@@ -202,9 +202,22 @@ export const uploadImage = async(image) => {
 
 
 //--------------------------------------------------------------------------------
+export function postReview(payload) {
+  return async function () {
+      try {
+        console.log('actPayload:',payload);
+        const rev = await axios.post('http://localhost:3001/reviews', payload);
+        return rev.data;
+      } catch (error) {
+        console.error('Act_Rev_Err:',error);
+      }
+    }
+};
 
+//   const rev = fetch('http://localhost:3001/reviews', { 
+//   method: "POST",
+//   body: payload 
+// })
 
-
-
-
+//----------------------------------------------------------------------------------------------
 
