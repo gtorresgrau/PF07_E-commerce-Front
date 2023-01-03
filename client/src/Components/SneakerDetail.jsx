@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
-import { getSneakerDetail, resetDetail, postReview } from '../Actions/Actions';
+import { getSneakerDetail, resetDetail } from '../Actions/Actions';
 import Loading from './Loading';
 import s from './Styles/Detail.module.css';
 import Navbar from './NavBar';
@@ -49,13 +49,14 @@ export default function SneakerDetail() {
               <h3>Stock: <span>{sneaker.stock > 0 ? 'Available' : 'Without Stock'}</span></h3>
               <h3>Colour: <span>{sneaker.colour}</span></h3>
               <h3>Genre: <span>{sneaker.genre}</span></h3>
+              <h3>Type: <span>{sneaker.type}</span></h3>
               <p>{sneaker.description}</p>
               <Link to="/sneakers"><button className={s.btn}>← BACK</button></Link>
               <button className={s.btn} onClick={() => addItemToCart(sneaker)}>Add To Cart</button>
               <button className={s.btn} onClick={() => addItemToFav(sneaker)}>Add To Fav</button>
             </div>
             <div>
-              <RatingStar/>
+              <RatingStar sneaker={sneaker}/>
             </div>
           </div>
         </div>

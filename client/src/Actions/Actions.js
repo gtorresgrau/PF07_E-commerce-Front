@@ -206,7 +206,7 @@ export function postReview(payload) {
   return async function () {
       try {
         console.log('actPayload:',payload);
-        const rev = await axios.post('/review', payload)
+        const rev = await axios.post('http://localhost:3001/reviews', payload)
         return rev
       } catch (error) {
         console.error('Act_Rev_Err:',error);
