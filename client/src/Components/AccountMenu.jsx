@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { HiOutlineUser } from 'react-icons/hi';
+import { FaUserAlt } from 'react-icons/fa';
 import S from './Styles/NavBar.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import { LoginButton } from './Loginbutton.jsx';
@@ -35,7 +35,7 @@ export default function AccountMenu() {
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
         >
-          <HiOutlineUser className={S.user}/>
+          <FaUserAlt className={S.user}/>
         </div>
 
         <Menu
@@ -78,8 +78,13 @@ export default function AccountMenu() {
           }}
         >
           <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
-          <Link to='/profile' ><MenuItem>Profile</MenuItem></Link>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
+
+          <Link className={S.links} to='/profile' ><MenuItem>Profile</MenuItem></Link>
+          <Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link>
+
+          <Link className={S.links} to='/userform' ><MenuItem>Complete Profile</MenuItem></Link>
+          
+
         </Menu>
       </div>
     
