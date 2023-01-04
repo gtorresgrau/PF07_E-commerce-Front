@@ -12,6 +12,7 @@ import {
   GET_GENRE,
   ADD_SNEAKER,
   IMG_URL,
+  GET_ALL_REVIEWS,
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
@@ -22,6 +23,7 @@ export const initialState = {
   loading: false,
   cart: [],
   image:'',
+  reviews:[],
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -112,12 +114,17 @@ export default function rootReducer(state = initialState, action) {
     case ADD_SNEAKER:
       return {
         ...state,
-      }
+      };
     case IMG_URL:
       console.log('reducerimg:', action.payload)
       return{
         image: action.payload,
-      }
+      };
+    case GET_ALL_REVIEWS:
+      console.log('reducerREV:',action.payload)
+      return{
+        reviews:action.payload,
+      };
     default:
       return {
         ...state

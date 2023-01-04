@@ -14,6 +14,7 @@ const RatingStar = ({sneaker}) =>{
     const [hover, setHover]=useState(null);
     const [usuario, setUsuario] = useState("user");
     
+    
 
     const input = {
         stars:stars,
@@ -21,7 +22,7 @@ const RatingStar = ({sneaker}) =>{
         sneakerId: sneaker.id,
         userId: usuario,
     };
-
+    
     console.log('startReview:',input)
 
    const handlerSubmit=(e)=>{
@@ -29,6 +30,8 @@ const RatingStar = ({sneaker}) =>{
         setUsuario(user.nickname);
         dispatch(postReview(input))
         alert(`Submiting Review succesfully`)
+        setStars(0);
+        setText('');
     };
 
     return (
@@ -58,7 +61,7 @@ const RatingStar = ({sneaker}) =>{
                 })}
             </div>
             <div>
-                <textarea className={S.textArea} name='text' placeholder="Enter a review..." onChange={(e)=>setText(e.target.value)} value={text}/>
+                <textarea className={S.textArea} name='text' placeholder="Enter a review..." onChange={(e)=>setText(e.target.value)} value={text} maxLength='1000' />
             </div>
             <div>
                 <input type="submit" value='SUBMIT RATING' className={S.btn} id='btn' disabled={!stars} />
