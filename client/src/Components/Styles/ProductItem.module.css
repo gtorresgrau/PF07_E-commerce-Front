@@ -1,5 +1,5 @@
 .cartItem {
-  height: 100px;
+  height: 120px;
   background-color: rgb(220, 220, 238);
   display: flex;
   align-items: center;
@@ -7,8 +7,9 @@
   padding: 0 15px;
   padding-left: 10px;
   gap: 5px;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
   border-radius: 5px;
+  margin-left: 10px;
 }
 
 .image {
@@ -69,7 +70,7 @@
 .amount {
   font-size: 13px;
   font-weight: bold;
-  color: white;
+  color: green;
 }
 .addToCart {
   cursor: pointer;
@@ -84,8 +85,9 @@
   cursor: pointer;
   margin-bottom: 10px;
   height: 20px;
-  width: 50px;
+  width: 35px;
   background-color: orange;
   border-radius: 50px;
   border: none;
+  gap: 10px;
 }
