@@ -29,7 +29,7 @@ const Profile = () => {
   //       console.log(userDetailsByIdUrl);
   //       setUserMetadata(user_metadata);
   //     } catch (e) {
-  //       console.log(e.message);
+  //       console.log('Catch', e.message);
   //     }
   //   };
   
