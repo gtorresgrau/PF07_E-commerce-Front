@@ -4,15 +4,18 @@ import Landing from './Components/Landing.jsx';
 import Home from './Components/Home.jsx';
 import Error404 from './Components/Error404';
 import SneakerDetail from './Components/SneakerDetail.jsx';
-import AddSneaker from './Components/AddSneaker.jsx';
 import './App.css';
 import { CartProvider } from './Components/CardContex.jsx';
-import ProtectedRoute from './Auth/protected-route.js';
+import ProtectedRoute from './auth/protected-route.js';
 import Profile from './Components/Profile.jsx';
-import dashboard from './Components/Dashboard.jsx';
+
+import Dashboard from './Components/Dashboard.jsx';
+
 import UserForm from  './Components/LoginForm.jsx'
 
+
 import  {FavProvider} from './Components/FavContainerContext.jsx';
+import DashboardNewProduct from './Components/DashboardNewProduct.jsx';
 
 export default function App() {
   return (
@@ -21,10 +24,14 @@ export default function App() {
         <Route exact path="/sneakers/:id"><FavProvider ><CartProvider><SneakerDetail /></CartProvider></FavProvider></Route>
         <Route exact path="/sneakers"><FavProvider><CartProvider><Home /></CartProvider></FavProvider></Route>
         <Route exact path="/" component={Landing} />
-        <ProtectedRoute exact path="/addSneaker" component={AddSneaker}/>
+        <ProtectedRoute exact path="/newProduct" component={DashboardNewProduct}/>
         <ProtectedRoute exact path="/profile" component={Profile}/>
+
+        <ProtectedRoute exact path="/admin" component={Dashboard}/>
+
         <ProtectedRoute exact path="/userform" component={UserForm}/>
-        <ProtectedRoute exact path="/admin" component={dashboard}/>
+        
+
         <Route path="*" component={Error404} />
       </Switch>
     </div>
