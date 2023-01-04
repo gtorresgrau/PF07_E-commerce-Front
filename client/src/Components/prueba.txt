@@ -1,0 +1,11 @@
+https://pf-07-e-commerce-front.vercel.app/sneakers?collection_id=53288711584
+collection_status=approved
+payment_id=53288711584
+status=approved
+external_reference=null
+payment_type=account_money
+merchant_order_id=7127034431
+preference_id=1262241954-d89a3832-124e-4b05-af5e-9b087ecedadd
+site_id=MLA
+processing_mode=aggregator
+merchant_account_id=null

@@ -5,12 +5,15 @@ import { CartContex } from './CardContex';
 import ProductItem from './ProductItem';
 //import { useDispatch } from 'react-redux';
 import s from './Styles/Cart.module.css'
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Cart() {
   const [cartOpen, setCartOpen] = useState(false);
   const [productsLength, setProductsLength] = useState(0);
 
   const { cartItems } = useContext(CartContex);
+  
+  const { user } = useAuth0();
 
   //const dispatch = useDispatch()
 
@@ -26,7 +29,7 @@ function Cart() {
    
   function handlePayment(){
     console.log('cart: estoy aca')
-    axios.post('http://localhost:3001/payment', cartItems)
+    axios.post('http://localhost:3001/payment', cartItems,user)
           .then((res)=> 
           {window.location.href = res.data.response.body.init_point;
             localStorage.removeItem('cardProducts');}
@@ -80,7 +83,7 @@ function Cart() {
       </div>
       {cartItems && cartOpen && (
         <div className={s.cart}>
-          <h2>Cart</h2>
+          <h2>CART</h2>
           {cartItems.length === 0 ? <p className={s.cartVacio}>Cart is empty</p> : (
             <div className={s.productsContainer}>{cartItems.map((item, i) => (
               <ProductItem key={i} item={item} />
