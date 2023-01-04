@@ -11,6 +11,7 @@ import {
   GET_COLOUR,
   GET_TYPE,
   GET_GENRE,
+  GET_ALL_REVIEWS,
 } from '../Actions/ActionTypes.js';
 
 export const loading = () => {
@@ -221,3 +222,19 @@ export function postReview(payload) {
 
 //----------------------------------------------------------------------------------------------
 
+export function getAllReviews(id) {
+  return async function (dispatch) {
+  console.log('actionRevID:',id)
+      try {
+        dispatch(loading())
+        const reviews = await axios(`/reviews/${id}`);
+        return dispatch({
+          type: GET_ALL_REVIEWS,
+          payload: reviews
+        })
+      } catch (e) {
+        window.location.href = "/sneaker/";
+        console.log(`Something happened when filtering Reviews by id: ${id}`)
+        alert(`Something happened when filtering Reviews by id: ${id}`)
+      };
+}};
