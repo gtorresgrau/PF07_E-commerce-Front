@@ -85,8 +85,9 @@
   cursor: pointer;
   margin-bottom: 10px;
   height: 20px;
-  width: 50px;
+  width: 35px;
   background-color: orange;
   border-radius: 50px;
   border: none;
+  gap: 10px;
 }
