@@ -7,7 +7,7 @@ import { FavContainerContext } from './FavContainerContext';
 function ProductItem({ item }) {
 
   const { addItemToFav } = useContext(FavContainerContext);
-  const { addItemToCart, deleteItemToCart, deleteAll, cartItems } = useContext(CartContex);
+  const { addItemToCart, deleteItemToCart, deleteAll} = useContext(CartContex);
 
   let subTotal = item.price * item.quantity;
   return (
