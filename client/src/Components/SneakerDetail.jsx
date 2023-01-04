@@ -24,16 +24,13 @@ export default function SneakerDetail() {
 
   useEffect(() => {
     dispatch(getSneakerDetail(id));
+    dispatch(getAllReviews(id));
     return function cleanup() {
       dispatch(resetDetail());
     };
   }, [dispatch, id])
 
-  useEffect(() => {
-    dispatch(getAllReviews(id))
-  }, [dispatch, id])
-
-  return (
+  return (  
     <div>
       <Navbar />
       {loading ? <Loading /> :
