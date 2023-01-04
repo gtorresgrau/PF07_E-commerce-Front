@@ -24,11 +24,16 @@ export default function SneakerDetail() {
 
   useEffect(() => {
     dispatch(getSneakerDetail(id));
-    //dispatch(getAllReviews(id));
     return function cleanup() {
       dispatch(resetDetail());
     };
   }, [dispatch, id])
+
+  
+  useEffect(()=>{
+    if(isAuthenticated){dispatch(getAllReviews(id))};
+  },[dispatch,id])
+  
 
   return (  
     <div>
@@ -64,10 +69,14 @@ export default function SneakerDetail() {
             { isAuthenticated ?<RatingStar sneaker={sneaker}/>:null}
             </div>
             <div>
-              <h2>Reviews: </h2>
+              <h2>Some people said: </h2>
               <span className={s.cardsReview}>{reviewsById && reviewsById.map((e) => {
                 return (
-                  <div key={e}><p> {e} </p></div>
+                  <div key={e}>
+                    <p>Rating: {e.stars} </p>
+                    <p>Review: {e.text} </p>
+
+                    </div>
                 )
               })
               }</span>

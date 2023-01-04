@@ -227,10 +227,10 @@ export function getAllReviews(id) {
   console.log('actionRevID:',id)
       try {
         dispatch(loading())
-        const reviews = await axios(`/sneaker/${id}`);
+        const reviews = await axios(`/reviews/${id}`);
         return dispatch({
           type: GET_ALL_REVIEWS,
-          payload: reviews.data
+          payload: reviews
         })
       } catch (e) {
         window.location.href = "/sneaker/";
