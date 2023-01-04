@@ -6,7 +6,7 @@ import Error404 from './Components/Error404';
 import SneakerDetail from './Components/SneakerDetail.jsx';
 import './App.css';
 import { CartProvider } from './Components/CardContex.jsx';
-import ProtectedRoute from './Auth/protected-route.js';
+import ProtectedRoute from './auth/protected-route.js';
 import Profile from './Components/Profile.jsx';
 
 import Dashboard from './Components/Dashboard.jsx';
