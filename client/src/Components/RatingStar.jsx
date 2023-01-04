@@ -22,12 +22,9 @@ const RatingStar = ({sneaker}) =>{
         sneakerId: sneaker.id,
         userId: usuario,
     };
-    
-    console.log('startReview:',input)
 
    const handlerSubmit=(e)=>{
         e.preventDefault();
-        setUsuario(user.nickname);
         dispatch(postReview(input))
         alert(`Submiting Review succesfully`)
         setStars(0);
@@ -64,7 +61,8 @@ const RatingStar = ({sneaker}) =>{
                 <textarea className={S.textArea} name='text' placeholder="Enter a review..." onChange={(e)=>setText(e.target.value)} value={text} maxLength='1000' />
             </div>
             <div>
-                <input type="submit" value='SUBMIT RATING' className={S.btn} id='btn' disabled={!stars} />
+                <input type="submit" value='SUBMIT RATING' className={S.btn} id='btn' disabled={!stars} onClick={()=>
+        setUsuario(user.nickname)} />
             </div>
         </form>
             

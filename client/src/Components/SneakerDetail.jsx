@@ -24,7 +24,7 @@ export default function SneakerDetail() {
 
   useEffect(() => {
     dispatch(getSneakerDetail(id));
-    dispatch(getAllReviews(id));
+    //dispatch(getAllReviews(id));
     return function cleanup() {
       dispatch(resetDetail());
     };
