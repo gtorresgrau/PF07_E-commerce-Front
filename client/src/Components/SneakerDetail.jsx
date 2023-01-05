@@ -17,6 +17,7 @@ export default function SneakerDetail() {
   const loading = useSelector(state => state.loading);
   const reviewsById = useSelector(state=>state.reviews);
   const dispatch = useDispatch();
+  console.log('reviewsById:',reviewsById)
 
   const { addItemToFav } = useContext(FavContainerContext);
   const { id } = useParams();
@@ -29,10 +30,6 @@ export default function SneakerDetail() {
     };
   }, [dispatch, id])
 
-  
-  useEffect(()=>{
-    if(isAuthenticated){dispatch(getAllReviews(id))};
-  },[dispatch,id])
   
 
   return (  
@@ -70,16 +67,17 @@ export default function SneakerDetail() {
             </div>
             <div>
               <h2>Some people said: </h2>
-              <span className={s.cardsReview}>{reviewsById && reviewsById.map((e) => {
-                return (
-                  <div key={e}>
-                    <p>Rating: {e.stars} </p>
-                    <p>Review: {e.text} </p>
-
-                    </div>
-                )
-              })
-              }</span>
+              <span className={s.cardsReview}>
+                {reviewsById 
+                // && reviewsById.map((e) => {
+                // return (
+                //   <div key={e}>
+                //     <p>Rating: {e.stars} </p>
+                //     <p>Review: {e.text} </p>
+                //   </div>
+                // )})
+              }
+              </span>
             </div>
           </div>
         </div>

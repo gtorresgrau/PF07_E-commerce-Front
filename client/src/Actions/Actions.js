@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {
   GET_SNEAKERS,
   GET_ALL_SNEAKERS,
@@ -230,7 +231,7 @@ export function getAllReviews(id) {
         const reviews = await axios(`/reviews/${id}`);
         return dispatch({
           type: GET_ALL_REVIEWS,
-          payload: reviews
+          payload: reviews.data
         })
       } catch (e) {
         window.location.href = "/sneaker/";
@@ -238,3 +239,20 @@ export function getAllReviews(id) {
         alert(`Something happened when filtering Reviews by id: ${id}`)
       };
 }};
+
+
+///----------------------------------------------------------------------------------------------
+
+// export async function guardarInfo(prefer){
+//   console.log('ActionInfo:',prefer)
+//   try{
+//       let algo = await axios.get(`https://api.mercadopago.com/merchant_orders/search?preference_id=${prefer}`,{
+//         headers:{
+//           Authorization : `Bearer Acces-token`
+//       }
+//         })    
+//           console.log('algo:', algo.data)
+//   }catch(e){
+//       console.error(e)
+//   }
+// };
