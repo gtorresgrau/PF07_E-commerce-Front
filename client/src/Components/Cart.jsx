@@ -32,7 +32,9 @@ function Cart() {
     axios.post('http://localhost:3001/payment', cartItems,user)
           .then((res)=> 
           {window.location.href = res.data.response.body.init_point;
-            localStorage.removeItem('cardProducts');}
+            localStorage.removeItem('cardProducts');
+           
+          }
           )
           .catch((error)=>console.log('errorC',error))}
   

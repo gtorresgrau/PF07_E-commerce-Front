@@ -30,9 +30,9 @@ export default function SneakerDetail() {
   }, [dispatch, id])
 
   
-  useEffect(()=>{
-    if(isAuthenticated){dispatch(getAllReviews(id))};
-  },[dispatch,id])
+ // useEffect(()=>{
+ //   if(isAuthenticated){dispatch(getAllReviews(id))};
+  //},[dispatch,id])
   
 
   return (  
