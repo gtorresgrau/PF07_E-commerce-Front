@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
-import { getSneakerDetail, resetDetail } from '../Actions/Actions';
+import { getSneakerDetail, resetDetail, getAllReviews } from '../Actions/Actions';
+import { useAuth0 } from '@auth0/auth0-react';
 import Loading from './Loading';
 import s from './Styles/Detail.module.css';
 import Navbar from './NavBar';
@@ -14,9 +15,12 @@ export default function SneakerDetail() {
   const { addItemToCart } = useContext(CartContex);
   const sneaker = useSelector(state => state.detail);
   const loading = useSelector(state => state.loading);
+  const reviewsById = useSelector(state=>state.reviews);
   const dispatch = useDispatch();
+
   const { addItemToFav } = useContext(FavContainerContext);
   const { id } = useParams();
+  const { isAuthenticated} = useAuth0();
 
   useEffect(() => {
     dispatch(getSneakerDetail(id));
@@ -25,7 +29,13 @@ export default function SneakerDetail() {
     };
   }, [dispatch, id])
 
-  return (
+  
+  useEffect(()=>{
+    if(isAuthenticated){dispatch(getAllReviews(id))};
+  },[dispatch,id])
+  
+
+  return (  
     <div>
       <Navbar />
       {loading ? <Loading /> :
@@ -56,7 +66,20 @@ export default function SneakerDetail() {
               <button className={s.btn} onClick={() => addItemToFav(sneaker)}>Add To Fav</button>
             </div>
             <div>
-              <RatingStar sneaker={sneaker}/>
+            { isAuthenticated ?<RatingStar sneaker={sneaker}/>:null}
+            </div>
+            <div>
+              <h2>Some people said: </h2>
+              <span className={s.cardsReview}>{reviewsById && reviewsById.map((e) => {
+                return (
+                  <div key={e}>
+                    <p>Rating: {e.stars} </p>
+                    <p>Review: {e.text} </p>
+
+                    </div>
+                )
+              })
+              }</span>
             </div>
           </div>
         </div>
