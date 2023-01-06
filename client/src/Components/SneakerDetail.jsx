@@ -23,14 +23,18 @@ export default function SneakerDetail() {
   const { id } = useParams();
   const { isAuthenticated} = useAuth0();
 
+
   useEffect(() => {
     dispatch(getSneakerDetail(id));
+    dispatch(getAllReviews(id));
+  }, [dispatch, id])
+
+  useEffect(()=>{
+    if(!id)
     return function cleanup() {
       dispatch(resetDetail());
     };
-  }, [dispatch, id])
-
-  
+  })
 
   return (  
     <div>

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {FaStar} from 'react-icons/fa';
 import { useDispatch } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react';
-import { getAllReviews, postReview } from "../Actions/Actions";
+import { postReview } from "../Actions/Actions";
 import S from './Styles/RatingStar.module.css'
 
 const RatingStar = ({sneaker}) =>{
@@ -14,7 +14,7 @@ const RatingStar = ({sneaker}) =>{
     const [hover, setHover]=useState(null);
     const [usuario, setUsuario] = useState("user");
     
-    
+
 
     const input = {
         stars:stars,
@@ -29,8 +29,8 @@ const RatingStar = ({sneaker}) =>{
         alert(`Submiting Review succesfully`)
         setStars(0);
         setText('')
-        dispatch(getAllReviews(sneaker.id));
     };
+    
 
     return (
         <div>

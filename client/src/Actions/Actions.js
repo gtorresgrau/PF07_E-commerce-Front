@@ -229,6 +229,7 @@ export function getAllReviews(id) {
       try {
         dispatch(loading())
         const reviews = await axios(`/reviews/${id}`);
+        console.log('actReview:',reviews.data)
         return dispatch({
           type: GET_ALL_REVIEWS,
           payload: reviews.data
@@ -242,17 +243,3 @@ export function getAllReviews(id) {
 
 
 ///----------------------------------------------------------------------------------------------
-
-// export async function guardarInfo(prefer){
-//   console.log('ActionInfo:',prefer)
-//   try{
-//       let algo = await axios.get(`https://api.mercadopago.com/merchant_orders/search?preference_id=${prefer}`,{
-//         headers:{
-//           Authorization : `Bearer Acces-token`
-//       }
-//         })    
-//           console.log('algo:', algo.data)
-//   }catch(e){
-//       console.error(e)
-//   }
-// };
