@@ -43,25 +43,26 @@ function Dashboard(props) {
   
 
 
+
+
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
         <ListItemButton href="/sneakers" >
-        <ListItemIcon>
-          <IconList />
-        </ListItemIcon>
-        <ListItemText primary="Home" />
-      
-      </ListItemButton>
-        <ListItemButton href="/admin" >
+            <ListItemIcon>
+            <IconList />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+        </ListItemButton>
+        <ListItemButton href='/admin'>
           <ListItemIcon>
             <IconList />
           </ListItemIcon>
           <ListItemText primary="Product" />
         </ListItemButton>
-            <ListItemButton href="/newProduct" >
+            <ListItemButton href='/addSneaker'>
             <ListItemIcon>
               <IconList />
             </ListItemIcon>
@@ -85,8 +86,7 @@ function Dashboard(props) {
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px`, 
-          },
+          ml: { sm: `${drawerWidth}px` },
         }}
       >
         <Toolbar  sx={{ justifyContent: 'space-between' }}>
@@ -103,7 +103,7 @@ function Dashboard(props) {
           <Typography variant="h6" noWrap component="div">
             Dashboard
           </Typography>
-          
+
           <AccountMenu/>
 
         </Toolbar>
@@ -148,7 +148,7 @@ function Dashboard(props) {
         ml: { sm: `${drawerWidth}px` } }}
       >
         <Toolbar />
-        <DashboardProducts/>
+        <AddSneaker/>
       </Box>
     </Box>
   );

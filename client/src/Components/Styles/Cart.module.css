@@ -25,7 +25,7 @@ svg {
 }
 
 .productsNumber {
-  margin-left: 20px;
+  margin: -40px 35px;
   height: 20px;
   width: 20px;
   border-radius: 999px;
@@ -38,12 +38,14 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
 .cart {
   position: absolute;
   margin-top: 25px;
-  margin-left: -400px;
+  margin-left: -600px;
   border-radius: 30px;
   width: 400px;
   background-color: white;

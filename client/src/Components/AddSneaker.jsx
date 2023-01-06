@@ -146,9 +146,7 @@ export default function AddSneaker(){
 
 return (
     <div className={S.general}>
-        <Link to='/sneakers'>
-            <button className={S.back}>Back</button>
-        </Link>
+        
     <div className={S.container}>
         <header className={S.header}>
             <h1>Add a New Sneaker</h1>
