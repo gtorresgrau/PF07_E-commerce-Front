@@ -31,7 +31,7 @@ export const UserLogin = () => {
 
       {user
         ? 
-        ( <img className={S.userimage} src={picture} alt="" />) 
+        ( <img className={S.userimage} src={picture} alt="" referrerPolicy="no-referrer"/>) 
         :      ( <FaUser className={S.userimage} />
         )
       }
