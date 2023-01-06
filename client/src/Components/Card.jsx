@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import S from './Styles/Card.module.css';
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { CgShoppingCart } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { CartContex } from "./CardContex";
 import { FavContainerContext } from './FavContainerContext';
@@ -11,9 +12,6 @@ const { deleteAll, addItemToFav } = useContext(FavContainerContext);
 const { items: favItems } = useContext(FavContainerContext) || { items: [] };
 
 const [isInFav, setIsInFav] = useState(favItems && favItems.some((productInFav) => productInFav.id === props.id));
-
-
-
 
 const modifiedProduct = {
 ...props,
@@ -32,6 +30,7 @@ setIsInFav(false);
 
 return (
 <div className={S.container}>
+<CgShoppingCart  onClick={() => addItemToCart(props)} className={S.iconCart} />
 {modifiedProduct.isFav ? (
 <FaHeart  className={S.icon}  onClick={handleRemoveFromFav} />
 ) : (
@@ -43,9 +42,6 @@ return (
 <p className={S.title}>{props.title}</p>
 <p className={S.type}>{props.type}</p>
 </Link>
-<button className={S.addToCart} onClick={() => addItemToCart(props)}>
-Add To Cart
-</button>
 </div>
 );
 }
