@@ -29,7 +29,7 @@ function Cart() {
    
   function handlePayment(){
     console.log('cart: estoy aca')
-    axios.post('http://localhost:3001/payment', cartItems,user)
+    axios.post('http://localhost:3001/payment', [user, cartItems] )
           .then((res)=> 
           {window.location.href = res.data.response.body.init_point;
             localStorage.removeItem('cardProducts');}
