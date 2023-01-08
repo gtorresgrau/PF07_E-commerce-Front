@@ -7,13 +7,14 @@ import ProductItem from './ProductItem';
 import s from './Styles/Cart.module.css'
 import { useAuth0 } from '@auth0/auth0-react';
 //import { guardarInfo } from '../Actions/Actions';
+import { LoginButton } from './Loginbutton.jsx'
 
 function Cart() {
   const [cartOpen, setCartOpen] = useState(false);
   const [productsLength, setProductsLength] = useState(0);
 
   const { cartItems } = useContext(CartContex);
-  
+
   const { user } = useAuth0();
 
   //const dispatch = useDispatch()
@@ -28,16 +29,20 @@ function Cart() {
      dispatch(payment(e))
    } */
   //var prefer='';
-  function handlePayment(){
-    console.log('cart: estoy aca')
-    axios.post('http://localhost:3001/payment', cartItems,user)
-          .then((res)=> 
-          { window.location.href = res.data.response.body.init_point;
-            localStorage.removeItem('cardProducts');
-            //guardarInfo(prefer);
-          })
-          .catch((error)=>console.log('errorC',error))}
-  
+  function handlePayment() {
+    console.log("user", user.email)
+    /* axios.post('http://localhost:3001/sendEmail', user.email)
+      .then((res) => {
+        console.log("RES", res)
+      }) */
+    //console.log('cart: estoy aca')
+    axios.post('http://localhost:3001/payment', cartItems, user)
+      .then((res) => {
+        window.location.href = res.data.response.body.init_point;
+        localStorage.removeItem('cardProducts');
+      })
+      .catch((error) => console.log('errorC', error))
+  }
 
   const total = cartItems.reduce((previous, current) => previous + current.quantity * current.price, 0)
 
@@ -93,9 +98,9 @@ function Cart() {
             </div>
           )}
           <h2 className={s.total}>Total: ${total}</h2>
-          {console.log('cartItems:',cartItems)}
-          <button className={s.buy} 
-            onClick={handlePayment}>BUY</button>
+          {console.log('cartItems:', cartItems)}
+          {/* {console.log("USERDDDDDD", user)} */}
+          {user ? <button className={s.buy} onClick={handlePayment}>BUY</button> : <button className={s.buy}><LoginButton /></button>}
         </div>
       )}
     </div>
