@@ -28,7 +28,8 @@ function Cart() {
   /*  const mercadoPago = (e) => {
      dispatch(payment(e))
    } */
-  //var prefer='';
+  var data = [...cartItems, user]
+
   function handlePayment() {
     console.log("user", user.email)
     /* axios.post('http://localhost:3001/sendEmail', user.email)
@@ -36,7 +37,7 @@ function Cart() {
         console.log("RES", res)
       }) */
     //console.log('cart: estoy aca')
-    axios.post('http://localhost:3001/payment', cartItems, user)
+    axios.post('http://localhost:3001/payment', data)
       .then((res) => {
         window.location.href = res.data.response.body.init_point;
         localStorage.removeItem('cardProducts');
