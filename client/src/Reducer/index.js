@@ -123,7 +123,7 @@ export default function rootReducer(state = initialState, action) {
     case GET_ALL_REVIEWS:
       console.log('reducerREV:',action.payload)
       return{
-        reviews:action.payload,
+        reviews:typeof action.payload === 'string'?[action.payload]:action.payload
       };
     default:
       return {

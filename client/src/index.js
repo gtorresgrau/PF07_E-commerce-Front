@@ -19,12 +19,12 @@ axios.defaults.baseURL = 'https://pf07e-commerce-back-production.up.railway.app/
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-  <BrowserRouter>
-    <Auth0ProviderWithHistory>
-      <App />
-    </Auth0ProviderWithHistory>
-  </BrowserRouter>,
-</Provider>
+    <BrowserRouter>
+      <Auth0ProviderWithHistory>
+        <App />
+      </Auth0ProviderWithHistory>
+    </BrowserRouter>,
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

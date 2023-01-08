@@ -32,6 +32,8 @@ export function CheckoutForm() {
     // Enviar los datos del formulario al backend aquí
     console.log('formData',formData);
     handlePayment()
+
+
     axios.post('http://localhost:3001/postuser', formData)
     .then((res) => {
         console.log('response',res)
@@ -40,10 +42,13 @@ export function CheckoutForm() {
       console.error(error);
     });
   };
-
+  
+  var data = [...cartItems,user]
+ 
+ 
   function handlePayment(){
     console.log('handlePayment')
-    axios.post('http://localhost:3001/payment', [user, cartItems] )
+    axios.post('http://localhost:3001/payment', data )
           .then((res)=> 
           {window.location.href = res.data.response.body.init_point;
             localStorage.removeItem('cardProducts');}
@@ -56,22 +61,10 @@ export function CheckoutForm() {
     <div>
     
     <form onSubmit={handleSubmit}>
-      <h2>Datos personales</h2>
-      <label htmlFor="fullName">Name:</label>
-      <input
-        type="text"
-        name="fullName"
-        value={formData.fullName}
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor="emailAddress">Email:</label>
-      <input
-        type="email"
-        name="emailAddress"
-        value={formData.emailAddress}
-        onChange={handleChange}
-      />
+    <h2>Hola, {formData.fullName} </h2>
+      <h4>Se te enviara a {formData.emailAddress} la confirmacion del pago</h4>
+      
+      
       <br />
       <h2>Shipping</h2>
       <label htmlFor="homeAddress">Address:</label>

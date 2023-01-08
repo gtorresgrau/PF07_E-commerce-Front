@@ -17,13 +17,23 @@ export default function SneakerDetail() {
   const loading = useSelector(state => state.loading);
   const reviewsById = useSelector(state=>state.reviews);
   const dispatch = useDispatch();
+  console.log('reviewsById:',reviewsById)
 
   const { addItemToFav } = useContext(FavContainerContext);
   const { id } = useParams();
   const { isAuthenticated} = useAuth0();
+  console.log('sneaker:',sneaker)
+
+  // useEffect(()=>{
+  //   dispatch(getAllReviews(id))
+  // },[dispatch,id])
 
   useEffect(() => {
     dispatch(getSneakerDetail(id));
+  }, [dispatch, id])
+
+  useEffect(()=>{
+    if(!id)
     return function cleanup() {
       dispatch(resetDetail());
     };
@@ -41,6 +51,7 @@ export default function SneakerDetail() {
       {loading ? <Loading /> :
         <div className={s.containerG}>
           <div className={s.containerimg}>
+            {console.log('image:',sneaker.image)}
             <img className={s.img} src={sneaker.image} alt="img not found" />
           </div>
 
@@ -70,16 +81,17 @@ export default function SneakerDetail() {
             </div>
             <div>
               <h2>Some people said: </h2>
-              <span className={s.cardsReview}>{reviewsById && reviewsById.map((e) => {
+              <span className={s.cardsReview}>
+                {reviewsById
+                && reviewsById.map((e) => {
                 return (
                   <div key={e}>
                     <p>Rating: {e.stars} </p>
                     <p>Review: {e.text} </p>
-
-                    </div>
-                )
-              })
-              }</span>
+                  </div>
+                )})
+              }
+              </span>
             </div>
           </div>
         </div>
