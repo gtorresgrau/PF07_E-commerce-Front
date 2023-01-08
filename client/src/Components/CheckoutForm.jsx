@@ -32,8 +32,6 @@ export function CheckoutForm() {
     // Enviar los datos del formulario al backend aquí
     console.log('formData',formData);
     handlePayment()
-
-
     axios.post('http://localhost:3001/postuser', formData)
     .then((res) => {
         console.log('response',res)
@@ -43,9 +41,8 @@ export function CheckoutForm() {
     });
   };
   
+  
   var data = [...cartItems,user]
- 
- 
   function handlePayment(){
     console.log('handlePayment')
     axios.post('http://localhost:3001/payment', data )
@@ -63,8 +60,6 @@ export function CheckoutForm() {
     <form onSubmit={handleSubmit}>
     <h2>Hola, {formData.fullName} </h2>
       <h4>Se te enviara a {formData.emailAddress} la confirmacion del pago</h4>
-      <div>
-      </div>
       <br />
       <h2>Shipping</h2>
       <label htmlFor="homeAddress">Address:</label>
@@ -98,7 +93,7 @@ export function CheckoutForm() {
         value={formData.phoneNumber}
         onChange={handleChange}
       />
-      <br />
+      <br/>
       <button type="submit" onClick={handleSubmit}>BUY</button>
     </form>
       

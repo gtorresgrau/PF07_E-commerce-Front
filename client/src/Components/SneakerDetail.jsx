@@ -61,12 +61,7 @@ export default function SneakerDetail() {
               <h3>{sneaker.rating}</h3>
               <h2>{sneaker.brand}</h2>
               <h2>${sneaker.price}</h2>
-              <h3>Size: <span className={s.stock}>{sneaker.size && sneaker.size.map((e) => {
-                return (
-                  <div key={e}><p> ✔  {e}  </p></div>
-                )
-              })
-              }</span></h3>
+              <h3>Size: <span>{sneaker.size}</span></h3>
               <h3>Stock: <span>{sneaker.stock > 0 ? 'Available' : 'Without Stock'}</span></h3>
               <h3>Colour: <span>{sneaker.colour}</span></h3>
               <h3>Genre: <span>{sneaker.genre}</span></h3>
