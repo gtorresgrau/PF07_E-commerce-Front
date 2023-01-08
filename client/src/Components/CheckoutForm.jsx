@@ -63,8 +63,8 @@ export function CheckoutForm() {
     <form onSubmit={handleSubmit}>
     <h2>Hola, {formData.fullName} </h2>
       <h4>Se te enviara a {formData.emailAddress} la confirmacion del pago</h4>
-      
-      
+      <div>
+      </div>
       <br />
       <h2>Shipping</h2>
       <label htmlFor="homeAddress">Address:</label>

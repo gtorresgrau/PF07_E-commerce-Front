@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
-import { getSneakerDetail, resetDetail, getAllReviews } from '../Actions/Actions';
+import { getSneakerDetail, resetDetail, /*getAllReviews*/ } from '../Actions/Actions';
 import { useAuth0 } from '@auth0/auth0-react';
 import Loading from './Loading';
 import s from './Styles/Detail.module.css';
@@ -40,9 +40,9 @@ export default function SneakerDetail() {
   }, [dispatch, id])
 
   
-  useEffect(()=>{
-    if(isAuthenticated){dispatch(getAllReviews(id))};
-  },[dispatch,id])
+  // useEffect(()=>{
+  // dispatch(getAllReviews(id));
+  // },[dispatch,id])
   
 
   return (  

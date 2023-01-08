@@ -16,8 +16,6 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
@@ -226,7 +224,7 @@ export default function EnhancedTable() {
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
+  const [dense,] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const dispatch = useDispatch();
     const rows = useSelector((state) => state.allSneakers);
@@ -279,9 +277,9 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked);
-  };
+  // const handleChangeDense = (event) => {
+  //   setDense(event.target.checked);
+  // };
 
   const isSelected = (title) => selected.indexOf(title) !== -1;
 
