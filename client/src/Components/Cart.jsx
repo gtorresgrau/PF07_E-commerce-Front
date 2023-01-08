@@ -6,6 +6,7 @@ import ProductItem from './ProductItem';
 //import { useDispatch } from 'react-redux';
 import s from './Styles/Cart.module.css'
 import { useAuth0 } from '@auth0/auth0-react';
+//import { guardarInfo } from '../Actions/Actions';
 
 function Cart() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -26,14 +27,15 @@ function Cart() {
   /*  const mercadoPago = (e) => {
      dispatch(payment(e))
    } */
-   
+  //var prefer='';
   function handlePayment(){
     console.log('cart: estoy aca')
     axios.post('http://localhost:3001/payment', cartItems,user)
           .then((res)=> 
-          {window.location.href = res.data.response.body.init_point;
-            localStorage.removeItem('cardProducts');}
-          )
+          { window.location.href = res.data.response.body.init_point;
+            localStorage.removeItem('cardProducts');
+            //guardarInfo(prefer);
+          })
           .catch((error)=>console.log('errorC',error))}
   
 
