@@ -43,7 +43,6 @@ export default function BasicTable() {
       await axios.put(`http://localhost:3001/userbanned/${id}`, {
         isBanned: event.target.checked
       });
-      isBanned? alert("The user has been banned"):alert("The user has been unbanned");
     };
     
     const handleChangeAd = async (event, id) => {
@@ -53,7 +52,6 @@ export default function BasicTable() {
       await axios.put(`http://localhost:3001/useradmin/${id}`, {
         isAdmin: event.target.checked
       });
-      isAdmin? alert("the user is Admin now"):alert("the user is no longer an administrator");
     };
 
   return (

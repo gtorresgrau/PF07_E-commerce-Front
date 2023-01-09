@@ -64,8 +64,8 @@ export function CheckoutForm() {
           </div>
           <form onSubmit={handleSubmit} className={S.checkoutForm}>
                 <div>
-                  <h1>¡Hola {formData.fullName}!</h1>
-                  <h3>Se te enviara la confirmacion de pago a:</h3>
+                  <h1>¡Hi, {formData.fullName}!</h1>
+                  <h3>Confirmation of purchase will be sent to:</h3>
                   <h3>{formData.emailAddress}</h3>
                   <hr/>
                   <h1>ADD SHIPPING ADDRESS</h1>
@@ -78,6 +78,7 @@ export function CheckoutForm() {
                       name="homeAddress"
                       value={formData.homeAddress}
                       onChange={handleChange}
+                      required
                     />
                 </div>
                 <div className={S.containerInput}>
@@ -88,6 +89,7 @@ export function CheckoutForm() {
                       name="region"
                       value={formData.region}
                       onChange={handleChange}
+                      required
                     />
                 </div>
                 <div className={S.containerInput}>
@@ -98,20 +100,22 @@ export function CheckoutForm() {
                       name="city"
                       value={formData.city}
                       onChange={handleChange}
+                      required
                     />
                 </div>
                 <div className={S.containerInput}>
                   <label htmlFor="phoneNumber" className={S.label}>Cellphone:  </label>
                     <input
                       className={S.input}
-                      type="text"
+                      type="number"
                       name="phoneNumber"
                       value={formData.phoneNumber}
                       onChange={handleChange}
+                      required
                     />
                 </div>
               <br/>
-              <button type="submit" onClick={handleSubmit} className={S.btnBuy}>BUY</button>
+              <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || !formData.phoneNumber || !formData.region || !formData.homeAddress}>BUY</button>
           </form>
         </div>
     </div>  
