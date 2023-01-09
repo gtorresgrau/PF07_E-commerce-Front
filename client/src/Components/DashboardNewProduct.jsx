@@ -66,6 +66,12 @@ function Dashboard(props) {
             </ListItemIcon>
             <ListItemText primary="New Product" />
           </ListItemButton>
+          <ListItemButton href="/users" >
+          <ListItemIcon>
+            <IconList />
+          </ListItemIcon>
+          <ListItemText primary="Users" />
+        </ListItemButton>
       </List>
       <Divider />
       
@@ -99,7 +105,7 @@ function Dashboard(props) {
           </IconButton>
          
           <Typography variant="h6" noWrap component="div">
-            Dashboard
+          Admin Dashboard
           </Typography>
 
           <AccountMenu/>

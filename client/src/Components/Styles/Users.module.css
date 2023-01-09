@@ -1,0 +1,7 @@
+.general{
+    font-family: 'Manjari', sans-serif;
+    display: flex;
+    min-height: 110vh;
+    margin: 1rem;
+    background-color: #ffffffe0;
+}
