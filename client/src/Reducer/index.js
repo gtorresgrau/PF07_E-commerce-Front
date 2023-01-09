@@ -13,6 +13,7 @@ import {
   ADD_SNEAKER,
   IMG_URL,
   GET_ALL_REVIEWS,
+  GET_USERS
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
@@ -24,6 +25,7 @@ export const initialState = {
   cart: [],
   image:'',
   reviews:[],
+  users: [],
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -125,6 +127,11 @@ export default function rootReducer(state = initialState, action) {
       return{
         reviews:typeof action.payload === 'string'?[action.payload]:action.payload
       };
+    case GET_USERS:
+    return{
+      ...state,
+      users: action.payload
+    }
     default:
       return {
         ...state
