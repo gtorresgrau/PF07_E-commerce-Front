@@ -8,7 +8,6 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import IconList from '@mui/icons-material/ListAlt';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import { ListItemButton } from '@mui/material';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -18,7 +17,6 @@ import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import DashboardProducts from './DashboardProducts';
-import AddSneaker from './AddSneaker';
 import AccountMenu from './AccountMenu';
 
 const theme = createTheme({
@@ -34,13 +32,13 @@ const drawerWidth = 240;
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  
+
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  
+
 
 
   const drawer = (
@@ -49,47 +47,56 @@ function Dashboard(props) {
       <Divider />
       <List>
         <ListItemButton href="/sneakers" >
-        <ListItemIcon>
-          <IconList />
-        </ListItemIcon>
-        <ListItemText primary="Home" />
-      
-      </ListItemButton>
+          <ListItemIcon>
+            <IconList />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItemButton>
+
         <ListItemButton href="/admin" >
           <ListItemIcon>
             <IconList />
           </ListItemIcon>
           <ListItemText primary="Product" />
         </ListItemButton>
-            <ListItemButton href="/newProduct" >
-            <ListItemIcon>
-              <IconList />
-            </ListItemIcon>
-            <ListItemText primary="New Product" />
-          </ListItemButton>
+
+        <ListItemButton href="/newProduct" >
+          <ListItemIcon>
+            <IconList />
+          </ListItemIcon>
+          <ListItemText primary="New Product" />
+        </ListItemButton>
+
+        <ListItemButton href="/users" >
+          <ListItemIcon>
+            <IconList />
+          </ListItemIcon>
+          <ListItemText primary="Users" />
+        </ListItemButton>
       </List>
       <Divider />
-      
+
     </div>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
-  
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
-        theme= {theme}
-        color= "primary"
+        theme={theme}
+        color="primary"
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px`, 
+          ml: {
+            sm: `${drawerWidth}px`,
           },
         }}
       >
-        <Toolbar  sx={{ justifyContent: 'space-between' }}>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -99,21 +106,21 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-         
+
           <Typography variant="h6" noWrap component="div">
-            Dashboard
+            Admin Dashboard
           </Typography>
-          
-          <AccountMenu/>
+
+          <AccountMenu />
 
         </Toolbar>
-        
+
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }}}
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
-        
+
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
@@ -144,11 +151,13 @@ function Dashboard(props) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` },
-        ml: { sm: `${drawerWidth}px` } }}
+        sx={{
+          flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` }
+        }}
       >
         <Toolbar />
-        <DashboardProducts/>
+        <DashboardProducts />
       </Box>
     </Box>
   );

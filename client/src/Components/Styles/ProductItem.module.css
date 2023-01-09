@@ -79,15 +79,35 @@
   width: 100px;
   background-color: orange;
   border-radius: 50px;
-  border: none;
+  
 }
 .addToCart1 {
   cursor: pointer;
   margin-bottom: 10px;
   height: 20px;
   width: 35px;
-  background-color: orange;
+  background-color: red;
   border-radius: 50px;
-  border: none;
+  
   gap: 10px;
+}
+.addToCart2 {
+  cursor: pointer;
+  margin-bottom: 10px;
+  height: 20px;
+  width: 35px;
+  background-color: greenyellow;
+  border-radius: 50px;
+  
+  gap: 10px;
+}
+
+.addToCart2:hover {
+  background-color: rgba(18, 214, 18, 0.863);
+}
+.addToCart1:hover {
+  background-color: rgba(18, 214, 18, 0.863);
+}
+.addToCart:hover {
+  background-color: rgba(18, 214, 18, 0.863);
 }

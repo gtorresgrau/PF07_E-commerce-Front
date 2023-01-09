@@ -12,8 +12,8 @@
     padding: 5rem;
     background-color: #ffffffe0;
     background-size: 75px 75px;
-    background-repeat:space;
-    background-image: linear-gradient(#ffffffe0,#ffffffe0), url('../../Images/sneakers_vector.webp');
+    background-repeat: space;
+    background-image: linear-gradient(#ffffffe0, #ffffffe0), url('../../Images/sneakers_vector.webp');
 }
 
 .img {
@@ -24,10 +24,12 @@
 .title {
     text-align: left;
 }
-.stock{
+
+.stock {
     display: flex;
     flex-direction: row;
 }
+
 .btn {
     border: none;
     background-color: #00000099;
@@ -38,8 +40,21 @@
     position: sticky;
 }
 
+.btnn {
+    border: none;
+    background-color: #9c0000;
+    border-radius: 25px;
+    padding: 5px 10px;
+    color: #ffffff;
+    position: sticky;
+}
+
 .btn:hover {
     color: #000000;
     text-shadow: 5px 5px 5px #000000;
     background-color: #ffffff99;
+}
+
+.cardsReview {
+    color: #0000ff;
 }

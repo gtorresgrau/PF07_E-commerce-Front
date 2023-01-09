@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {
   GET_SNEAKERS,
   GET_ALL_SNEAKERS,
@@ -12,6 +13,7 @@ import {
   GET_TYPE,
   GET_GENRE,
   GET_ALL_REVIEWS,
+  GET_USERS
 } from '../Actions/ActionTypes.js';
 
 export const loading = () => {
@@ -26,6 +28,16 @@ export function getAllSneackers() {
     dispatch({
       type: GET_ALL_SNEAKERS,
       payload: sneakers.data
+    })
+  }
+}
+
+export function getUsers() {
+  return async function (dispatch) {
+    let users = await axios.get("/user");
+    dispatch({
+      type: GET_USERS,
+      payload: users.data
     })
   }
 }
@@ -207,7 +219,7 @@ export function postReview(payload) {
   return async function () {
       try {
         console.log('actPayload:',payload);
-        const rev = await axios.post('http://localhost:3001/reviews', payload);
+        const rev = await axios.post('/reviews', payload);
         return rev.data;
       } catch (error) {
         console.error('Act_Rev_Err:',error);
@@ -228,9 +240,10 @@ export function getAllReviews(id) {
       try {
         dispatch(loading())
         const reviews = await axios(`/reviews/${id}`);
+        console.log('actReview:',reviews.data)
         return dispatch({
           type: GET_ALL_REVIEWS,
-          payload: reviews
+          payload: reviews.data
         })
       } catch (e) {
         window.location.href = "/sneaker/";
@@ -238,3 +251,6 @@ export function getAllReviews(id) {
         alert(`Something happened when filtering Reviews by id: ${id}`)
       };
 }};
+
+
+///----------------------------------------------------------------------------------------------

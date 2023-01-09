@@ -15,7 +15,7 @@ export const UserLogin = () => {
   }); 
   console.log("data", preDataUser);
   if(preDataUser){
-    axios.post('http://localhost:3001/postuser', preDataUser)
+    axios.post('/postuser', preDataUser)
     .then((res) => {
       console.log(res.data);
     })

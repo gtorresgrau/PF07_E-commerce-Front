@@ -51,6 +51,7 @@ svg {
   background-color: white;
   color: black;
   border-style:solid;
+  scroll-padding-bottom: 0;
 }
 
 .cartVacio {

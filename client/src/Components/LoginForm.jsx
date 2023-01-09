@@ -28,7 +28,7 @@ export function UserForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Enviar los datos del formulario al backend aquí
-    axios.post('http://localhost:3001/postuser', formData)
+    axios.post('/postuser', formData)
     .then((res) => {
       console.log(res.data);
     })
