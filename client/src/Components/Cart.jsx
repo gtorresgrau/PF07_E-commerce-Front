@@ -35,7 +35,7 @@ function Cart() {
    } */
 
 
- 
+
 
   const total = cartItems.reduce((previous, current) => previous + current.quantity * current.price, 0)
 
@@ -94,7 +94,7 @@ function Cart() {
 
           {console.log('cartItems:', cartItems)}
           {/* {console.log("USERDDDDDD", user)} */}
-          {user ?  <Link to='/checkoutForm' ><button className={s.buy} >CHECKOUT</button></Link>: <button className={s.buy}><LoginButton /></button>}
+          {user ? <Link to='/checkoutForm' ><button className={s.buy} disabled={!cartItems.length}>CHECKOUT</button></Link> : <button className={s.buy}><LoginButton /></button>}
 
         </div>
       )}

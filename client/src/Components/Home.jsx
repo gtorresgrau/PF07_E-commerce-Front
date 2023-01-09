@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Navbar from './NavBar.jsx';
 import Paginado from './paginado.jsx';
@@ -30,7 +30,7 @@ export default function Home() {
 
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [sneakersPerPage] = useState(9);
+    const [sneakersPerPage] = useState(10);
     const [, setOrden] = useState(1);
 
     let indexLastSneaker = currentPage * sneakersPerPage;
@@ -161,10 +161,10 @@ export default function Home() {
 
             <h1 className={S.title1}>AMPLIFY YOUR ENERGY</h1>
 
-            <Link to='/shop'><h1 className={S.button}>SHOP NOW</h1> </Link>
+            {/* <Link to='/shop'><h1 className={S.button}>SHOP NOW</h1> </Link> */}
             <h1 className={S.title} >Exciting Offers</h1>
             <SimpleSlider />
-            <div>
+            <div id="displaySearch">
                 <form id='Filtros' className={S.filters}>
                     <div>
                         <span className={S.span}>Sort by Name</span>
@@ -202,18 +202,18 @@ export default function Home() {
                         ))}
                     </div>
                 </form>
-                <Paginado
+                {/* <Paginado
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                     allSneakers={allSneakers}
                     sneakersPerPage={sneakersPerPage}
-                />
+                /> */}
             </div>
             <div className={S.container}>
                 {!actualySneakers.length ? <Loading /> : actualySneakers.map(c => {
                     return (
                         <div key={c.id}>
-                            <Card image={c.image} title={c.title} price={c.price} type={c.type} key={c.id} id={c.id} />
+                            <Card image={c.image} title={c.title} price={c.price} type={c.type} key={c.id} id={c.id} stock={c.stock} />
                         </div>
                     )
                 })
@@ -226,9 +226,6 @@ export default function Home() {
                 sneakersPerPage={sneakersPerPage}
             />
             <br />
-            <div>
-                <Link to='/addSneaker'><button className={S.btn} >ADD NEW SNEAKER</button></Link>
-            </div>
             <footer>
                 <div className={S.footer}><Footer /></div>
             </footer>

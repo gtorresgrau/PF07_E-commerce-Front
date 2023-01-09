@@ -8,7 +8,6 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import IconList from '@mui/icons-material/ListAlt';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import { ListItemButton } from '@mui/material';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -17,7 +16,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
-import DashboardProducts from './DashboardProducts';
 import AddSneaker from './AddSneaker';
 import AccountMenu from './AccountMenu';
 
