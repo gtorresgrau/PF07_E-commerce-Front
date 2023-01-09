@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react'; 
 import S from '../Components/Styles/Profile.module.css'
 
 
 const Profile = () => {
-  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const { user, isAuthenticated} = useAuth0();
   const { name, picture, email } = user;
   // const [userMetadata, setUserMetadata] = useState(null);
 

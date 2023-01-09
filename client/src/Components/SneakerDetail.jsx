@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
-import { getSneakerDetail, resetDetail, getAllReviews } from '../Actions/Actions';
+import { getSneakerDetail, resetDetail, /*getAllReviews*/ } from '../Actions/Actions';
 import { useAuth0 } from '@auth0/auth0-react';
 import Loading from './Loading';
 import s from './Styles/Detail.module.css';
@@ -15,14 +15,14 @@ export default function SneakerDetail() {
   const { addItemToCart } = useContext(CartContex);
   const sneaker = useSelector(state => state.detail);
   const loading = useSelector(state => state.loading);
-  const reviewsById = useSelector(state=>state.reviews);
+  const reviewsById = useSelector(state => state.reviews);
   const dispatch = useDispatch();
-  console.log('reviewsById:',reviewsById)
+  console.log('reviewsById:', reviewsById)
 
   const { addItemToFav } = useContext(FavContainerContext);
   const { id } = useParams();
-  const { isAuthenticated} = useAuth0();
-  console.log('sneaker:',sneaker)
+  const { isAuthenticated } = useAuth0();
+  console.log('sneaker:', sneaker)
 
   // useEffect(()=>{
   //   dispatch(getAllReviews(id))
@@ -32,20 +32,26 @@ export default function SneakerDetail() {
     dispatch(getSneakerDetail(id));
   }, [dispatch, id])
 
-  useEffect(()=>{
-    if(!id)
-    return function cleanup() {
-      dispatch(resetDetail());
-    };
-  },[dispatch,id]);
+  useEffect(() => {
+    if (!id)
+      return function cleanup() {
+        dispatch(resetDetail());
+      };
+  }, [dispatch, id])
 
-  return (  
+
+  // useEffect(()=>{
+  // dispatch(getAllReviews(id));
+  // },[dispatch,id])
+
+
+  return (
     <div>
       <Navbar />
       {loading ? <Loading /> :
         <div className={s.containerG}>
           <div className={s.containerimg}>
-            {console.log('image:',sneaker.image)}
+            {console.log('image:', sneaker.image)}
             <img className={s.img} src={sneaker.image} alt="img not found" />
           </div>
 
@@ -55,36 +61,33 @@ export default function SneakerDetail() {
               <h3>{sneaker.rating}</h3>
               <h2>{sneaker.brand}</h2>
               <h2>${sneaker.price}</h2>
-              <h3>Size: <span className={s.stock}>{sneaker.size && sneaker.size.map((e) => {
-                return (
-                  <div key={e}><p> ✔  {e}  </p></div>
-                )
-              })
-              }</span></h3>
+              <h3>Size: <span>{sneaker.size}</span></h3>
               <h3>Stock: <span>{sneaker.stock > 0 ? 'Available' : 'Without Stock'}</span></h3>
               <h3>Colour: <span>{sneaker.colour}</span></h3>
               <h3>Genre: <span>{sneaker.genre}</span></h3>
               <h3>Type: <span>{sneaker.type}</span></h3>
               <p>{sneaker.description}</p>
               <Link to="/sneakers"><button className={s.btn}>← BACK</button></Link>
-              <button className={s.btn} onClick={() => addItemToCart(sneaker)}>Add To Cart</button>
+              {sneaker.stock ? <button className={s.btn} onClick={() => addItemToCart(sneaker)}>Add To Cart</button> : <button className={s.btnn}>Without Stock</button>}
+
               <button className={s.btn} onClick={() => addItemToFav(sneaker)}>Add To Fav</button>
             </div>
             <div>
-            { isAuthenticated ?<RatingStar sneaker={sneaker}/>:null}
+              {isAuthenticated ? <RatingStar sneaker={sneaker} /> : null}
             </div>
             <div>
               <h2>Some people said: </h2>
               <span className={s.cardsReview}>
                 {reviewsById
-                && reviewsById.map((e) => {
-                return (
-                  <div key={e}>
-                    <p>Rating: {e.stars} </p>
-                    <p>Review: {e.text} </p>
-                  </div>
-                )})
-              }
+                  && reviewsById.map((e) => {
+                    return (
+                      <div key={e}>
+                        <p>Rating: {e.stars} </p>
+                        <p>Review: {e.text} </p>
+                      </div>
+                    )
+                  })
+                }
               </span>
             </div>
           </div>

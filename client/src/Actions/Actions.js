@@ -13,6 +13,7 @@ import {
   GET_TYPE,
   GET_GENRE,
   GET_ALL_REVIEWS,
+  GET_USERS
 } from '../Actions/ActionTypes.js';
 
 export const loading = () => {
@@ -27,6 +28,16 @@ export function getAllSneackers() {
     dispatch({
       type: GET_ALL_SNEAKERS,
       payload: sneakers.data
+    })
+  }
+}
+
+export function getUsers() {
+  return async function (dispatch) {
+    let users = await axios.get("/user");
+    dispatch({
+      type: GET_USERS,
+      payload: users.data
     })
   }
 }
