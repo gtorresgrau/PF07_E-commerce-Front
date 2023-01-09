@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from './Store/index.js';
 
-import Auth0ProviderWithHistory from './Auth/auth0-provider-with-history.js';
+import Auth0ProviderWithHistory from './auth/auth0-provider-with-history.js';
 
 //axios.defaults.baseURL='http://localhost:3001';
 //https://pf07e-commerce-back-production.up.railway.app/

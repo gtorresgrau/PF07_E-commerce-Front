@@ -15,14 +15,14 @@ export default function SneakerDetail() {
   const { addItemToCart } = useContext(CartContex);
   const sneaker = useSelector(state => state.detail);
   const loading = useSelector(state => state.loading);
-  const reviewsById = useSelector(state=>state.reviews);
+  const reviewsById = useSelector(state => state.reviews);
   const dispatch = useDispatch();
-  console.log('reviewsById:',reviewsById)
+  console.log('reviewsById:', reviewsById)
 
   const { addItemToFav } = useContext(FavContainerContext);
   const { id } = useParams();
-  const { isAuthenticated} = useAuth0();
-  console.log('sneaker:',sneaker)
+  const { isAuthenticated } = useAuth0();
+  console.log('sneaker:', sneaker)
 
   // useEffect(()=>{
   //   dispatch(getAllReviews(id))
@@ -32,26 +32,26 @@ export default function SneakerDetail() {
     dispatch(getSneakerDetail(id));
   }, [dispatch, id])
 
-  useEffect(()=>{
-    if(!id)
-    return function cleanup() {
-      dispatch(resetDetail());
-    };
+  useEffect(() => {
+    if (!id)
+      return function cleanup() {
+        dispatch(resetDetail());
+      };
   }, [dispatch, id])
 
-  
+
   // useEffect(()=>{
   // dispatch(getAllReviews(id));
   // },[dispatch,id])
-  
 
-  return (  
+
+  return (
     <div>
       <Navbar />
       {loading ? <Loading /> :
         <div className={s.containerG}>
           <div className={s.containerimg}>
-            {console.log('image:',sneaker.image)}
+            {console.log('image:', sneaker.image)}
             <img className={s.img} src={sneaker.image} alt="img not found" />
           </div>
 
@@ -68,24 +68,26 @@ export default function SneakerDetail() {
               <h3>Type: <span>{sneaker.type}</span></h3>
               <p>{sneaker.description}</p>
               <Link to="/sneakers"><button className={s.btn}>← BACK</button></Link>
-              <button className={s.btn} onClick={() => addItemToCart(sneaker)}>Add To Cart</button>
+              {sneaker.stock ? <button className={s.btn} onClick={() => addItemToCart(sneaker)}>Add To Cart</button> : <button className={s.btnn}>Without Stock</button>}
+
               <button className={s.btn} onClick={() => addItemToFav(sneaker)}>Add To Fav</button>
             </div>
             <div>
-            { isAuthenticated ?<RatingStar sneaker={sneaker}/>:null}
+              {isAuthenticated ? <RatingStar sneaker={sneaker} /> : null}
             </div>
             <div>
               <h2>Some people said: </h2>
               <span className={s.cardsReview}>
                 {reviewsById
-                && reviewsById.map((e) => {
-                return (
-                  <div key={e}>
-                    <p>Rating: {e.stars} </p>
-                    <p>Review: {e.text} </p>
-                  </div>
-                )})
-              }
+                  && reviewsById.map((e) => {
+                    return (
+                      <div key={e}>
+                        <p>Rating: {e.stars} </p>
+                        <p>Review: {e.text} </p>
+                      </div>
+                    )
+                  })
+                }
               </span>
             </div>
           </div>

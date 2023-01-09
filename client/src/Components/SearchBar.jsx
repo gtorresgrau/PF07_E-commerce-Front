@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllSneackers, getSneakerByName } from '../Actions/Actions.js';
 import S from './Styles/SearchBar.module.css';
 import { FiSearch } from 'react-icons/fi';
+import { HashLink as Link } from 'react-router-hash-link';
 
 //setCurrenPage es para setear la pagina en 1 cuando haga la busqueda.
 export default function SearchBar({ currentPage, setCurrentPage }) {
@@ -13,9 +14,8 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
   const dispatch = useDispatch();
   const [input, setInput] = useState("")
   const sneakers = useSelector(state => state.allSneakers);
-
   const handlerOnchange = (e) => {
-    //console.log('event:',e)
+    e.preventDefault();
     setInput(e.target.value)
     console.log('valor:', e.target.value)
   };
@@ -28,7 +28,6 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
     if (!sneakersFilter.length) {
       alert(`There are no Sneackers with the combination of Characters entered: ${input}`)
       dispatch(getAllSneackers())
-      //alert("There are no countries with the entered text")
       setInput('')
     } else {
       setCurrentPage(1)
@@ -39,12 +38,27 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
 
   return (
     <div>
-      <form className={S.form} onSubmit={handleSubmit}>
+      <div className={S.form}>
+        <input
+          value={input}
+          id='search'
+          type='text'
+          placeholder="Sneaker...."
+          onChange={(e) => handlerOnchange(e)}
+          className={S.input_search}
+          autoComplete='off'>
+        </input>
+        <div className={S.btn_search} onClick={(e) => handleSubmit(e)} >
+          <Link
+            style={{ textDecoration: 'none', color: 'white' }}
+            smooth
+            to='/sneakers#displaySearch'
+          >
+            <FiSearch />
+          </Link>
+        </div>
 
-        <input className={S.input_search} name='input' onChange={handlerOnchange} type='text' autoComplete='off' placeholder="Sneaker...." value={input}></input>
-        <button className={S.btn_search} type="submit"><FiSearch /></button>
-
-      </form>
+      </div>
     </div>
   )
 };  
