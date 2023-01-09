@@ -14,7 +14,7 @@ const RatingStar = ({sneaker}) =>{
     const [hover, setHover]=useState(null);
     const [usuario, setUsuario] = useState("user");
     
-    
+
 
     const input = {
         stars:stars,
@@ -28,8 +28,9 @@ const RatingStar = ({sneaker}) =>{
         dispatch(postReview(input))
         alert(`Submiting Review succesfully`)
         setStars(0);
-        setText('');
+        setText('')
     };
+    
 
     return (
         <div>
