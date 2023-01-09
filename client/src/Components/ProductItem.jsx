@@ -17,8 +17,8 @@ function ProductItem({ item }) {
         <div className={s.left}>
           <Link className={s.link} to={`/sneakers/${item.id}`}><p >{item.title}</p></Link>
           <div className={s.buttons}>
-            <button className={s.addToCart1} onClick={() => addItemToCart(item)}>+</button>
-            <button className={s.addToCart1} onClick={() => deleteItemToCart(item)}>-</button>
+            <button className={s.addToCart2} onClick={() => addItemToCart(item)}>+</button>
+            <button className={s.addToCart2} onClick={() => deleteItemToCart(item)}>-</button>
             <button className={s.addToCart1} onClick={() => deleteAll(item)}>X</button>
             <button className={s.addToCart} onClick={() => {
               addItemToFav(item)

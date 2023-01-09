@@ -9,3 +9,14 @@ preference_id=1262241954-d89a3832-124e-4b05-af5e-9b087ecedadd
 site_id=MLA
 processing_mode=aggregator
 merchant_account_id=null
+
+
+http://localhost:3000/sneakers?collection_id=53381999477
+&collection_status=approved&
+payment_id=53381999477&status=approved&
+external_reference=null&
+payment_type=account_money&
+merchant_order_id=7168617704&
+preference_id=1262241954-cdfcf8fa-aa28-46bb-a815-726a71e1009c&site_id=MLA&
+processing_mode=aggregator&
+merchant_account_id=null

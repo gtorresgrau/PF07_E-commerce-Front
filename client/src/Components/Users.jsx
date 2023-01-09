@@ -14,22 +14,46 @@ import axios from 'axios';
 export default function BasicTable() {
     const dispatch = useDispatch();
     const rows = useSelector((state) => state.users);
+    const [isAdmin, setIsAdmin] = React.useState(false);
+    const [isBanned, setIsBanned] = React.useState(false);
     const [checked, setChecked] = React.useState(true);
 
     React.useEffect(() => {
         dispatch(getUsers())
     }, [dispatch]);
+    
+    React.useEffect(() => {
+      rows.forEach(row => {
+        const isBanned = localStorage.getItem(`isBanned-${row.id}`);
+        const isAdmin = localStorage.getItem(`isAdmin-${row.id}`);
+        if (isBanned !== null) {
+          setIsBanned(isBanned);
+        }
+        if (isAdmin !== null) {
+          setIsAdmin(isAdmin);
+        }
+      });
+    }, []);
 
-
-       const handleChange = async (event, id) => {
-        setChecked(event.target.checked);
-        console.log('checked', checked);
-        console.log('id', id);
-        if (checked) {
-            await axios.put(`http://localhost:3001/userbanned/${id}`)
-            return alert("the user has been banned")
-        } 
-      };
+    const handleChange = async (event, id) => {
+      setChecked(event.target.checked);
+      setIsBanned(event.target.checked);
+      localStorage.setItem(`isBanned-${id}`, event.target.checked);
+      await axios.put(`http://localhost:3001/userbanned/${id}`, {
+        isBanned: event.target.checked
+      });
+      alert("the user has been banned");
+    };
+    
+    const handleChangeAd = async (event, id) => {
+      setChecked(event.target.checked);
+      setIsAdmin(event.target.checked);
+      localStorage.setItem(`isAdmin-${id}`, event.target.checked);
+      await axios.put(`http://localhost:3001/useradmin/${id}`, {
+        isAdmin: event.target.checked
+      });
+      alert("the user is Admin now");
+    };
 
   return (
     <TableContainer component={Paper}>
@@ -53,16 +77,16 @@ export default function BasicTable() {
               </TableCell>
               <TableCell align="center">{row.email}</TableCell>
               <TableCell align="right">
-                {/* <Switch
-                    checked={checked}
-                    onChange={handleChange(row.id)}
-                    inputProps={{ 'aria-label': 'controlled' }}
-             /> */}
+                { <Switch
+                
+                onChange={(event) => handleChangeAd(event, row.id)}
+                inputProps={{ 'aria-label': 'controlled' }}
+             /> }
              </TableCell>
               <TableCell align="right">
                 <Switch
                 
-                onChange={handleChange(row.id)}
+                onChange={(event) => handleChange(event, row.id)}
                 inputProps={{ 'aria-label': 'controlled' }}
                 />
                 </TableCell>
