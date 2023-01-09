@@ -31,15 +31,9 @@ export default function App() {
         <Route exact path="/" component={Landing} />
         <ProtectedRoute exact path="/newProduct" component={DashboardNewProduct} />
         <ProtectedRoute exact path="/profile" component={Profile} />
-
-
         <ProtectedRoute exact path="/admin" component={Dashboard} />
-
         <ProtectedRoute exact path="/userform" component={UserForm} />
         <ProtectedRoute exact path="/users" component={DashboardUsers} />
-
-
-
         <Route path="*" component={Error404} />
       </Switch>
     </div>

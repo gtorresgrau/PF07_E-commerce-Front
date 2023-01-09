@@ -35,7 +35,7 @@ export function CheckoutForm() {
     // Enviar los datos del formulario al backend aquí
     console.log('formData',formData);
     handlePayment()
-    axios.post('http://localhost:3001/postuser', formData)
+    axios.post('/postuser', formData)
     .then((res) => {
         console.log('response',res)
     })
@@ -48,7 +48,7 @@ export function CheckoutForm() {
   var data = [...cartItems,user]
   function handlePayment(){
     console.log('handlePayment')
-    axios.post('http://localhost:3001/payment', data )
+    axios.post('/payment', data )
           .then((res)=> 
           {window.location.href = res.data.response.body.init_point;
             localStorage.removeItem('cardProducts');}
