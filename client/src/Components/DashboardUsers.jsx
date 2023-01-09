@@ -16,8 +16,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
-import DashboardProducts from './DashboardProducts';
 import AccountMenu from './AccountMenu';
+import Users from './Users';
 
 const theme = createTheme({
   palette: {
@@ -29,7 +29,7 @@ const theme = createTheme({
 
 const drawerWidth = 240;
 
-function Dashboard(props) {
+function DashboardUsers(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -157,13 +157,13 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-        <DashboardProducts />
+        <Users />
       </Box>
     </Box>
   );
 }
 
-Dashboard.propTypes = {
+DashboardUsers.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -171,4 +171,4 @@ Dashboard.propTypes = {
   window: PropTypes.func,
 };
 
-export default Dashboard;
+export default DashboardUsers;
