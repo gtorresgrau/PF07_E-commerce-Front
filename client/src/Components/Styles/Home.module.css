@@ -27,14 +27,18 @@
 }
 
 .filters {
-    border-top: 0.1rem solid black;
-    border-bottom: 0.1rem solid black;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    border-top: 0.1rem solid rgb(199, 199, 199);
+    margin-top: 1.2rem;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 0.7rem;
+    
+}
+
+.checkout{
+    display: flex;
+    flex-direction: column;
 }
 
 .sort {
@@ -82,7 +86,7 @@
     font-size: 3.3rem;
     text-align: left;
     margin-left: 4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
     color: #242423
 }
 
@@ -96,6 +100,14 @@
     text-align: left;
     margin-left: 4rem;
 
+}
+
+.title2 {
+    margin-top: 8rem;
+    font-size: 3.3rem;
+    text-align: left;
+    margin-left: 4rem;
+    color: #242423
 }
 
 .button {
@@ -122,4 +134,15 @@
     color: #ffffff;
     cursor: pointer;
     position: sticky;
+}
+
+.shop{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+
+.space{
+    margin-bottom: -8rem;
 }
