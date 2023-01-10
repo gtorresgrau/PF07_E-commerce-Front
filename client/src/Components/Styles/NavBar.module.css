@@ -4,7 +4,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.3rem;
+    height: 5.5rem;
     position: fixed;
     width: 100%;
 }
@@ -25,7 +25,8 @@ nav {
     flex-direction: row;
     align-items: center;
     width: 45%;
-    justify-content: space-around;
+    justify-content: flex-start;
+    margin-left: 4rem;
 }
 
 .displayRight {
