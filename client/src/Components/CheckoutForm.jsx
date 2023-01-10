@@ -3,6 +3,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { CartContex } from './CardContex';
+<<<<<<< HEAD
+=======
+import S from './Styles/Checkout.module.css';
+>>>>>>> 8ddcbacd1a37476a4a31d675a28baae9460cafc1
 
 
 export function CheckoutForm() {
@@ -34,7 +38,7 @@ export function CheckoutForm() {
     // Enviar los datos del formulario al backend aquí
     console.log('formData',formData);
     handlePayment()
-    axios.post('http://localhost:3001/postuser', formData)
+    axios.post('/postuser', formData)
     .then((res) => {
         console.log('response',res)
     })
@@ -47,7 +51,7 @@ export function CheckoutForm() {
   var data = [...cartItems,user]
   function handlePayment(){
     console.log('handlePayment')
-    axios.post('http://localhost:3001/payment', data )
+    axios.post('/payment', data )
           .then((res)=> 
           {window.location.href = res.data.response.body.init_point;
             localStorage.removeItem('cardProducts');}
@@ -56,53 +60,67 @@ export function CheckoutForm() {
   
 
   return (
-
-    <div>
-    
-    <form onSubmit={handleSubmit}>
-    <h2>Hola, {formData.fullName} </h2>
-      <h4>Se te enviara a {formData.emailAddress} la confirmacion del pago</h4>
-      <br />
-      <h2>Shipping</h2>
-      <label htmlFor="homeAddress">Address:</label>
-      <input
-        type="text"
-        name="homeAddress"
-        value={formData.homeAddress}
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor="region">Area:</label>
-      <input
-        type="text"
-        name="region"
-        value={formData.region}
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor="city">City:</label>
-      <input
-        type="text"
-        name="city"
-        value={formData.city}
-        onChange={handleChange}
-       />
-       <br />
-      <label htmlFor="phoneNumber">Phone number:</label>
-      <input
-        type="text"
-        name="phoneNumber"
-        value={formData.phoneNumber}
-        onChange={handleChange}
-      />
-      <br/>
-      <button type="submit" onClick={handleSubmit}>BUY</button>
-    </form>
-      
-      <div>
-
-        <Link to="/sneakers"><button >← BACK TO CART</button></Link>
-      </div>
+      <div className={S.general}>
+        <div className={S.container}>
+          <div>
+            <Link to="/sneakers"><button className={S.back} >← BACK TO CART</button></Link>
+          </div>
+          <form onSubmit={handleSubmit} className={S.checkoutForm}>
+                <div>
+                  <h1>¡Hi, {formData.fullName}!</h1>
+                  <h3>Confirmation of purchase will be sent to:</h3>
+                  <h3>{formData.emailAddress}</h3>
+                  <hr/>
+                  <h1>ADD SHIPPING ADDRESS</h1>
+                </div>
+                <div className={S.containerInput}>
+                  <label htmlFor="homeAddress" className={S.label}>Address:  </label>
+                    <input
+                      className={S.input}
+                      type="text"
+                      name="homeAddress"
+                      value={formData.homeAddress}
+                      onChange={handleChange}
+                      required
+                    />
+                </div>
+                <div className={S.containerInput}>
+                  <label htmlFor="region"className={S.label}>Location:  </label>
+                    <input
+                      className={S.input}
+                      type="text"
+                      name="region"
+                      value={formData.region}
+                      onChange={handleChange}
+                      required
+                    />
+                </div>
+                <div className={S.containerInput}>
+                  <label htmlFor="city"className={S.label}>City:  </label>
+                    <input
+                      className={S.input}
+                      type="text"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      required
+                    />
+                </div>
+                <div className={S.containerInput}>
+                  <label htmlFor="phoneNumber" className={S.label}>Cellphone:  </label>
+                    <input
+                      className={S.input}
+                      type="number"
+                      name="phoneNumber"
+                      value={formData.phoneNumber}
+                      onChange={handleChange}
+                      required
+                    />
+                </div>
+              <br/>
+              <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || !formData.phoneNumber || !formData.region || !formData.homeAddress}>BUY</button>
+          </form>
+        </div>
     </div>  
 
   );

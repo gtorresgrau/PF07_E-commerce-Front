@@ -108,9 +108,9 @@ function DashboardUsers(props) {
           </IconButton>
 
           <Typography variant="h6" noWrap component="div">
-            Dashboard
+          Admin Dashboard
           </Typography>
-
+        
           <AccountMenu />
 
         </Toolbar>
@@ -123,6 +123,7 @@ function DashboardUsers(props) {
 
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        
         <Drawer
           container={container}
           variant="temporary"

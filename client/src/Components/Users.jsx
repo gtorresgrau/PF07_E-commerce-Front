@@ -10,29 +10,52 @@ import { getUsers } from '../Actions/Actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Switch from '@mui/material/Switch';
 import axios from 'axios';
+import S from './Styles/Users.module.css';
 
 export default function BasicTable() {
     const dispatch = useDispatch();
     const rows = useSelector((state) => state.users);
+    const [isAdmin, setIsAdmin] = React.useState(false);
+    const [isBanned, setIsBanned] = React.useState(false);
     const [checked, setChecked] = React.useState(true);
 
     React.useEffect(() => {
         dispatch(getUsers())
     }, [dispatch]);
+    
+    React.useEffect(() => {
+      rows.forEach(row => {
+        if (isBanned !== null) {
+          setIsBanned(localStorage.getItem(`isBanned-${row.id}`));
+          console.log('row.id:',row.id)
+        }
+        if (isAdmin !== null) {
+          setIsAdmin(localStorage.getItem(`isAdmin-${row.id}`));
+          console.log('row.id:',row.id)
+        }
+      });
+    }, [rows, isAdmin, isBanned]);
 
-
-       const handleChange = async (event, id) => {
-        setChecked(event.target.checked);
-        console.log('checked', checked);
-        console.log('id', id);
-        if (checked) {
-            await axios.put(`http://localhost:3001/userbanned/${id}`)
-            return alert("the user has been banned")
-        } 
-      };
+    const handleChange = async (event, id) => {
+      setChecked(event.target.checked);
+      setIsBanned(event.target.checked);
+      localStorage.setItem(`isBanned-${id}`, event.target.checked);
+      await axios.put(`/userbanned/${id}`, {
+        isBanned: event.target.checked
+      });
+    };
+    
+    const handleChangeAd = async (event, id) => {
+      setChecked(event.target.checked);
+      setIsAdmin(event.target.checked);
+      localStorage.setItem(`isAdmin-${id}`, event.target.checked);
+      await axios.put(`/useradmin/${id}`, {
+        isAdmin: event.target.checked
+      });
+    };
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={S.general}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -45,7 +68,7 @@ export default function BasicTable() {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.fullName}
+              key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
@@ -53,16 +76,16 @@ export default function BasicTable() {
               </TableCell>
               <TableCell align="center">{row.email}</TableCell>
               <TableCell align="right">
-                {/* <Switch
-                    checked={checked}
-                    onChange={handleChange(row.id)}
-                    inputProps={{ 'aria-label': 'controlled' }}
-             /> */}
+                { <Switch
+                
+                onChange={(event) => handleChangeAd(event, row.id)}
+                inputProps={{ 'aria-label': 'controlled' }}
+             /> }
              </TableCell>
               <TableCell align="right">
                 <Switch
                 
-                onChange={handleChange(row.id)}
+                onChange={(event) => handleChange(event, row.id)}
                 inputProps={{ 'aria-label': 'controlled' }}
                 />
                 </TableCell>

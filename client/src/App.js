@@ -5,7 +5,7 @@ import Home from './Components/Home.jsx';
 import Error404 from './Components/Error404';
 import SneakerDetail from './Components/SneakerDetail.jsx';
 import './App.css';
-import ProtectedRoute from './auth/protected-route.js';
+import ProtectedRoute from './Auth/protected-route.js';
 import Profile from './Components/Profile.jsx';
 
 import Dashboard from './Components/Dashboard.jsx';
@@ -31,15 +31,9 @@ export default function App() {
         <Route exact path="/" component={Landing} />
         <ProtectedRoute exact path="/newProduct" component={DashboardNewProduct} />
         <ProtectedRoute exact path="/profile" component={Profile} />
-
-
         <ProtectedRoute exact path="/admin" component={Dashboard} />
-
         <ProtectedRoute exact path="/userform" component={UserForm} />
         <ProtectedRoute exact path="/users" component={DashboardUsers} />
-
-
-
         <Route path="*" component={Error404} />
       </Switch>
     </div>
