@@ -35,11 +35,11 @@ const theme = createTheme({
 
 const style = {
     position: 'absolute',
-    top: '57.5%',
-    left: '88%',
-    transform: 'translate(-50%, -50%)',
+    top: '5.5rem',
+    right: '-1%',
+    // transform: 'translate(-50%, -50%)',
     width: 280,
-    height: 500,
+    height: '100%',
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
