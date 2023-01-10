@@ -3,10 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { CartContex } from './CardContex';
-<<<<<<< HEAD
-=======
 import S from './Styles/Checkout.module.css';
->>>>>>> 8ddcbacd1a37476a4a31d675a28baae9460cafc1
 
 
 export function CheckoutForm() {
