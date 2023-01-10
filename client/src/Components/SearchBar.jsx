@@ -5,11 +5,19 @@ import { getAllSneackers, getSneakerByName } from '../Actions/Actions.js';
 import S from './Styles/SearchBar.module.css';
 import { FiSearch } from 'react-icons/fi';
 import { HashLink as Link } from 'react-router-hash-link';
+import Swal from "sweetalert2";
 
 //setCurrenPage es para setear la pagina en 1 cuando haga la busqueda.
 export default function SearchBar({ currentPage, setCurrentPage }) {
   //console.log('searchbar -->','setCurrentPage:',setCurrentPage)
 
+  const alertNoFound = () => {
+    Swal.fire({
+      title: `There are no Sneackers with the combination of Characters entered:" ${input}"`,
+      text: "Please,try another combinations",
+      icon: "info",
+      confirmButtonText: "Ok",
+    })  };
 
   const dispatch = useDispatch();
   const [input, setInput] = useState("")
@@ -26,7 +34,8 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
     const sneakersFilter = sneakers.filter(e => e.title.toLowerCase().includes(input.toLowerCase())) //---> []
     if (!input) alert("You must enter a name");
     if (!sneakersFilter.length) {
-      alert(`There are no Sneackers with the combination of Characters entered: ${input}`)
+      //alert(`There are no Sneackers with the combination of Characters entered: ${input}`)
+      alertNoFound();
       dispatch(getAllSneackers())
       setInput('')
     } else {
