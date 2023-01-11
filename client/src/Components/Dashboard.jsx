@@ -6,18 +6,22 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import IconList from '@mui/icons-material/ListAlt';
-import List from '@mui/material/List';
-import { ListItemButton } from '@mui/material';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import HomeIcon from '@mui/icons-material/Home';
+import PeopleIcon from '@mui/icons-material/People';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import DashboardProducts from './DashboardProducts';
+import AddSneaker from './AddSneaker';
 import AccountMenu from './AccountMenu';
+import Users from './Users'
+
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 const theme = createTheme({
   palette: {
@@ -27,12 +31,52 @@ const theme = createTheme({
   },
 });
 
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+
+
+
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [value, setValue] = React.useState(0);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -45,37 +89,45 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
-      <List>
-        <ListItemButton href="/sneakers" >
-          <ListItemIcon>
-            <IconList />
-          </ListItemIcon>
-          <ListItemText primary="Home" />
-        </ListItemButton>
-
-        <ListItemButton href="/admin" >
-          <ListItemIcon>
-            <IconList />
-          </ListItemIcon>
-          <ListItemText primary="Product" />
-        </ListItemButton>
-
-        <ListItemButton href="/newProduct" >
-          <ListItemIcon>
-            <IconList />
-          </ListItemIcon>
-          <ListItemText primary="New Product" />
-        </ListItemButton>
-
-        <ListItemButton href="/users" >
-          <ListItemIcon>
-            <IconList />
-          </ListItemIcon>
-          <ListItemText primary="Users" />
-        </ListItemButton>
-      </List>
+      
+      <Tabs
+        theme={theme}
+        textColor="primary"
+        indicatorColor="primary"
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Vertical tabs example"
+        sx={{ borderRight: 1, borderColor: 'divider' }}
+      >
+        <Tab 
+        sx={{ fontSize: '1rem', textTransform:'capitalize',  justifyContent: 'flex-start'}}
+        icon={<FormatListBulletedIcon/>}
+        iconPosition="start"
+        label="Products" {...a11yProps(0)}
+        />
+        <Tab 
+        sx={{ fontSize: '1rem', textTransform:'capitalize',  justifyContent: 'flex-start'}}
+        icon={<AddCircleOutlineIcon/>}
+        iconPosition="start"
+        label="New Product" {...a11yProps(1)}
+        />
+        <Tab 
+        sx={{ fontSize: '1rem', textTransform:'capitalize',  justifyContent: 'flex-start'}}
+        icon={<PeopleIcon/>}
+        iconPosition="start"
+        label="Users" {...a11yProps(2)}
+        />
+        <Tab 
+        sx={{ fontSize: '1rem', textTransform:'capitalize',  justifyContent: 'flex-start'}}
+        icon={<HomeIcon/>}
+        iconPosition="start"
+        label="Home"
+        href="/sneakers"
+        />
+      </Tabs>
       <Divider />
-
     </div>
   );
 
@@ -106,13 +158,10 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-
           <Typography variant="h6" noWrap component="div">
             Admin Dashboard
           </Typography>
-
           <AccountMenu />
-
         </Toolbar>
 
       </AppBar>
@@ -120,9 +169,7 @@ function Dashboard(props) {
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
-
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
           variant="temporary"
@@ -152,12 +199,22 @@ function Dashboard(props) {
       <Box
         component="main"
         sx={{
-          flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` },
+          flexGrow: 1, p: 1, width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` }
         }}
       >
         <Toolbar />
-        <DashboardProducts />
+        <Box sx={{ width: '100%' }}>
+          <TabPanel value={value} index={0}>
+            <DashboardProducts />
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <AddSneaker />
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <Users />
+          </TabPanel>
+    </Box>
       </Box>
     </Box>
   );

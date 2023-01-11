@@ -13,7 +13,8 @@ import {
   ADD_SNEAKER,
   IMG_URL,
   GET_ALL_REVIEWS,
-  GET_USERS
+  GET_USERS,
+  DELETE_SNEAKER
 } from '../Actions/ActionTypes.js';
 
 export const initialState = {
@@ -131,7 +132,13 @@ export default function rootReducer(state = initialState, action) {
     return{
       ...state,
       users: action.payload
-    }
+    };
+    case DELETE_SNEAKER:
+      return {
+        ...state,
+        loading: false,
+        delete: action.payload
+      }
     default:
       return {
         ...state

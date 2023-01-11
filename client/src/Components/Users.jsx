@@ -10,7 +10,6 @@ import { getUsers } from '../Actions/Actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Switch from '@mui/material/Switch';
 import axios from 'axios';
-import S from './Styles/Users.module.css';
 
 export default function BasicTable() {
     const dispatch = useDispatch();
@@ -55,7 +54,7 @@ export default function BasicTable() {
     };
 
   return (
-    <TableContainer component={Paper} className={S.general}>
+    <TableContainer component={Paper} >
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
