@@ -29,7 +29,7 @@ export default function Card(props) {
   };
 
   return (
-    <div className={S.container}>
+    <div className={props.stock ? S.container : S.container2}>
       {props.stock ? <CgShoppingCart onClick={() => addItemToCart(props)} className={S.iconCart} /> : null}
       {modifiedProduct.isFav ? (
         <FaHeart className={S.icon} onClick={handleRemoveFromFav} />
