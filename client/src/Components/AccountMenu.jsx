@@ -9,17 +9,10 @@ import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+
 
 export default function AccountMenu() {
-  const { isAuthenticated, user } = useAuth0();
-
-  console.log("USER", user)
-
-  const users = useSelector((state) => state.users)
-
-  //const userr = users.find(e => e.email === user.email)
-  //console.log("USUARIO FILTRADO", userr)
+  const { isAuthenticated } = useAuth0();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -55,7 +48,6 @@ export default function AccountMenu() {
               'aria-labelledby': 'basic-button',
             }}
           >
-
             <MenuItem onClick={handleClose}><LoginButton /></MenuItem>
             <MenuItem onClick={handleClose}><SignUpButton /></MenuItem>
           </Menu>
@@ -73,9 +65,7 @@ export default function AccountMenu() {
             onClick={handleClick}
           >
             <UserLogin />
-
           </div>
-
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}
@@ -86,13 +76,10 @@ export default function AccountMenu() {
             }}
           >
             <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
-
             <Link className={S.links} to='/profile' ><MenuItem>Profile</MenuItem></Link>
-            <Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link>
-
+            {/* {userAdmin ? <Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link> : null} */}
+            {/* <Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link> */}
             <Link className={S.links} to='/userform' ><MenuItem>Complete Profile</MenuItem></Link>
-
-
           </Menu>
         </div>
       }
