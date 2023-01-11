@@ -79,8 +79,8 @@ export default function AccountMenu() {
         >
           <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
 
-          <Link className={S.links} to='/profile' ><MenuItem>Profile</MenuItem></Link>
-          <Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link>
+          {isAuthenticated?<Link className={S.links} to='/profile' ><MenuItem>Profile</MenuItem></Link>:null}
+          {isAuthenticated?<Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link>:null}
 
           <Link className={S.links} to='/userform' ><MenuItem>Complete Profile</MenuItem></Link>
           
