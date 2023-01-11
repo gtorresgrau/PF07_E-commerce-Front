@@ -46,6 +46,7 @@ export function CheckoutForm() {
   
   
   var data = [...cartItems,user]
+  
   function handlePayment(){
     console.log('handlePayment')
     axios.post('/payment', data )

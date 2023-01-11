@@ -9,7 +9,7 @@ import ProtectedRoute from './Auth/protected-route.js';
 import Profile from './Components/Profile.jsx';
 
 import Dashboard from './Components/Dashboard.jsx';
-
+import DashboardPurchases from './Components/DashboardPurchases.jsx';
 import UserForm from './Components/LoginForm.jsx'
 
 
@@ -32,6 +32,7 @@ export default function App() {
         <ProtectedRoute exact path="/newProduct" component={DashboardNewProduct} />
         <ProtectedRoute exact path="/profile" component={Profile} />
         <ProtectedRoute exact path="/admin" component={Dashboard} />
+        <ProtectedRoute exact path="/purchases" component={DashboardPurchases} />
         <ProtectedRoute exact path="/userform" component={UserForm} />
         <ProtectedRoute exact path="/users" component={DashboardUsers} />
         <Route path="*" component={Error404} />

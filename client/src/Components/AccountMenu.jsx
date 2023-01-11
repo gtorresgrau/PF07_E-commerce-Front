@@ -83,7 +83,7 @@ export default function AccountMenu() {
           <Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link>
 
           <Link className={S.links} to='/userform' ><MenuItem>Complete Profile</MenuItem></Link>
-          
+          <Link className={S.links} to='/purchases' ><MenuItem>Purchases</MenuItem></Link>
 
         </Menu>
       </div>
