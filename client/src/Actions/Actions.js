@@ -13,7 +13,8 @@ import {
   GET_TYPE,
   GET_GENRE,
   GET_ALL_REVIEWS,
-  GET_USERS
+  GET_USERS,
+  DELETE_SNEAKER
 } from '../Actions/ActionTypes.js';
 
 export const loading = () => {
@@ -39,6 +40,23 @@ export function getUsers() {
       type: GET_USERS,
       payload: users.data
     })
+  }
+}
+
+export function deleteSneaker(id) {
+  return async function (dispatch) {
+    try {
+      const info = await axios.delete(`/deleting/${id}`);
+      return dispatch({
+        type: DELETE_SNEAKER,
+        payload: info.data
+      })
+    }
+    catch (e) {
+      window.location.href = "/sneaker/";
+      console.log(`Something happened when filtering by id: ${id}`)
+      alert(`Something happened when filtering by id: ${id}`)
+    }
   }
 }
 
