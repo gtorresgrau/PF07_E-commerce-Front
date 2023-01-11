@@ -81,8 +81,7 @@ export default function AccountMenu() {
 
           {isAuthenticated?<Link className={S.links} to='/profile' ><MenuItem>Profile</MenuItem></Link>:null}
           {isAuthenticated?<Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link>:null}
-
-          <Link className={S.links} to='/userform' ><MenuItem>Complete Profile</MenuItem></Link>
+          {isAuthenticated?<Link className={S.links} to='/userform' ><MenuItem>Complete Profile</MenuItem></Link>:null}
           
 
         </Menu>
