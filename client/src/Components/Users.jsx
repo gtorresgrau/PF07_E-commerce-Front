@@ -40,7 +40,7 @@ export default function BasicTable() {
       setChecked(event.target.checked);
       setIsBanned(event.target.checked);
       localStorage.setItem(`isBanned-${id}`, event.target.checked);
-      await axios.put(`http://localhost:3001/userbanned/${id}`, {
+      await axios.put(`/userbanned/${id}`, {
         isBanned: event.target.checked
       });
     };
@@ -49,7 +49,7 @@ export default function BasicTable() {
       setChecked(event.target.checked);
       setIsAdmin(event.target.checked);
       localStorage.setItem(`isAdmin-${id}`, event.target.checked);
-      await axios.put(`http://localhost:3001/useradmin/${id}`, {
+      await axios.put(`/useradmin/${id}`, {
         isAdmin: event.target.checked
       });
     };

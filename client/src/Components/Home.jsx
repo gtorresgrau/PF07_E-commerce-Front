@@ -16,6 +16,36 @@ import CarouselBrands from './CarouselBrands.jsx';
 
 import Loading from './Loading.jsx';
 
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import TuneIcon from '@mui/icons-material/Tune';
+import { createTheme } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
+import { HashLink as Link } from 'react-router-hash-link';
+
+const theme = createTheme({
+    palette: {
+      primary: {
+        main: grey[800],
+      },
+    },
+  });
+
+const style = {
+    position: 'absolute',
+    top: '5.5rem',
+    right: '-1%',
+    // transform: 'translate(-50%, -50%)',
+    width: 280,
+    height: '100%',
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+    overflowX: 'scroll'
+  };
+
 
 var filter = []
 var a = []
@@ -27,6 +57,10 @@ export default function Home() {
     const allTyp = useSelector((state) => state.allSneakers);
     const allBra = useSelector((state) => state.allSneakers);
     const allGen = useSelector((state) => state.allSneakers);
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -162,54 +196,87 @@ export default function Home() {
 
             <h1 className={S.title1}>AMPLIFY YOUR ENERGY</h1>
 
-            {/* <Link to='/shop'><h1 className={S.button}>SHOP NOW</h1> </Link> */}
-            <h1 className={S.title} >Exciting Offers</h1>
+            <Link 
+                style={{ textDecoration: 'none', color: 'white' }}
+                smooth
+                to='/sneakers#displaySearch'><h1 className={S.button}>SHOP NOW</h1>
+            </Link>
+
+            <h1 className={S.title} >Trending This Week</h1>
+            <div className={S.space}>
             <SimpleSlider />
-            <div id="displaySearch">
-                <form id='Filtros' className={S.filters}>
-                    <div>
-                        <span className={S.span}>Sort by Name</span>
+            </div>
+            <div id="displaySearch" className={S.shop}>
+            <h1 className={S.title2} >Shop & Find Yours</h1>
+            <Button
+                theme={theme}
+                color="primary"
+                variant="outlined"
+                size="large"
+                sx={{ textTransform: 'capitalize', fontWeight: 'bold', color: '#242423', height: '3rem', mr:'4rem', mb:'2.5rem'}}
+                endIcon={<TuneIcon />}
+                onClick={handleOpen}>Filter & Sort
+            </Button>
+            </div>
+            <div >
+            <Modal
+                open={open}
+                onClose={handleClose}
+                disableScrollLock="true"
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                    Filter and Sort
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2}}>
+                    {/* <div>
+                        <span className={S.filters}>Sort by Name</span>
                         <label htmlFor='az'>
                             <input name='sortName' id='az' value='az' type='radio' className='input-radio' onChange={e => handlerFilter(e)} />A-Z</label>
+                            <br/>
                         <label htmlFor="za">
                             <input name='sortName' id='za' value='za' type='radio' className='input-radio' onChange={e => handlerFilter(e)} />Z-A</label>
-                    </div>
+                    </div> */}
                     <div >
-                        <span className={S.span}>Sort by Price</span>
+                        <span className={S.filters}>Sort by Price</span>
                         <label htmlFor='+a-'>
                             <input name='sortStock' id='+a-' value='+a-' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Higher price </label>
+                            <br/>
                         <label htmlFor='-a+'>
                             <input name='sortStock' id='-a+' value='-a+' type='radio' className='input-radio' onChange={e => handlerFilterStock(e)} /> Lower price </label>
                     </div>
-                    <div onChange={e => handlerFilterBrand(e)}>
-                        {allBrands.map(e => (
-                            <label htmlFor={e} key={e}><input type="checkbox" name="brand" id={e} value={e} key={e} />{e}</label>
-                        ))}
-                    </div>
-                    <div onChange={e => handlerFilterColours(e)}>
-                        {allColours.map(e => (
-                            <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e} />{e}</label>
-                        ))}
-                    </div>
-                    <div onChange={e => handlerFilterGenre(e)}>
+                    <span className={S.filters}>Filter by Genres</span>
+                    <div className={S.checkout} onChange={e => handlerFilterGenre(e)}>
                         <span className={S.span}></span>
                         {allGenres.map(e => (
                             <label htmlFor={e} key={e}><input type="checkbox" name="genre" id={e} value={e} key={e} />{e}</label>
                         ))}
                     </div>
-                    <div onChange={e => handlerFilterType(e)}>
+                    <span className={S.filters}>Filter by Brand</span>
+                    <div className={S.checkout} onChange={e => handlerFilterBrand(e)}>
+                        {allBrands.map(e => (
+                            <label htmlFor={e} key={e}><input type="checkbox" name="brand" id={e} value={e} key={e} />{e}</label>
+                        ))}
+                    </div>
+                    <span className={S.filters}>Filter by Colour</span>
+                    <div className={S.checkout} onChange={e => handlerFilterColours(e)}>
+                        {allColours.map(e => (
+                            <label htmlFor={e} key={e}><input type="checkbox" name="colour" id={e} value={e} key={e} />{e}</label>
+                        ))}
+                    </div>
+                    <span className={S.filters}>Filter by Types</span>
+                    <div className={S.checkout} onChange={e => handlerFilterType(e)}>
                         {allTypes.map(e => (
                             <label htmlFor={e} key={e}><input type="checkbox" name="type" id={e} value={e} key={e} />{e}</label>
                         ))}
                     </div>
-                </form>
-                {/* <Paginado
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    allSneakers={allSneakers}
-                    sneakersPerPage={sneakersPerPage}
-                /> */}
+                </Typography>
+                </Box>
+            </Modal>
             </div>
+            
             <div className={S.container}>
                 {!actualySneakers.length ? <Loading /> : actualySneakers.map(c => {
                     return (

@@ -49,28 +49,27 @@ export function CheckoutForm() {
     console.log('formData', formData);
     setErrors(validate({ ...formData, [event.target.name]: event.target.value }))
     handlePayment()
-    axios.post('http://localhost:3001/postuser', formData)
-      .then((res) => {
-        console.log('response', res)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+
+    axios.post('/postuser', formData)
+    .then((res) => {
+        console.log('response',res)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   };
 
 
   var data = [...cartItems, user]
   function handlePayment() {
     console.log('handlePayment')
-    axios.post('http://localhost:3001/payment', data)
-      .then((res) => {
-        window.location.href = res.data.response.body.init_point;
-        localStorage.removeItem('cardProducts');
-      }
-      )
-      .catch((error) => console.log('errorC', error))
-  }
 
+    axios.post('/payment', data )
+          .then((res)=> 
+          {window.location.href = res.data.response.body.init_point;
+            localStorage.removeItem('cardProducts');}
+          )
+          .catch((error)=>console.log('errorC',error))}
 
   return (
     <div className={S.general}>

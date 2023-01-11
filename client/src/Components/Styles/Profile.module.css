@@ -1,4 +1,5 @@
 .general{
+    display: grid;
     margin: 10px;
     padding: 10px;
     font-family: 'Manjari', sans-serif;
@@ -9,30 +10,20 @@
     background-image: linear-gradient(#ffffffe0,#ffffffe0), url('../../Images/sneakers_vector.webp');
 };
 
-.container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 650px;
-    width: 500px;
-    background-color: rgba(1, 1, 1, 0.427);
-    border-radius: 5px;
-    margin: 0 auto ;
-};
-
-.back {
+.btn {
     border: none;
     background-color: #00000099;
     border-radius: 25px;
     padding: 5px 10px;
-    color: #ffffff;
     cursor: pointer;
-    position: sticky;
 }
 
-.back:hover {
+.btn:hover {
     color: #000000;
     text-shadow: 5px 5px 5px #000000;
     background-color: #ffffff99;
+}
+
+.img{
+    border-radius: 50px;
 }

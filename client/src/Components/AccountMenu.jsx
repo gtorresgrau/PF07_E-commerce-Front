@@ -95,7 +95,6 @@ export default function AccountMenu() {
 
           </Menu>
         </div>
-
       }
     </div>
   );

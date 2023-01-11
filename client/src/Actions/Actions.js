@@ -219,7 +219,7 @@ export function postReview(payload) {
   return async function () {
       try {
         console.log('actPayload:',payload);
-        const rev = await axios.post('http://localhost:3001/reviews', payload);
+        const rev = await axios.post('/reviews', payload);
         return rev.data;
       } catch (error) {
         console.error('Act_Rev_Err:',error);

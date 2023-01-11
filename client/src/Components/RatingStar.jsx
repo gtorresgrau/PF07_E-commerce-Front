@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react';
 import { postReview } from "../Actions/Actions";
 import S from './Styles/RatingStar.module.css'
+import Swal from "sweetalert2";
 
 const RatingStar = ({sneaker}) =>{
     
@@ -15,7 +16,14 @@ const RatingStar = ({sneaker}) =>{
     const [usuario, setUsuario] = useState("user");
     
 
-
+    const alertRating = () => {
+        Swal.fire({
+          title: `Submiting Review succesfully`,
+          text: "Thank you for your time.",
+          icon: "success",
+          confirmButtonText: "Ok",
+        })  };
+        
     const input = {
         stars:stars,
         text:text,
@@ -26,7 +34,8 @@ const RatingStar = ({sneaker}) =>{
    const handlerSubmit=(e)=>{
         e.preventDefault();
         dispatch(postReview(input))
-        alert(`Submiting Review succesfully`)
+        //alert(`Submiting Review succesfully`)
+        alertRating(); 
         setStars(0);
         setText('')
     };
