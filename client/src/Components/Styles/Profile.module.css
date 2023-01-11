@@ -1,4 +1,4 @@
-.general{
+.general {
     display: grid;
     margin: 10px;
     padding: 10px;
@@ -6,13 +6,25 @@
     min-height: 110vh;
     background-color: #ffffffe0;
     background-size: 75px 75px;
-    background-repeat:space;
-    background-image: linear-gradient(#ffffffe0,#ffffffe0), url('../../Images/sneakers_vector.webp');
-};
+    background-repeat: space;
+    background-image: linear-gradient(#ffffffe0, #ffffffe0), url('../../Images/sneakers_vector.webp');
+}
+
+;
 
 .btn {
     border: none;
-    background-color: #00000099;
+    background-color: #b80000d8;
+    border-radius: 25px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btnDash {
+    width: 250px;
+    height: 35px;
+    border: none;
+    background-color: #b8690ecb;
     border-radius: 25px;
     padding: 5px 10px;
     cursor: pointer;
@@ -24,6 +36,12 @@
     background-color: #ffffff99;
 }
 
-.img{
+.btnDash:hover {
+    color: #000000;
+    text-shadow: 5px 5px 5px #000000;
+    background-color: #019131d5;
+}
+
+.img {
     border-radius: 50px;
 }
