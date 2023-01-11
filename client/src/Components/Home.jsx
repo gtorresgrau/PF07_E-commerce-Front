@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from './Card.jsx';
 import Navbar from './NavBar.jsx';
 import Paginado from './paginado.jsx';
-import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour, filterByGenre, filterByType } from '../Actions/Actions';
+import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour, filterByGenre, filterByType, getUsers } from '../Actions/Actions';
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
-
+import { useAuth0 } from '@auth0/auth0-react';
 import SimpleSlider from './Carousel.jsx';
 import CarouselBrands from './CarouselBrands.jsx';
 
@@ -35,11 +35,11 @@ const theme = createTheme({
 
 const style = {
     position: 'absolute',
-    top: '57.5%',
-    left: '88%',
-    transform: 'translate(-50%, -50%)',
+    top: '5.5rem',
+    right: '-1%',
+    // transform: 'translate(-50%, -50%)',
     width: 280,
-    height: 500,
+    height: '100%',
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -51,7 +51,7 @@ var filter = []
 var a = []
 export default function Home() {
     const dispatch = useDispatch();
-
+    const user = useAuth0();
     const allSneakers = useSelector((state) => state.sneakers);
     const allCoul = useSelector((state) => state.allSneakers);
     const allTyp = useSelector((state) => state.allSneakers);
@@ -74,6 +74,7 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getAllSneackers())
+        dispatch(getUsers())
     }, [dispatch]);
 
     let Colours = [];

@@ -10,9 +10,10 @@ import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
 import { Link } from 'react-router-dom';
 
+
 export default function AccountMenu() {
   const { isAuthenticated } = useAuth0();
-  
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -25,69 +26,62 @@ export default function AccountMenu() {
   return (
     <div>
 
-      { !isAuthenticated ?
+      {!isAuthenticated ?
 
-      <div>
-        <div
-          id="basic-button"
-          aria-controls={open ? 'basic-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-        >
-          <FaUserAlt className={S.user}/>
+        <div>
+          <div
+            id="basic-button"
+            aria-controls={open ? 'basic-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+          >
+            <FaUserAlt className={S.user} />
+          </div>
+
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={handleClose}><LoginButton /></MenuItem>
+            <MenuItem onClick={handleClose}><SignUpButton /></MenuItem>
+          </Menu>
+
         </div>
 
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-          }}
-        >
+        :
 
-          <MenuItem onClick={handleClose}><LoginButton /></MenuItem>
-          <MenuItem onClick={handleClose}><SignUpButton /></MenuItem>
-        </Menu>
-         
-      </div>
-      
-      :
-
-      <div>
-        <div
-          id="basic-button"
-          aria-controls={open ? 'basic-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-        >
-          <UserLogin/>
-        
+        <div>
+          <div
+            id="basic-button"
+            aria-controls={open ? 'basic-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+          >
+            <UserLogin />
+          </div>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
+            <Link className={S.links} to='/profile' ><MenuItem>Profile</MenuItem></Link>
+            {/* {userAdmin ? <Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link> : null} */}
+            {/* <Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link> */}
+            <Link className={S.links} to='/userform' ><MenuItem>Complete Profile</MenuItem></Link>
+          </Menu>
         </div>
-
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-          }}
-        >
-          <MenuItem onClick={handleClose}><LogoutButton /></MenuItem>
-
-          <Link className={S.links} to='/profile' ><MenuItem>Profile</MenuItem></Link>
-          <Link className={S.links} to='/admin' ><MenuItem>Dashboard</MenuItem></Link>
-
-          <Link className={S.links} to='/userform' ><MenuItem>Complete Profile</MenuItem></Link>
-          <Link className={S.links} to='/purchases' ><MenuItem>Purchases</MenuItem></Link>
-
-        </Menu>
-      </div>
-    
       }
     </div>
   );
