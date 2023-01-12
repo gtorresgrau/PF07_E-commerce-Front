@@ -26,6 +26,11 @@ h4 {
     border: 0.1rem solid #242423;
 }
 
+
+.container:hover {
+    border: 0.1rem solid #242423;
+}
+
 .container:hover .price {
     margin-top: -2.3rem;
 }
