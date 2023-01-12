@@ -201,9 +201,18 @@ return (
             <p>Complete all required fields</p>
         </header>
         <form onSubmit={handlerSubmit} id='newSneaker' className={S.newSneaker}>
+            <div className={S.containerImage}>
+                <div className={S.imagePreview}>
+                {productImg?<img src={productImg} id="sneaker-photo" alt='sneaker' className={S.product}/>:<img src={input.image} alt='sneaker' className={S.product}/>}
+                </div>
+                {/* <label className={S.label}  htmlFor='image'>Image</label> */}
+                <input type="file" id='btn-photo' onChange={handleImageUpload} name='image'/>
+                <button type="button" onClick={handleImageBtn}>SAVE</button>
+                {errores.image && (<span className={S.spanError}>{errores.image}</span>)}
+            </div>
             <div className={S.containerInput}>
                 <label className={S.label} >Title</label>
-                <input type='text'  className={S.input} name='title' placeholder="Type title of product" value={input.title} onChange={handlerOnChange} autoComplete='off'/>
+                <input className={S.header} type='text' className={S.input} name='title' placeholder="Type title of product" value={input.title} onChange={handlerOnChange} autoComplete='off'/>
                 {errores.title && (<span className={S.spanError}>{errores.title}</span>)}
             </div>
             <div className={S.containerInput}>
@@ -244,7 +253,7 @@ return (
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='type' >Types</label>
                 <select className={S.select} onChange={handlerOnChange} name='type'>
-                    <option value='' defaultValue hidden>Choose type</option>
+                    <option value='' defaultValue hidden>{input.type}</option>
                         {types?.map(t => (
                             <option value={t} key={t} >{t}</option>
                         ))}
@@ -254,7 +263,7 @@ return (
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='type' >Genres</label>
                 <select className={S.select} name='genre' onChange={handlerOnChange}>
-                    <option value='' defaultValue hidden>Choose genre</option>
+                    <option value='' defaultValue hidden>{input.genre}</option>
                         {genres?.map(g => (
                             <option  value={g} key={g} >{g}</option>
                         ))}
@@ -262,12 +271,7 @@ return (
                 {errores.genre && (<span className={S.spanError}>{errores.genre}</span>)}         
             </div>
             
-            <div className={S.containerInput}>
-                <label className={S.label}  htmlFor='image'>Image</label>
-                <input type="file" id='btn-photo' onChange={handleImageUpload} name='image'/>
-                <button type="button" onClick={handleImageBtn}>SAVE</button>
-                {errores.image && (<span className={S.spanError}>{errores.image}</span>)}
-            </div>
+           
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='stock' >Stock</label>
                 <input type='number' className={S.input}   name='stock' placeholder="Enter stock" value={input.stock} onChange={handlerOnChange} autoComplete='off' min='1'/>
@@ -287,15 +291,13 @@ return (
                 <button className={S.btnSubmit} type="Submit" id ='btn' disabled={!input.title || !input.price || !input.description || !input.size || !input.image || !input.stock || !input.brand ||!input.genre ||!input.colour || !input.type}>UPDATE</button>
             </div>
             <div>
-            <Link to='/sneakers'>
+            <Link to='/admin'>
                 <button className={S.cancel}>CANCEL</button>
             </Link>
         </div>
         </form>
         <br/>
-        <div>
-            {productImg?<img src={productImg} id="sneaker-photo" alt='sneaker' className={S.product}/>:'IMAGE PREVIEW'}
-        </div>
+        
     </div>
     </div>
 
