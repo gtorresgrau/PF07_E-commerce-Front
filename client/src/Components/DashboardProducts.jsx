@@ -379,7 +379,11 @@ let handleDelete = (id) => {
                       <TableCell align="center">{row.price}</TableCell>
                       <TableCell align="center">{row.brand}</TableCell>
                       <TableCell align="center">{row.type}</TableCell>
-                      <TableCell align="center"><ModeEditIcon/></TableCell>
+                      <TableCell align="center">
+                        <IconButton href={`/updateSneaker/${row.id}`} aria-label="delete">
+                          <ModeEditIcon/>
+                        </IconButton>
+                      </TableCell>
                       <TableCell align="center">
                           <IconButton onClick={(id) => handleDelete(row.id)} aria-label="delete">
                             <DeleteIcon/>
