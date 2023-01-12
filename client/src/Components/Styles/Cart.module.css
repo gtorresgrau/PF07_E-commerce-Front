@@ -71,6 +71,14 @@ svg {
   overflow-y: scroll;
   margin-top: 5px;
 }
+.productsContainers2 {
+  max-width: 390px;
+  overflow-y: scroll;
+  margin-top: 5px;
+  align-items: center;
+ 
+}
+
 
 ::-webkit-scrollbar {
   -webkit-appearance: none;

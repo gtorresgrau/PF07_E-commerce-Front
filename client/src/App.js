@@ -29,11 +29,12 @@ export default function App() {
         <Route exact path="/sneakers/:id"><FavProvider ><CartProvider><SneakerDetail /></CartProvider></FavProvider></Route>
         <Route exact path="/sneakers"><FavProvider><CartProvider><Home /></CartProvider></FavProvider></Route>
         <Route exact path="/checkoutForm"><CartProvider><CheckoutForm /></CartProvider></Route>
+        <Route exact path="/purchases"><FavProvider><CartProvider><DashboardPurchases /></CartProvider></FavProvider></Route>
         <Route exact path="/" component={Landing} />
         <ProtectedRoute exact path="/updateSneaker/:id" component={FormEdit} />
         <ProtectedRoute exact path="/profile" component={Profile} />
         <ProtectedRoute exact path="/admin" component={Dashboard} />
-        <ProtectedRoute exact path="/purchases" component={DashboardPurchases} />
+        
         <ProtectedRoute exact path="/userform" component={UserForm} />
         <ProtectedRoute exact path="/users" component={DashboardUsers} />
         <Route path="*" component={Error404} />
