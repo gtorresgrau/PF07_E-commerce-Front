@@ -39,7 +39,7 @@ const style = {
     right: '-1%',
     // transform: 'translate(-50%, -50%)',
     width: 280,
-    height: '100%',
+    height: '80%',
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
