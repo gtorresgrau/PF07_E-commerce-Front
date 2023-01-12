@@ -18,7 +18,7 @@ function Dashboard() {
 
     useEffect(() => {
         setLocalCartItems(cartItems);
-      }, [cartItems]);
+      }, []);
 
       useEffect(() => {
         localStorage.setItem('localCartItems', JSON.stringify(localCartItems));
