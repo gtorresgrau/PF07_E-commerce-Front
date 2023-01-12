@@ -14,6 +14,9 @@ import axios from 'axios';
 export default function BasicTable() {
     const dispatch = useDispatch();
     const rows = useSelector((state) => state.users);
+    console.log('rows:',rows)
+
+
     const [isAdmin, setIsAdmin] = React.useState(false);
     const [isBanned, setIsBanned] = React.useState(false);
     const [checked, setChecked] = React.useState(true);
@@ -76,14 +79,14 @@ export default function BasicTable() {
               <TableCell align="center">{row.email}</TableCell>
               <TableCell align="right">
                 { <Switch
-                
+                defaultChecked = {row.isAdmin}
                 onChange={(event) => handleChangeAd(event, row.id)}
                 inputProps={{ 'aria-label': 'controlled' }}
              /> }
              </TableCell>
               <TableCell align="right">
                 <Switch
-                
+                defaultChecked = {row.isBanned}
                 onChange={(event) => handleChange(event, row.id)}
                 inputProps={{ 'aria-label': 'controlled' }}
                 />
