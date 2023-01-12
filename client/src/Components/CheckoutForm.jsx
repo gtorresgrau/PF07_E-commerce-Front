@@ -25,10 +25,10 @@ export function CheckoutForm() {
 
   const user = useAuth0();
 
-  const users = useSelector((state) => state.users)
+  const usersBan = useSelector((state) => state.users)
 
-  const userBaned = users.find(e => e.email === user.user.email)
-  console.log("USERBANNED", userBaned)
+  const userBanned = usersBan.find(e => e.email === user.user.email)
+  //console.log("USERBANNED", userBanned)
 
   const [formData, setFormData] = useState({
     fullName: user.user.name || '',
@@ -50,40 +50,42 @@ export function CheckoutForm() {
     setErrors(validate({ ...formData, [event.target.name]: event.target.value }))
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Enviar los datos del formulario al backend aquí
-    console.log('formData', formData);
-    setErrors(validate({ ...formData, [event.target.name]: event.target.value }))
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //console.log('formData', formData);
+    setErrors(validate({ ...formData, [e.target.name]: e.target.value }))
     handlePayment()
-
-    axios.post('/postuser', formData)
-      .then((res) => {
-        console.log('response', res)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // axios.put('/userUpdate', formData)
+    //   .then((res) => {
+    //     console.log('response', res)
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   };
 
 
-  var data = [...cartItems, user]
-  function handlePayment() {
-    console.log('handlePayment')
-
+  var data = [...cartItems, formData]
+  
+  const handlePayment = async () => {
+    //console.log('handlePayment')
     axios.post('/payment', data)
       .then((res) => {
+        const id = res.data.response.body.id;
+        const client_id = res.data.response.body.client_id;
+        const info = [cartItems, formData, id, client_id]
+        console.log('infoFront:', info)
+        axios.post('/response', info)
         window.location.href = res.data.response.body.init_point;
         localStorage.removeItem('cardProducts');
-      }
-      )
+      })
       .catch((error) => console.log('errorC', error))
   }
 
   return (
     <div className={S.general}>
-      {userBaned.isBanned ? alert("You have been banned!", history.push("/sneakers"))
-        :
+      {/* {userBanned && userBanned.isBanned === true ? alert("You have been banned!", history.push("/sneakers"))
+        : */}
         <div className={S.container}>
           <div>
             <Link to="/sneakers"><button className={S.back} >← BACK TO CART</button></Link>
@@ -148,7 +150,7 @@ export function CheckoutForm() {
             <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || formData.phoneNumber.length < 7 || formData.phoneNumber.length > 8 || !formData.region || !formData.homeAddress}>BUY</button>
           </form>
         </div >
-      }
+      {/* } */}
     </div >
 
   );
