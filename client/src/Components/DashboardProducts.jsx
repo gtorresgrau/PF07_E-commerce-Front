@@ -18,6 +18,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import Swal from "sweetalert2";
 import { visuallyHidden } from '@mui/utils';
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
@@ -120,6 +121,7 @@ function EnhancedTableHead(props) {
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
+
 
   return (
     <TableHead>
@@ -231,14 +233,20 @@ export default function EnhancedTable() {
 //         console.error(error);
 //       });
 //     console.log(id);
-    
-    
 //   }
 // }
 
-let handleDelete = (id) => { //Recargar Videojuegos
+
+const alertDelete = (id) => {
+  Swal.fire({
+    title: `Sneaker ${id} was deleted succesfully`,
+    icon: "success",
+    confirmButtonText: "OK",
+  })  };
+
+let handleDelete = (id) => { 
   dispatch(deleteSneaker(id));
-  alert(`Sneaker ${id} delete succesfully`);
+  alertDelete(id);
 }
 
 // useEffect((id) => {

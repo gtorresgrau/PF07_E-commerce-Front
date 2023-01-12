@@ -3,7 +3,8 @@ import {useState } from "react";
 import { useDispatch} from "react-redux";
 import {Link} from 'react-router-dom';
 import { addSneaker, uploadImage } from "../Actions/Actions.js";
-import S from './Styles/AddSneaker.module.css'
+import S from './Styles/AddSneaker.module.css';
+import Swal from "sweetalert2";
 
 
 export default function AddSneaker(){
@@ -113,7 +114,20 @@ export default function AddSneaker(){
         uploadImage(productImg).then(url=> input.image = url );
         console.log('btn:',input)
     };
-       
+    
+    const alertAdd = () => {
+        Swal.fire({
+          title: `Sneaker added succesfully`,
+          icon: "success",
+          confirmButtonText: "OK",
+        })};
+
+    const alert = () => {
+        Swal.fire({
+          title: `The Sneaker was not created, the form contains errors.`,
+          icon: "error",
+          confirmButtonText: "OK",
+        })};
 
     function handlerSubmit(e){
         e.preventDefault();
@@ -121,7 +135,7 @@ export default function AddSneaker(){
         if(Object.keys(errores).length === 0 ){
                 console.log(input)
                 dispatch(addSneaker(input))
-                alert('Sneaker added succesfully')
+                alertAdd()
                 setInput({
                     title:"", 
                     price:"", 
