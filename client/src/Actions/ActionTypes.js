@@ -14,3 +14,4 @@ export const IMG_URL = 'IMG_URL';
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
 export const GET_USERS = 'GET_USERS';
 export const DELETE_SNEAKER = 'DELETE_SNEAKER';
+export const GET_ALL_ORDERS = 'GET_ALL_ORDERS';
