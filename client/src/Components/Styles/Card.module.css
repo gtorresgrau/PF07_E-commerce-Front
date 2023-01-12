@@ -1,10 +1,16 @@
 a {
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .container {
     border: 0.1rem solid white;
     width: 18rem;
+}
+
+.container2 {
+    border: 0.1rem solid white;
+    width: 18rem;
+    background-color: rgba(51, 51, 51, 0.685);
 }
 
 .container:hover {
@@ -78,7 +84,3 @@ a {
     margin-top: 0.7rem;
     margin-left: 13rem;
 }
-
-
-
-

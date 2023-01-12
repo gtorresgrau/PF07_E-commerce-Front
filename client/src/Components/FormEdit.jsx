@@ -1,32 +1,38 @@
 import React from "react";
-import {useState } from "react";
-import { useDispatch} from "react-redux";
+import {useState, useEffect, useParams} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {Link} from 'react-router-dom';
-import { addSneaker, uploadImage } from "../Actions/Actions.js";
-import S from './Styles/AddSneaker.module.css';
-import Swal from "sweetalert2";
+import { addSneaker, uploadImage, getSneakerDetail} from "../Actions/Actions.js";
+import S from './Styles/AddSneaker.module.css'
 
 
-export default function AddSneaker(){
+export default function FormEdit(props){
     const dispatch = useDispatch();
     
+    // const { id } = useParams();
+
+    useEffect(() => {
+        dispatch(getSneakerDetail(props.match.paramas.id));
+      }, [dispatch, props.match.paramas.id])
+      
+    const sneaker = useSelector(state => state.detail);
     const form = document.getElementById('newSneaker')
     const btn = document.getElementById('btn')
 
     const datos = {
-        title:"", 
-        price:"", 
-        description:"", 
-        size:[],
-        image:"",
-        stock:"",
-        brand:"",
-        genre:"",
-        colour:"",
-        type:"",
+        title: sneaker.title, 
+        price: sneaker.price, 
+        description: sneaker.description, 
+        size: sneaker.size,
+        image: sneaker.image,
+        stock: sneaker.stock,
+        brand: sneaker.brand,
+        genre: sneaker.genre,
+        colour: sneaker.colour,
+        type: sneaker.type
     };   
 
-    const talles = ["5","10","15","20","25","30","35","36","37","38","39","40","41","42","43","44"];
+    const talles = 38
     const types = ["Sports", "Training", "Running"];
     const genres = ["Men", "Women", "Kids"];
     const [input, setInput] = useState(datos);
@@ -114,20 +120,7 @@ export default function AddSneaker(){
         uploadImage(productImg).then(url=> input.image = url );
         console.log('btn:',input)
     };
-    
-    const alertAdd = () => {
-        Swal.fire({
-          title: `Sneaker added succesfully`,
-          icon: "success",
-          confirmButtonText: "OK",
-        })};
-
-    const alert = () => {
-        Swal.fire({
-          title: `The Sneaker was not created, the form contains errors.`,
-          icon: "error",
-          confirmButtonText: "OK",
-        })};
+       
 
     function handlerSubmit(e){
         e.preventDefault();
@@ -135,12 +128,12 @@ export default function AddSneaker(){
         if(Object.keys(errores).length === 0 ){
                 console.log(input)
                 dispatch(addSneaker(input))
-                alertAdd()
+                alert('Sneaker added succesfully')
                 setInput({
                     title:"", 
                     price:"", 
                     description:"", 
-                    size:[],
+                    size:"",
                     image:"",
                     stock:"",
                     brand:"",

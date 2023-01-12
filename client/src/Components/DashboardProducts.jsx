@@ -18,12 +18,16 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import Swal from "sweetalert2";
 import { visuallyHidden } from '@mui/utils';
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSneackers } from "../Actions/Actions";
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import { deleteSneaker } from '../Actions/Actions';
+
 
 const theme = createTheme({
   palette: {
@@ -86,36 +90,43 @@ const headCells = [
     label: 'Price ($)',
   },
   {
+    id: 'brand',
+    numeric: false,
+    disablePadding: true,
+    label: 'Brand',
+  },
+  {
     id: 'type',
     numeric: false,
     disablePadding: true,
     label: 'Type',
   },
   {
-    id: 'colour',
+    id: 'edit',
     numeric: false,
     disablePadding: true,
-    label: 'Colour',
+    label: 'Edit',
   },
   {
-    id: 'brand',
+    id: 'delete',
     numeric: false,
     disablePadding: true,
-    label: 'Brand',
+    label: 'Delete',
   },
 ];
 
 function EnhancedTableHead(props) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
+  const { order, orderBy, numSelected, rowCount, onRequestSort } =
     props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
 
+
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
+        {/* <TableCell padding="checkbox">
           <Checkbox
             theme= {theme}
             color="primary"
@@ -126,7 +137,7 @@ function EnhancedTableHead(props) {
               'aria-label': 'select all desserts',
             }}
           />
-        </TableCell>
+        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -157,7 +168,7 @@ function EnhancedTableHead(props) {
 EnhancedTableHead.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
+  // onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
@@ -166,28 +177,18 @@ EnhancedTableHead.propTypes = {
 const EnhancedTableToolbar = (props) => {
   const { numSelected } = props;
 
-  return (
+ return (
     <Toolbar
         
       sx={{
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-        }),
+        // ...(numSelected > 0 && {
+        //   bgcolor: (theme) =>
+        //     alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
+        // }),
       }}
     >
-      {numSelected > 0 ? (
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
-        >
-          {numSelected} selected
-        </Typography>
-      ) : (
         <Typography
           sx={{ flex: '1 1 100%' }}
           variant="h6"
@@ -196,28 +197,14 @@ const EnhancedTableToolbar = (props) => {
         >
           Sneakers
         </Typography>
-      )}
-
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
-      )}
+      
     </Toolbar>
   );
-};
+    }
 
-EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-};
+// EnhancedTableToolbar.propTypes = {
+//   numSelected: PropTypes.number.isRequired,
+// };
 
 export default function EnhancedTable() {
   const [order, setOrder] = React.useState('asc');
@@ -227,11 +214,44 @@ export default function EnhancedTable() {
   const [dense,] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const dispatch = useDispatch();
-    const rows = useSelector((state) => state.allSneakers);
-    
+  const rows = useSelector((state) => state.allSneakers);
+  const [delSneacker, setDelSneaker] = React.useState(false);
+
     useEffect(() => {
         dispatch(getAllSneackers())
-    }, [dispatch]);
+    }, [dispatch, rows]);
+
+    
+//   const handleDelete = async (id) => {
+//     if(id){
+//       await axios.delete(`/deleting/${id}`)
+//       .then((res) => {
+//         console.log(res.data);
+//         setDelSneaker(true);
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       });
+//     console.log(id);
+//   }
+// }
+
+
+const alertDelete = (id) => {
+  Swal.fire({
+    title: `Sneaker ${id} was deleted succesfully`,
+    icon: "success",
+    confirmButtonText: "OK",
+  })  };
+
+let handleDelete = (id) => { 
+  dispatch(deleteSneaker(id));
+  alertDelete(id);
+}
+
+// useEffect((id) => {
+//   dispatch(deleteSneaker(id))
+// }, [dispatch]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -248,25 +268,25 @@ export default function EnhancedTable() {
     setSelected([]);
   };
 
-  const handleClick = (event, title) => {
-    const selectedIndex = selected.indexOf(title);
-    let newSelected = [];
+  // const handleClick = (event, title) => {
+  //   const selectedIndex = selected.indexOf(title);
+  //   let newSelected = [];
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, title);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
+  //   if (selectedIndex === -1) {
+  //     newSelected = newSelected.concat(selected, title);
+  //   } else if (selectedIndex === 0) {
+  //     newSelected = newSelected.concat(selected.slice(1));
+  //   } else if (selectedIndex === selected.length - 1) {
+  //     newSelected = newSelected.concat(selected.slice(0, -1));
+  //   } else if (selectedIndex > 0) {
+  //     newSelected = newSelected.concat(
+  //       selected.slice(0, selectedIndex),
+  //       selected.slice(selectedIndex + 1),
+  //     );
+  //   }
 
-    setSelected(newSelected);
-  };
+  //   setSelected(newSelected);
+  // };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -281,11 +301,11 @@ export default function EnhancedTable() {
   //   setDense(event.target.checked);
   // };
 
-  const isSelected = (title) => selected.indexOf(title) !== -1;
+  // const isSelected = (title) => selected.indexOf(title) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  // const emptyRows =
+  //   page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -298,10 +318,10 @@ export default function EnhancedTable() {
             size={dense ? 'small' : 'small'}
           >
             <EnhancedTableHead
-              numSelected={selected.length}
+              // numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
+              // onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
@@ -311,20 +331,20 @@ export default function EnhancedTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.title);
+                  // const isItemSelected = isSelected(row.title);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.title)}
+                      // onClick={(event) => handleClick(event, row.title)}
                       role="checkbox"
-                      aria-checked={isItemSelected}
+                      // aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.title}
-                      selected={isItemSelected}
+                      // selected={isItemSelected}
                     >
-                      <TableCell padding="checkbox">
+                      {/* <TableCell padding="checkbox">
                         <Checkbox
                         theme= {theme}
                           color="primary"
@@ -333,7 +353,7 @@ export default function EnhancedTable() {
                             'aria-labelledby': labelId,
                           }}
                         />
-                      </TableCell>
+                      </TableCell> */}
                       
                       <TableCell
                       align="center"
@@ -356,16 +376,20 @@ export default function EnhancedTable() {
                         {row.title}
                       </TableCell>
                      
-                     
                       <TableCell align="center">{row.price}</TableCell>
-                      <TableCell align="center">{row.type}</TableCell>
-                      <TableCell align="center">{row.colour}</TableCell>
                       <TableCell align="center">{row.brand}</TableCell>
+                      <TableCell align="center">{row.type}</TableCell>
+                      <TableCell align="center"><ModeEditIcon/></TableCell>
+                      <TableCell align="center">
+                          <IconButton onClick={(id) => handleDelete(row.id)} aria-label="delete">
+                            <DeleteIcon/>
+                          </IconButton>
+                      </TableCell>
                       
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
+              {/* {emptyRows > 0 && (
                 <TableRow
                   style={{
                     height: (dense ? 0 : 0) * emptyRows,
@@ -373,7 +397,7 @@ export default function EnhancedTable() {
                 >
                   <TableCell colSpan={6} />
                 </TableRow>
-              )}
+              )} */}
             </TableBody>
           </Table>
         </TableContainer>

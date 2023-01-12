@@ -1,5 +1,5 @@
 import React from 'react'
-import { BsGithub } from 'react-icons/bs';
+import { FaLinkedin } from 'react-icons/fa';
 //import { Link } from 'react-router-dom';
 import s from './Styles/Footer.module.css'
 
@@ -11,13 +11,13 @@ function Footer() {
       <div className={s.foot}>
       <span className={s.spanF}>2022 Envoy. All right reserved</span>
         <label className={s.spanF}>Team:</label>
-        <a href="https://github.com/Arux26" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><BsGithub />Ariel Trangoni</ul></a>
-        <a href="https://github.com/CarlosRomeroA" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><BsGithub />Carlos Romero</ul></a>
-        <a href="https://github.com/hnavas" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><BsGithub />Hendri Navas</ul></a>
-        <a href="https://github.com/matirozas" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><BsGithub />Matias Rozas</ul></a>
-        <a href="https://github.com/Pedrox20" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><BsGithub />Pedro Morán</ul></a>
-        <a href="https://github.com/ezeoli" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><BsGithub />Ezequiel Olier</ul></a>
-        <a href="https://github.com/gtorresgrau" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><BsGithub />Gonzalo Torres Grau</ul></a>
+        <a href="https://www.linkedin.com/in/ariel-trangoni-web-developer/" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Ariel Trangoni</ul></a>
+        <a href="https://www.linkedin.com/in/carlos-inti-romero-aguirre-541a98191/" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Carlos Romero</ul></a>
+        <a href="https://www.linkedin.com/in/hendrinavas" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Hendri Navas</ul></a>
+        <a href="https://www.linkedin.com/in/matias-rozas-395481224/" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Matias Rozas</ul></a>
+        <a href="https://www.linkedin.com/in/pedro-mor%C3%A1n-9719b5218" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Pedro Morán</ul></a>
+        <a href="https://www.linkedin.com/in/ezequiel-olier-814767a7/" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Ezequiel Olier</ul></a>
+        <a href="https://www.linkedin.com/in/%E2%98%85gonzalo-torres-grau-2825b263/" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Gonzalo Torres Grau</ul></a>
       </div>
     </footer>
   )

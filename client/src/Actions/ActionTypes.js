@@ -13,3 +13,4 @@ export const ADD_SNEAKER = 'ADD_SNEAKER';
 export const IMG_URL = 'IMG_URL';
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
 export const GET_USERS = 'GET_USERS';
+export const DELETE_SNEAKER = 'DELETE_SNEAKER';
