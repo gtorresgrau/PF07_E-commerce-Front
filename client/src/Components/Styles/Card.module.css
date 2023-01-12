@@ -13,6 +13,11 @@ a {
     background-color: rgba(51, 51, 51, 0.685);
 }
 
+.container2:hover {
+    border: 0.1rem solid #242423;
+}
+
+
 .container:hover {
     border: 0.1rem solid #242423;
 }

@@ -17,8 +17,9 @@ export default function SneakerDetail() {
   const loading = useSelector(state => state.loading);
   const reviewsById = useSelector(state => state.reviews);
   const dispatch = useDispatch();
-  console.log('reviewsById:', reviewsById)
-
+  //console.log('reviewsById:', reviewsById)
+  const { Reviews } = sneaker
+  console.log("REVIEWS", Reviews)
   const { addItemToFav } = useContext(FavContainerContext);
   const { id } = useParams();
   const { isAuthenticated } = useAuth0();
@@ -51,7 +52,6 @@ export default function SneakerDetail() {
       {loading ? <Loading /> :
         <div className={s.containerG}>
           <div className={s.containerimg}>
-            {console.log('image:', sneaker.image)}
             <img className={s.img} src={sneaker.image} alt="img not found" />
           </div>
 
@@ -67,6 +67,16 @@ export default function SneakerDetail() {
               <h3>Genre: <span>{sneaker.genre}</span></h3>
               <h3>Type: <span>{sneaker.type}</span></h3>
               <p>{sneaker.description}</p>
+              <h2>Reviews: </h2>{sneaker.Reviews === undefined || !sneaker.Reviews.length ? <h3>No hay reviews</h3> : sneaker.Reviews.map(e => {
+                return (
+                  <div>
+                    <h3>{e.userId}</h3>
+                    <p>{e.stars}⭐</p>
+                    <p>{e.text}</p>
+                  </div>
+                )
+              })}
+              <br />
               <Link to="/sneakers"><button className={s.btn}>← BACK</button></Link>
               {sneaker.stock ? <button className={s.btn} onClick={() => addItemToCart(sneaker)}>Add To Cart</button> : <button className={s.btnn}>Without Stock</button>}
 
