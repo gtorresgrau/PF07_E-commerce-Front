@@ -222,7 +222,7 @@ export default function Home() {
             <Modal
                 open={open}
                 onClose={handleClose}
-                disableScrollLock="true"
+                disableScrollLock={false}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
