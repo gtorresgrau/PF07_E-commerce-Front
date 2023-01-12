@@ -1,6 +1,7 @@
 import {
   GET_SNEAKERS,
   GET_ALL_SNEAKERS,
+  GET_ALL_ORDERS,
   GET_SNEAKER_DETAIL,
   LOADING,
   RESET_DETAIL,
@@ -27,6 +28,7 @@ export const initialState = {
   image:'',
   reviews:[],
   users: [],
+  orders: [],
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -41,6 +43,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         sneakers: action.payload,
+      }
+      case GET_ALL_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
       }
     case LOADING:
       return {

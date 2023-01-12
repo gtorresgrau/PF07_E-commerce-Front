@@ -15,7 +15,8 @@ import {
   GET_GENRE,
   GET_ALL_REVIEWS,
   GET_USERS,
-  DELETE_SNEAKER
+  DELETE_SNEAKER,
+  GET_ALL_ORDERS
 } from '../Actions/ActionTypes.js';
 
 const alertX = (title) => {
@@ -37,6 +38,15 @@ export function getAllSneackers() {
     dispatch({
       type: GET_ALL_SNEAKERS,
       payload: sneakers.data
+    })
+  }
+}
+export function getAllOrders() {
+  return async function (dispatch) {
+    let orders = await axios.get("/orders");
+    dispatch({
+      type: GET_ALL_ORDERS,
+      payload: orders.data
     })
   }
 }
