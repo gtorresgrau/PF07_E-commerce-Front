@@ -39,7 +39,7 @@ const style = {
     right: '-1%',
     // transform: 'translate(-50%, -50%)',
     width: 280,
-    height: '100%',
+    height: '80%',
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -222,7 +222,7 @@ export default function Home() {
             <Modal
                 open={open}
                 onClose={handleClose}
-                disableScrollLock="true"
+                disableScrollLock={false}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >

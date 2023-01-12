@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import DashboardProducts from './DashboardProducts';
+import DashboardOrders from './DashboardOrders';
 import AddSneaker from './AddSneaker';
 import AccountMenu from './AccountMenu';
 import Users from './Users'
@@ -106,6 +107,12 @@ function Dashboard(props) {
         icon={<FormatListBulletedIcon/>}
         iconPosition="start"
         label="Products" {...a11yProps(0)}
+        />
+        <Tab 
+        sx={{ fontSize: '1rem', textTransform:'capitalize',  justifyContent: 'flex-start'}}
+        icon={<FormatListBulletedIcon/>}
+        iconPosition="start"
+        label="Orders" {...a11yProps(3)}
         />
         <Tab 
         sx={{ fontSize: '1rem', textTransform:'capitalize',  justifyContent: 'flex-start'}}
@@ -209,9 +216,12 @@ function Dashboard(props) {
             <DashboardProducts />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <AddSneaker />
+            <DashboardOrders />
           </TabPanel>
           <TabPanel value={value} index={2}>
+            <AddSneaker />
+          </TabPanel>
+          <TabPanel value={value} index={3}>
             <Users />
           </TabPanel>
     </Box>

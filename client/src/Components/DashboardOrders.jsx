@@ -22,7 +22,7 @@ import Swal from "sweetalert2";
 import { visuallyHidden } from '@mui/utils';
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllSneackers } from "../Actions/Actions";
+import { getAllOrders } from "../Actions/Actions";
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
@@ -73,7 +73,7 @@ const headCells = [
     id: 'title',
     numeric: true,
     disablePadding: false,
-    label: 'All Sneakers',
+    label: 'All Orders',
   },
 
   {
@@ -90,28 +90,28 @@ const headCells = [
     label: 'Price ($)',
   },
   {
-    id: 'brand',
+    id: 'quantity',
     numeric: false,
     disablePadding: true,
-    label: 'Brand',
+    label: 'Quantity',
   },
   {
-    id: 'type',
+    id: 'buyer',
     numeric: false,
     disablePadding: true,
-    label: 'Type',
+    label: 'Buyer',
   },
   {
-    id: 'edit',
+    id: 'sneaker',
     numeric: false,
     disablePadding: true,
-    label: 'Edit',
+    label: 'Sneaker',
   },
   {
-    id: 'delete',
+    id: 'status',
     numeric: false,
     disablePadding: true,
-    label: 'Delete',
+    label: 'Status',
   },
 ];
 
@@ -195,7 +195,7 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Sneakers
+          Orders
         </Typography>
       
     </Toolbar>
@@ -214,13 +214,13 @@ export default function EnhancedTable() {
   const [dense,] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const dispatch = useDispatch();
-  const rows = useSelector((state) => state.allSneakers);
+  const rows = useSelector((state) => state.orders);
   const [delSneacker, setDelSneaker] = React.useState(false);
 
     useEffect(() => {
-        dispatch(getAllSneackers())
+        dispatch(getAllOrders())
     }, [dispatch, rows]);
-
+console.log(rows)
     
 //   const handleDelete = async (id) => {
 //     if(id){
@@ -237,17 +237,7 @@ export default function EnhancedTable() {
 // }
 
 
-const alertDelete = (id) => {
-  Swal.fire({
-    title: `Sneaker ${id} was deleted succesfully`,
-    icon: "success",
-    confirmButtonText: "OK",
-  })  };
 
-let handleDelete = (id) => { 
-  dispatch(deleteSneaker(id));
-  alertDelete(id);
-}
 
 // useEffect((id) => {
 //   dispatch(deleteSneaker(id))
@@ -341,7 +331,7 @@ let handleDelete = (id) => {
                       role="checkbox"
                       // aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.title}
+                      key={row[0].title}
                       // selected={isItemSelected}
                     >
                       {/* <TableCell padding="checkbox">
@@ -355,40 +345,17 @@ let handleDelete = (id) => {
                         />
                       </TableCell> */}
                       
-                      <TableCell
-                      align="center"
-                      >
-                     <img
-                            src={`${row.image}`}
-                            alt={row.title}
-                            height="100rem"
-                            padding="none"
-                        />
-                        </TableCell>
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
-                        align="left"
-                      >
+                      <TableCell                    
                         
-                        {row.title}
+                      align="center">{ row[0].items[0]}
                       </TableCell>
                      
-                      <TableCell align="center">{row.price}</TableCell>
-                      <TableCell align="center">{row.brand}</TableCell>
-                      <TableCell align="center">{row.type}</TableCell>
-                      <TableCell align="center">
-                        <IconButton href={`/updateSneaker/${row.id}`} aria-label="delete">
-                          <ModeEditIcon/>
-                        </IconButton>
-                      </TableCell>
-                      <TableCell align="center">
-                          <IconButton onClick={(id) => handleDelete(row.id)} aria-label="delete">
-                            <DeleteIcon/>
-                          </IconButton>
-                      </TableCell>
+                      <TableCell align="center">{ row[0].items[0].price}</TableCell>
+                      <TableCell align="center">{ row[0].items[0].quantity}</TableCell>
+                      <TableCell align="center">{row[0].status}</TableCell>
+                      <TableCell align="center">{row[0].payer[0].fullName}</TableCell>
+                      <TableCell align="center">{row[0].createdAt}</TableCell>
+                      
                       
                     </TableRow>
                   );

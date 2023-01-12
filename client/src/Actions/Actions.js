@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Swal from "sweetalert2";
 
 import {
   GET_SNEAKERS,
@@ -14,8 +15,16 @@ import {
   GET_GENRE,
   GET_ALL_REVIEWS,
   GET_USERS,
-  DELETE_SNEAKER
+  DELETE_SNEAKER,
+  GET_ALL_ORDERS
 } from '../Actions/ActionTypes.js';
+
+const alertX = (title) => {
+  Swal.fire({
+    title: title,
+    icon: "info",
+    confirmButtonText: "OK",
+  })};
 
 export const loading = () => {
   return {
@@ -29,6 +38,15 @@ export function getAllSneackers() {
     dispatch({
       type: GET_ALL_SNEAKERS,
       payload: sneakers.data
+    })
+  }
+}
+export function getAllOrders() {
+  return async function (dispatch) {
+    let orders = await axios.get("/orders");
+    dispatch({
+      type: GET_ALL_ORDERS,
+      payload: orders.data
     })
   }
 }
@@ -55,7 +73,7 @@ export function deleteSneaker(id) {
     catch (e) {
       window.location.href = "/sneaker/";
       console.log(`Something happened when filtering by id: ${id}`)
-      alert(`Something happened when filtering by id: ${id}`)
+      alertX(`Something happened when filtering by id: ${id}`)
     }
   }
 }
@@ -75,7 +93,7 @@ export function getSneakerByName(title) {
     catch (e) {
       window.location.href = "/sneakers";
       console.log(`There are no Sneackers with the combination of Characters entered: ${title}`)
-      alert(`There are no Sneackers with the combination of Characters entered: ${title}`)
+      alertX(`There are no Sneackers with the combination of Characters entered: ${title}`)
     }
   }
 };
@@ -93,7 +111,7 @@ export function getSneakerDetail(id) {
     catch (e) {
       window.location.href = "/sneaker/";
       console.log(`Something happened when filtering by id: ${id}`)
-      alert(`Something happened when filtering by id: ${id}`)
+      alertX(`Something happened when filtering by id: ${id}`)
     }
   }
 }
@@ -122,7 +140,7 @@ export function filterByBrand(payload) {
     catch (e) {
       window.location.href = "/sneakers/";
       console.log(`Something happened when filtering by brand: ${payload}`)
-      alert(`Something happened when filtering by brand: ${payload}`)
+      alertX(`Something happened when filtering by brand: ${payload}`)
     }
   }
 };
@@ -145,7 +163,7 @@ export function filterByColour(payload) {
     catch (e) {
       window.location.href = "/sneakers/";
       console.log(`Something happened when filtering by brand: ${payload}`)
-      alert(`Something happened when filtering by brand: ${payload}`)
+      alertX(`Something happened when filtering by brand: ${payload}`)
     }
   }
 };
@@ -166,7 +184,7 @@ export function filterByGenre(payload) {
     catch (e) {
       window.location.href = "/sneakers/";
       console.log(`Something happened when filtering by Genre: ${payload}`)
-      alert(`Something happened when filtering by Genre: ${payload}`)
+      alertX(`Something happened when filtering by Genre: ${payload}`)
     }
   }
 };
@@ -188,7 +206,7 @@ export function filterByType(payload) {
     catch (e) {
       window.location.href = "/sneakers/";
       console.log(`Something happened when filtering by Type: ${payload}`)
-      alert(`Something happened when filtering by Type: ${payload}`)
+      alertX(`Something happened when filtering by Type: ${payload}`)
     }
   }
 };
@@ -266,7 +284,7 @@ export function getAllReviews(id) {
       } catch (e) {
         window.location.href = "/sneaker/";
         console.log(`Something happened when filtering Reviews by id: ${id}`)
-        alert(`Something happened when filtering Reviews by id: ${id}`)
+        alertX(`Something happened when filtering Reviews by id: ${id}`)
       };
 }};
 
