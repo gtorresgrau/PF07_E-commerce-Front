@@ -2,18 +2,27 @@ a {
     text-decoration: none;
 }
 
+h4 {
+    color:#999998
+}
+
 .container {
     border: 0.1rem solid white;
     width: 18rem;
 }
 
-.container2 {
-    border: 0.1rem solid white;
-    width: 18rem;
-    background-color: rgba(51, 51, 51, 0.685);
+.container:hover {
+    border: 0.1rem solid #242423;
 }
 
-.container:hover {
+.container2 {
+    filter: grayscale(100%);
+    border: 0.1rem solid rgb(231, 231, 231);
+    width: 18rem;
+    
+}
+
+.container2:hover {
     border: 0.1rem solid #242423;
 }
 
