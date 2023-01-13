@@ -215,11 +215,10 @@ export default function EnhancedTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const dispatch = useDispatch();
   const rows = useSelector((state) => state.allSneakers);
-  const [delSneacker, setDelSneaker] = React.useState(false);
 
     useEffect(() => {
-        dispatch(getAllSneackers())
-    }, [dispatch, rows]);
+      dispatch(getAllSneackers())
+    }, [dispatch]);
 
     
 //   const handleDelete = async (id) => {
@@ -259,14 +258,14 @@ let handleDelete = (id) => {
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.title);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
+  // const handleSelectAllClick = (event) => {
+  //   if (event.target.checked) {
+  //     const newSelecteds = rows.map((n) => n.title);
+  //     setSelected(newSelecteds);
+  //     return;
+  //   }
+  //   setSelected([]);
+  // };
 
   // const handleClick = (event, title) => {
   //   const selectedIndex = selected.indexOf(title);

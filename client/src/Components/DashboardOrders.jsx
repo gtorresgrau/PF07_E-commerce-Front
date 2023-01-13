@@ -27,6 +27,8 @@ import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { deleteSneaker } from '../Actions/Actions';
+import { Switch } from '@mui/material';
+import axios from 'axios';
 
 
 const theme = createTheme({
@@ -73,21 +75,21 @@ const headCells = [
     id: 'title',
     numeric: true,
     disablePadding: false,
-    label: 'All Orders',
+    label: 'Order',
   },
 
   {
     id: 'img',
     numeric: true,
     disablePadding: true,
-    label: '',
+    label: 'User',
   },
   
   {
     id: 'price',
     numeric: false,
     disablePadding: true,
-    label: 'Price ($)',
+    label: 'Item',
   },
   {
     id: 'quantity',
@@ -99,19 +101,31 @@ const headCells = [
     id: 'buyer',
     numeric: false,
     disablePadding: true,
-    label: 'Buyer',
+    label: 'Price ($)',
+  },
+  {
+    id: 'buyer',
+    numeric: false,
+    disablePadding: true,
+    label: 'Total ($)',
   },
   {
     id: 'sneaker',
     numeric: false,
     disablePadding: true,
-    label: 'Sneaker',
+    label: 'Status',
   },
   {
     id: 'status',
     numeric: false,
     disablePadding: true,
-    label: 'Status',
+    label: 'Date',
+  },
+  {
+    id: 'status',
+    numeric: false,
+    disablePadding: true,
+    label: 'Sent',
   },
 ];
 
@@ -206,6 +220,14 @@ const EnhancedTableToolbar = (props) => {
 //   numSelected: PropTypes.number.isRequired,
 // };
 
+const handleChange = async (event, id) => {
+  
+  localStorage.setItem(`isBanned-${id}`, event.target.checked);
+  await axios.put(`/userbanned/${id}`, {
+    isBanned: event.target.checked
+  });
+};
+
 export default function EnhancedTable() {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
@@ -218,8 +240,8 @@ export default function EnhancedTable() {
   const [delSneacker, setDelSneaker] = React.useState(false);
 
     useEffect(() => {
-        dispatch(getAllOrders())
-    }, [dispatch, rows]);
+       dispatch(getAllOrders())
+    }, [dispatch]);
 console.log(rows)
     
 //   const handleDelete = async (id) => {
@@ -296,7 +318,7 @@ console.log(rows)
   // Avoid a layout jump when reaching the last page with empty rows.
   // const emptyRows =
   //   page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
+  
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
@@ -331,7 +353,7 @@ console.log(rows)
                       role="checkbox"
                       // aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row[0].title}
+                      key={row.id}
                       // selected={isItemSelected}
                     >
                       {/* <TableCell padding="checkbox">
@@ -344,17 +366,21 @@ console.log(rows)
                           }}
                         />
                       </TableCell> */}
-                      
-                      <TableCell                    
-                        
-                      align="center">{ row[0].items[0]}
+                      <TableCell align="center">{row.id}</TableCell>
+                      <TableCell align="left">{row.payer.fullName}</TableCell>
+                      <TableCell align="left">{row.items.map( (r) => <div>{r.title}</div>)}</TableCell>
+                      <TableCell align="center">{row.items.map( (r) => <div>{r.quantity}</div>)}</TableCell>
+                      <TableCell align="center">{row.items.map( (r) => <div>{r.price}</div>)}</TableCell>
+                      <TableCell align="center">{row.items.map( (r) => (r.price * r.quantity)).reduce((a, b) => a + b, 0)}</TableCell>
+                      <TableCell align="center">{row.status}</TableCell>
+                      <TableCell align="center">{row.createdAt}</TableCell>
+                      <TableCell align="right">
+                        <Switch
+                        defaultChecked = {row.isBanned}
+                        onChange={(event) => handleChange(event, row.id)}
+                        inputProps={{ 'aria-label': 'controlled' }}
+                        />
                       </TableCell>
-                     
-                      <TableCell align="center">{ row[0].items[0].price}</TableCell>
-                      <TableCell align="center">{ row[0].items[0].quantity}</TableCell>
-                      <TableCell align="center">{row[0].status}</TableCell>
-                      <TableCell align="center">{row[0].payer[0].fullName}</TableCell>
-                      <TableCell align="center">{row[0].createdAt}</TableCell>
                       
                       
                     </TableRow>
@@ -388,4 +414,5 @@ console.log(rows)
       /> */}
     </Box>
   );
+    
 }

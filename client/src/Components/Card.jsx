@@ -39,8 +39,8 @@ export default function Card(props) {
       <Link to={"/sneakers/" + props.id}>
         <img src={props.image} alt="imagen no encontrada" className={S.img} />
         <div className={S.price}>${props.price}</div>
-        {props.stock ? <p className={S.title}>{props.title}</p> : <h4>Not Available</h4>}
-        {props.stock ? <p className={S.type}>{props.type}</p> : null}
+        <p className={S.title}>{props.title}</p>
+        {props.stock ? <p className={S.type}>{props.type}</p> : <h4 className={S.type}>Not Available</h4>}
         
       </Link>
     </div>
