@@ -48,6 +48,12 @@ const OrderHistory = () => {
    </li>
    <br />
    <br />
+  
+   <li>
+     <TableCell>
+       <strong>Total :</strong>  {row.items.map((r) => (r.price * r.quantity)).reduce((a, b) => a + b, 0)}
+     </TableCell>
+   </li>
    <li>
      <TableCell>
        <strong>Status:   </strong> {row.status}
