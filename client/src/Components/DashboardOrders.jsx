@@ -70,7 +70,7 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-          
+
   {
     id: 'title',
     numeric: true,
@@ -84,7 +84,7 @@ const headCells = [
     disablePadding: true,
     label: 'User',
   },
-  
+
   {
     id: 'price',
     numeric: false,
@@ -191,9 +191,9 @@ EnhancedTableHead.propTypes = {
 const EnhancedTableToolbar = (props) => {
   const { numSelected } = props;
 
- return (
+  return (
     <Toolbar
-        
+
       sx={{
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
@@ -203,29 +203,26 @@ const EnhancedTableToolbar = (props) => {
         // }),
       }}
     >
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          variant="h6"
-          id="tableTitle"
-          component="div"
-        >
-          Orders
-        </Typography>
-      
+      <Typography
+        sx={{ flex: '1 1 100%' }}
+        variant="h6"
+        id="tableTitle"
+        component="div"
+      >
+        Orders
+      </Typography>
+
     </Toolbar>
   );
-    }
+}
 
 // EnhancedTableToolbar.propTypes = {
 //   numSelected: PropTypes.number.isRequired,
 // };
 
-const handleChange = async (event, id) => {
-  
-  localStorage.setItem(`isBanned-${id}`, event.target.checked);
-  await axios.put(`/userbanned/${id}`, {
-    isBanned: event.target.checked
-  });
+const handleChange = async (event, id, email) => {
+  const input = { email, delivered: event.target.checked }
+  await axios.put(`/updateOrder/${id}`, input);
 };
 
 export default function EnhancedTable() {
@@ -239,31 +236,31 @@ export default function EnhancedTable() {
   const rows = useSelector((state) => state.orders);
   const [delSneacker, setDelSneaker] = React.useState(false);
 
-    useEffect(() => {
-       dispatch(getAllOrders())
-    }, [dispatch]);
-console.log(rows)
-    
-//   const handleDelete = async (id) => {
-//     if(id){
-//       await axios.delete(`/deleting/${id}`)
-//       .then((res) => {
-//         console.log(res.data);
-//         setDelSneaker(true);
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//     console.log(id);
-//   }
-// }
+  useEffect(() => {
+    dispatch(getAllOrders())
+  }, [dispatch]);
+  console.log(rows)
+
+  //   const handleDelete = async (id) => {
+  //     if(id){
+  //       await axios.delete(`/deleting/${id}`)
+  //       .then((res) => {
+  //         console.log(res.data);
+  //         setDelSneaker(true);
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //       });
+  //     console.log(id);
+  //   }
+  // }
 
 
 
 
-// useEffect((id) => {
-//   dispatch(deleteSneaker(id))
-// }, [dispatch]);
+  // useEffect((id) => {
+  //   dispatch(deleteSneaker(id))
+  // }, [dispatch]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -318,7 +315,7 @@ console.log(rows)
   // Avoid a layout jump when reaching the last page with empty rows.
   // const emptyRows =
   //   page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-  
+
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
@@ -354,7 +351,7 @@ console.log(rows)
                       // aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.id}
-                      // selected={isItemSelected}
+                    // selected={isItemSelected}
                     >
                       {/* <TableCell padding="checkbox">
                         <Checkbox
@@ -368,21 +365,21 @@ console.log(rows)
                       </TableCell> */}
                       <TableCell align="center">{row.id}</TableCell>
                       <TableCell align="left">{row.payer.fullName}</TableCell>
-                      <TableCell align="left">{row.items.map( (r) => <div>{r.title}</div>)}</TableCell>
-                      <TableCell align="center">{row.items.map( (r) => <div>{r.quantity}</div>)}</TableCell>
-                      <TableCell align="center">{row.items.map( (r) => <div>{r.price}</div>)}</TableCell>
-                      <TableCell align="center">{row.items.map( (r) => (r.price * r.quantity)).reduce((a, b) => a + b, 0)}</TableCell>
+                      <TableCell align="left">{row.items.map((r) => <div>{r.title}</div>)}</TableCell>
+                      <TableCell align="center">{row.items.map((r) => <div>{r.quantity}</div>)}</TableCell>
+                      <TableCell align="center">{row.items.map((r) => <div>{r.price}</div>)}</TableCell>
+                      <TableCell align="center">{row.items.map((r) => (r.price * r.quantity)).reduce((a, b) => a + b, 0)}</TableCell>
                       <TableCell align="center">{row.status}</TableCell>
                       <TableCell align="center">{row.createdAt}</TableCell>
                       <TableCell align="right">
                         <Switch
-                        defaultChecked = {row.isBanned}
-                        onChange={(event) => handleChange(event, row.id)}
-                        inputProps={{ 'aria-label': 'controlled' }}
+                          defaultChecked={row.delivered}
+                          onChange={(event) => handleChange(event, row.id, row.email)}
+                          inputProps={{ 'aria-label': 'controlled' }}
                         />
                       </TableCell>
-                      
-                      
+
+
                     </TableRow>
                   );
                 })}
@@ -414,5 +411,5 @@ console.log(rows)
       /> */}
     </Box>
   );
-    
+
 }
