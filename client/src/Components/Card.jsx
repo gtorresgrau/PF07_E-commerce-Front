@@ -40,7 +40,8 @@ export default function Card(props) {
         <img src={props.image} alt="imagen no encontrada" className={S.img} />
         <div className={S.price}>${props.price}</div>
         <p className={S.title}>{props.title}</p>
-        <p className={S.type}>{props.type}</p>
+        {props.stock ? <p className={S.type}>{props.type}</p> : <h4 className={S.type}>Not Available</h4>}
+        
       </Link>
     </div>
   );

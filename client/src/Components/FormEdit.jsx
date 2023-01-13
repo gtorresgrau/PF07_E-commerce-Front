@@ -1,25 +1,49 @@
+import axios from "axios";
 import React from "react";
-import {useState, useEffect, useParams} from "react";
+import {useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Link} from 'react-router-dom';
-import { addSneaker, uploadImage, getSneakerDetail} from "../Actions/Actions.js";
+import {Link, useParams, useHistory} from 'react-router-dom';
+import { uploadImage, getSneakerDetail} from "../Actions/Actions.js";
 import S from './Styles/AddSneaker.module.css'
+import Swal from "sweetalert2";
 
 
-export default function FormEdit(props){
+export default function FormEdit(){
+
+    const history = useHistory();  
     const dispatch = useDispatch();
-    
-    // const { id } = useParams();
+    const sneaker = useSelector(state => state.detail);
+    const { id } = useParams();
+    console.log('id=',id);
 
     useEffect(() => {
-        dispatch(getSneakerDetail(props.match.paramas.id));
-      }, [dispatch, props.match.paramas.id])
+        dispatch(getSneakerDetail(id));
+      }, [dispatch, id])
       
-    const sneaker = useSelector(state => state.detail);
+    useEffect(() => {
+    if (sneaker) {
+        setInput({
+            ...input,
+            title: sneaker.title, 
+            price: sneaker.price, 
+            description: sneaker.description, 
+            size: sneaker.size,
+            image: sneaker.image,
+            stock: sneaker.stock,
+            brand: sneaker.brand,
+            genre: sneaker.genre,
+            colour: sneaker.colour,
+            type: sneaker.type
+        });
+    }
+}, [sneaker])  
+      
+    
     const form = document.getElementById('newSneaker')
     const btn = document.getElementById('btn')
 
     const datos = {
+        id: parseInt(id),
         title: sneaker.title, 
         price: sneaker.price, 
         description: sneaker.description, 
@@ -32,11 +56,15 @@ export default function FormEdit(props){
         type: sneaker.type
     };   
 
-    const talles = 38
+    // console.log('datos=',datos);
+
+
+    const talles = [38];
     const types = ["Sports", "Training", "Running"];
     const genres = ["Men", "Women", "Kids"];
     const [input, setInput] = useState(datos);
     const [errores, setErrores] = useState({});
+    console.log('input=', input);
 
     function validate(input){
         let errores = {};
@@ -44,7 +72,7 @@ export default function FormEdit(props){
         if(!input.title)errores.title = 'Title is Required';
         else if(!input.price) errores.price = 'Price is Required';
         else if(!input.description.length>10000) errores.description = 'Duration is to long. It has to be less than 10000 ';
-        else if(!input.size.length) errores.size = 'Size is Required';
+        else if(!input.size) errores.size = 'Size is Required';
         else if(!input.image) errores.image = 'Image is Required';
         else if(!input.stock) errores.stock = 'Stock is Required';
         else if(!input.brand.trim()){ 
@@ -74,27 +102,6 @@ export default function FormEdit(props){
         console.log(input)
     }
     
-    
-    const handlerSize = (e) => {
-        setInput({
-            ...input,
-            size: [...input.size, e.target.value ]
-        })
-        setErrores(validate({
-            ...input,
-            size: e.target.value
-         }));
-
-        console.log(input.size)
-    }
-
-    const handleDeletePlatforms = (e) => {
-        setInput({
-          ...input, 
-          size: input.size.filter(s => s !== e)
-        })
-    }
-
     const [productImg,setProductImg] = useState('');
 
     const handleImageUpload = (e) => {
@@ -121,14 +128,22 @@ export default function FormEdit(props){
         console.log('btn:',input)
     };
        
+    const alertUpdate = () => {
+        Swal.fire({
+          title: `Sneaker #${id} was updated succesfully!`,
+          icon: "succsess",
+          confirmButtonText: "Ok",
+        })  };
 
-    function handlerSubmit(e){
+    async function handlerSubmit(e){
         e.preventDefault();
-
+        
         if(Object.keys(errores).length === 0 ){
                 console.log(input)
-                dispatch(addSneaker(input))
-                alert('Sneaker added succesfully')
+                // dispatch(addSneaker(input))
+                await axios.put(`/sneakerupdate/${id}`, input);
+                alertUpdate();
+                
                 setInput({
                     title:"", 
                     price:"", 
@@ -142,27 +157,40 @@ export default function FormEdit(props){
                     type:"",
                 })
                 console.log('input_salida:',input);
+                
                 form.reset();
-                btn.disabled = true;     
+                btn.disabled = true;  
+                history.push('/admin')   
         }else{
             btn.disabled = true;
             alert('The Sneaker was not created, the form contains errors.')
         }
     };
 
-
+   
 return (
+   
+
+   
     <div className={S.general}>
         
     <div className={S.container}>
         <header className={S.header}>
-            <h1>Add a New Sneaker</h1>
+            <h1>Update Sneaker</h1>
             <p>Complete all required fields</p>
         </header>
         <form onSubmit={handlerSubmit} id='newSneaker' className={S.newSneaker}>
+            <div className={S.containerImage}>
+                <div className={S.imagePreview}>
+                {productImg?<img src={productImg} id="sneaker-photo" alt='sneaker' className={S.product}/>:<img src={input.image} alt='sneaker' className={S.product}/>}
+                </div>
+                <input type="file" id='btn-photo' onChange={handleImageUpload} name='image'/>
+                <button type="button" onClick={handleImageBtn}>SAVE</button>
+                {errores.image && (<span className={S.spanError}>{errores.image}</span>)}
+            </div>
             <div className={S.containerInput}>
                 <label className={S.label} >Title</label>
-                <input type='text'  className={S.input} name='title' placeholder="Type title of product" value={input.title} onChange={handlerOnChange} autoComplete='off'/>
+                <input type='text' className={S.input} name='title' placeholder="Type title of product" value={input.title} onChange={handlerOnChange} autoComplete='off'/>
                 {errores.title && (<span className={S.spanError}>{errores.title}</span>)}
             </div>
             <div className={S.containerInput}>
@@ -176,31 +204,14 @@ return (
                 {errores.description && (<span className={S.spanError}>{errores.description}</span>)}
             </div>
             <div className={S.containerInput}>
-                    <label className={S.label}  htmlFor='size' >Size</label>
-                    <select name='size' className={S.select}  onChange={(e)=>handlerSize(e)}>
-                        <option value='' defaultValue hidden>Select sizes</option>
-                        {talles?.map(e => (
-                            <option value={e} key={e}>{e}</option>
-                        ))}
-                    </select>
+                <label className={S.label}  htmlFor='price' >Size</label>
+                <input type='number' className={S.input}   name='size' placeholder='Enter size' value={input.size} onChange={handlerOnChange}  autoComplete='off' min='1'/>
                 {errores.size && (<span className={S.spanError}>{errores.size}</span>)}
-                <div className={S.containerSelected}>
-                    <ul>
-                    {
-                        input.size.map((s, i) => (
-                        <div className={S.option} key={i}>
-                            <li className={S.li} name={s} value={i+1}>{s}</li>
-                            <button className={S.button} type="button" onClick={ () => handleDeletePlatforms(s)}>X</button>
-                        </div>
-                        ))
-                    }
-                    </ul>
-                </div>
             </div>
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='type' >Types</label>
                 <select className={S.select} onChange={handlerOnChange} name='type'>
-                    <option value='' defaultValue hidden>Choose type</option>
+                    <option value='' defaultValue hidden>{input.type}</option>
                         {types?.map(t => (
                             <option value={t} key={t} >{t}</option>
                         ))}
@@ -210,7 +221,7 @@ return (
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='type' >Genres</label>
                 <select className={S.select} name='genre' onChange={handlerOnChange}>
-                    <option value='' defaultValue hidden>Choose genre</option>
+                    <option value='' defaultValue hidden>{input.genre}</option>
                         {genres?.map(g => (
                             <option  value={g} key={g} >{g}</option>
                         ))}
@@ -218,12 +229,7 @@ return (
                 {errores.genre && (<span className={S.spanError}>{errores.genre}</span>)}         
             </div>
             
-            <div className={S.containerInput}>
-                <label className={S.label}  htmlFor='image'>Image</label>
-                <input type="file" id='btn-photo' onChange={handleImageUpload} name='image'/>
-                <button type="button" onClick={handleImageBtn}>SAVE</button>
-                {errores.image && (<span className={S.spanError}>{errores.image}</span>)}
-            </div>
+           
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='stock' >Stock</label>
                 <input type='number' className={S.input}   name='stock' placeholder="Enter stock" value={input.stock} onChange={handlerOnChange} autoComplete='off' min='1'/>
@@ -240,19 +246,19 @@ return (
                 {errores.colour && (<span className={S.spanError}>{errores.colour}</span>)}
             </div>
             <div className={S.submit}>
-                <button className={S.btnSubmit} type="Submit" id ='btn' disabled={!input.title || !input.price || !input.description || !input.size || !input.image || !input.stock || !input.brand ||!input.genre ||!input.colour || !input.type}>CREATE</button>
+                <button className={S.btnSubmit} type="Submit" id ='btn' disabled={!input.title || !input.price || !input.description || !input.size || !input.image || !input.stock || !input.brand ||!input.genre ||!input.colour || !input.type}>UPDATE</button>
             </div>
             <div>
-            <Link to='/sneakers'>
+            <Link to='/admin'>
                 <button className={S.cancel}>CANCEL</button>
             </Link>
         </div>
         </form>
         <br/>
-        <div>
-            {productImg?<img src={productImg} id="sneaker-photo" alt='sneaker' className={S.product}/>:'IMAGE PREVIEW'}
-        </div>
+        
     </div>
     </div>
+
 )
+
 };

@@ -13,12 +13,9 @@ export const UserLogin = () => {
   fullName: name || '',
   email: email || ''
   }); 
-  console.log("data", preDataUser);
+  
   if(preDataUser){
     axios.post('/postuser', preDataUser)
-    .then((res) => {
-      console.log(res.data);
-    })
     .catch((error) => {
       console.error(error);
     });

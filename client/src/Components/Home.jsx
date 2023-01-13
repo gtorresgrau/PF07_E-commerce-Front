@@ -1,21 +1,16 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-//import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Navbar from './NavBar.jsx';
 import Paginado from './paginado.jsx';
-import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour, filterByGenre, filterByType, getUsers } from '../Actions/Actions';
+import { getAllSneackers, filterByBrand, sortPrice, filterByColour, filterByGenre, filterByType, getUsers } from '../Actions/Actions';
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
-import { useAuth0 } from '@auth0/auth0-react';
 import SimpleSlider from './Carousel.jsx';
 import CarouselBrands from './CarouselBrands.jsx';
-
-
 import Loading from './Loading.jsx';
-
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -37,9 +32,8 @@ const style = {
     position: 'absolute',
     top: '5.5rem',
     right: '-1%',
-    // transform: 'translate(-50%, -50%)',
     width: 280,
-    height: '100%',
+    height: '80%',
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -51,7 +45,6 @@ var filter = []
 var a = []
 export default function Home() {
     const dispatch = useDispatch();
-    const user = useAuth0();
     const allSneakers = useSelector((state) => state.sneakers);
     const allCoul = useSelector((state) => state.allSneakers);
     const allTyp = useSelector((state) => state.allSneakers);
@@ -64,7 +57,7 @@ export default function Home() {
 
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [sneakersPerPage] = useState(10);
+    const [sneakersPerPage] = useState(14);
     const [, setOrden] = useState(1);
 
     let indexLastSneaker = currentPage * sneakersPerPage;
@@ -173,13 +166,6 @@ export default function Home() {
         }
     }
 
-
-    function handlerFilter(e) {
-        dispatch(sortAz(e.target.value))
-        setOrden(e.target.value)
-        setCurrentPage(1);
-    }
-
     function handlerFilterStock(e) {
         dispatch(sortPrice(e.target.value))
         setOrden(e.target.value)
@@ -222,7 +208,7 @@ export default function Home() {
             <Modal
                 open={open}
                 onClose={handleClose}
-                disableScrollLock="true"
+                disableScrollLock={false}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
@@ -230,15 +216,7 @@ export default function Home() {
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Filter and Sort
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2}}>
-                    {/* <div>
-                        <span className={S.filters}>Sort by Name</span>
-                        <label htmlFor='az'>
-                            <input name='sortName' id='az' value='az' type='radio' className='input-radio' onChange={e => handlerFilter(e)} />A-Z</label>
-                            <br/>
-                        <label htmlFor="za">
-                            <input name='sortName' id='za' value='za' type='radio' className='input-radio' onChange={e => handlerFilter(e)} />Z-A</label>
-                    </div> */}
+                <Typography id="modal-modal-description" sx={{ mt: 2}} component="div">
                     <div >
                         <span className={S.filters}>Sort by Price</span>
                         <label htmlFor='+a-'>

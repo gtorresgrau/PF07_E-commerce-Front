@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -12,17 +13,22 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
+import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
+import FilterListIcon from '@mui/icons-material/FilterList';
 import Swal from "sweetalert2";
 import { visuallyHidden } from '@mui/utils';
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllSneackers } from "../Actions/Actions";
+import { getAllOrders } from "../Actions/Actions";
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { deleteSneaker } from '../Actions/Actions';
+import { Switch } from '@mui/material';
+import axios from 'axios';
 
 
 const theme = createTheme({
@@ -62,50 +68,62 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-          
+
   {
     id: 'title',
     numeric: true,
     disablePadding: false,
-    label: 'All Sneakers',
+    label: 'Order',
   },
 
   {
     id: 'img',
     numeric: true,
     disablePadding: true,
-    label: '',
+    label: 'User',
   },
-  
+
   {
     id: 'price',
+    numeric: false,
+    disablePadding: true,
+    label: 'Item',
+  },
+  {
+    id: 'quantity',
+    numeric: false,
+    disablePadding: true,
+    label: 'Quantity',
+  },
+  {
+    id: 'buyer',
     numeric: false,
     disablePadding: true,
     label: 'Price ($)',
   },
   {
-    id: 'brand',
+    id: 'buyer',
     numeric: false,
     disablePadding: true,
-    label: 'Brand',
+    label: 'Total ($)',
   },
   {
-    id: 'type',
+    id: 'sneaker',
     numeric: false,
     disablePadding: true,
-    label: 'Type',
+    label: 'Status',
   },
   {
-    id: 'edit',
+    id: 'status',
     numeric: false,
     disablePadding: true,
-    label: 'Edit',
+    label: 'Date',
   },
   {
-    id: 'delete',
+    id: 'status',
     numeric: false,
     disablePadding: true,
-    label: 'Delete',
+    label: 'Sent',
   },
 ];
 
@@ -120,7 +138,6 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -157,27 +174,34 @@ EnhancedTableHead.propTypes = {
 };
 
 const EnhancedTableToolbar = (props) => {
+  const { numSelected } = props;
 
- return (
+  return (
     <Toolbar
-        
+
       sx={{
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
+        
       }}
     >
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          variant="h6"
-          id="tableTitle"
-          component="div"
-        >
-          Sneakers
-        </Typography>
-      
+      <Typography
+        sx={{ flex: '1 1 100%' }}
+        variant="h6"
+        id="tableTitle"
+        component="div"
+      >
+        Orders
+      </Typography>
+
     </Toolbar>
   );
-    }
+}
+
+const handleChange = async (event, id, email) => {
+  const input = { email, delivered: event.target.checked }
+  await axios.put(`/updateOrder/${id}`, input);
+};
 
 export default function EnhancedTable() {
   const [order, setOrder] = React.useState('asc');
@@ -187,36 +211,19 @@ export default function EnhancedTable() {
   const [dense,] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const dispatch = useDispatch();
-  const rows = useSelector((state) => state.allSneakers);
+  const rows = useSelector((state) => state.orders);
+  const [delSneacker, setDelSneaker] = React.useState(false);
 
-    useEffect(() => {
-
-      dispatch(getAllSneackers())
-    }, [dispatch]);
-
-    
-
-
-
-const alertDelete = (id) => {
-  Swal.fire({
-    title: `Sneaker ${id} was deleted succesfully`,
-    icon: "success",
-    confirmButtonText: "OK",
-  })  };
-
-let handleDelete = (id) => { 
-  dispatch(deleteSneaker(id));
-  alertDelete(id);
-};
+  useEffect(() => {
+    dispatch(getAllOrders())
+  }, [dispatch]);
+  console.log(rows)
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
-
-
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -226,7 +233,6 @@ let handleDelete = (id) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -251,46 +257,29 @@ let handleDelete = (id) => {
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
-                      <TableRow
-                        hover
-                        role="checkbox"
-                        tabIndex={-1}
-                        key={row.title}
-                      >                      
-                      <TableCell
-                      align="center"
-                      >
-                     <img
-                            src={`${row.image}`}
-                            alt={row.title}
-                            height="100rem"
-                            padding="none"
-                      />
-                        </TableCell>
-                        <TableCell
-                          component="th"
-                          id={labelId}
-                          scope="row"
-                          padding="none"
-                          align="left"
-                        >
-                        {row.title}
+                    <TableRow
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={row.id}
+                    >
+                      <TableCell align="center">{row.id}</TableCell>
+                      <TableCell align="left">{row.payer.fullName}</TableCell>
+                      <TableCell align="left">{row.items.map((r) => <div>{r.title}</div>)}</TableCell>
+                      <TableCell align="center">{row.items.map((r) => <div>{r.quantity}</div>)}</TableCell>
+                      <TableCell align="center">{row.items.map((r) => <div>{r.price}</div>)}</TableCell>
+                      <TableCell align="center">{row.items.map((r) => (r.price * r.quantity)).reduce((a, b) => a + b, 0)}</TableCell>
+                      <TableCell align="center">{row.status}</TableCell>
+                      <TableCell align="center">{row.createdAt}</TableCell>
+                      <TableCell align="right">
+                        <Switch
+                          defaultChecked={row.delivered}
+                          onChange={(event) => handleChange(event, row.id, row.email)}
+                          inputProps={{ 'aria-label': 'controlled' }}
+                        />
                       </TableCell>
-                     
-                      <TableCell align="center">{row.price}</TableCell>
-                      <TableCell align="center">{row.brand}</TableCell>
-                      <TableCell align="center">{row.type}</TableCell>
-                      <TableCell align="center">
-                        <IconButton href={`/updateSneaker/${row.id}`} aria-label="delete">
-                          <ModeEditIcon/>
-                        </IconButton>
-                      </TableCell>
-                      <TableCell align="center">
-                          <IconButton onClick={(id) => handleDelete(row.id)} aria-label="delete">
-                            <DeleteIcon/>
-                          </IconButton>
-                      </TableCell>
-                      
+
+
                     </TableRow>
                   );
                 })}
@@ -309,4 +298,5 @@ let handleDelete = (id) => {
       </Paper>
     </Box>
   );
+
 }

@@ -11,11 +11,13 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';
 import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import DashboardProducts from './DashboardProducts';
+import DashboardOrders from './DashboardOrders';
 import AddSneaker from './AddSneaker';
 import AccountMenu from './AccountMenu';
 import Users from './Users'
@@ -121,12 +123,19 @@ function Dashboard(props) {
         />
         <Tab 
         sx={{ fontSize: '1rem', textTransform:'capitalize',  justifyContent: 'flex-start'}}
+        icon={<ShoppingCartIcon/>}
+        iconPosition="start"
+        label="Orders" {...a11yProps(3)}
+        />
+        <Tab 
+        sx={{ fontSize: '1rem', textTransform:'capitalize',  justifyContent: 'flex-start'}}
         icon={<HomeIcon/>}
         iconPosition="start"
         label="Home"
         href="/sneakers"
         />
       </Tabs>
+      
       <Divider />
     </div>
   );
@@ -212,7 +221,10 @@ function Dashboard(props) {
             <AddSneaker />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <Users />
+            <Users />  
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+            <DashboardOrders />
           </TabPanel>
     </Box>
       </Box>

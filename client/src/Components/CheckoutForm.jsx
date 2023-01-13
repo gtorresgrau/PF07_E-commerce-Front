@@ -6,24 +6,21 @@ import { CartContex } from './CardContex';
 import S from './Styles/Checkout.module.css';
 import { useSelector } from 'react-redux';
 
-
 function validate(formData) {
   let errors = {};
   if (!formData.homeAddress) errors.homeAddress = "Select shipping address";
   else if (!formData.region) errors.region = "Select region";
   else if (!formData.city) errors.city = "Select city";
-  else if (!/^([0-9]){7,8}$/g.test(formData.phoneNumber.trim())) {  //   
-    errors.phoneNumber = 'Only accept numbers, min 7 - max 8';
-  }
+  else if (!/^([0-9]){7,8}$/g.test(formData.phoneNumber.trim())) errors.phoneNumber = 'Only accept numbers, min 7 - max 8';
   return errors;
 }
 
 export function CheckoutForm() {
-
-  const { cartItems } = useContext(CartContex);
-  const history = useHistory()
-
   const user = useAuth0();
+  const { cartItems } = useContext(CartContex);
+  const [errors, setErrors] = useState({});
+
+  const history = useHistory()
 
   const users = useSelector((state) => state.users)
 
@@ -39,8 +36,6 @@ export function CheckoutForm() {
     phoneNumber: '',
   });
 
-  const [errors, setErrors] = useState({});
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
@@ -50,35 +45,28 @@ export function CheckoutForm() {
     setErrors(validate({ ...formData, [event.target.name]: event.target.value }))
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Enviar los datos del formulario al backend aquí
-    console.log('formData', formData);
-    setErrors(validate({ ...formData, [event.target.name]: event.target.value }))
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors(validate({ ...formData, [e.target.name]: e.target.value }))
     handlePayment()
-
-    axios.post('/postuser', formData)
-      .then((res) => {
-        console.log('response', res)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   };
 
 
-  var data = [...cartItems, user]
-  function handlePayment() {
-    console.log('handlePayment')
+  var data = [...cartItems, formData]
 
+  const handlePayment = async () => {
     axios.post('/payment', data)
       .then((res) => {
+        const id = res.data.response.body.id;
+        const client_id = res.data.response.body.client_id;
+        const info = [cartItems, formData, id, client_id]
+        console.log('infoFront:', info)
+        axios.post('/response', info)
         window.location.href = res.data.response.body.init_point;
         localStorage.removeItem('cardProducts');
-      }
-      )
+      })
       .catch((error) => console.log('errorC', error))
-  }
+  };
 
   return (
     <div className={S.general}>
@@ -150,8 +138,9 @@ export function CheckoutForm() {
         </div >
       }
     </div >
+  )
 
-  );
+};
 
-}
+
 export default CheckoutForm;
