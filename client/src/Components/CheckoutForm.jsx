@@ -70,8 +70,8 @@ export function CheckoutForm() {
 
   return (
     <div className={S.general}>
-      {userBaned.isBanned ? alert("You have been banned!", history.push("/sneakers"))
-        :
+      {/* {userBaned.isBanned ? alert("You have been banned!", history.push("/sneakers"))
+        : */}
         <div className={S.container}>
           <div>
             <Link to="/sneakers"><button className={S.back} >← BACK TO CART</button></Link>
@@ -136,7 +136,7 @@ export function CheckoutForm() {
             <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || formData.phoneNumber.length < 7 || formData.phoneNumber.length > 8 || !formData.region || !formData.homeAddress}>BUY</button>
           </form>
         </div >
-      }
+      {/* } */}
     </div >
   )
 
