@@ -221,21 +221,6 @@ export default function EnhancedTable() {
         dispatch(getAllSneackers())
     }, [dispatch, rows]);
 
-    
-//   const handleDelete = async (id) => {
-//     if(id){
-//       await axios.delete(`/deleting/${id}`)
-//       .then((res) => {
-//         console.log(res.data);
-//         setDelSneaker(true);
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//     console.log(id);
-//   }
-// }
-
 
 const alertDelete = (id) => {
   Swal.fire({
@@ -247,11 +232,7 @@ const alertDelete = (id) => {
 let handleDelete = (id) => { 
   dispatch(deleteSneaker(id));
   alertDelete(id);
-}
-
-// useEffect((id) => {
-//   dispatch(deleteSneaker(id))
-// }, [dispatch]);
+};
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';

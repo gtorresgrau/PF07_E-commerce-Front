@@ -212,7 +212,7 @@ return (
             </div>
             <div className={S.containerInput}>
                 <label className={S.label} >Title</label>
-                <input className={S.header} type='text' className={S.input} name='title' placeholder="Type title of product" value={input.title} onChange={handlerOnChange} autoComplete='off'/>
+                <input type='text' className={S.input} name='title' placeholder="Type title of product" value={input.title} onChange={handlerOnChange} autoComplete='off'/>
                 {errores.title && (<span className={S.spanError}>{errores.title}</span>)}
             </div>
             <div className={S.containerInput}>
