@@ -11,13 +11,7 @@ const Profile = () => {
   const users = useSelector((state) => state.users)
 
   const userAdmin = users.find(e => e.email === user.email)
-  //console.log("Usuario", userAdmin)
-
-
-  // const userInDb =async(email)=>{
-  //   const userdb = await axios.get(`/user?email=${email}`)
-  // }
-
+ 
   return (
     <div className={S.general}>
       <div>

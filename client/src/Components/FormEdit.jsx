@@ -3,7 +3,7 @@ import React from "react";
 import {useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {Link, useParams, useHistory} from 'react-router-dom';
-import { addSneaker, uploadImage, getSneakerDetail} from "../Actions/Actions.js";
+import { uploadImage, getSneakerDetail} from "../Actions/Actions.js";
 import S from './Styles/AddSneaker.module.css'
 import Swal from "sweetalert2";
 
@@ -212,7 +212,7 @@ return (
             </div>
             <div className={S.containerInput}>
                 <label className={S.label} >Title</label>
-                <input className={S.header} type='text' className={S.input} name='title' placeholder="Type title of product" value={input.title} onChange={handlerOnChange} autoComplete='off'/>
+                <input type='text' className={S.input} name='title' placeholder="Type title of product" value={input.title} onChange={handlerOnChange} autoComplete='off'/>
                 {errores.title && (<span className={S.spanError}>{errores.title}</span>)}
             </div>
             <div className={S.containerInput}>
