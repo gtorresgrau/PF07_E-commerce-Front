@@ -190,8 +190,12 @@ export default function EnhancedTable() {
   const rows = useSelector((state) => state.allSneakers);
 
     useEffect(() => {
-        dispatch(getAllSneackers())
+
+      dispatch(getAllSneackers())
     }, [dispatch]);
+
+    
+
 
 
 const alertDelete = (id) => {
@@ -211,6 +215,7 @@ let handleDelete = (id) => {
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
+
 
 
   const handleChangePage = (event, newPage) => {
