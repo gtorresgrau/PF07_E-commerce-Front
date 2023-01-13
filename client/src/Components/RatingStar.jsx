@@ -6,14 +6,14 @@ import { postReview } from "../Actions/Actions";
 import S from './Styles/RatingStar.module.css'
 import Swal from "sweetalert2";
 
-const RatingStar = ({sneaker}) =>{
-    
+const RatingStar = ({sneaker, banned}) =>{
     const { user } = useAuth0();
     const dispatch = useDispatch();
     const [stars, setStars]=useState(0);
     const [text, setText]=useState('');
     const [hover, setHover]=useState(null);
     const [usuario, setUsuario] = useState("user");
+    
     
 
     const alertRating = () => {
@@ -22,7 +22,17 @@ const RatingStar = ({sneaker}) =>{
           text: "Thank you for your time.",
           icon: "success",
           confirmButtonText: "Ok",
-        })  };
+        })
+    };
+
+    const alertBanned = () => {
+        Swal.fire({
+          title: `You are banned`,
+          text: "You are not allowed to submit a review until further notice.",
+          icon: "error",
+          confirmButtonText: "Ok",
+        })
+    };
         
     const input = {
         stars:stars,
@@ -33,11 +43,16 @@ const RatingStar = ({sneaker}) =>{
 
    const handlerSubmit=(e)=>{
         e.preventDefault();
-        dispatch(postReview(input))
-        //alert(`Submiting Review succesfully`)
-        alertRating(); 
-        setStars(0);
-        setText('')
+        if(!banned){
+            dispatch(postReview(input))
+            alertRating(); 
+            setStars(0);
+            setText('')
+        }else{
+            alertBanned(); 
+            setStars(0);
+            setText('')
+        }
     };
     
 
@@ -59,7 +74,7 @@ const RatingStar = ({sneaker}) =>{
                             />
                             <FaStar 
                                 className={S.star}
-                                color={ratingValue <= (hover || stars) ? '#ffff00' : '#808080' }
+                                color={ratingValue <= (hover || stars) ? '#ffff00' : '#b7b7b7' }
                                 onMouseEnter={()=>setHover(ratingValue)}
                                 onMouseLeave={()=>setHover(null)}
                             />
