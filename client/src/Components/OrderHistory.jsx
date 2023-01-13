@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllOrders } from "../Actions/Actions";
 import { useAuth0 } from '@auth0/auth0-react';
 import TableCell from '@mui/material/TableCell';
-
+import approvedImage from "../Images/approvedImage.jpg";
+import s from "./Styles/OrderHistory.module.css";
 const OrderHistory = () => {
 
     const Orders = useSelector((state) => state.orders);
@@ -65,9 +66,9 @@ const OrderHistory = () => {
        <strong>Date:     </strong> {row.createdAt}
      </TableCell>
    </li>
+   <img src={approvedImage} className={s.imageI} />
    
 </ul>
-
 
                   
                 
