@@ -55,7 +55,7 @@ export function CheckoutForm() {
   var data = [...cartItems, formData]
 
   const handlePayment = async () => {
-    axios.post('/payment', data)
+    axios.post('/payment', data,{mode: 'no-cors'})
       .then((res) => {
         const id = res.data.response.body.id;
         const client_id = res.data.response.body.client_id;
