@@ -66,7 +66,7 @@ const OrderHistory = () => {
        <strong>Date:     </strong> {row.createdAt}
      </TableCell>
    </li>
-   <img src={approvedImage} className={s.imageI} />
+   <img src={approvedImage} className={s.imageI} alt='approved' />
    
 </ul>
 

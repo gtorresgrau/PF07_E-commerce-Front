@@ -1,13 +1,11 @@
 import React from 'react'
 import { FaLinkedin } from 'react-icons/fa';
-//import { Link } from 'react-router-dom';
 import s from './Styles/Footer.module.css'
 
 
 function Footer() {
   return (
     <footer>
-      {/* <Link to='/about' className={s.links}>About</Link> */}
       <div className={s.foot}>
       <span className={s.spanF}>2022 Envoy. All right reserved</span>
         <label className={s.spanF}>Team:</label>

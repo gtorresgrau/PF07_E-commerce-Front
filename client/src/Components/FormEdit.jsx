@@ -102,27 +102,6 @@ export default function FormEdit(){
         console.log(input)
     }
     
-    
-    const handlerSize = (e) => {
-        setInput({
-            ...input,
-            size: [...input.size, e.target.value ]
-        })
-        setErrores(validate({
-            ...input,
-            size: e.target.value
-         }));
-
-        console.log(input.size)
-    }
-
-    const handleDeletePlatforms = (e) => {
-        setInput({
-          ...input, 
-          size: input.size.filter(s => s !== e)
-        })
-    }
-
     const [productImg,setProductImg] = useState('');
 
     const handleImageUpload = (e) => {
@@ -205,7 +184,6 @@ return (
                 <div className={S.imagePreview}>
                 {productImg?<img src={productImg} id="sneaker-photo" alt='sneaker' className={S.product}/>:<img src={input.image} alt='sneaker' className={S.product}/>}
                 </div>
-                {/* <label className={S.label}  htmlFor='image'>Image</label> */}
                 <input type="file" id='btn-photo' onChange={handleImageUpload} name='image'/>
                 <button type="button" onClick={handleImageBtn}>SAVE</button>
                 {errores.image && (<span className={S.spanError}>{errores.image}</span>)}
@@ -230,26 +208,6 @@ return (
                 <input type='number' className={S.input}   name='size' placeholder='Enter size' value={input.size} onChange={handlerOnChange}  autoComplete='off' min='1'/>
                 {errores.size && (<span className={S.spanError}>{errores.size}</span>)}
             </div>
-            {/* <div className={S.containerInput}>
-                    <label className={S.label}  htmlFor='size' >Size</label>    
-                    <select name='size' className={S.select}  onChange={(e)=>handlerSize(e)}>
-                        <option value='' defaultValue hidden>Select sizes</option>
-                     
-                    </select>
-                {errores.size && (<span className={S.spanError}>{errores.size}</span>)}
-                <div className={S.containerSelected}>
-                    <ul>
-                    {
-                        input.size.map((s, i) => (
-                        <div className={S.option} key={i}>
-                            <li className={S.li} name={s} value={i+1}>{s}</li>
-                            <button className={S.button} type="button" onClick={ () => handleDeletePlatforms(s)}>X</button>
-                        </div>
-                        ))
-                    }
-                    </ul>
-                </div>
-            </div> */}
             <div className={S.containerInput}>
                 <label className={S.label}  htmlFor='type' >Types</label>
                 <select className={S.select} onChange={handlerOnChange} name='type'>

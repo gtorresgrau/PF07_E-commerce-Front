@@ -71,7 +71,7 @@ export function deleteSneaker(id) {
       })
     }
     catch (e) {
-      window.location.href = "/sneaker/";
+      window.location.href = "/sneakers";
       console.log(`Something happened when filtering by id: ${id}`)
       alertX(`Something happened when filtering by id: ${id}`)
     }
@@ -109,7 +109,7 @@ export function getSneakerDetail(id) {
       })
     }
     catch (e) {
-      window.location.href = "/sneaker/";
+      window.location.href = "/sneakers";
       console.log(`Something happened when filtering by id: ${id}`)
       alertX(`Something happened when filtering by id: ${id}`)
     }
@@ -138,7 +138,7 @@ export function filterByBrand(payload) {
 
     }
     catch (e) {
-      window.location.href = "/sneakers/";
+      window.location.href = "/sneakers";
       console.log(`Something happened when filtering by brand: ${payload}`)
       alertX(`Something happened when filtering by brand: ${payload}`)
     }
@@ -161,7 +161,7 @@ export function filterByColour(payload) {
 
     }
     catch (e) {
-      window.location.href = "/sneakers/";
+      window.location.href = "/sneakers";
       console.log(`Something happened when filtering by brand: ${payload}`)
       alertX(`Something happened when filtering by brand: ${payload}`)
     }
@@ -182,7 +182,7 @@ export function filterByGenre(payload) {
       })
     }
     catch (e) {
-      window.location.href = "/sneakers/";
+      window.location.href = "/sneakers";
       console.log(`Something happened when filtering by Genre: ${payload}`)
       alertX(`Something happened when filtering by Genre: ${payload}`)
     }
@@ -204,7 +204,7 @@ export function filterByType(payload) {
 
     }
     catch (e) {
-      window.location.href = "/sneakers/";
+      window.location.href = "/sneakers";
       console.log(`Something happened when filtering by Type: ${payload}`)
       alertX(`Something happened when filtering by Type: ${payload}`)
     }
@@ -263,11 +263,6 @@ export function postReview(payload) {
     }
 };
 
-//   const rev = fetch('http://localhost:3001/reviews', { 
-//   method: "POST",
-//   body: payload 
-// })
-
 //----------------------------------------------------------------------------------------------
 
 export function getAllReviews(id) {
@@ -282,11 +277,10 @@ export function getAllReviews(id) {
           payload: reviews.data
         })
       } catch (e) {
-        window.location.href = "/sneaker/";
+        window.location.href = "/sneakers";
         console.log(`Something happened when filtering Reviews by id: ${id}`)
         alertX(`Something happened when filtering Reviews by id: ${id}`)
       };
 }};
-
 
 ///----------------------------------------------------------------------------------------------
