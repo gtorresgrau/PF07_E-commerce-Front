@@ -1,3 +1,33 @@
-.grey{
-    color: gray;
+.review{
+    background-color: #00000050;
+    border: 1px solid #000000;
+    border-radius: 25px;
+    
+    color:#ffffff;
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    margin: 10px;
+    gap:10px;
+}
+
+.values{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #00000050;
+    border: 1px solid #000000;
+    border-radius: 25px;
+    color:#b7b7b7
+}
+.user{
+    font-size: medium;
+}
+
+.stars{
+    font-size: x-large;
+}
+
+.text{
+    font-size: larger;
 }

@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CartContex } from './CardContex';
 import S from './Styles/Checkout.module.css';
-import { useSelector } from 'react-redux';
 
 
 function validate(formData) {
@@ -12,23 +11,14 @@ function validate(formData) {
   if (!formData.homeAddress) errors.homeAddress = "Select shipping address";
   else if (!formData.region) errors.region = "Select region";
   else if (!formData.city) errors.city = "Select city";
-  else if (!/^([0-9]){7,8}$/g.test(formData.phoneNumber.trim())) {  //   
-    errors.phoneNumber = 'Only accept numbers, min 7 - max 8';
-  }
+  else if (!/^([0-9]){7,8}$/g.test(formData.phoneNumber.trim())) errors.phoneNumber = 'Only accept numbers, min 7 - max 8';
   return errors;
 }
 
 export function CheckoutForm() {
-
-  const { cartItems } = useContext(CartContex);
-  const history = useHistory()
-
   const user = useAuth0();
-
-  const usersBan = useSelector((state) => state.users)
-
-  const userBanned = usersBan.find(e => e.email === user.user.email)
-  //console.log("USERBANNED", userBanned)
+  const { cartItems } = useContext(CartContex);
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     fullName: user.user.name || '',
@@ -38,8 +28,6 @@ export function CheckoutForm() {
     city: '',
     phoneNumber: '',
   });
-
-  const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -52,23 +40,14 @@ export function CheckoutForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //console.log('formData', formData);
     setErrors(validate({ ...formData, [e.target.name]: e.target.value }))
     handlePayment()
-    // axios.put('/userUpdate', formData)
-    //   .then((res) => {
-    //     console.log('response', res)
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   };
 
 
   var data = [...cartItems, formData]
   
   const handlePayment = async () => {
-    //console.log('handlePayment')
     axios.post('/payment', data)
       .then((res) => {
         const id = res.data.response.body.id;
@@ -80,80 +59,77 @@ export function CheckoutForm() {
         localStorage.removeItem('cardProducts');
       })
       .catch((error) => console.log('errorC', error))
-  }
+  };
 
   return (
-    <div className={S.general}>
-      {/* {userBanned && userBanned.isBanned === true ? alert("You have been banned!", history.push("/sneakers"))
-        : */}
-        <div className={S.container}>
-          <div>
-            <Link to="/sneakers"><button className={S.back} >← BACK TO CART</button></Link>
-          </div>
-          <form onSubmit={handleSubmit} className={S.checkoutForm}>
-            <div>
-              <h1>¡Hi, {formData.fullName}!</h1>
-              <h3>Confirmation of purchase will be sent to:</h3>
-              <h3>{formData.emailAddress}</h3>
-              <hr />
-              <h1>ADD SHIPPING ADDRESS</h1>
-            </div>
-            <div className={S.containerInput}>
-              <label htmlFor="homeAddress" className={S.label}>Address:  </label>
-              <input
-                className={S.input}
-                type="text"
-                name="homeAddress"
-                value={formData.homeAddress}
-                onChange={handleChange}
-                required
-              />
-              {errors.homeAddress && <span className={S.spanError}>{errors.homeAddress}</span>}
-            </div>
-            <div className={S.containerInput}>
-              <label htmlFor="region" className={S.label}>Location:  </label>
-              <input
-                className={S.input}
-                type="text"
-                name="region"
-                value={formData.region}
-                onChange={handleChange}
-                required
-              />
-              {errors.region && <span className={S.spanError}>{errors.region}</span>}
-            </div>
-            <div className={S.containerInput}>
-              <label htmlFor="city" className={S.label}>City:  </label>
-              <input
-                className={S.input}
-                type="text"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-                required
-              />
-              {errors.city && <span className={S.spanError}>{errors.city}</span>}
-            </div>
-            <div className={S.containerInput}>
-              <label htmlFor="phoneNumber" className={S.label}>Cellphone:  </label>
-              <input
-                className={S.input}
-                type="number"
-                name="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleChange}
-                required
-              />
-              {errors.phoneNumber && <span className={S.spanError}>{errors.phoneNumber}</span>}
-            </div>
-            <br />
-            <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || formData.phoneNumber.length < 7 || formData.phoneNumber.length > 8 || !formData.region || !formData.homeAddress}>BUY</button>
-          </form>
+        <div className={S.general}>
+            <div className={S.container}>
+              <div>
+                <Link to="/sneakers"><button className={S.back} >← BACK TO CART</button></Link>
+              </div>
+              <form onSubmit={handleSubmit} className={S.checkoutForm}>
+                <div>
+                  <h1>¡Hi, {formData.fullName}!</h1>
+                  <h3>Confirmation of purchase will be sent to:</h3>
+                  <h3>{formData.emailAddress}</h3>
+                  <hr />
+                  <h1>ADD SHIPPING ADDRESS</h1>
+                </div>
+                <div className={S.containerInput}>
+                  <label htmlFor="homeAddress" className={S.label}>Address:  </label>
+                  <input
+                    className={S.input}
+                    type="text"
+                    name="homeAddress"
+                    value={formData.homeAddress}
+                    onChange={handleChange}
+                    required
+                  />
+                  {errors.homeAddress && <span className={S.spanError}>{errors.homeAddress}</span>}
+                </div>
+                <div className={S.containerInput}>
+                  <label htmlFor="region" className={S.label}>Location:  </label>
+                  <input
+                    className={S.input}
+                    type="text"
+                    name="region"
+                    value={formData.region}
+                    onChange={handleChange}
+                    required
+                  />
+                  {errors.region && <span className={S.spanError}>{errors.region}</span>}
+                </div>
+                <div className={S.containerInput}>
+                  <label htmlFor="city" className={S.label}>City:  </label>
+                  <input
+                    className={S.input}
+                    type="text"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    required
+                  />
+                  {errors.city && <span className={S.spanError}>{errors.city}</span>}
+                </div>
+                <div className={S.containerInput}>
+                  <label htmlFor="phoneNumber" className={S.label}>Cellphone:  </label>
+                  <input
+                    className={S.input}
+                    type="number"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    required
+                  />
+                  {errors.phoneNumber && <span className={S.spanError}>{errors.phoneNumber}</span>}
+                </div>
+                <br />
+                <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || formData.phoneNumber.length < 7 || formData.phoneNumber.length > 8 || !formData.region || !formData.homeAddress}>BUY</button>
+              </form>
+            </div >
         </div >
-      {/* } */}
-    </div >
+  )
+};
 
-  );
 
-}
 export default CheckoutForm;
