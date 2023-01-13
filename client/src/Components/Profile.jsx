@@ -11,7 +11,7 @@ const Profile = () => {
   const users = useSelector((state) => state.users)
 
   const userAdmin = users.find(e => e.email === user.email)
- 
+
   return (
     <div className={S.general}>
       <div>
@@ -23,7 +23,7 @@ const Profile = () => {
         <h3>Name: {user.given_name}</h3>
         <h3>Lastname: {user.family_name}</h3>
         <h3>Email: {user.email}</h3>{user.email_verified ? <h4>User Verified ✅</h4> : <h4>User NO Verified ❌</h4>}
-        {userAdmin.isAdmin ? <Link to='/admin'> <button className={S.btnDash}>Dashboard</button> </Link> : null}
+        {userAdmin && userAdmin.isAdmin ? <Link to='/admin'> <button className={S.btnDash}>Dashboard</button> </Link> : null}
       </div>
     </div>
   );
