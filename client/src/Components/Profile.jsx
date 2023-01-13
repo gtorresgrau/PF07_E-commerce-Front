@@ -12,7 +12,7 @@ const Profile = () => {
   const users = useSelector((state) => state.users)
 
   const userAdmin = users.find(e => e.email === user.email)
- 
+
   return (
     <div className={S.general}>
       <div>
