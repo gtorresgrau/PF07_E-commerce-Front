@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 const dotenv = require('dotenv');
 dotenv.config()
@@ -11,9 +12,10 @@ const ExternalApi = () => {
 
   const callApi = async () => {
     try {
-      const response = await fetch(`${serverUrl}/api/messages/public-message`);
+      const response = await axios(`${serverUrl}/api/messages/public-message`);
 
-      const responseData = await response.json();
+      const responseData = await response.data;
+      console.log('resposeData:', responseData)
 
       setMessage(responseData.message);
     } catch (error) {
@@ -25,7 +27,7 @@ const ExternalApi = () => {
     try {
       const token = await getAccessTokenSilently();
 
-      const response = await fetch(
+      const response = await axios(
         `${serverUrl}/api/messages/protected-message`,
         {
           headers: {
@@ -34,7 +36,7 @@ const ExternalApi = () => {
         },
       );
 
-      const responseData = await response.json();
+      const responseData = await response.data;
 
       setMessage(responseData.message);
     } catch (error) {

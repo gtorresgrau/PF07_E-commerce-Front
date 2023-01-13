@@ -20,13 +20,13 @@ const OrderHistory = () => {
 
       return (
         <div>
-
+          <h3>Purchase History</h3>
         {
             OrderByUser.map(row => {
             return (
                 <div key={row.id}>
                    
-                    <h3>Purchase History</h3>
+                    
       
 
   <ul style={{display: 'flex', flexDirection: 'row'}}>
