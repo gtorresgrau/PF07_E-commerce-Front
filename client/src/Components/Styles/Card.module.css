@@ -3,7 +3,7 @@ a {
 }
 
 h4 {
-    color:#999998
+    color: #999998
 }
 
 .container {
@@ -16,10 +16,10 @@ h4 {
 }
 
 .container2 {
-    filter: grayscale(100%);
+    filter: grayscale(100%) brightness(0.9);
     border: 0.1rem solid rgb(231, 231, 231);
     width: 18rem;
-    
+    background-color: #f8f8f8fa;
 }
 
 .container2:hover {
