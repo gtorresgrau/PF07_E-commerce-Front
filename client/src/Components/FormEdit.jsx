@@ -3,7 +3,7 @@ import React from "react";
 import {useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {Link, useParams, useHistory} from 'react-router-dom';
-import { addSneaker, uploadImage, getSneakerDetail} from "../Actions/Actions.js";
+import { uploadImage, getSneakerDetail} from "../Actions/Actions.js";
 import S from './Styles/AddSneaker.module.css'
 import Swal from "sweetalert2";
 

@@ -15,7 +15,6 @@ const RatingStar = ({sneaker, banned}) =>{
     const [usuario, setUsuario] = useState("user");
     
     
-
     const alertRating = () => {
         Swal.fire({
           title: `Submiting Review succesfully`,

@@ -34,6 +34,7 @@ export default function SneakerDetail() {
       };
   }, [dispatch, id])
 
+  console.log('usersIndb:',usersInDb)
 
 
   return (

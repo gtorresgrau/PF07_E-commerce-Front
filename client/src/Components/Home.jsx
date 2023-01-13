@@ -230,15 +230,7 @@ export default function Home() {
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Filter and Sort
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2}}>
-                    {/* <div>
-                        <span className={S.filters}>Sort by Name</span>
-                        <label htmlFor='az'>
-                            <input name='sortName' id='az' value='az' type='radio' className='input-radio' onChange={e => handlerFilter(e)} />A-Z</label>
-                            <br/>
-                        <label htmlFor="za">
-                            <input name='sortName' id='za' value='za' type='radio' className='input-radio' onChange={e => handlerFilter(e)} />Z-A</label>
-                    </div> */}
+                <Typography id="modal-modal-description" sx={{ mt: 2}} component="div">
                     <div >
                         <span className={S.filters}>Sort by Price</span>
                         <label htmlFor='+a-'>
