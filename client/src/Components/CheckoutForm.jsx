@@ -20,12 +20,10 @@ export function CheckoutForm() {
   const { cartItems } = useContext(CartContex);
   const [errors, setErrors] = useState({});
 
-  const history = useHistory()
+  
+  //const users = useSelector((state) => state.users)
 
-  const users = useSelector((state) => state.users)
-
-  const userBaned = users.find(e => e.email === user.user.email)
-  console.log("USERBANNED", userBaned)
+  
 
   const [formData, setFormData] = useState({
     fullName: user.user.name || '',
@@ -70,8 +68,7 @@ export function CheckoutForm() {
 
   return (
     <div className={S.general}>
-      {userBaned.isBanned ? alert("You have been banned!", history.push("/sneakers"))
-        :
+      
         <div className={S.container}>
           <div>
             <Link to="/sneakers"><button className={S.back} >← BACK TO CART</button></Link>
@@ -136,7 +133,7 @@ export function CheckoutForm() {
             <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || formData.phoneNumber.length < 7 || formData.phoneNumber.length > 8 || !formData.region || !formData.homeAddress}>BUY</button>
           </form>
         </div >
-      }
+      
     </div >
   )
 
