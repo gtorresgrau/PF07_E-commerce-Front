@@ -10,10 +10,10 @@ import store from './Store/index.js';
 
 import Auth0ProviderWithHistory from './Auth/auth0-provider-with-history.js';
 
-//axios.defaults.baseURL='http://localhost:3001';
+axios.defaults.baseURL='http://localhost:3001';
 //https://pf07e-commerce-back-production.up.railway.app/
 
-axios.defaults.baseURL = 'https://pf07e-commerce-back-production.up.railway.app/';
+//axios.defaults.baseURL = 'https://pf07e-commerce-back-production.up.railway.app/';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
