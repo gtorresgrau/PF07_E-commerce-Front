@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CartContex } from './CardContex';
 import S from './Styles/Checkout.module.css';
 import { useSelector } from 'react-redux';
+import Navbar from './NavBar';
+import Footer from './Footer';
 
 function validate(formData) {
   let errors = {};
@@ -19,8 +21,6 @@ export function CheckoutForm() {
   const user = useAuth0();
   const { cartItems } = useContext(CartContex);
   const [errors, setErrors] = useState({});
-
-  const history = useHistory()
 
   const users = useSelector((state) => state.users)
 
@@ -70,8 +70,7 @@ export function CheckoutForm() {
 
   return (
     <div className={S.general}>
-      {/* {userBaned.isBanned ? alert("You have been banned!", history.push("/sneakers"))
-        : */}
+        <Navbar/>
         <div className={S.container}>
           <div>
             <Link to="/sneakers"><button className={S.back} >← BACK TO CART</button></Link>
@@ -137,6 +136,9 @@ export function CheckoutForm() {
           </form>
         </div >
       {/* } */}
+      <footer>
+          <div className={S.footer}><Footer/></div>
+      </footer>
     </div >
   )
 

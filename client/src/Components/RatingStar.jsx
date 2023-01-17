@@ -6,7 +6,7 @@ import { postReview } from "../Actions/Actions";
 import S from './Styles/RatingStar.module.css'
 import Swal from "sweetalert2";
 
-const RatingStar = ({sneaker, banned}) =>{
+const RatingStar = ({sneaker}) =>{
     const { user } = useAuth0();
     const dispatch = useDispatch();
     const [stars, setStars]=useState(0);
@@ -23,15 +23,6 @@ const RatingStar = ({sneaker, banned}) =>{
           confirmButtonText: "Ok",
         })
     };
-
-    const alertBanned = () => {
-        Swal.fire({
-          title: `You are banned`,
-          text: "You are not allowed to submit a review until further notice.",
-          icon: "error",
-          confirmButtonText: "Ok",
-        })
-    };
         
     const input = {
         stars:stars,
@@ -42,16 +33,10 @@ const RatingStar = ({sneaker, banned}) =>{
 
    const handlerSubmit=(e)=>{
         e.preventDefault();
-        if(!banned){
             dispatch(postReview(input))
             alertRating(); 
             setStars(0);
             setText('')
-        }else{
-            alertBanned(); 
-            setStars(0);
-            setText('')
-        }
     };
     
 

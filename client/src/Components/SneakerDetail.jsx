@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
 import { getSneakerDetail, resetDetail} from '../Actions/Actions';
@@ -11,17 +11,17 @@ import Navbar from './NavBar';
 import { CartContex } from "./CardContex.jsx";
 import RatingStar from './RatingStar';
 import { FavContainerContext } from './FavContainerContext';
+import Footer from './Footer';
 
 export default function SneakerDetail() {
   const dispatch = useDispatch();
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const { addItemToCart } = useContext(CartContex);
   const sneaker = useSelector(state => state.detail);
   const loading = useSelector(state => state.loading);
   const usersInDb = useSelector((state) => state.users);
   const { addItemToFav } = useContext(FavContainerContext);
   const { id } = useParams();
-  const [banned, setBanned] = useState(false);
 
   useEffect(() => {
     dispatch(getSneakerDetail(id))
@@ -64,7 +64,7 @@ export default function SneakerDetail() {
                   <button className={s.btn} onClick={() => addItemToFav(sneaker)}>Add To Fav</button>
                 </div>
                 <div>
-                  {isAuthenticated? <RatingStar sneaker={sneaker} banned ={banned}/> : null}
+                  {isAuthenticated? <RatingStar sneaker={sneaker}/> : null}
                 </div>
                 <div>
                   <h2>Some people said: </h2>
@@ -95,6 +95,9 @@ export default function SneakerDetail() {
               </div>
           </div>
         }
+        <footer>
+                <div className={S.footer}><Footer /></div>
+        </footer>
     </div >
   )
 };
