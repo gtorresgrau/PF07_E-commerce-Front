@@ -17,7 +17,9 @@ import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import AccountMenu from './AccountMenu';
-import Users from './Users';
+
+import DashBoarOrdersdByUser from "./DashBoardOrdersByUser";
+
 
 const theme = createTheme({
   palette: {
@@ -53,26 +55,16 @@ function DashboardUsers(props) {
           <ListItemText primary="Home" />
         </ListItemButton>
 
-        <ListItemButton href="/admin" >
-          <ListItemIcon>
-            <IconList />
-          </ListItemIcon>
-          <ListItemText primary="Product" />
-        </ListItemButton>
-
-        <ListItemButton href="/newProduct" >
-          <ListItemIcon>
-            <IconList />
-          </ListItemIcon>
-          <ListItemText primary="New Product" />
-        </ListItemButton>
-
         <ListItemButton href="/users" >
           <ListItemIcon>
             <IconList />
           </ListItemIcon>
-          <ListItemText primary="Users" />
+          <ListItemText primary="Purchase History" />
         </ListItemButton>
+
+     
+
+       
       </List>
       <Divider />
 
@@ -108,7 +100,7 @@ function DashboardUsers(props) {
           </IconButton>
 
           <Typography variant="h6" noWrap component="div">
-          Admin Dashboard
+          User Dashboard
           </Typography>
         
           <AccountMenu />
@@ -158,7 +150,7 @@ function DashboardUsers(props) {
         }}
       >
         <Toolbar />
-        <Users />
+        <DashBoarOrdersdByUser  />
       </Box>
     </Box>
   );

@@ -29,6 +29,8 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { deleteSneaker } from '../Actions/Actions';
 import { Switch } from '@mui/material';
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
 
 const theme = createTheme({
@@ -233,7 +235,9 @@ export default function EnhancedTable() {
   const [dense,] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const dispatch = useDispatch();
-  const rows = useSelector((state) => state.orders);
+  const { user } = useAuth0();
+  const orderAll = useSelector((state) => state.orders);
+  const rows = orderAll.filter((e) => e.email === user.email);
   const [delSneacker, setDelSneaker] = React.useState(false);
 
   useEffect(() => {
@@ -241,26 +245,12 @@ export default function EnhancedTable() {
   }, [dispatch]);
   console.log(rows)
 
-  //   const handleDelete = async (id) => {
-  //     if(id){
-  //       await axios.delete(`/deleting/${id}`)
-  //       .then((res) => {
-  //         console.log(res.data);
-  //         setDelSneaker(true);
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //     console.log(id);
-  //   }
-  // }
 
 
 
 
-  // useEffect((id) => {
-  //   dispatch(deleteSneaker(id))
-  // }, [dispatch]);
+
+  
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -277,25 +267,7 @@ export default function EnhancedTable() {
     setSelected([]);
   };
 
-  // const handleClick = (event, title) => {
-  //   const selectedIndex = selected.indexOf(title);
-  //   let newSelected = [];
-
-  //   if (selectedIndex === -1) {
-  //     newSelected = newSelected.concat(selected, title);
-  //   } else if (selectedIndex === 0) {
-  //     newSelected = newSelected.concat(selected.slice(1));
-  //   } else if (selectedIndex === selected.length - 1) {
-  //     newSelected = newSelected.concat(selected.slice(0, -1));
-  //   } else if (selectedIndex > 0) {
-  //     newSelected = newSelected.concat(
-  //       selected.slice(0, selectedIndex),
-  //       selected.slice(selectedIndex + 1),
-  //     );
-  //   }
-
-  //   setSelected(newSelected);
-  // };
+ 
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -306,21 +278,14 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-  // const handleChangeDense = (event) => {
-  //   setDense(event.target.checked);
-  // };
-
-  // const isSelected = (title) => selected.indexOf(title) !== -1;
-
-  // Avoid a layout jump when reaching the last page with empty rows.
-  // const emptyRows =
-  //   page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  
 
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
+        
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
@@ -372,11 +337,7 @@ export default function EnhancedTable() {
                       <TableCell align="center">{row.status}</TableCell>
                       <TableCell align="center">{new Date(row.createdAt).toLocaleString()}</TableCell>
                       <TableCell align="right">
-                        <Switch
-                          defaultChecked={row.delivered}
-                          onChange={(event) => handleChange(event, row.id, row.email)}
-                          inputProps={{ 'aria-label': 'controlled' }}
-                        />
+                        
                       </TableCell>
 
 

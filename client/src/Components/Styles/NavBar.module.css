@@ -20,6 +20,7 @@ nav {
     justify-content: space-between;
 }
 
+
 .displayLeft {
     display: flex;
     flex-direction: row;
