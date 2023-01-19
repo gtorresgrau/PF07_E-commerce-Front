@@ -16,9 +16,7 @@ import { visuallyHidden } from '@mui/utils';
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllOrders } from "../Actions/Actions";
-import { Switch } from '@mui/material';
-import axios from 'axios';
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -162,7 +160,7 @@ const EnhancedTableToolbar = (props) => {
       sx={{
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
-        
+       
       }}
     >
       <Typography
@@ -178,11 +176,6 @@ const EnhancedTableToolbar = (props) => {
   );
 }
 
-const handleChange = async (event, id, email) => {
-  const input = { email, delivered: event.target.checked }
-  await axios.put(`/updateOrder/${id}`, input);
-};
-
 export default function EnhancedTable() {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
@@ -191,14 +184,17 @@ export default function EnhancedTable() {
   const [dense,] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const dispatch = useDispatch();
-  const rows = useSelector((state) => state.orders);
+  const { user } = useAuth0();
+  const orderAll = useSelector((state) => state.orders);
+  const rows = orderAll.filter((e) => e.email === user.email);
 
   useEffect(() => {
     dispatch(getAllOrders())
   }, [dispatch]);
   console.log(rows)
 
-  const handleRequestSort = (property) => {
+
+  const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
@@ -213,33 +209,43 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
+  
+
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
+        
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
             size={dense ? 'small' : 'small'}
           >
             <EnhancedTableHead
+              // numSelected={selected.length}
               order={order}
               orderBy={orderBy}
+              // onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
             <TableBody>
+              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
+                 rows.slice().sort(getComparator(order, orderBy)) */}
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                 
+
                   return (
                     <TableRow
                       hover
+                      // onClick={(event) => handleClick(event, row.title)}
                       role="checkbox"
+                      // aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.id}
+                    // selected={isItemSelected}
                     >
                       <TableCell align="center">{row.id}</TableCell>
                       <TableCell align="left">{row.payer.fullName}</TableCell>
@@ -250,13 +256,7 @@ export default function EnhancedTable() {
                       <TableCell align="center">{row.status}</TableCell>
                       <TableCell align="center">{new Date(row.createdAt).toLocaleString()}</TableCell>
                       <TableCell align="right">
-                        <Switch
-                          defaultChecked={row.delivered}
-                          onChange={(event) => handleChange(event, row.id, row.email)}
-                          inputProps={{ 'aria-label': 'controlled' }}
-                        />
                       </TableCell>
-
 
                     </TableRow>
                   );
