@@ -15,7 +15,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
     <Auth0Provider
       domain={domain}
       clientId={clientId}
-      redirectUri={"https://pf-07-e-commerce-front.vercel.app/sneakers/"}
+      redirectUri={"http://localhost:3000/sneakers"}
       onRedirectCallback={onRedirectCallback}
     >
       {children}

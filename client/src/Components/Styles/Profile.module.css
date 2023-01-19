@@ -1,6 +1,6 @@
 .general {
     display: grid;
-    margin: 10px;
+   
     padding: 10px;
     font-family: 'Manjari', sans-serif;
     min-height: 110vh;
@@ -11,7 +11,29 @@
 }
 
 ;
+.logo {
+    margin-top: 0.25rem;
+}
 
+.display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.displayContainer {
+    margin-top: 130px;
+}
+
+.displayLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 45%;
+    justify-content: flex-start;
+    margin-left: 4rem;
+}
 .btn {
     border: none;
     background-color: #b80000d8;

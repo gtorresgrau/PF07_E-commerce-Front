@@ -17,10 +17,11 @@ import UserForm from './Components/LoginForm.jsx'
 import { CartProvider } from './Components/CardContex.jsx';
 import { FavProvider } from './Components/FavContainerContext.jsx';
 
-import DashboardNewProduct from './Components/DashboardNewProduct.jsx';
+
 import CheckoutForm from './Components/CheckoutForm.jsx';
 import DashboardUsers from './Components/DashboardUsers.jsx';
 import FormEdit from './Components/FormEdit.jsx';
+
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
         <ProtectedRoute exact path="/admin" component={Dashboard} />
         <ProtectedRoute exact path="/userform" component={UserForm} />
         <ProtectedRoute exact path="/users" component={DashboardUsers} />
+        
         <Route path="*" component={Error404} />
       </Switch>
     </div>

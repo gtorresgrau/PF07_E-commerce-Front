@@ -15,7 +15,7 @@ function Footer() {
         <a href="https://www.linkedin.com/in/matias-rozas-395481224/" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Matias Rozas</ul></a>
         <a href="https://www.linkedin.com/in/pedro-mor%C3%A1n-9719b5218" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Pedro Morán</ul></a>
         <a href="https://www.linkedin.com/in/ezequiel-olier-814767a7/" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Ezequiel Olier</ul></a>
-        <a href="https://www.linkedin.com/in/%E2%98%85gonzalo-torres-grau-2825b263/" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Gonzalo Torres Grau</ul></a>
+        <a href="https://www.linkedin.com/in/gonzalotorresgrau/" target="_blank" rel="noreferrer" className={s.links}><ul className={s.nos}><FaLinkedin />Gonzalo Torres Grau</ul></a>
       </div>
     </footer>
   )
