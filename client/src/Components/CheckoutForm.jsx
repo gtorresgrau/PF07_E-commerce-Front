@@ -53,7 +53,7 @@ export function CheckoutForm() {
   var data = [...cartItems, formData]
 
   const handlePayment = async () => {
-    axios.post('/payment', data)
+    axios.post('/payment', data,{mode: 'no-cors'})
       .then((res) => {
         const id = res.data.response.body.id;
         const client_id = res.data.response.body.client_id;
@@ -133,7 +133,7 @@ export function CheckoutForm() {
             <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || formData.phoneNumber.length < 7 || formData.phoneNumber.length > 8 || !formData.region || !formData.homeAddress}>BUY</button>
           </form>
         </div >
-      
+      }
     </div >
   )
 

@@ -1,21 +1,16 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-//import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Navbar from './NavBar.jsx';
 import Paginado from './paginado.jsx';
-import { getAllSneackers, filterByBrand, sortPrice, sortAz, filterByColour, filterByGenre, filterByType, getUsers } from '../Actions/Actions';
+import { getAllSneackers, filterByBrand, sortPrice, filterByColour, filterByGenre, filterByType, getUsers } from '../Actions/Actions';
 import S from './Styles/Home.module.css';
 import Footer from './Footer.jsx';
 import header from '../Images/header2.jpg';
-import { useAuth0 } from '@auth0/auth0-react';
 import SimpleSlider from './Carousel.jsx';
 import CarouselBrands from './CarouselBrands.jsx';
-
-
 import Loading from './Loading.jsx';
-
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -37,7 +32,6 @@ const style = {
     position: 'absolute',
     top: '5.5rem',
     right: '-1%',
-    // transform: 'translate(-50%, -50%)',
     width: 280,
     height: '80%',
     bgcolor: 'background.paper',
@@ -51,7 +45,6 @@ var filter = []
 var a = []
 export default function Home() {
     const dispatch = useDispatch();
-    const user = useAuth0();
     const allSneakers = useSelector((state) => state.sneakers);
     const allCoul = useSelector((state) => state.allSneakers);
     const allTyp = useSelector((state) => state.allSneakers);
@@ -64,7 +57,7 @@ export default function Home() {
 
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [sneakersPerPage] = useState(10);
+    const [sneakersPerPage] = useState(14);
     const [, setOrden] = useState(1);
 
     let indexLastSneaker = currentPage * sneakersPerPage;
@@ -171,13 +164,6 @@ export default function Home() {
             filter.push(`type=${v}&`)
             dispatch(filterByType(filter.join('')))
         }
-    }
-
-
-    function handlerFilter(e) {
-        dispatch(sortAz(e.target.value))
-        setOrden(e.target.value)
-        setCurrentPage(1);
     }
 
     function handlerFilterStock(e) {
