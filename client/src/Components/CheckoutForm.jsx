@@ -1,17 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CartContex } from './CardContex';
 import S from './Styles/Checkout.module.css';
-import { useSelector } from 'react-redux';
 
 function validate(formData) {
   let errors = {};
   if (!formData.homeAddress) errors.homeAddress = "Select shipping address";
   else if (!formData.region) errors.region = "Select region";
   else if (!formData.city) errors.city = "Select city";
-  else if (!/^([0-9]){7,8}$/g.test(formData.phoneNumber.trim())) errors.phoneNumber = 'Only accept numbers, min 7 - max 8';
+  else if (!/^([0-9]){9,10}$/g.test(formData.phoneNumber.trim())) errors.phoneNumber = 'Only accept numbers, min 9, max 10';
   return errors;
 }
 
@@ -130,10 +129,9 @@ export function CheckoutForm() {
               {errors.phoneNumber && <span className={S.spanError}>{errors.phoneNumber}</span>}
             </div>
             <br />
-            <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || formData.phoneNumber.length < 7 || formData.phoneNumber.length > 8 || !formData.region || !formData.homeAddress}>BUY</button>
+            <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || formData.phoneNumber.length < 9 || formData.phoneNumber.length > 10 || !formData.region || !formData.homeAddress}>BUY</button>
           </form>
         </div >
-      }
     </div >
   )
 

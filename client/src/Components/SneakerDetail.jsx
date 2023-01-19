@@ -14,14 +14,14 @@ import { FavContainerContext } from './FavContainerContext';
 
 export default function SneakerDetail() {
   const dispatch = useDispatch();
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, } = useAuth0();
   const { addItemToCart } = useContext(CartContex);
   const sneaker = useSelector(state => state.detail);
   const loading = useSelector(state => state.loading);
   const usersInDb = useSelector((state) => state.users);
   const { addItemToFav } = useContext(FavContainerContext);
   const { id } = useParams();
-  const [banned, setBanned] = useState(false);
+  const [banned,] = useState(false);
 
   useEffect(() => {
     dispatch(getSneakerDetail(id))
