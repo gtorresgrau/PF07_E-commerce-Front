@@ -13,22 +13,13 @@
     z-index: 2;
   }
   
-  svg {
-    height: 25px;
-    margin-right: 2px;
-  }
-  
   .buttonCart {
-    size: 60 px;
-    color: #fb3939;
-
-    background-color: #222222;
-    width: 60px;
+    width: 30px;
     align-items: center;
   }
 
   .productsNumber {
-    margin: -40px 35px;
+    margin: -40px 23px;
     height: 20px;
     width: 20px;
     border-radius: 999px;
@@ -47,27 +38,53 @@
 
   .fa{
     size: 80px;
-    color: white;
+    color: #919090;
 
   }
   
   
   .cart {
-    position: absolute;
-    margin-top: 25px;
-    margin-left: -220px;
-    border-radius: 30px;
-    width: 400px;
+    position: fixed;
+    top: 410px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
     color: black;
-    border-style:solid;
+    border: 2px solid #e6e6e6;
+    height: 450px;
+    width: 400px;
+    overflow-y: scroll;
   }
+
+  @media (min-width: 600px){
+    .cart {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      color: black;
+      border: 2px solid #e6e6e6;
+      height: 450px;
+      width: 400px;
+      overflow-y: scroll;
+    }
+  }  
   
   .cartVacio {
     text-align: center;
     margin-top: 5px;
     font-size: 14px;
   }
+
+  
+  @media (min-width: 600px){
+    .cartVacio {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+  }  
   
   .total {
     text-align: center;

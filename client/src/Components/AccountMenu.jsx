@@ -9,6 +9,7 @@ import { LogoutButton } from './Logoutbutton.jsx';
 import { UserLogin } from './UserLogin.jsx';
 import { SignUpButton } from './SignUpButton';
 import { Link } from 'react-router-dom';
+import PersonIcon from '@mui/icons-material/Person';
 
 
 export default function AccountMenu() {
@@ -36,7 +37,7 @@ export default function AccountMenu() {
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
           >
-            <FaUserAlt className={S.user} />
+            <PersonIcon sx={{ fontSize: 40 }}/>
           </div>
 
           <Menu
