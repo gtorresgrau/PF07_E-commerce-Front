@@ -48,6 +48,15 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
   return (
     <div>
       <div className={S.form}>
+      <div className={S.btn_search} onClick={(e) => handleSubmit(e)} >
+          <Link
+            style={{ textDecoration: 'none', color: 'white' }}
+            smooth
+            to='/sneakers#displaySearch'
+          >
+            <FiSearch />
+          </Link>
+        </div>
         <input
           value={input}
           id='search'
@@ -57,15 +66,7 @@ export default function SearchBar({ currentPage, setCurrentPage }) {
           className={S.input_search}
           autoComplete='off'>
         </input>
-        <div className={S.btn_search} onClick={(e) => handleSubmit(e)} >
-          <Link
-            style={{ textDecoration: 'none', color: 'white' }}
-            smooth
-            to='/sneakers#displaySearch'
-          >
-            <FiSearch />
-          </Link>
-        </div>
+        
 
       </div>
     </div>

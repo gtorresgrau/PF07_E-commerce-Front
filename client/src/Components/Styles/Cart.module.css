@@ -7,25 +7,19 @@
 
 .buttonCartContainer {
   position: absolute;
-  margin-top: -12px;
+  margin-top: -16px;
   margin-right: 20px;
   cursor: pointer;
   z-index: 2;
 }
 
-svg {
-  height: 25px;
-  margin-right: 2px;
-}
-
 .buttonCart {
-  background-color: #222222;
-  width: 60px;
+  width: 30px;
   align-items: center;
 }
 
 .productsNumber {
-  margin: -40px 35px;
+  margin: -40px 23px;
   height: 20px;
   width: 20px;
   border-radius: 999px;
@@ -43,16 +37,32 @@ svg {
 }
 
 .cart {
-  position: absolute;
-  margin-top: 25px;
-  margin-left: -600px;
-  border-radius: 30px;
-  width: 400px;
+  position: fixed;
+  top: 410px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: white;
   color: black;
-  border-style:solid;
-  scroll-padding-bottom: 0;
+  border: 2px solid #e6e6e6;
+  height: 450px;
+  width: 400px;
+  overflow-y: scroll;
 }
+
+@media (min-width: 600px){
+  .cart {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: black;
+    border: 2px solid #e6e6e6;
+    height: 450px;
+    width: 400px;
+    overflow-y: scroll;
+  }
+}  
 
 .cartVacio {
   text-align: center;
@@ -68,21 +78,7 @@ svg {
 
 .productsContainer {
   max-width: 390px;
-  overflow-y: scroll;
   margin-top: 5px;
-}
-
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-}
-
-::-webkit-scrollbar:vertical {
-  width: 3px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #797979;
-  border-radius: 20px;
 }
 
 .buy {

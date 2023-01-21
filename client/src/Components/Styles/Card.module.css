@@ -3,7 +3,7 @@ a {
 }
 
 h4 {
-    color: #999998
+    color:#999998
 }
 
 .container {
@@ -16,7 +16,7 @@ h4 {
 }
 
 .container2 {
-    filter: grayscale(100%) brightness(0.9);
+    filter:  grayscale(100%) brightness(0.9);
     border: 0.1rem solid rgb(231, 231, 231);
     width: 18rem;
     background-color: #f8f8f8fa;
@@ -84,17 +84,17 @@ h4 {
 }
 
 .iconCart {
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: #242423;
     position: absolute;
-    margin-top: 0.9rem;
+    margin-top: 0.8rem;
     margin-left: 13rem;
     cursor: pointer;
 }
 
 .iconCart:hover {
     color: #999998;
-    font-size: 2rem;
-    margin-top: 0.7rem;
+    font-size: 1.7rem;
+    margin-top: 0.6rem;
     margin-left: 13rem;
 }

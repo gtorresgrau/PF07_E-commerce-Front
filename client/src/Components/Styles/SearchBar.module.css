@@ -3,7 +3,6 @@
     padding: 0.4rem;
     background-color: transparent;
     color: white;
-
 }
 
 .input_search:focus {
@@ -25,4 +24,12 @@
 .form {
     display: flex;
     border: 1px solid rgb(145, 144, 144);
+}
+
+@media (max-width: 600px){
+    .form {
+        display: flex;
+        border: 1px solid rgb(145, 144, 144);
+        margin: 0rem 2.5rem 0rem 2.5rem;
+    }
 }
