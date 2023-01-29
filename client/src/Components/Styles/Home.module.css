@@ -78,7 +78,7 @@
     margin-bottom: 2.3rem;
 }
 
-@media (min-width: 600px){
+@media (min-width: 800px){
     .img {
         object-position: 0rem;
         width: 100%;
@@ -100,7 +100,7 @@
     color: #242423
 }
 
-@media (min-width: 600px){
+@media (min-width: 800px){
     .title {
         font-size: 3.3rem;
         text-align: left;
@@ -123,7 +123,7 @@
 
 }
 
-@media (min-width: 600px){
+@media (min-width: 800px){
     .title1{
         font-size: 3.3rem;
         color: white;
@@ -143,7 +143,7 @@
     color: #242423;
 }
 
-@media (min-width: 600px){
+@media (min-width: 800px){
     .title2 {
         margin-top: 7.5rem;
         font-size: 3.3rem;
@@ -167,7 +167,7 @@
     cursor: pointer;
 }
 
-@media (min-width: 600px){
+@media (min-width: 800px){
     .button {
         color: #242423;
         position: absolute;
@@ -202,7 +202,7 @@
     margin-left: 2.5rem;
 }
 
-@media (min-width: 600px){
+@media (min-width: 800px){
     .shop{
         display: flex;
         justify-content: space-between;
