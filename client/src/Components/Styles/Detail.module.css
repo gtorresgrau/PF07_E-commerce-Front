@@ -1,7 +1,20 @@
 .containerG {
     display: flex;
     justify-content: space-between;
+   
 }
+
+@media (max-width: 800px) {
+ 
+    .containerG {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding-top: 100px;
+}
+    
+}
+
 
 .containerimg {
     width: 80%;

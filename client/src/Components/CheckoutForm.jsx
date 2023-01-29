@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { CartContex } from './CardContex';
 import S from './Styles/Checkout.module.css';
+import Footer from "./Footer";
+import logo from "../Images/logo2.png";
 
 function validate(formData) {
   let errors = {};
@@ -67,7 +69,12 @@ export function CheckoutForm() {
 
   return (
     <div className={S.general}>
-      
+        <nav className={S.display}>
+        <div className={S.displayLeft}>
+          <img className={S.logo} src={logo} width="250rem" alt="Hsneaker" />
+        </div>
+        
+      </nav>
         <div className={S.container}>
           <div>
             <Link to="/sneakers"><button className={S.back} >← BACK TO CART</button></Link>
@@ -132,6 +139,11 @@ export function CheckoutForm() {
             <button type="submit" onClick={handleSubmit} className={S.btnBuy} disabled={!formData.city || formData.phoneNumber.length < 9 || formData.phoneNumber.length > 10 || !formData.region || !formData.homeAddress}>BUY</button>
           </form>
         </div >
+        <div>
+          <br/>
+         <Footer /> 
+        </div>
+        
     </div >
   )
 
