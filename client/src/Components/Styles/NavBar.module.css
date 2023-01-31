@@ -2,11 +2,21 @@ nav {
     background: #242423;
     z-index: 999;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 5.5rem;
     position: fixed;
     width: 100%;
+}
+
+@media (min-width: 800px){
+    nav {
+        background: #242423;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 5.5rem;
+        position: fixed;
+        width: 100%;
+    }
 }
 
 .logo {
@@ -15,31 +25,53 @@ nav {
 
 .display {
     display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 800px){
+    .display {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    }
 }
 
 
 .displayLeft {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 45%;
-    justify-content: flex-start;
-    margin-left: 4rem;
+    justify-content: center;
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+@media (min-width: 800px){
+    .displayLeft {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 35%;
+        justify-content: flex-start;
+        margin-left: 3rem;
+    }
 }
 
 .displayRight {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 50%;
-    justify-content: space-evenly 
+    flex-direction: column;
+}
+
+@media (min-width: 800px){
+    .displayRight {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 33%;
+        justify-content: space-between;
+        margin-right: 3rem;
+    }
 }
 
 .cart {
-    font-size: 1.7rem;
     color: white;
 }
 
@@ -49,16 +81,13 @@ nav {
     border-radius: 50%;
 }
 
-.user {
-    font-size: 1.7rem;
+.heart {
     color: white;
-    cursor: pointer;
-    margin-top: -0.1rem;
 }
 
-.heart {
-    font-size: 1.5rem;
+.account {
     color: white;
+    margin-left: -0.4rem;
 }
 
 .links {
@@ -69,11 +98,19 @@ nav {
 }
 
 .displayLinks {
-    margin-top: 0.5rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    width: 40%;
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+@media (min-width: 800px){
+    .displayLinks {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 39%;
+    }
 }
 
 .btn {

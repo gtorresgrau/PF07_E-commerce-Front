@@ -1,7 +1,6 @@
 .container {
     border: 0.1rem solid white;
     width: 18rem;
-    margin-left: 0.8rem;
 }   
 
 .container:hover {

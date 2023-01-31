@@ -21,7 +21,6 @@ export default function Navbar({ setCurrentPage, currentPage }) {
         <Link to='/sneakers' onClick={reload}>
           <img className={S.logo} src={logo} width="250rem" alt='Hsneaker' />
         </Link>
-        <NavLink className={S.links} to='#'>FILTERS</NavLink>
       </div>
       <div className={S.displayRight}>
         <div className={S.SearchBar}>
@@ -36,7 +35,7 @@ export default function Navbar({ setCurrentPage, currentPage }) {
             <Fav />
           </div>
 
-          <div className={S.heart}>
+          <div className={S.account}>
             <AccountMenu />
           </div>
         </div>
@@ -44,3 +43,4 @@ export default function Navbar({ setCurrentPage, currentPage }) {
     </nav>
   )
 };
+

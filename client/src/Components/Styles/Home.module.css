@@ -70,59 +70,118 @@
 }
 
 .img {
-    object-position: 0rem;
+    object-position: -16rem;
     width: 100%;
     object-fit: cover;
-    height: 25rem;
-    margin-top: 5rem;
+    height: 15rem;
+    margin-top: 11rem;
     margin-bottom: 2.3rem;
 }
+
+@media (min-width: 800px){
+    .img {
+        object-position: 0rem;
+        width: 100%;
+        object-fit: cover;
+        height: 25rem;
+        margin-top: 4rem;
+        margin-bottom: 2.3rem;
+    }
+  }  
 
 .nav {
     position: fixed;
 }
 
 .title {
-    font-size: 3.3rem;
+    font-size: 1.8rem;
     text-align: left;
-    margin-left: 4rem;
-    margin-bottom: 2.5rem;
+    margin-left: 2.5rem;
     color: #242423
 }
 
+@media (min-width: 800px){
+    .title {
+        font-size: 3.3rem;
+        text-align: left;
+        margin-left: 4rem;
+        margin-bottom: 2.5rem;
+        color: #242423
+    }
+  } 
+
+
 .title1{
-    font-size: 3.3rem;
+    font-size: 1.5rem;
     color: white;
     position: absolute;
     z-index: 555;
-    margin-top: -27rem;
-    width: 25rem;
+    margin-top: -21rem;
+    width: 5rem;
     text-align: left;
-    margin-left: 4rem;
+    margin-left: 2.5rem;
 
 }
 
+@media (min-width: 800px){
+    .title1{
+        font-size: 3.3rem;
+        color: white;
+        position: absolute;
+        z-index: 555;
+        margin-top: -27rem;
+        width: 25rem;
+        text-align: left;
+        margin-left: 4rem;
+    }
+  }  
+
 .title2 {
-    margin-top: 7.5rem;
-    font-size: 3.3rem;
+    margin-top: 14rem;
+    font-size: 1.8rem;
     text-align: left;
-    margin-left: 4rem;
-    color: #242423
+    color: #242423;
+}
+
+@media (min-width: 800px){
+    .title2 {
+        margin-top: 7.5rem;
+        font-size: 3.3rem;
+        text-align: left;
+        margin-left: 4rem;
+        color: #242423
+    }
 }
 
 .button {
     color: #242423;
     position: absolute;
     z-index: 555;
-    margin-top: -18rem;
-    width: 10rem;
+    margin-top: -15rem;
+    width: 4.2rem;
     text-align: center;
-    font-size: 1.3rem;
-    margin-left: 4.2rem; 
+    font-size: 0.8rem;
+    margin-left: 2.6rem; 
     background-color: white;
     padding: 0.6rem;
     cursor: pointer;
 }
+
+@media (min-width: 800px){
+    .button {
+        color: #242423;
+        position: absolute;
+        z-index: 555;
+        margin-top: -18rem;
+        width: 10rem;
+        text-align: center;
+        font-size: 1.3rem;
+        margin-left: 4.2rem; 
+        background-color: white;
+        padding: 0.6rem;
+        cursor: pointer;
+    }
+  } 
 
 .btn{
     padding: 5px;
@@ -138,10 +197,18 @@
 
 .shop{
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    
+    align-items: left;
+    flex-wrap: wrap;
+    margin-left: 2.5rem;
 }
+
+@media (min-width: 800px){
+    .shop{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+  } 
 
 .space{
     margin-bottom: -8rem;
