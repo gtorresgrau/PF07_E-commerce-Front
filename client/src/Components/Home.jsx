@@ -174,9 +174,8 @@ export default function Home() {
 
     return (
         <div>
-
+            <div className={S.general}>
             <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-
             <img src={header} className={S.img} alt='frame' />
             <CarouselBrands />
 
@@ -275,6 +274,7 @@ export default function Home() {
             <footer>
                 <div className={S.footer}><Footer /></div>
             </footer>
+            </div>
         </div>
     )
 };
